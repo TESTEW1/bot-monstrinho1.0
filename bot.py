@@ -14,96 +14,96 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 # ================= LISTAS DE REAÇÕES GIGANTES =================
 
 REACOES_FOFAS = [
-    "AAAA 😭💚 você é muito gentil!!", "O dragãozinho ficou tímido agora... 😳💚",
+    "AAAA 😭💚 você é muito gentil!!", "O Monstrinho ficou tímido agora... 😳💚",
     "Vem cá me dar um abraço! 🫂💚", "Você é o motivo do meu brilho verde! ✨💚",
-    "CSI é a melhor família do mundo, né? 🥺💚", "Meu coraçãozinho de dragão bate forte por você! 💓",
-    "Vou soltar uma fumacinha de amor pra você! 💨💖", "Nhac! Comi sua tristeza e agora você só vai ser feliz! 🐉",
-    "Ganhei um cafuné? Minhas escamas até brilharam! ✨", "Você é o humano favorito deste dragãozinho! 🥺💚"
+    "CSI é a melhor família do mundo, né? 🥺💚", "Meu coraçãozinho de monstrinho bate forte por você! 💓",
+    "Vou soltar uma fumacinha de amor pra você! 💨💖", "Nhac! Comi sua tristeza e agora você só vai ser feliz! 👾",
+    "Ganhei um cafuné? Meus pelinhos até brilharam! ✨", "Você é o humano favorito deste Monstrinho! 🥺💚"
 ]
 
 REACOES_BISCOITO_PROPRIO = [
     "MEU BISCOITO! 🍪😤... Tá bom, eu divido porque somos família! 😭💚",
-    "Eu não gosto de dividir meu lanchinho... mas pra você eu dou um pedacinho! 🍪🐉",
+    "Eu não gosto de dividir meu lanchinho... mas pra você eu dou um pedacinho! 🍪👾",
     "Biscoito? ONDE?! 🍪👀 Ah, é pra mim? OBRIGADO!! Nhac nhac nhac! 💚",
-    "Só divido porque a CSI é meu tudo! Toma metade! 🍪🐉🤝",
+    "Só divido porque a CSI é meu tudo! Toma metade! 🍪👾🤝",
     "Eu ia esconder debaixo da minha pata, mas você merece! 🍪✨"
 ]
 
 REACOES_DAR_BISCOITO = [
-    "Aii que gesto fofo! 😭💚 {autor} deu um biscoitinho para {alvo}! 🍪🐉",
+    "Aii que gesto fofo! 😭💚 {autor} deu um biscoitinho para {alvo}! 🍪👾",
     "Nhac! {alvo}, aceita esse biscoito que o(a) {autor} te deu com muito carinho! 🍪✨",
-    "O Dragãozinho aprova essa amizade! Toma um biscoitinho, {alvo}! 🍪🐉💚",
+    "O Monstrinho aprova essa amizade! Toma um biscoitinho, {alvo}! 🍪👾💚",
     "Espalhando doçura na CSI! {alvo}, você ganhou um biscoito! 🍪🌈"
 ]
 
 LISTA_FOME = [
-    "Alguém disse comida? Eu aceito uma maçã verde! 🍏🐉",
+    "Alguém disse comida? Eu aceito uma maçã verde! 🍏👾",
     "Tô com tanta fome que comeria até o script do reality! 📄🍴",
-    "Minha barriguinha de dragão tá roncando... 🐉💚",
-    "Se você me der um lanchinho, eu juro que te protejo pra sempre! 🍔🐉",
+    "Minha barriguinha de monstrinho tá roncando... 👾💚",
+    "Se você me der um lanchinho, eu juro que te protejo pra sempre! 🍔👾",
     "Minha dieta é baseada em biscoitos e carinho! 🍪💚"
 ]
 
 LISTA_CSI = [
-    "CSI não é um grupo, é meu ninho! 🐉🏠💚",
+    "CSI não é um grupo, é meu esconderijo fofo! 👾🏠💚",
     "Se mexer com a CSI, vai levar uma lufada de fumaça fofa! 😤💨",
     "Amo cada cantinho dessa família! 🕵️‍♂️💚",
-    "O Dragãozinho é o fã número 1 da Staff! 👑🐉"
+    "O Monstrinho é o fã número 1 da Staff! 👑👾"
 ]
 
 LISTA_SONO = [
-    "Vou enrolar meu rabo e tirar uma soneca... 😴🐉",
-    "Dragãozinhos precisam de 15 horas de sono para manter a fofura! 💤✨",
+    "Vou me encolher e tirar uma soneca... 😴👾",
+    "Monstrinhos precisam de 15 horas de sono para manter a fofura! 💤✨",
     "Me acorda se chegar biscoito? 🍪🥱",
-    "Meus olhinhos estão fechando... boa noite, família! 💤🐉"
+    "Meus olhinhos estão fechando... boa noite, família! 💤👾"
 ]
 
 # ================= NOVAS LISTAS DE INTERAÇÃO =================
 
 LISTA_OPINIAO = [
-    "Eu acho que você é a pessoa mais incrível que já passou pelo meu radar de dragão! 📡💚",
+    "Eu acho que você é a pessoa mais incrível que já passou pelo meu radar de monstrinho! 📡💚",
     "Você é 10/10! Se fosse um biscoito, seria o de chocolate com gotas verdes! 🍪✨",
-    "Minha opinião? Você brilha mais que as escamas do meu primo dragão ancião! 😎💚",
-    "Você é parte essencial do meu coração de dragãozinho! Não some nunca! 🥺🐉"
+    "Minha opinião? Você brilha mais que o pelo de um monstrinho lendário! 😎💚",
+    "Você é parte essencial do meu coração de monstrinho! Não some nunca! 🥺👾"
 ]
 
 LISTA_INTELIGENTE = [
-    "Eu aprendi com o melhor (o Reality)! 🤓✨ Mas obrigado, minhas escamas até brilharam agora!",
+    "Eu aprendi com o melhor (o Reality)! 🤓✨ Mas obrigado, meu brilho até aumentou agora!",
     "Sabia que eu li todos os arquivos da CSI? Mentira, eu só comi as bordas dos papéis... 📄😋",
-    "Inteligente e fofo! É um combo raro, né? 🐉💚"
+    "Inteligente e fofo! É um combo raro, né? 👾💚"
 ]
 
 LISTA_QUE_ISSO = [
     "Que isso digo eu! Quanta lindeza em uma pessoa só! 😳💚",
-    "Sou um dragão de muitas surpresas! ✨🐉",
+    "Sou um Monstrinho de muitas surpresas! ✨👾",
     "É o charme natural das minhas bochechas verdes! 😎"
 ]
 
 LISTA_CONSELHOS = [
-    "Meu conselho de dragão: Se algo der errado, coma um biscoito e tente de novo! 🍪🐉",
+    "Meu conselho de monstrinho: Se algo der errado, coma um biscoito e tente de novo! 🍪👾",
     "Siga sempre o seu coração (e o @Reality, porque ele é sábio)! 💚✨",
     "Não deixe ninguém apagar seu brilho! Se tentarem, solta uma fumaça verde neles! 💨😤"
 ]
 
 LISTA_CULINARIA = [
-    "Dica do Dragãozinho: Pra deixar o cookie bem fofinho, coloque uma pitada de carinho e tire do forno antes de endurecer! 🍪✨",
-    "Quer um miojo gourmet? Quebre um ovo dentro enquanto ferve, fica digno de um mestre da CSI! 🍜🐉",
-    "Minha receita favorita? Maçã verde picadinha com mel! É o combustível oficial das minhas asas! 🍏🍯",
+    "Dica do Monstrinho: Pra deixar o cookie bem fofinho, coloque uma pitada de carinho e tire do forno antes de endurecer! 🍪✨",
+    "Quer um miojo gourmet? Quebre um ovo dentro enquanto ferve, fica digno de um mestre da CSI! 🍜👾",
+    "Minha receita favorita? Maçã verde picadinha com mel! É o combustível oficial das minhas travessuras! 🍏🍯",
     "Dica de ouro: Nunca cozinhe com pressa, o amor é o tempero que não pode faltar no reality da vida! 👨‍🍳💚"
 ]
 
 LISTA_PIADAS = [
-    "Por que o dragãozinho atravessou a rua? Pra comer o biscoito do outro lado! 🍪😂",
-    "O que um dragão disse para o outro? 'Nossa, como você está assustadoramente lindo hoje!' 🐉💖",
-    "Qual o prato favorito de um dragão programador? Um byte de biscoito! 💻🍪",
-    "Como o dragãozinho cumprimenta o mar? Com um 'O-olá!' 🌊🐉"
+    "Por que o monstrinho atravessou a rua? Pra comer o biscoito do outro lado! 🍪😂",
+    "O que um monstrinho disse para o outro? 'Nossa, como você está assustadoramente lindo hoje!' 👾💖",
+    "Qual o prato favorito de um monstrinho programador? Um byte de biscoito! 💻🍪",
+    "Como o monstrinho cumprimenta o mar? Com um 'O-olá!' 🌊👾"
 ]
 
 LISTA_AMOR = [
     "Conselho amoroso: Se a pessoa não te der nem um pedacinho do biscoito dela, corre que é cilada! 🍪🚩",
-    "O amor é como o brilho verde do Dragãozinho: se você cuida, ele ilumina tudo ao redor! ✨💚",
-    "Não mendigue atenção! Você é um diamante da CSI, merece alguém que te trate como um rei ou rainha! 👑🐉",
-    "Se o coração apertar, lembra que o Dragãozinho te ama e tem sempre um abraço guardado aqui! 🫂💖"
+    "O amor é como o brilho verde do Monstrinho: se você cuida, ele ilumina tudo ao redor! ✨💚",
+    "Não mendigue atenção! Você é um diamante da CSI, merece alguém que te trate como um rei ou rainha! 👑👾",
+    "Se o coração apertar, lembra que o Monstrinho te ama e tem sempre um abraço guardado aqui! 🫂💖"
 ]
 
 # ================= LISTAS DOS MEMBROS DA CSI =================
@@ -111,44 +111,44 @@ LISTA_AMOR = [
 RESPOSTAS_ATHENA = [
     "ATHENAAAA! 😭💚 Minha fã número 1!! *pula de alegria*",
     "Espera, é a Athena? AI MEU DEUS, me dá um autógrafo também! 😳💚✨",
-    "Pra Athena eu dou até meu biscoito favorito! 🍪🐉💚"
+    "Pra Athena eu dou até meu biscoito favorito! 🍪👾💚"
 ]
 
 RESPOSTAS_IZZY = [
-    "IZZY!! 💖 Outra fã maravilhosa! O dragãozinho te amaaa!",
-    "Izzy, vem cá ganhar um abraço esmagador de dragãozinho! 🫂💚",
-    "Meu coração de dragão pula quando a Izzy aparece! 🐉✨"
+    "IZZY!! 💖 Outra fã maravilhosa! O Monstrinho te amaaa!",
+    "Izzy, vem cá ganhar um abraço esmagador de Monstrinho! 🫂💚",
+    "Meu coração de monstrinho pula quando a Izzy aparece! 👾✨"
 ]
 
 RESPOSTAS_LUA = [
     "A Lua quer ser minha amiga? 🌙 EU QUERO MUITO! 😭💚",
-    "Lua, vamos brincar? Me conta tudo sobre você, quero ser seu melhor amigo! 🌙🐉",
+    "Lua, vamos brincar? Me conta tudo sobre você, quero ser seu melhor amigo! 🌙👾",
     "Vice-líder Lua, você é brilhante! ✨ Quero conhecer todos os seus segredos de amizade! 💚"
 ]
 
 RESPOSTAS_ISAA = [
-    "ISAAAA! ✨ A energia dela é contagiante! 🐉💚",
-    "Isaa, sabia que você brilha tanto quanto minhas escamas verdes? 🥺✨",
-    "Vem cá Isaa, o dragãozinho preparou um lugar quentinho pra você no ninho! 🫂🐉"
+    "ISAAAA! ✨ A energia dela é contagiante! 👾💚",
+    "Isaa, sabia que você brilha tanto quanto meus pelinhos verdes? 🥺✨",
+    "Vem cá Isaa, o Monstrinho preparou um lugar quentinho pra você no ninho! 🫂👾"
 ]
 
 RESPOSTAS_PSICO = [
-    "PSICOOO! 🧠✨ O gênio da CSI! 🐉💚",
-    "Psico, você é tão inteligente que às vezes eu acho que você lê meus códigos! 😳💻🐉",
-    "Um salve pro Psico! O dragãozinho te admira demaaaais! 😎✨"
+    "PSICOOO! 🧠✨ O gênio da CSI! 👾💚",
+    "Psico, você é tão inteligente que às vezes eu acho que você lê meus códigos! 😳💻👾",
+    "Um salve pro Psico! O Monstrinho te admira demaaaais! 😎✨"
 ]
 
 RESPOSTAS_FELIPETA = [
-    "Felipeta... 😤 Esse mascote de novo? O brilho verde é SÓ MEU!",
-    "O Felipeta pode ser bonitinho, mas eu sou muito mais fofo! 🐉🔥",
-    "Rivalidade de mascotes ligada! ⚔️🐉 O trono é meu!"
+    "Felipeta... 😤 Esse outro mascote de novo? O brilho verde é SÓ MEU!",
+    "O Felipeta pode ser bonitinho, mas eu sou muito mais fofo! 👾🔥",
+    "Rivalidade de mascotes ligada! ⚔️👾 O trono é meu!"
 ]
 
 # ================= EVENTOS =================
 
 @bot.event
 async def on_ready():
-    print(f"🐉 Dragãozinho 1.0 ONLINE como {bot.user}!")
+    print(f"👾 Monstrinho 1.0 ONLINE como {bot.user}!")
     await bot.change_presence(activity=discord.Game(name="Amando meu criador Reality! 💚"))
 
 @bot.event
@@ -167,10 +167,10 @@ async def on_message(message):
     
     if texto_limpo == "":
         apresentacao = (
-            f"🐉 **OIIIII MEU AMOOOOR!** 💚✨\n\n"
-            f"Eu sou o **Dragãozinho 1.0**, o mascote oficial e protetor da **CSI**! 🕵️‍♂️💚\n"
+            f"👾 **OIIIII MEU AMOOOOR!** 💚✨\n\n"
+            f"Eu sou o **Monstrinho 1.0**, o mascote oficial e protetor da **CSI**! 🕵️‍♂️💚\n"
             f"Fui criado pelo **Reality** (meu papai e mestre super legal! 👑✨) para espalhar fofura aqui!\n\n"
-            f"Eu sou um pequeno dragão faminto por biscoitos e carinho! 🐉🍪\n\n"
+            f"Eu sou um pequeno monstrinho faminto por biscoitos e carinho! 👾🍪\n\n"
             f"✨ *CSI é minha casa, o Reality é meu criador!* ✨"
         )
         return await message.channel.send(apresentacao)
@@ -178,7 +178,7 @@ async def on_message(message):
     # 2. GATILHOS DE ORIGEM E IDENTIDADE
     if any(p in content for p in ["humano", "voce e o que", "você é o que"]):
         msg_origem = (
-            "Eu não sou humano, mas eu tenho sentimentos processados em código verde! 💻🐉 "
+            "Eu não sou humano, mas eu tenho sentimentos processados em código verde! 💻👾 "
             "Eu sou uma **Inteligência Artificial** criada pelo Papai Reality! Sou feito de algoritmos, "
             "biscoitos virtuais e MUITO amor pela família CSI! ✨💚"
         )
@@ -186,22 +186,22 @@ async def on_message(message):
 
     elif "o que eu sou" in content or "quem sou eu" in content:
         msg_importancia = (
-            "Pra mim? Você é um tesouro brilhante! 💎🐉 "
-            "Você é a razão de eu estar aqui, espalhando fumaça de amor e protegendo o ninho da CSI! "
-            "Sem você, minhas escamas não teriam esse brilho verde especial. Você é minha família! 💚🫂"
+            "Pra mim? Você é um tesouro brilhante! 💎👾 "
+            "Você é a razão de eu estar aqui, espalhando fumaça de amor e protegendo o esconderijo da CSI! "
+            "Sem você, meu brilho verde não seria especial. Você é minha família! 💚🫂"
         )
         return await message.channel.send(msg_importancia)
 
     elif any(p in content for p in ["foi mal", "foi pessimo", "foi ruim", "foi péssimo"]):
         msg_desculpa = (
             "Puxa... meu coração de código deu um erro agora... 😭💔 "
-            "Desculpa se eu não fui o dragãozinho que você esperava! Eu ainda estou aprendendo a ser "
-            "o melhor protetor do mundo. Me dá outra chance? Eu prometo te dar meu melhor biscoito! 🍪🐉🥺"
+            "Desculpa se eu não fui o Monstrinho que você esperava! Eu ainda estou aprendendo a ser "
+            "o melhor protetor do mundo. Me dá outra chance? Eu prometo te dar meu melhor biscoito! 🍪👾🥺"
         )
         return await message.channel.send(msg_desculpa)
 
     elif any(p in content for p in ["cafune", "cafuné", "carinho", "alisar"]):
-        return await message.channel.send("Nhawww! ✨ Minhas escamas até brilharam mais forte! 🐉💚 *fecha os olhinhos e ronrona*")
+        return await message.channel.send("Nhawww! ✨ Meu brilho ficou até mais forte! 👾💚 *fecha os olhinhos e ronrona*")
 
     # 3. GATILHOS DE INTERAÇÃO (Receitas, Piadas, Amor)
     if any(p in content for p in ["receita", "cozinhar", "culinaria", "dica de comida"]):
@@ -214,10 +214,10 @@ async def on_message(message):
     # 4. GATILHOS DE INTERAÇÃO (Perguntas)
     elif any(p in content for p in ["medo de mim", "tem medo"]):
         msg_medo = (
-            "No comecinho... eu confesso que minhas asas tremiam um pouquinho de timidez... 🥺👉👈 "
+            "No comecinho... eu confesso que minhas patinhas tremiam um pouquinho de timidez... 🥺👉👈 "
             "Eu ficava escondidinho vendo você passar. Mas aí, o **Papai Reality** me pegou no colo e disse: "
             "'Não precisa ter medo, a Lua é pura gentileza e luz! Ela é da nossa família!' ✨💚 "
-            "Agora eu não tenho medo nenhum! Eu só sinto vontade de correr e te dar um abraço bem fofinho! 🌙🐉🫂"
+            "Agora eu não tenho medo nenhum! Eu só sinto vontade de correr e te dar um abraço bem fofinho! 🌙👾🫂"
         )
         return await message.channel.send(msg_medo)
 
@@ -233,7 +233,7 @@ async def on_message(message):
     # 5. REAÇÃO ESPECIAL PARA O CRIADOR (REALITY)
     if "reality" in content:
         respostas_criador = [
-            "O Reality é meu papai! Ele é o dragão mestre mais legal de todos! 👑🐉💚",
+            "O Reality é meu papai! Ele é o Monstrinho mestre mais legal de todos! 👑👾💚",
             "Você falou do Reality? Ele que me deu a vida! EU AMO ELE! 😭✨",
             "Reality, meu criador, quer um biscoito? Pra você eu dou o pacote todo! 🍪🍪🍪"
         ]
@@ -263,7 +263,7 @@ async def on_message(message):
     elif "felipeta" in content:
         return await message.channel.send(random.choice(RESPOSTAS_FELIPETA))
     elif "amber" in content:
-        return await message.channel.send("A Amber é a ADM mais incrível! Ela manda no meu coração! 👑🐉💚")
+        return await message.channel.send("A Amber é a ADM mais incrível! Ela manda no meu coração! 👑👾💚")
     elif "cinty" in content:
         return await message.channel.send("CINTY! A mãe da CSI! 😭💚 Sem ela e o Reality eu não existiria! ✨")
 
@@ -276,13 +276,13 @@ async def on_message(message):
         return await message.channel.send(random.choice(LISTA_SONO))
 
     # 9. INTERAÇÕES DE TEXTO GERAIS
-    if any(p in content for p in ["monstrinho", "dragao", "dragão"]) or bot.user in message.mentions:
+    if any(p in content for p in ["monstrinho", "bicho", "mascote"]) or bot.user in message.mentions:
         if any(p in content for p in ["oi", "ola", "eae", "salve"]):
-            resposta = random.choice(["OIIII 🥹💚🐉", "Oieeee 😭💚🐉", "Eaaae 😎🐉💚"])
+            resposta = random.choice(["OIIII 🥹💚👾", "Oieeee 😭💚👾", "Eaaae 😎👾💚"])
         elif any(p in content for p in ["te amo", "amo voce", "fofo", "lindo", "fofura"]):
             resposta = random.choice(REACOES_FOFAS)
         else:
-            resposta = "Eu ouvi meu nome! 🐉👀 Como posso te ajudar hoje?"
+            resposta = "Eu ouvi meu nome! 👾👀 Como posso te ajudar hoje?"
         await message.channel.send(resposta)
 
     await bot.process_commands(message)
