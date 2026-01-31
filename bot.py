@@ -126,6 +126,18 @@ RESPOSTAS_LUA = [
     "Vice-líder Lua, você é brilhante! ✨ Quero conhecer todos os seus segredos de amizade! 💚"
 ]
 
+RESPOSTAS_ISAA = [
+    "ISAAAA! ✨ A energia dela é contagiante! 🐉💚",
+    "Isaa, sabia que você brilha tanto quanto minhas escamas verdes? 🥺✨",
+    "Vem cá Isaa, o dragãozinho preparou um lugar quentinho pra você no ninho! 🫂🐉"
+]
+
+RESPOSTAS_PSICO = [
+    "PSICOOO! 🧠✨ O gênio da CSI! 🐉💚",
+    "Psico, você é tão inteligente que às vezes eu acho que você lê meus códigos! 😳💻🐉",
+    "Um salve pro Psico! O dragãozinho te admira demaaaais! 😎✨"
+]
+
 RESPOSTAS_FELIPETA = [
     "Felipeta... 😤 Esse mascote de novo? O brilho verde é SÓ MEU!",
     "O Felipeta pode ser bonitinho, mas eu sou muito mais fofo! 🐉🔥",
@@ -194,10 +206,8 @@ async def on_message(message):
     # 3. GATILHOS DE INTERAÇÃO (Receitas, Piadas, Amor)
     if any(p in content for p in ["receita", "cozinhar", "culinaria", "dica de comida"]):
         return await message.channel.send(random.choice(LISTA_CULINARIA))
-    
     elif any(p in content for p in ["piada", "engraçado", "rir"]):
         return await message.channel.send(random.choice(LISTA_PIADAS))
-    
     elif any(p in content for p in ["conselho amoroso", "amor", "crush", "namoro"]):
         return await message.channel.send(random.choice(LISTA_AMOR))
 
@@ -246,6 +256,10 @@ async def on_message(message):
         return await message.channel.send(random.choice(RESPOSTAS_IZZY))
     elif "lua" in content:
         return await message.channel.send(random.choice(RESPOSTAS_LUA))
+    elif "isaa" in content:
+        return await message.channel.send(random.choice(RESPOSTAS_ISAA))
+    elif "psico" in content:
+        return await message.channel.send(random.choice(RESPOSTAS_PSICO))
     elif "felipeta" in content:
         return await message.channel.send(random.choice(RESPOSTAS_FELIPETA))
     elif "amber" in content:
