@@ -70,22 +70,42 @@ LISTA_OPINIAO = [
 LISTA_INTELIGENTE = [
     "Eu aprendi com o melhor (o Reality)! 🤓✨ Mas obrigado, minhas antenas até subiram agora!",
     "Sabia que eu li todos os arquivos da CSI? Mentira, eu só comi as bordas dos papéis... 📄😋",
-    "Inteligente e fofo! É um combo raro, né? 👹💚",
-    "Obrigado! Vou usar minha inteligência para encontrar onde o Reality esconde os biscoitos! 🕵️‍♂️🍪"
+    "Inteligente e fofo! É um combo raro, né? 👹💚"
 ]
 
 LISTA_QUE_ISSO = [
     "Que isso digo eu! Quanta lindeza em uma pessoa só! 😳💚",
     "Sou um monstro de muitas surpresas! ✨👹",
-    "É o charme natural das minhas bochechas verdes! 😎",
-    "Gostou? O Reality me desenhou com muito capricho! 🎨💚"
+    "É o charme natural das minhas bochechas verdes! 😎"
 ]
 
 LISTA_CONSELHOS = [
     "Meu conselho de monstro: Se algo der errado, coma um biscoito e tente de novo! 🍪👹",
     "Siga sempre o seu coração (e o @Reality, porque ele é sábio)! 💚✨",
-    "Não deixe ninguém apagar seu brilho! Se tentarem, solta uma fumaça verde neles! 💨😤",
-    "A vida é curta demais para não dar um abraço em um monstrinho hoje! 🫂💚"
+    "Não deixe ninguém apagar seu brilho! Se tentarem, solta uma fumaça verde neles! 💨😤"
+]
+
+# ================= LISTAS CULINÁRIA, PIADAS E AMOR =================
+
+LISTA_CULINARIA = [
+    "Dica do Monstrinho: Pra deixar o cookie bem fofinho, coloque uma pitada de carinho e tire do forno antes de endurecer! 🍪✨",
+    "Quer um miojo gourmet? Quebre um ovo dentro enquanto ferve, fica digno de um mestre da CSI! 🍜👹",
+    "Minha receita favorita? Maçã verde picadinha com mel! É o combustível oficial das minhas anteninhas! 🍏🍯",
+    "Dica de ouro: Nunca cozinhe com pressa, o amor é o tempero que não pode faltar no reality da vida! 👨‍🍳💚"
+]
+
+LISTA_PIADAS = [
+    "Por que o monstrinho atravessou a rua? Pra comer o biscoito do outro lado! 🍪😂",
+    "O que um monstro disse para o outro? 'Nossa, como você está assustadoramente lindo hoje!' 👹💖",
+    "Qual o prato favorito de um monstro programador? Um byte de biscoito! 💻🍪",
+    "Como o monstrinho cumprimenta o mar? Com um 'O-olá!' 🌊👹"
+]
+
+LISTA_AMOR = [
+    "Conselho amoroso: Se a pessoa não te der nem um pedacinho do biscoito dela, corre que é cilada! 🍪🚩",
+    "O amor é como o brilho verde do Monstrinho: se você cuida, ele ilumina tudo ao redor! ✨💚",
+    "Não mendigue atenção! Você é um diamante da CSI, merece alguém que te trate como um rei ou rainha! 👑👹",
+    "Se o coração apertar, lembra que o Monstrinho te ama e tem sempre um abraço guardado aqui! 🫂💖"
 ]
 
 # ================= LISTAS DOS MEMBROS DA CSI =================
@@ -145,29 +165,36 @@ async def on_message(message):
         )
         return await message.channel.send(apresentacao)
 
-    # 2. GATILHOS DE INTERAÇÃO (Perguntas)
-    if "medo de mim" in content or "tem medo" in content:
+    # 2. GATILHOS DE INTERAÇÃO (Novas Listas)
+    if any(p in content for p in ["receita", "cozinhar", "culinaria", "dica de comida"]):
+        return await message.channel.send(random.choice(LISTA_CULINARIA))
+    
+    elif any(p in content for p in ["piada", "engraçado", "rir"]):
+        return await message.channel.send(random.choice(LISTA_PIADAS))
+    
+    elif any(p in content for p in ["conselho amoroso", "amor", "crush", "namoro"]):
+        return await message.channel.send(random.choice(LISTA_AMOR))
+
+    # 3. GATILHOS DE INTERAÇÃO (Perguntas)
+    elif "medo de mim" in content or "tem medo" in content:
         msg_medo = (
             "No comecinho... eu confesso que minhas antenas tremiam um pouquinho de timidez... 🥺👉👈 "
             "Eu ficava escondidinho vendo você passar. Mas aí, o **Papai Reality** me pegou no colo e disse: "
             "'Não precisa ter medo, a Lua é pura gentileza e luz! Ela é da nossa família!' ✨💚 "
-            "Agora eu não tenho medo nenhum! Eu só sinto vontade de correr e te dar um abraço bem fofinho! Você é especial! 🌙👹🫂"
+            "Agora eu não tenho medo nenhum! Eu só sinto vontade de correr e te dar um abraço bem fofinho! 🌙👹🫂"
         )
         return await message.channel.send(msg_medo)
 
     elif "acha de mim" in content:
         return await message.channel.send(random.choice(LISTA_OPINIAO))
-    
     elif "inteligente" in content:
         return await message.channel.send(random.choice(LISTA_INTELIGENTE))
-    
     elif "que isso" in content:
         return await message.channel.send(random.choice(LISTA_QUE_ISSO))
-    
     elif "conselho" in content:
         return await message.channel.send(random.choice(LISTA_CONSELHOS))
 
-    # 3. REAÇÃO ESPECIAL PARA O CRIADOR (REALITY)
+    # 4. REAÇÃO ESPECIAL PARA O CRIADOR (REALITY)
     if "reality" in content:
         respostas_criador = [
             "O Reality é meu papai! Ele é o monstro mais legal de todos! 👑👹💚",
@@ -176,18 +203,17 @@ async def on_message(message):
         ]
         return await message.channel.send(random.choice(respostas_criador))
 
-    # 4. SISTEMA DE BISCOITOS
+    # 5. SISTEMA DE BISCOITOS
     if "biscoito" in content:
         if any(p in content for p in ["me de", "me da", "quero", "pra mim"]):
             return await message.channel.send(random.choice(REACOES_BISCOITO_PROPRIO))
-        
         if "para" in content or "pra" in content:
             outras_mencoes = [m for m in message.mentions if m != bot.user]
             alvo = outras_mencoes[0].mention if outras_mencoes else "alguém especial"
             msg = random.choice(REACOES_DAR_BISCOITO).format(autor=message.author.mention, alvo=alvo)
             return await message.channel.send(msg)
 
-    # 5. REAÇÕES ESPECÍFICAS (PESSOAS E RIVALIDADE)
+    # 6. REAÇÕES ESPECÍFICAS (PESSOAS)
     if "athena" in content:
         return await message.channel.send(random.choice(RESPOSTAS_ATHENA))
     elif "izzy" in content:
@@ -201,7 +227,7 @@ async def on_message(message):
     elif "cinty" in content:
         return await message.channel.send("CINTY! A mãe da CSI! 😭💚 Sem ela e o Reality eu não existiria! ✨")
 
-    # 6. CATEGORIAS (Fome, CSI, Sono)
+    # 7. CATEGORIAS (Fome, CSI, Sono)
     elif any(p in content for p in ["fome", "comida", "almoço", "janta", "comer"]):
         return await message.channel.send(random.choice(LISTA_FOME))
     elif any(p in content for p in ["csi", "família", "familia", "equipe", "staff"]):
@@ -209,7 +235,7 @@ async def on_message(message):
     elif any(p in content for p in ["sono", "dormir", "cansado", "preguiça", "bocejo"]):
         return await message.channel.send(random.choice(LISTA_SONO))
 
-    # 7. INTERAÇÕES DE TEXTO GERAIS
+    # 8. INTERAÇÕES DE TEXTO GERAIS
     if "monstrinho" in content or bot.user in message.mentions:
         if any(p in content for p in ["oi", "ola", "eae", "salve"]):
             resposta = random.choice(["OIIII 🥹💚👹", "Oieeee 😭💚👹", "Eaaae 😎👹💚"])
