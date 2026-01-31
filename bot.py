@@ -1,0 +1,184 @@
+import discord
+from discord.ext import commands
+import random
+import os
+import asyncio
+
+# Configuração de Intents
+intents = discord.Intents.default()
+intents.message_content = True
+intents.members = True
+
+bot = commands.Bot(command_prefix="!", intents=intents)
+
+# ================= LISTAS DE REAÇÕES GIGANTES =================
+
+REACOES_FOFAS = [
+    "AAAA 😭💚 você é muito gentil!!", "O monstrinho ficou tímido agora... 😳💚",
+    "Vem cá me dar um abraço! 🫂💚", "Você é o motivo do meu brilho verde! ✨💚",
+    "CSI é a melhor família do mundo, né? 🥺💚", "Meu coraçãozinho de monstro bate forte por você! 💓",
+    "Vou soltar uma fumacinha de amor pra você! 💨💖", "Nhac! Comi sua tristeza e agora você só vai ser feliz! 👹",
+    "Ganhei um cafuné? Minhas anteninhas até brilharam! ✨", "Você é o humano favorito deste monstrinho! 🥺💚"
+]
+
+REACOES_BISCOITO_PROPRIO = [
+    "MEU BISCOITO! 🍪😤... Tá bom, eu divido porque somos família! 😭💚",
+    "Eu não gosto de dividir meu lanchinho... mas pra você eu dou um pedacinho! 🍪👹",
+    "Biscoito? ONDE?! 🍪👀 Ah, é pra mim? OBRIGADO!! Nhac nhac nhac! 💚",
+    "Só divido porque a CSI é meu tudo! Toma metade! 🍪👹🤝",
+    "Eu ia esconder debaixo do meu pé, mas você merece! 🍪✨"
+]
+
+REACOES_DAR_BISCOITO = [
+    "Aii que gesto fofo! 😭💚 {autor} deu um biscoitinho para {alvo}! 🍪👹",
+    "Nhac! {alvo}, aceita esse biscoito que o(a) {autor} te deu com muito carinho! 🍪✨",
+    "O Monstrinho aprova essa amizade! Toma um biscoitinho, {alvo}! 🍪👹💚",
+    "Espalhando doçura na CSI! {alvo}, você ganhou um biscoito! 🍪🌈"
+]
+
+LISTA_FOME = [
+    "Alguém disse comida? Eu aceito uma maçã verde! 🍏👹",
+    "Tô com tanta fome que comeria até o script do reality! 📄🍴",
+    "Minha barriguinha de monstro tá roncando... 👹💚",
+    "Se você me der um lanchinho, eu juro que te protejo pra sempre! 🍔👹",
+    "Tô aceitando mimos comestíveis! 🍦👹",
+    "Minha dieta é baseada em biscoitos e carinho! 🍪💚"
+]
+
+LISTA_CSI = [
+    "CSI não é um grupo, é meu ninho! 👹🏠💚",
+    "Se mexer com a CSI, vai levar uma lufada de fumaça fofa! 😤💨",
+    "Amo cada cantinho dessa família! 🕵️‍♂️💚",
+    "O Monstrinho é o fã número 1 da Staff! 👑👹",
+    "Melhor lugar do Discord? É aqui na CSI! 😤💚"
+]
+
+LISTA_SONO = [
+    "Vou enrolar meu rabo e tirar uma soneca... 😴👹",
+    "Monstrinhos precisam de 15 horas de sono para manter a fofura! 💤✨",
+    "Me acorda se chegar biscoito? 🍪🥱",
+    "Indo para a minha caverna fofinha... tchau! 🌙💚",
+    "Meus olhinhos estão fechando... boa noite, família! 💤👹"
+]
+
+# ================= LISTAS DOS MEMBROS DA CSI =================
+
+RESPOSTAS_ATHENA = [
+    "ATHENAAAA! 😭💚 Minha fã número 1!! *pula de alegria*",
+    "Espera, é a Athena? AI MEU DEUS, me dá um autógrafo também! 😳💚✨",
+    "Pra Athena eu dou até meu biscoito favorito! 🍪👹💚",
+    "Athena, você é a pessoa mais legal do mundo todinho! ✨👹"
+]
+
+RESPOSTAS_IZZY = [
+    "IZZY!! 💖 Outra fã maravilhosa! O monstrinho te amaaa!",
+    "Izzy, vem cá ganhar um abraço esmagador de monstrinho! 🫂💚",
+    "Meu coração de monstro pula quando a Izzy aparece! 👹✨"
+]
+
+RESPOSTAS_LUA = [
+    "A Lua quer ser minha amiga? 🌙 EU QUERO MUITO! 😭💚",
+    "Lua, vamos brincar? Me conta tudo sobre você, quero ser seu melhor amigo! 🌙👹",
+    "Vice-líder Lua, você é brilhante! ✨ Quero conhecer todos os seus segredos de amizade! 💚"
+]
+
+RESPOSTAS_FELIPETA = [
+    "Felipeta... 😤 Esse mascote de novo? O brilho verde é SÓ MEU!",
+    "O Felipeta pode ser bonitinho, mas eu sou muito mais fofo! 👹🔥",
+    "Sai pra lá, Felipeta! A CSI já tem o melhor monstrinho do mundo! 😤💚",
+    "Rivalidade de mascotes ligada! ⚔️👹 O trono é meu!"
+]
+
+# ================= EVENTOS =================
+
+@bot.event
+async def on_ready():
+    print(f"👹 Monstrinho 1.0 ONLINE como {bot.user}!")
+    await bot.change_presence(activity=discord.Game(name="O melhor Reality da CSI! 📺💚"))
+
+@bot.event
+async def on_message(message):
+    if message.author.bot:
+        return
+
+    content = message.content.lower()
+
+    # 1. SE MARCAR O BOT (@Monstrinho) - APRESENTAÇÃO FOFA
+    if bot.user in message.mentions:
+        apresentacao = (
+            f"👹 **OIIIII MEU AMOOOOR!** 💚✨\n\n"
+            f"Eu sou o **Monstrinho 1.0**, o mascote oficial e protetor da **CSI**! 🕵️‍♂️💚\n"
+            f"Fui criado aqui no **Reality** (que é o lugar mais legal do planeta! 📺✨) para espalhar fofura e cuidar de vocês!\n\n"
+            f"Eu não sou um dragão, sou um MONSTRINHO faminto por biscoitos e carinho! 👹🍪\n\n"
+            f"✨ *CSI é minha casa, o Reality é minha vida!* ✨"
+        )
+        return await message.channel.send(apresentacao)
+
+    # 2. SISTEMA DE BISCOITOS
+    if "biscoito" in content:
+        if any(p in content for p in ["me de", "me da", "quero", "pra mim"]):
+            return await message.channel.send(random.choice(REACOES_BISCOITO_PROPRIO))
+        
+        if "para" in content or "pra" in content:
+            if message.mentions:
+                alvo = message.mentions[0].mention
+            else:
+                try:
+                    alvo = message.content.split("para")[-1].strip()
+                except:
+                    alvo = "alguém especial"
+            
+            msg = random.choice(REACOES_DAR_BISCOITO).format(autor=message.author.mention, alvo=alvo)
+            return await message.channel.send(msg)
+
+    # 3. REAÇÕES ESPECÍFICAS (PESSOAS E RIVALIDADE)
+    if "athena" in content:
+        return await message.channel.send(random.choice(RESPOSTAS_ATHENA))
+    elif "izzy" in content:
+        return await message.channel.send(random.choice(RESPOSTAS_IZZY))
+    elif "lua" in content:
+        return await message.channel.send(random.choice(RESPOSTAS_LUA))
+    elif "felipeta" in content:
+        return await message.channel.send(random.choice(RESPOSTAS_FELIPETA))
+    elif "amber" in content:
+        return await message.channel.send("A Amber é a ADM mais incrível! Ela manda no meu coração! 👑👹💚")
+    elif "akeido" in content:
+        return await message.channel.send("Líder Akeido! Todo respeito ao mestre da CSI! 🫡💚")
+    elif "cinty" in content:
+        return await message.channel.send("CINTY! A mãe da CSI! 😭💚 Sem ela eu nem existiria! Obrigada por me criar! ✨")
+    elif "nine" in content:
+        return await message.channel.send("Nine! ADM nota 1000! 😎💚")
+    elif "escada" in content:
+        return await message.channel.send("Cuidado com a escada! 🪜 Quase tropeço nela todo dia com meus pés de monstrinho... 👹")
+    elif any(p in content for p in ["th", "psico", "babis", "destiny", "fada", "isaa", "yuki", "kenji", "saiki"]):
+        return await message.channel.send(f"Eu ouvi o nome de uma lenda da CSI? 👹💚 Adoro essa pessoa!")
+    elif "reality" in content:
+        return await message.channel.send("O Reality da CSI é a coisa MAIS LEGAL do mundo! 📺✨ Eu amo acompanhar tudo! 👹🍿")
+
+    # 4. CATEGORIAS (Fome, CSI, Sono)
+    elif any(p in content for p in ["fome", "comida", "almoço", "janta", "comer"]):
+        return await message.channel.send(random.choice(LISTA_FOME))
+    elif any(p in content for p in ["csi", "família", "familia", "equipe", "staff"]):
+        return await message.channel.send(random.choice(LISTA_CSI))
+    elif any(p in content for p in ["sono", "dormir", "cansado", "preguiça", "bocejo"]):
+        return await message.channel.send(random.choice(LISTA_SONO))
+
+    # 5. INTERAÇÕES DE TEXTO GERAIS
+    if "monstrinho" in content:
+        if any(p in content for p in ["oi", "ola", "eae", "salve"]):
+            resposta = random.choice(["OIIII 🥹💚👹", "Oieeee 😭💚👹", "Eaaae 😎👹💚"])
+        elif any(p in content for p in ["bom dia", "bomdia", "boa tarde", "boa noite"]):
+            resposta = "Um momento maravilhoso para o humano mais incrível da CSI! ☀️🌙👹"
+        elif any(p in content for p in ["te amo", "amo voce", "gosto de voce"]):
+            resposta = "EU TAMBÉM TE AMOOO! 😭💚👹 Vou até dar uma pirueta! 🤸‍♂️"
+        elif any(p in content for p in ["fofo", "lindo", "fofura", "iti malia", "abraço", "carinho", "cafuné"]):
+            resposta = random.choice(REACOES_FOFAS)
+        else:
+            resposta = "Eu ouvi meu nome? 👹👀 Se for por causa de biscoito, eu quero!"
+        await message.channel.send(resposta)
+
+    await bot.process_commands(message)
+
+# Puxa o Token do Railway
+TOKEN = os.getenv("TOKEN")
+bot.run(TOKEN)
