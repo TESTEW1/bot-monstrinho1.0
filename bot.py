@@ -145,8 +145,17 @@ async def on_message(message):
         )
         return await message.channel.send(apresentacao)
 
-    # 2. GATILHOS NOVOS (Perguntas das pessoas)
-    if "acha de mim" in content:
+    # 2. GATILHOS DE INTERAÇÃO (Perguntas)
+    if "medo de mim" in content or "tem medo" in content:
+        msg_medo = (
+            "No comecinho... eu confesso que minhas antenas tremiam um pouquinho de timidez... 🥺👉👈 "
+            "Eu ficava escondidinho vendo você passar. Mas aí, o **Papai Reality** me pegou no colo e disse: "
+            "'Não precisa ter medo, a Lua é pura gentileza e luz! Ela é da nossa família!' ✨💚 "
+            "Agora eu não tenho medo nenhum! Eu só sinto vontade de correr e te dar um abraço bem fofinho! Você é especial! 🌙👹🫂"
+        )
+        return await message.channel.send(msg_medo)
+
+    elif "acha de mim" in content:
         return await message.channel.send(random.choice(LISTA_OPINIAO))
     
     elif "inteligente" in content:
