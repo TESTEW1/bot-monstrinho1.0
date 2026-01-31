@@ -58,6 +58,36 @@ LISTA_SONO = [
     "Meus olhinhos estão fechando... boa noite, família! 💤👹"
 ]
 
+# ================= NOVAS LISTAS DE INTERAÇÃO =================
+
+LISTA_OPINIAO = [
+    "Eu acho que você é a pessoa mais incrível que já passou pelo meu radar de monstro! 📡💚",
+    "Você é 10/10! Se fosse um biscoito, seria o de chocolate com gotas verdes! 🍪✨",
+    "Minha opinião? Você brilha mais que as escamas do meu primo dragão! 😎💚",
+    "Você é parte essencial do meu coração de monstrinho! Não some nunca! 🥺👹"
+]
+
+LISTA_INTELIGENTE = [
+    "Eu aprendi com o melhor (o Reality)! 🤓✨ Mas obrigado, minhas antenas até subiram agora!",
+    "Sabia que eu li todos os arquivos da CSI? Mentira, eu só comi as bordas dos papéis... 📄😋",
+    "Inteligente e fofo! É um combo raro, né? 👹💚",
+    "Obrigado! Vou usar minha inteligência para encontrar onde o Reality esconde os biscoitos! 🕵️‍♂️🍪"
+]
+
+LISTA_QUE_ISSO = [
+    "Que isso digo eu! Quanta lindeza em uma pessoa só! 😳💚",
+    "Sou um monstro de muitas surpresas! ✨👹",
+    "É o charme natural das minhas bochechas verdes! 😎",
+    "Gostou? O Reality me desenhou com muito capricho! 🎨💚"
+]
+
+LISTA_CONSELHOS = [
+    "Meu conselho de monstro: Se algo der errado, coma um biscoito e tente de novo! 🍪👹",
+    "Siga sempre o seu coração (e o @Reality, porque ele é sábio)! 💚✨",
+    "Não deixe ninguém apagar seu brilho! Se tentarem, solta uma fumaça verde neles! 💨😤",
+    "A vida é curta demais para não dar um abraço em um monstrinho hoje! 🫂💚"
+]
+
 # ================= LISTAS DOS MEMBROS DA CSI =================
 
 RESPOSTAS_ATHENA = [
@@ -102,7 +132,7 @@ async def on_message(message):
 
     content = message.content.lower()
 
-    # 1. SE APENAS MARCAR O BOT (Sem texto extra)
+    # 1. SE APENAS MARCAR O BOT
     texto_limpo = content.replace(f"<@{bot.user.id}>", "").replace(f"<@!{bot.user.id}>", "").strip()
     
     if texto_limpo == "":
@@ -115,7 +145,20 @@ async def on_message(message):
         )
         return await message.channel.send(apresentacao)
 
-    # 2. REAÇÃO ESPECIAL PARA O CRIADOR (REALITY)
+    # 2. GATILHOS NOVOS (Perguntas das pessoas)
+    if "acha de mim" in content:
+        return await message.channel.send(random.choice(LISTA_OPINIAO))
+    
+    elif "inteligente" in content:
+        return await message.channel.send(random.choice(LISTA_INTELIGENTE))
+    
+    elif "que isso" in content:
+        return await message.channel.send(random.choice(LISTA_QUE_ISSO))
+    
+    elif "conselho" in content:
+        return await message.channel.send(random.choice(LISTA_CONSELHOS))
+
+    # 3. REAÇÃO ESPECIAL PARA O CRIADOR (REALITY)
     if "reality" in content:
         respostas_criador = [
             "O Reality é meu papai! Ele é o monstro mais legal de todos! 👑👹💚",
@@ -124,19 +167,18 @@ async def on_message(message):
         ]
         return await message.channel.send(random.choice(respostas_criador))
 
-    # 3. SISTEMA DE BISCOITOS
+    # 4. SISTEMA DE BISCOITOS
     if "biscoito" in content:
         if any(p in content for p in ["me de", "me da", "quero", "pra mim"]):
             return await message.channel.send(random.choice(REACOES_BISCOITO_PROPRIO))
         
         if "para" in content or "pra" in content:
-            # Filtra as menções para não pegar a do próprio bot
             outras_mencoes = [m for m in message.mentions if m != bot.user]
             alvo = outras_mencoes[0].mention if outras_mencoes else "alguém especial"
             msg = random.choice(REACOES_DAR_BISCOITO).format(autor=message.author.mention, alvo=alvo)
             return await message.channel.send(msg)
 
-    # 4. REAÇÕES ESPECÍFICAS (PESSOAS E RIVALIDADE)
+    # 5. REAÇÕES ESPECÍFICAS (PESSOAS E RIVALIDADE)
     if "athena" in content:
         return await message.channel.send(random.choice(RESPOSTAS_ATHENA))
     elif "izzy" in content:
@@ -147,18 +189,10 @@ async def on_message(message):
         return await message.channel.send(random.choice(RESPOSTAS_FELIPETA))
     elif "amber" in content:
         return await message.channel.send("A Amber é a ADM mais incrível! Ela manda no meu coração! 👑👹💚")
-    elif "akeido" in content:
-        return await message.channel.send("Líder Akeido! Todo respeito ao mestre da CSI! 🫡💚")
     elif "cinty" in content:
         return await message.channel.send("CINTY! A mãe da CSI! 😭💚 Sem ela e o Reality eu não existiria! ✨")
-    elif "nine" in content:
-        return await message.channel.send("Nine! ADM nota 1000! 😎💚")
-    elif "escada" in content:
-        return await message.channel.send("Cuidado com a escada! 🪜 Quase tropeço nela todo dia com meus pés de monstrinho... 👹")
-    elif any(p in content for p in ["th", "psico", "babis", "destiny", "fada", "isaa", "yuki", "kenji", "saiki"]):
-        return await message.channel.send(f"Eu ouvi o nome de uma lenda da CSI? 👹💚 Adoro essa pessoa!")
 
-    # 5. CATEGORIAS (Fome, CSI, Sono)
+    # 6. CATEGORIAS (Fome, CSI, Sono)
     elif any(p in content for p in ["fome", "comida", "almoço", "janta", "comer"]):
         return await message.channel.send(random.choice(LISTA_FOME))
     elif any(p in content for p in ["csi", "família", "familia", "equipe", "staff"]):
@@ -166,15 +200,11 @@ async def on_message(message):
     elif any(p in content for p in ["sono", "dormir", "cansado", "preguiça", "bocejo"]):
         return await message.channel.send(random.choice(LISTA_SONO))
 
-    # 6. INTERAÇÕES DE TEXTO GERAIS
+    # 7. INTERAÇÕES DE TEXTO GERAIS
     if "monstrinho" in content or bot.user in message.mentions:
         if any(p in content for p in ["oi", "ola", "eae", "salve"]):
             resposta = random.choice(["OIIII 🥹💚👹", "Oieeee 😭💚👹", "Eaaae 😎👹💚"])
-        elif any(p in content for p in ["bom dia", "bomdia", "boa tarde", "boa noite"]):
-            resposta = "Um momento maravilhoso para o humano mais incrível da CSI! ☀️🌙👹"
-        elif any(p in content for p in ["te amo", "amo voce", "gosto de voce"]):
-            resposta = "EU TAMBÉM TE AMOOO! 😭💚👹 Vou até dar uma pirueta! 🤸‍♂️"
-        elif any(p in content for p in ["fofo", "lindo", "fofura", "iti malia", "abraço", "carinho", "cafuné"]):
+        elif any(p in content for p in ["te amo", "amo voce", "fofo", "lindo", "fofura"]):
             resposta = random.choice(REACOES_FOFAS)
         else:
             resposta = "Eu ouvi meu nome! 👹👀 Como posso te ajudar hoje?"
