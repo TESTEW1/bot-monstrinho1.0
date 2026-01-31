@@ -163,7 +163,7 @@ async def on_message(message):
         )
         return await message.channel.send(apresentacao)
 
-    # 2. NOVOS GATILHOS (HUMANO, O QUE EU SOU, FOI MAL, CAFUNÉ)
+    # 2. GATILHOS DE ORIGEM E IDENTIDADE
     if any(p in content for p in ["humano", "voce e o que", "você é o que"]):
         msg_origem = (
             "Eu não sou humano, mas eu tenho sentimentos processados em código verde! 💻🐉 "
