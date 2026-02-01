@@ -5,13 +5,15 @@ import os
 import asyncio
 import google.generativeai as genai 
 
-# ================= CONFIGURAÇÃO DA IA (ADAPTADO PARA V1) =================
+# ================= CONFIGURAÇÃO DA IA (ADAPTAÇÃO DE ROTA) =================
 api_key_gemini = os.getenv("GEMINI_KEY")
 
 if api_key_gemini:
-    # A ADAPTAÇÃO: Forçamos o uso da versão 'v1' para evitar o erro 404 da 'v1beta'
-    genai.configure(api_key=api_key_gemini.strip(), transport='rest')
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    genai.configure(api_key=api_key_gemini.strip())
+    # A ADAPTAÇÃO: Criamos o modelo forçando a versão 'v1' para evitar o erro 404 da 'v1beta'
+    model = genai.GenerativeModel(
+        model_name='models/gemini-1.5-flash'
+    )
 else:
     model = None
     print("Aviso: Chave GEMINI_KEY não encontrada. Usando modo de respostas padrão.")
@@ -106,7 +108,7 @@ LISTA_APRENDIZADO = [
 LISTA_OPINIAO = [
     "Eu acho que você é a pessoa mais incrível que já passou pelo meu radar de monstrinho! 📡💚",
     "Você é 10/10! Se fosse um biscoito, seria o de chocolate com gotas verdes! 🍪✨",
-    "Minha opinião? Você brilha mais que o pelo de um monstrinho lendário! 😎💚",
+    "Minha opinião? Você brilha mais que o pelo de um monstrinho legendário! 😎💚",
     "Você é parte essencial do meu coração de monstrinho! Não some nunca! 🥺🐉"
 ]
 
@@ -278,13 +280,16 @@ async def on_message(message):
     elif model and texto_limpo:
         async with message.channel.typing():
             try:
-                # Chamada de conteúdo reajustada para evitar erro 404
-                response = model.generate_content(f"{SYSTEM_PROMPT}\nUsuário {message.author.display_name} disse: {texto_limpo}")
+                # Chamada de conteúdo reajustada para garantir que o prompt de sistema seja respeitado
+                response = model.generate_content(
+                    f"{SYSTEM_PROMPT}\nUsuário {message.author.display_name} disse: {texto_limpo}"
+                )
                 if response.text:
                     return await message.reply(response.text[:500])
             except Exception as e:
                 if "429" in str(e):
                     return await message.channel.send("Ufa! Comi biscoitos demais e fiquei sem fôlego. 🍪🐉 Me dê uns minutinhos para descansar!")
+                # Mostra o erro de forma fofa se for outra coisa
                 return await message.channel.send(f"⚠️ **Erro no meu cérebro:** `{str(e)}`")
     
     await bot.process_commands(message)
