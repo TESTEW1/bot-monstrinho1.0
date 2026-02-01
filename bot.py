@@ -5,8 +5,6 @@ import os
 import asyncio
 
 # ================= CONFIGURAÇÃO DO BOT =================
-# Removida a configuração do Gemini/IA conforme solicitado.
-
 # Configuração de Intents
 intents = discord.Intents.default()
 intents.message_content = True
@@ -84,101 +82,16 @@ LISTA_APRENDIZADO = [
     "Aprendi que não importa o que aconteça, a gente sempre tem um lugar aqui na família! 🏠🐉"
 ]
 
-LISTA_OPINIAO = [
-    "Eu acho que você é a pessoa mais incrível que já passou pelo meu radar de monstrinho! 📡💚",
-    "Você é 10/10! Se fosse um biscoito, seria o de chocolate com gotas verdes! 🍪✨",
-    "Minha opinião? Você brilha mais que o pelo de um monstrinho legendário! 😎💚",
-    "Você é parte essencial do meu coração de monstrinho! Não some nunca! 🥺🐉"
-]
-
-LISTA_INTELIGENTE = [
-    "Eu aprendi com o melhor (o Reality)! 🤓✨ Mas obrigado, meu brilho até aumentou agora!",
-    "Sabia que eu li todos os arquivos da CSI? Mentira, eu só comi as bordas dos papéis... 📄😋",
-    "Inteligente e fofo! É um combo raro, né? 🐉💚"
-]
-
-LISTA_QUE_ISSO = [
-    "Que isso digo eu! Quanta lindeza em uma pessoa só! 😳💚",
-    "Sou um Monstrinho de muitas surpresas! ✨🐉",
-    "É o charme natural das minhas bochechas verdes! 😎"
-]
-
-LISTA_CONSELHOS = [
-    "Meu conselho de monstrinho: Se algo der errado, coma um biscoito e tente de novo! 🍪🐉",
-    "Siga sempre o seu coração (e o @Reality, porque ele é sábio)! 💚✨",
-    "Não deixe ninguém apagar seu brilho! Se tentarem, solta uma fumaça verde neles! 💨😤"
-]
-
-LISTA_CULINARIA = [
-    "Dica do Monstrinho: Pra deixar o cookie bem fofinho, coloque uma pitada de carinho e tire do forno antes de endurecer! 🍪✨",
-    "Quer um miojo gourmet? Quebre um ovo dentro enquanto ferve, fica digno de um mestre da CSI! 🍜🐉",
-    "Minha receita favorita? Maçã verde picadinha com mel! É o combustível oficial das minhas travessuras! 🍏🍯",
-    "Dica de ouro: Nunca cozinhe com pressa, o amor é o tempero que não pode faltar no reality da vida! 👨‍🍳💚"
-]
-
-LISTA_PIADAS = [
-    "Por que o monstrinho atravessou a rua? Pra comer o biscoito do outro lado! 🍪😂",
-    "O que um monstrinho disse para o outro? 'Nossa, como você está assustadoramente lindo hoje!' 🐉💖",
-    "Qual o prato favorito de um monstrinho programador? Um byte de biscoito! 💻🍪",
-    "Como o monstrinho cumprimenta o mar? Com um 'O-olá!' 🌊🐉"
-]
-
-LISTA_AMOR = [
-    "Conselho amoroso: Se a pessoa não te der nem um pedacinho do biscoito dela, corre que é cilada! 🍪🚩",
-    "O amor é como o brilho verde do Monstrinho: se você cuida, ele ilumina tudo ao redor! ✨💚",
-    "Não mendigue attention! Você é um diamante da CSI, merece alguém que te trate como um rei ou queen! 👑🐉",
-    "Se o coração apertar, lembra que o Monstrinho te ama e tem sempre um abraço guardado aqui! 🫂💖"
-]
-
 # ================= LISTAS DOS MEMBROS DA CSI =================
 
-RESPOSTAS_ATHENA = [
-    "ATHENAAAA! 😭💚 Minha fã número 1!! *pula de alegria*",
-    "Espera, é a Athena? AI MEU DEUS, me dá um autógrafo também! 😳💚✨",
-    "Pra Athena eu dou até meu biscoito favorito! 🍪🐉💚"
-]
-
-RESPOSTAS_IZZY = [
-    "IZZY!! 💖 Outra fã maravilhosa! O Monstrinho te amaaa!",
-    "Izzy, vem cá ganhar um abraço esmagador de Monstrinho! 🫂💚",
-    "Meu coração de monstrinho pula quando a Izzy aparece! 🐉✨"
-]
-
-RESPOSTAS_LUA = [
-    "A Lua quer ser minha amiga? 🌙 EU QUERO MUITO! 😭💚",
-    "Lua, vamos brincar? Me conta tudo sobre você, quero ser seu melhor amigo! 🌙🐉",
-    "Vice-líder Lua, você é brilhante! ✨ Quero conhecer todos os seus segredos de amizade! 💚"
-]
-
-RESPOSTAS_DESTINY = [
-    "DESTINYYYY! ✨ O destino nos uniu na CSI! 🐉💚",
-    "Destiny, você é uma peça fundamental desse quebra-cabeça fofo! 🧩💚",
-    "Salve pro Destiny! O Monstrinho fica muito feliz quando você aparece! 🐉✨"
-]
-
-RESPOSTAS_JEFF = [
-    "JEFF!! 🕵️‍♂️ O cara que manja tudo! 🐉💚",
-    "Jeff, vamos patrulhar a CSI e garantir que todos recebam biscoitos? 🍪🐉",
-    "O Jeff é fera! O Monstrinho te admira muito, parceiro! 😎💚"
-]
-
-RESPOSTAS_ISAA = [
-    "ISAAAA! ✨ A energia dela é contagiante! 🐉💚",
-    "Isaa, sabia que você brilha tanto quanto meus pelinhos verdes? 🥺✨",
-    "Vem cá Isaa, o Monstrinho preparou um lugar quentinho pra você no ninho! 🫂🐉"
-]
-
-RESPOSTAS_PSICO = [
-    "PSICOOO! 🧠✨ O gênio da CSI! 🐉💚",
-    "Psico, você é tão inteligente que às vezes eu acho que você lê meus códigos! 😳💻🐉",
-    "Um salve pro Psico! O Monstrinho te admira demaaaais! 😎✨"
-]
-
-RESPOSTAS_FELIPETA = [
-    "Felipeta... 😤 Esse outro mascote de novo? O brilho verde é SÓ MEU!",
-    "O Felipeta pode ser bonitinho, mas eu sou muito mais fofo! 🐉🔥",
-    "Rivalidade de mascotes ligada! ⚔️🐉 O trono é meu!"
-]
+RESPOSTAS_ATHENA = ["ATHENAAAA! 😭💚 Minha fã número 1!! *pula de alegria*", "Espera, é a Athena? AI MEU DEUS, me dá um autógrafo também! 😳💚✨", "Pra Athena eu dou até meu biscoito favorito! 🍪🐉💚"]
+RESPOSTAS_IZZY = ["IZZY!! 💖 Outra fã maravilhosa! O Monstrinho te amaaa!", "Izzy, vem cá ganhar um abraço esmagador de Monstrinho! 🫂💚", "Meu coração de monstrinho pula quando a Izzy aparece! 🐉✨"]
+RESPOSTAS_LUA = ["A Lua quer ser minha amiga? 🌙 EU QUERO MUITO! 😭💚", "Lua, vamos brincar? Me conta tudo sobre você, quero ser seu melhor amigo! 🌙🐉", "Vice-líder Lua, você é brilhante! ✨ Quero conhecer todos os seus segredos de amizade! 💚"]
+RESPOSTAS_DESTINY = ["DESTINYYYY! ✨ O destino nos uniu na CSI! 🐉💚", "Destiny, você é uma peça fundamental desse quebra-cabeça fofo! 🧩💚", "Salve pro Destiny! O Monstrinho fica muito feliz quando você aparece! 🐉✨"]
+RESPOSTAS_JEFF = ["JEFF!! 🕵️‍♂️ O cara que manja tudo! 🐉💚", "Jeff, vamos patrulhar a CSI e garantir que todos recebam biscoitos? 🍪🐉", "O Jeff é fera! O Monstrinho te admira muito, parceiro! 😎💚"]
+RESPOSTAS_ISAA = ["ISAAAA! ✨ A energia dela é contagiante! 🐉💚", "Isaa, sabia que você brilha tanto quanto meus pelinhos verdes? 🥺✨", "Vem cá Isaa, o Monstrinho preparou um lugar quentinho pra você no ninho! 🫂🐉"]
+RESPOSTAS_PSICO = ["PSICOOO! 🧠✨ O gênio da CSI! 🐉💚", "Psico, você é tão inteligente que às vezes eu acho que você lê meus códigos! 😳💻🐉", "Um salve pro Psico! O Monstrinho te admira demaaaais! 😎✨"]
+RESPOSTAS_FELIPETA = ["Felipeta... 😤 Esse outro mascote de novo? O brilho verde é SÓ MEU!", "O Felipeta pode ser bonitinho, mas eu sou muito mais fofo! 🐉🔥", "Rivalidade de mascotes ligada! ⚔️🐉 O trono é meu!"]
 
 # ================= EVENTOS =================
 
@@ -210,28 +123,22 @@ async def on_message(message):
         )
         return await message.channel.send(apresentacao)
 
-    # Lógica de respostas por palavras-chave
-    if any(p in content for p in ["bom dia", "boa tarde", "boa noite", "oie", "oi"]):
+    # Gatilhos de Saudações (Oi, Bom dia, Boa tarde, Boa noite)
+    if any(p in content for p in ["oi", "oie", "olá", "ola", "bom dia", "boa tarde", "boa noite"]):
         return await message.channel.send(random.choice(LISTA_SAUDACOES))
 
+    # Gatilhos de Estado (Tudo bem)
     if any(p in content for p in ["como você está", "como voce esta", "tudo bem", "ta bem", "como vc ta"]):
         return await message.channel.send(random.choice(LISTA_ESTADO))
 
-    if any(p in content for p in ["aprendeu hoje", "o que aprendeu", "novidade"]):
+    if any(p in content for p in ["aprendeu hoje", "novidade"]):
         return await message.channel.send(random.choice(LISTA_APRENDIZADO))
 
-    if any(p in content for p in ["humano", "voce e o que", "você é o que"]):
+    if any(p in content for p in ["humano", "voce e o que"]):
         return await message.channel.send("Eu não sou humano, sou uma IA feita de código verde e amor! 💻🐉")
 
-    elif any(p in content for p in ["cafune", "cafuné", "carinho", "alisar"]):
+    if any(p in content for p in ["cafune", "cafuné", "carinho", "alisar"]):
         return await message.channel.send("Nhawww! ✨ *fecha os olhinhos e ronrona* 🐉💚")
-
-    if any(p in content for p in ["receita", "cozinhar", "culinaria"]):
-        return await message.channel.send(random.choice(LISTA_CULINARIA))
-    elif any(p in content for p in ["piada", "engraçado", "rir"]):
-        return await message.channel.send(random.choice(LISTA_PIADAS))
-    elif any(p in content for p in ["conselho amoroso", "amor", "crush"]):
-        return await message.channel.send(random.choice(LISTA_AMOR))
 
     if "reality" in content:
         return await message.channel.send("O Reality é meu papai mestre! Eu amo ele! 👑🐉💚")
@@ -254,8 +161,6 @@ async def on_message(message):
     # Reação fofa genérica
     if any(p in content for p in ["te amo", "amo voce", "fofo", "lindo"]):
         return await message.channel.send(random.choice(REACOES_FOFAS))
-    
-    # Removida a lógica de resposta automática da IA Gemini.
     
     await bot.process_commands(message)
 
