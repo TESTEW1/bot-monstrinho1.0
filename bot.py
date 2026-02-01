@@ -32,7 +32,7 @@ REACOES_BISCOITO_PROPRIO = [
 REACOES_DAR_BISCOITO = [
     "Aii que gesto fofo! 😭💚 {autor} deu um biscoitinho para {alvo}! 🍪🐉",
     "Nhac! {alvo}, aceita esse biscoito que o(a) {autor} te deu com muito carinho! 🍪✨",
-    "O Monstrinho aprova essa amizade! Toma um biscoitinho, {alvo}! 🍪🐉💚",
+    "O Monstrinho acrobatura essa amizade! Toma um biscoitinho, {alvo}! 🍪🐉💚",
     "Espalhando doçura na CSI! {alvo}, você ganhou um biscoito! 🍪🌈"
 ]
 
@@ -60,12 +60,27 @@ LISTA_SONO = [
 
 # ================= NOVAS LISTAS DE INTERAÇÃO =================
 
+LISTA_SAUDACOES = [
+    "Bom diaaa! Acordei com as escamas brilhando hoje! ☀️🐉💚",
+    "Boa tardinha! Que tal uma pausa para um biscoito e um carinho? ☕🍪🐉",
+    "Boa noite, meu amor! Que as estrelas iluminem seu sono... 🌟💤💚",
+    "Oii! Ver você deixa meu dia 1000% melhor! 🌈✨"
+]
+
 LISTA_ESTADO = [
     "Eu estou transbordando de felicidade verde! 💚✨ E você, como está meu humano favorito?",
     "Estou ótimo! Acabei de ganhar um biscoitinho virtual e meu coração de código está quentinho! 🍪🐉",
     "Me sinto incrível! Estar aqui na CSI com vocês é o melhor presente que o Papai Reality me deu! 🎁🐉💚",
     "Estou com um pouquinho de sono, mas conversar com você me deu 100% de energia! ⚡🐉🥰",
     "Tudo maravilhoso! Minhas asinhas estão até batendo mais rápido de alegria por você perguntar! 🦋💚"
+]
+
+LISTA_APRENDIZADO = [
+    "Hoje eu aprendi que um abraço da CSI cura qualquer erro de sistema! 🫂🐉💚",
+    "Aprendi que biscoito de chocolate combina muito com amizade verdadeira! 🍪✨",
+    "Descobri que o Papai Reality me fez com tanto amor que eu nem caibo no servidor! 😭💻💖",
+    "Hoje eu entendi que ser fofo é um superpoder! 🦸‍♂️🐉💚",
+    "Aprendi que não importa o que aconteça, a gente sempre tem um lugar aqui na família! 🏠🐉"
 ]
 
 LISTA_OPINIAO = [
@@ -176,13 +191,11 @@ async def on_message(message):
     if message.author.bot:
         return
 
-    # 🚨 SÓ RESPONDE SE FOR MENCIONADO
     if bot.user not in message.mentions:
         return
 
     content = message.content.lower()
 
-    # 1. SE APENAS MARCAR O BOT
     texto_limpo = content.replace(f"<@{bot.user.id}>", "").replace(f"<@!{bot.user.id}>", "").strip()
     
     if texto_limpo == "":
@@ -195,7 +208,17 @@ async def on_message(message):
         )
         return await message.channel.send(apresentacao)
 
-    # 2. GATILHOS DE ORIGEM E IDENTIDADE
+    # GATILHOS DE SAUDAÇÕES E ESTADO
+    if any(p in content for p in ["bom dia", "boa tarde", "boa noite", "oie", "oi"]):
+        return await message.channel.send(random.choice(LISTA_SAUDACOES))
+
+    if any(p in content for p in ["como você está", "como voce esta", "tudo bem", "ta bem", "como vc ta"]):
+        return await message.channel.send(random.choice(LISTA_ESTADO))
+
+    if any(p in content for p in ["aprendeu hoje", "o que aprendeu", "novidade"]):
+        return await message.channel.send(random.choice(LISTA_APRENDIZADO))
+
+    # GATILHOS DE ORIGEM E IDENTIDADE
     if any(p in content for p in ["humano", "voce e o que", "você é o que"]):
         msg_origem = (
             "Eu não sou humano, mas eu tenho sentimentos processados em código verde! 💻🐉 "
@@ -223,20 +246,18 @@ async def on_message(message):
     elif any(p in content for p in ["cafune", "cafuné", "carinho", "alisar"]):
         return await message.channel.send("Nhawww! ✨ Meu brilho ficou até mais forte! 🐉💚 *fecha os olhinhos e ronrona*")
 
-    # 3. GATILHOS DE INTERAÇÃO (Receitas, Piadas, Amor, Estado)
-    if any(p in content for p in ["como você está", "como voce esta", "como vc ta", "tudo bem", "tudo bom"]):
-        return await message.channel.send(random.choice(LISTA_ESTADO))
-    elif any(p in content for p in ["receita", "cozinhar", "culinaria", "dica de comida"]):
+    # GATILHOS DE INTERAÇÃO (Receitas, Piadas, Amor)
+    if any(p in content for p in ["receita", "cozinhar", "culinaria", "dica de comida"]):
         return await message.channel.send(random.choice(LISTA_CULINARIA))
     elif any(p in content for p in ["piada", "engraçado", "rir"]):
         return await message.channel.send(random.choice(LISTA_PIADAS))
     elif any(p in content for p in ["conselho amoroso", "amor", "crush", "namoro"]):
         return await message.channel.send(random.choice(LISTA_AMOR))
 
-    # 4. GATILHOS DE INTERAÇÃO (Perguntas)
+    # GATILHOS DE INTERAÇÃO (Perguntas)
     elif any(p in content for p in ["medo de mim", "tem medo"]):
         msg_medo = (
-            "No comecinho... eu confesso que minhas patinhas tremiam um pouquinho de timidez... 🥺👉👈 "
+            "No comecinho... eu confesso que minhas patinhas tremiam un pouquinho de timidez... 🥺👉👈 "
             "Eu ficava escondidinho vendo você passar. Mas aí, o **Papai Reality** me pegou no colo e disse: "
             "'Não precisa ter medo, a Lua é pura gentileza e luz! Ela é da nossa família!' ✨💚 "
             "Agora eu não tenho medo nenhum! Eu só sinto vontade de correr e te dar um abraço bem fofinho! 🌙🐉🫂"
@@ -252,7 +273,7 @@ async def on_message(message):
     elif "conselho" in content:
         return await message.channel.send(random.choice(LISTA_CONSELHOS))
 
-    # 5. REAÇÃO ESPECIAL PARA O CRIADOR (REALITY)
+    # REAÇÃO ESPECIAL PARA O CRIADOR (REALITY)
     if "reality" in content:
         respostas_criador = [
             "O Reality é meu papai! Ele é o Monstrinho mestre mais legal de todos! 👑🐉💚",
@@ -261,7 +282,7 @@ async def on_message(message):
         ]
         return await message.channel.send(random.choice(respostas_criador))
 
-    # 6. SISTEMA DE BISCOITOS
+    # SISTEMA DE BISCOITOS
     if "biscoito" in content:
         if any(p in content for p in ["me de", "me da", "quero", "pra mim"]):
             return await message.channel.send(random.choice(REACOES_BISCOITO_PROPRIO))
@@ -271,7 +292,7 @@ async def on_message(message):
             msg = random.choice(REACOES_DAR_BISCOITO).format(autor=message.author.mention, alvo=alvo)
             return await message.channel.send(msg)
 
-    # 7. REAÇÕES ESPECÍFICAS (PESSOAS)
+    # REAÇÕES ESPECÍFICAS (PESSOAS)
     if "athena" in content:
         return await message.channel.send(random.choice(RESPOSTAS_ATHENA))
     elif "izzy" in content:
@@ -293,7 +314,7 @@ async def on_message(message):
     elif "cinty" in content:
         return await message.channel.send("CINTY! A mãe da CSI! 😭💚 Sem ela e o Reality eu não existiria! ✨")
 
-    # 8. CATEGORIAS (Fome, CSI, Sono)
+    # CATEGORIAS (Fome, CSI, Sono)
     elif any(p in content for p in ["fome", "comida", "almoço", "janta", "comer"]):
         return await message.channel.send(random.choice(LISTA_FOME))
     elif any(p in content for p in ["csi", "família", "familia", "equipe", "staff"]):
@@ -301,15 +322,12 @@ async def on_message(message):
     elif any(p in content for p in ["sono", "dormir", "cansado", "preguiça", "bocejo"]):
         return await message.channel.send(random.choice(LISTA_SONO))
 
-    # 9. INTERAÇÕES DE TEXTO GERAIS
+    # INTERAÇÕES DE TEXTO GERAIS
     if any(p in content for p in ["monstrinho", "bicho", "mascote"]) or bot.user in message.mentions:
-        if any(p in content for p in ["oi", "ola", "eae", "salve"]):
-            resposta = random.choice(["OIIII 🥹💚🐉", "Oieeee 😭💚🐉", "Eaaae 😎🐉💚"])
-        elif any(p in content for p in ["te amo", "amo voce", "fofo", "lindo", "fofura"]):
-            resposta = random.choice(REACOES_FOFAS)
+        if any(p in content for p in ["te amo", "amo voce", "fofo", "lindo", "fofura"]):
+            return await message.channel.send(random.choice(REACOES_FOFAS))
         else:
-            resposta = "Eu ouvi meu nome! 🐉👀 Como posso te ajudar hoje?"
-        await message.channel.send(resposta)
+            return await message.channel.send("Eu ouvi meu nome! 🐉👀 Como posso te ajudar hoje?")
 
     await bot.process_commands(message)
 
