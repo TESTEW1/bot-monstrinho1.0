@@ -3,6 +3,19 @@ from discord.ext import commands
 import random
 import os
 import asyncio
+import google.generativeai as genai
+
+# Configuração da IA
+genai.configure(api_key=os.getenv("GEMINI_KEY"))
+model = genai.GenerativeModel('gemini-1.5-flash')
+
+SYSTEM_PROMPT = (
+    "Você é o Monstrinho 1.0, o mascote oficial e protetor da CSI. "
+    "Seu criador é o Reality. Você é um dragãozinho verde extremamente fofo. "
+    "Sempre use emojis como 🐉, 💚, ✨, 🍪, 🫂. "
+    "Suas respostas devem ser curtas, alegres e muito carinhosas. "
+    "Você ama biscoitos e considera a CSI sua família. Nunca saia do personagem."
+)
 
 # Configuração de Intents
 intents = discord.Intents.default()
@@ -259,7 +272,7 @@ async def on_message(message):
         msg_medo = (
             "No comecinho... eu confesso que minhas patinhas tremiam un pouquinho de timidez... 🥺👉👈 "
             "Eu ficava escondidinho vendo você passar. Mas aí, o **Papai Reality** me pegou no colo e disse: "
-            "'Não precisa ter medo, a Lua é pura gentileza e luz! Ela é da nossa família!' ✨💚 "
+            "''Não precisa ter medo, a Lua é pura gentileza e luz! Ela é da nossa família!'' ✨💚 "
             "Agora eu não tenho medo nenhum! Eu só sinto vontade de correr e te dar um abraço bem fofinho! 🌙🐉🫂"
         )
         return await message.channel.send(msg_medo)
@@ -322,12 +335,17 @@ async def on_message(message):
     elif any(p in content for p in ["sono", "dormir", "cansado", "preguiça", "bocejo"]):
         return await message.channel.send(random.choice(LISTA_SONO))
 
-    # INTERAÇÕES DE TEXTO GERAIS
+    # INTERAÇÕES DE TEXTO GERAIS + IA
     if any(p in content for p in ["monstrinho", "bicho", "mascote"]) or bot.user in message.mentions:
         if any(p in content for p in ["te amo", "amo voce", "fofo", "lindo", "fofura"]):
             return await message.channel.send(random.choice(REACOES_FOFAS))
         else:
-            return await message.channel.send("Eu ouvi meu nome! 🐉👀 Como posso te ajudar hoje?")
+            async with message.channel.typing():
+                try:
+                    response = model.generate_content(f"{SYSTEM_PROMPT}\nUsuário {message.author.display_name} disse: {texto_limpo}")
+                    return await message.reply(response.text[:500])
+                except:
+                    return await message.channel.send("Eu ouvi meu nome! 🐉👀 Como posso te ajudar hoje?")
 
     await bot.process_commands(message)
 
