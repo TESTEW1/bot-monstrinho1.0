@@ -9,8 +9,8 @@ import google.generativeai as genai
 api_key_gemini = os.getenv("GEMINI_KEY")
 if api_key_gemini:
     genai.configure(api_key=api_key_gemini.strip())
-    # MUDANÇA AQUI: Usando o caminho completo do modelo para evitar o erro 404
-    model = genai.GenerativeModel('models/gemini-1.5-flash-latest')
+    # MUDANÇA REALIZADA: Usando 'gemini-1.5-flash' diretamente para evitar Erro 404
+    model = genai.GenerativeModel('gemini-1.5-flash')
 else:
     model = None
     print("Aviso: Chave GEMINI_KEY não encontrada. Usando modo de respostas padrão.")
@@ -227,7 +227,6 @@ async def on_message(message):
         )
         return await message.channel.send(apresentacao)
 
-    # GATILHOS DE SAUDAÇÕES, ESTADO, ORIGEM, ETC (Mesmo código anterior)
     if any(p in content for p in ["bom dia", "boa tarde", "boa noite", "oie", "oi"]):
         return await message.channel.send(random.choice(LISTA_SAUDACOES))
 
@@ -261,14 +260,12 @@ async def on_message(message):
             alvo = outras_mencoes[0].mention if outras_mencoes else "alguém especial"
             return await message.channel.send(random.choice(REACOES_DAR_BISCOITO).format(autor=message.author.mention, alvo=alvo))
 
-    # REAÇÕES ESPECÍFICAS (PESSOAS)
     for nome, lista in [("athena", RESPOSTAS_ATHENA), ("izzy", RESPOSTAS_IZZY), ("lua", RESPOSTAS_LUA), 
                         ("destiny", RESPOSTAS_DESTINY), ("jeff", RESPOSTAS_JEFF), ("isaa", RESPOSTAS_ISAA), 
                         ("psico", RESPOSTAS_PSICO), ("felipeta", RESPOSTAS_FELIPETA)]:
         if nome in content:
             return await message.channel.send(random.choice(lista))
 
-    # IA (O "Cérebro")
     if any(p in content for p in ["monstrinho", "bicho", "mascote"]) or bot.user in message.mentions:
         if any(p in content for p in ["te amo", "amo voce", "fofo", "lindo"]):
             return await message.channel.send(random.choice(REACOES_FOFAS))
@@ -284,7 +281,6 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
-# Puxa o Token e Roda
 TOKEN = os.getenv("TOKEN")
 if TOKEN:
     bot.run(TOKEN)
