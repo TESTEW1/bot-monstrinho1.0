@@ -5,16 +5,14 @@ import os
 import asyncio
 import google.generativeai as genai 
 
-# ================= CONFIGURAÇÃO DA IA (CORREÇÃO 404) =================
+# ================= CONFIGURAÇÃO DA IA (REAJUSTADO) =================
 api_key_gemini = os.getenv("GEMINI_KEY")
-# Mude apenas esta parte:
-# Substitua o bloco de configuração por este:
+
 if api_key_gemini:
+    # Configuração clássica estável
     genai.configure(api_key=api_key_gemini.strip())
-    # Forçamos o modelo a usar a versão estável da API
-    model = genai.GenerativeModel(
-        model_name='gemini-1.5-flash'
-    )
+    # Definimos o modelo sem o prefixo 'models/' para evitar erro 404 em algumas versões
+    model = genai.GenerativeModel('gemini-1.5-flash')
 else:
     model = None
     print("Aviso: Chave GEMINI_KEY não encontrada. Usando modo de respostas padrão.")
@@ -216,6 +214,7 @@ async def on_message(message):
 
     content = message.content.lower()
     
+    # Verifica se o bot foi mencionado ou se chamaram pelo nome
     if bot.user not in message.mentions and "monstrinho" not in content:
         return
 
@@ -231,6 +230,7 @@ async def on_message(message):
         )
         return await message.channel.send(apresentacao)
 
+    # Lógica de respostas por palavras-chave
     if any(p in content for p in ["bom dia", "boa tarde", "boa noite", "oie", "oi"]):
         return await message.channel.send(random.choice(LISTA_SAUDACOES))
 
@@ -264,28 +264,30 @@ async def on_message(message):
             alvo = outras_mencoes[0].mention if outras_mencoes else "alguém especial"
             return await message.channel.send(random.choice(REACOES_DAR_BISCOITO).format(autor=message.author.mention, alvo=alvo))
 
+    # Respostas para membros específicos
     for nome, lista in [("athena", RESPOSTAS_ATHENA), ("izzy", RESPOSTAS_IZZY), ("lua", RESPOSTAS_LUA), 
                         ("destiny", RESPOSTAS_DESTINY), ("jeff", RESPOSTAS_JEFF), ("isaa", RESPOSTAS_ISAA), 
                         ("psico", RESPOSTAS_PSICO), ("felipeta", RESPOSTAS_FELIPETA)]:
         if nome in content:
             return await message.channel.send(random.choice(lista))
 
-    if any(p in content for p in ["monstrinho", "bicho", "mascote"]) or bot.user in message.mentions:
-        if any(p in content for p in ["te amo", "amo voce", "fofo", "lindo"]):
-            return await message.channel.send(random.choice(REACOES_FOFAS))
-        elif model:
-            async with message.channel.typing():
-                try:
-                    # Método clássico corrigido
-                    response = model.generate_content(f"{SYSTEM_PROMPT}\nUsuário {message.author.display_name} disse: {texto_limpo}")
+    # Reação fofa genérica ou IA
+    if any(p in content for p in ["te amo", "amo voce", "fofo", "lindo"]):
+        return await message.channel.send(random.choice(REACOES_FOFAS))
+    
+    # Se houver texto e a IA estiver configurada
+    elif model and texto_limpo:
+        async with message.channel.typing():
+            try:
+                # Chamada de conteúdo reajustada para evitar erro 404
+                response = model.generate_content(f"{SYSTEM_PROMPT}\nUsuário {message.author.display_name} disse: {texto_limpo}")
+                if response.text:
                     return await message.reply(response.text[:500])
-                except Exception as e:
-                    if "429" in str(e):
-                        return await message.channel.send("Ufa! Comi biscoitos demais e fiquei sem fôlego. 🍪🐉 Me dê uns minutinhos para descansar!")
-                    return await message.channel.send(f"⚠️ **Erro no meu cérebro:** `{str(e)}`")
-        else:
-            return await message.channel.send("Meu cérebro está descansando agora! 🐉💤")
-
+            except Exception as e:
+                if "429" in str(e):
+                    return await message.channel.send("Ufa! Comi biscoitos demais e fiquei sem fôlego. 🍪🐉 Me dê uns minutinhos para descansar!")
+                return await message.channel.send(f"⚠️ **Erro no meu cérebro:** `{str(e)}`")
+    
     await bot.process_commands(message)
 
 TOKEN = os.getenv("TOKEN")
