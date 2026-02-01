@@ -3,16 +3,16 @@ from discord.ext import commands
 import random
 import os
 import asyncio
-import google.generativeai as genai
+from google import genai
 
-# Configuração da IA com Escudo de Segurança
+# Configuração da IA com o novo SDK (google-genai)
 api_key_gemini = os.getenv("GEMINI_KEY")
 if api_key_gemini:
-    genai.configure(api_key=api_key_gemini.strip())
-    # AJUSTE REALIZADO: Alterado para 'gemini-1.5-flash' sem prefixos extras para evitar erro 404
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    # Ajuste para o novo SDK conforme as instruções de manutenção ativa
+    client = genai.Client(api_key=api_key_gemini.strip())
+    model_name = 'gemini-2.0-flash'
 else:
-    model = None
+    client = None
     print("Aviso: Chave GEMINI_KEY não encontrada. Usando modo de respostas padrão.")
 
 SYSTEM_PROMPT = (
@@ -64,7 +64,7 @@ LISTA_FOME = [
 ]
 
 LISTA_CSI = [
-    "CSI não é um grupo, é meu esconderijo fofo! 🐉🏠💚",
+    "CSI não é um group, é meu esconderijo fofo! 🐉🏠💚",
     "Se mexer com a CSI, vai levar uma lufada de fumaça fofa! 😤💨",
     "Amo cada cantinho dessa família! 🕵️‍♂️💚",
     "O Monstrinho é o fã número 1 da Staff! 👑🐉"
@@ -269,10 +269,14 @@ async def on_message(message):
     if any(p in content for p in ["monstrinho", "bicho", "mascote"]) or bot.user in message.mentions:
         if any(p in content for p in ["te amo", "amo voce", "fofo", "lindo"]):
             return await message.channel.send(random.choice(REACOES_FOFAS))
-        elif model:
+        elif client:
             async with message.channel.typing():
                 try:
-                    response = model.generate_content(f"{SYSTEM_PROMPT}\nUsuário {message.author.display_name} disse: {texto_limpo}")
+                    # Ajuste para a nova forma de chamada do SDK mantida ativamente
+                    response = client.models.generate_content(
+                        model=model_name,
+                        contents=f"{SYSTEM_PROMPT}\nUsuário {message.author.display_name} disse: {texto_limpo}"
+                    )
                     return await message.reply(response.text[:500])
                 except Exception as e:
                     return await message.channel.send(f"⚠️ **Erro no meu cérebro:** `{str(e)}`")
