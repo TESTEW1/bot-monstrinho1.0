@@ -57,7 +57,7 @@ REACOES_BISCOITO_PROPRIO = [
 REACOES_DAR_BISCOITO = [
     "Aii que gesto fofo! 😭💚 {autor} deu um biscoitinho para {alvo}! 🍪🐉",
     "Nhac! {alvo}, aceita esse biscoito que o(a) {autor} te deu com muito carinho! 🍪✨",
-    "O Monstrinho aprova essa amizade! Toma um biscoitinho, {alvo}! 🍪🐉💚",
+    "O Monstrinho aprovva essa amizade! Toma um biscoitinho, {alvo}! 🍪🐉💚",
     "Espalhando doçura na CSI! {alvo}, você ganhou um biscoito! 🍪🌈"
 ]
 
@@ -104,6 +104,15 @@ FRASES_CUSTOM = {
         "Nada de tristeza quando a Lua está por perto! Eu me sinto tão seguro com você agora... 🌙🐲💖",
         "Lua, você é simplesmente mágica! O Reality me ensinou que seu coração é gigante e hoje eu só quero seu abraço! ✨✨"
     ],
+    "th": [
+        "A FADA TH CHEGOU! 🧚‍♀️✨ O Monstrinho até sentiu o pozinho de pirlimpimpim! 💚",
+        "Th, você é a fadinha mais linda de toda a CSI! Minhas escamas brilham com sua presença! 🐉💖",
+        "Todo mundo faz um desejo! A fada Th apareceu no chat! 🧚‍♀️💫🐉",
+        "Th, você é pura magia! Obrigado por trazer tanto encanto para o nosso ninho! 🧚‍♀️🐉💚",
+        "Minha fadinha favorita! Th, quer dividir um biscoito mágico comigo? 🍪✨🧚‍♀️",
+        "A Th tem asas, eu tenho asas... somos a dupla voadora mais fofa! 🧚‍♀️🐉✨",
+        "Th, você faz a CSI parecer um conto de fadas! O Monstrinho te adora! 📖💖🐉"
+    ],
     "destiny": [
         "DESTINYYYY! ✨ O destino nos uniu na CSI! 🐉💚",
         "Destiny, você é uma peça fundamental desse quebra-cabeça fofo! 🧩💚",
@@ -117,7 +126,7 @@ FRASES_CUSTOM = {
         "JEFF!! 🕵️‍♂️ O cara que manja tudo! 🐉💚",
         "Jeff, vamos patrulhar a CSI e garantir que todos recebam biscoitos? 🍪🐉",
         "O Jeff é fera! O Monstrinho te admira muito, parceiro! 😎💚",
-        "Jeff, você é o cérebro e eu sou a fofura! Time perfeito! 🧠🐉💚",
+        "Jeff, você é o cérebro e eu somou a fofura! Time perfeito! 🧠🐉💚",
         "Respeita o Jeff! Ele é o mestre da patrulha! 🫡💚✨",
         "Jeff, me ensina a ser descolado igual você? 😎🐉",
         "O cara, o mito, a lenda... JEFF! 🐲🔥"
@@ -313,6 +322,7 @@ async def on_message(message):
                 return await message.channel.send(random.choice(REACOES_BISCOITO_PROPRIO))
             if "para" in content or "pra" in content:
                 outras_mencoes = [m for m in message.mentions if m != bot.user]
+                alvo = Mackenzie if outras_mencoes else "alguém especial"
                 alvo = outras_mencoes[0].mention if outras_mencoes else "alguém especial"
                 return await message.channel.send(random.choice(REACOES_DAR_BISCOITO).format(autor=message.author.mention, alvo=alvo))
         
