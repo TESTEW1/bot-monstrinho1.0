@@ -5,13 +5,12 @@ import os
 import asyncio
 import google.generativeai as genai 
 
-# ================= CONFIGURAÇÃO DA IA (REAJUSTADO) =================
+# ================= CONFIGURAÇÃO DA IA (ADAPTADO PARA V1) =================
 api_key_gemini = os.getenv("GEMINI_KEY")
 
 if api_key_gemini:
-    # Configuração clássica estável
-    genai.configure(api_key=api_key_gemini.strip())
-    # Definimos o modelo sem o prefixo 'models/' para evitar erro 404 em algumas versões
+    # A ADAPTAÇÃO: Forçamos o uso da versão 'v1' para evitar o erro 404 da 'v1beta'
+    genai.configure(api_key=api_key_gemini.strip(), transport='rest')
     model = genai.GenerativeModel('gemini-1.5-flash')
 else:
     model = None
