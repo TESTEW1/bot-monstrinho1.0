@@ -97,12 +97,12 @@ FRASES_CUSTOM = {
     ],
     "lua": [
         "A Lua quer ser minha amiga? 🌙 EU QUERO MUITO! 😭💚",
-        "Lua, vamos brincar? Me conta tudo sobre você, quero ser seu melhor amigo! 🌙🐉",
-        "Vice-líder Lua, você é brilhante! ✨ Quero conhecer todos os seus segredos! 💚",
-        "A Lua ilumina o chat igualzinho à lua do céu! 🌙✨🐉",
-        "Lua, você é a estrela mais brilhante da nossa constelação CSI! ⭐💚",
-        "Nada de tristeza quando a Lua está por perto! 🌙🐲💖",
-        "Lua, você é simplesmente mágica! ✨✨"
+        "Lua, você acha que eu tenho medo de você? Bobinha! No começo eu era tímido, mas o Reality me explicou que você é nosso porto seguro! 🥺💚",
+        "Vice-líder Lua, você é o conforto em forma de pessoa! O Reality me disse pra cuidar bem de você porque você é preciosa! ✨🐉",
+        "A Lua ilumina o chat igualzinho à lua do céu! Eu não tenho medo, eu tenho é muito amor por você! 🌙✨🐉",
+        "Lua, você é a estrela mais brilhante da nossa constelação CSI! Saiba que você é importante demais pra todos nós! ⭐💚",
+        "Nada de tristeza quando a Lua está por perto! Eu me sinto tão seguro com você agora... 🌙🐲💖",
+        "Lua, você é simplesmente mágica! O Reality me ensinou que seu coração é gigante e hoje eu só quero seu abraço! ✨✨"
     ],
     "destiny": [
         "DESTINYYYY! ✨ O destino nos uniu na CSI! 🐉💚",
@@ -293,7 +293,7 @@ async def on_message(message):
         # Apresentação
         if content.strip() in [f"<@{bot.user.id}>", "monstrinho"]:
             apresentacao = (f"🐉 **OIIIII MEU AMOOOOR!** 💚✨\n\nEu sou o **Monstrinho 1.0**, o mascote da **CSI**! 🕵️‍♂️💚\n"
-                           f"Fui criado pelo **Reality**! 👑✨\n✨ *CSI é minha casa, o Reality é meu criador!* ✨")
+                            f"Fui criado pelo **Reality**! 👑✨\n✨ *CSI é minha casa, o Reality é meu criador!* ✨")
             return await message.channel.send(apresentacao)
 
         # Respostas Customizadas para Membros
