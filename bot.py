@@ -10,8 +10,7 @@ api_key_gemini = os.getenv("GEMINI_KEY")
 if api_key_gemini:
     genai.configure(api_key=api_key_gemini.strip())
     # MUDANÇA REALIZADA: Usando 'gemini-1.5-flash' diretamente para evitar Erro 404
-  # Tente trocar a linha do model por esta:
-model = genai.GenerativeModel(model_name='gemini-1.5-flash')
+    model = genai.GenerativeModel(model_name='gemini-1.5-flash')
 else:
     model = None
     print("Aviso: Chave GEMINI_KEY não encontrada. Usando modo de respostas padrão.")
@@ -145,7 +144,7 @@ LISTA_PIADAS = [
 LISTA_AMOR = [
     "Conselho amoroso: Se a pessoa não te der nem um pedacinho do biscoito dela, corre que é cilada! 🍪🚩",
     "O amor é como o brilho verde do Monstrinho: se você cuida, ele ilumina tudo ao redor! ✨💚",
-    "Não mendigue atenção! Você é um diamante da CSI, merece alguém que te trate como um rei ou rainha! 👑🐉",
+    "Não mendigue attention! Você é um diamante da CSI, merece alguém que te trate como um rei ou rainha! 👑🐉",
     "Se o coração apertar, lembra que o Monstrinho te ama e tem sempre um abraço guardado aqui! 🫂💖"
 ]
 
