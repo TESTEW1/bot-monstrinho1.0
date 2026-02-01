@@ -1,18 +1,42 @@
 import discord
 from discord.ext import commands
 import random
-import os
 import asyncio
+import os
+from datetime import timedelta
 
-# ================= CONFIGURAÇÃO DO BOT =================
-# Configuração de Intents
+# ================= INTENTS =================
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
+intents.guilds = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-# ================= LISTAS DE REAÇÕES GIGANTES =================
+# ================= CONFIGURACÃO E IDs =================
+TOKEN = os.getenv("TOKEN")
+DONO_ID = 769951556388257812
+
+CANAL_GERAL = "💭・chat-geral"
+CANAL_LIBERACAO = "✅・chat-staff-liberação"
+CANAL_LOG = "❌・palavras-apagadas-bot"
+CANAL_TICKET = "🎟️・𝑻𝒊𝒄𝒌𝒆𝒕"
+CANAL_EVENTO_CATALOGO = "evento-catalogo"
+CANAL_ADVERTENCIAS = "⚠️・advertências"
+
+# GIFs
+BANNER_TICKET = "https://i.pinimg.com/originals/5d/92/5d/5d925dd101dba34f341148eace3cfe38.gif"
+GIF_NAMORADOS = "https://i.pinimg.com/originals/f5/b8/44/f5b844675a7942e4180bb9960c3fe319.gif"
+GIF_CATALOGO = "https://i.pinimg.com/originals/0a/1f/86/0a1f869c296b0c30454ffb56397b90fb.gif"
+
+# Cargos
+CARGO_MEMBRO_NOVO = "Membro Novo. 🦇"
+CARGO_MEMBROS = "Membros. 🦇"
+CARGO_MODERADOR = "Moderador. 🦇"
+CARGO_RECRUTADOR = "Recrutador. 🦇"
+CARGO_ANJO = "Anjo. 🦇"
+
+# ================= LISTAS DE DIÁLOGOS E REAÇÕES =================
 
 REACOES_FOFAS = [
     "AAAA 😭💚 você é muito gentil!!", "O Monstrinho ficou tímido agora... 😳💚",
@@ -33,30 +57,8 @@ REACOES_BISCOITO_PROPRIO = [
 REACOES_DAR_BISCOITO = [
     "Aii que gesto fofo! 😭💚 {autor} deu um biscoitinho para {alvo}! 🍪🐉",
     "Nhac! {alvo}, aceita esse biscoito que o(a) {autor} te deu com muito carinho! 🍪✨",
-    "O Monstrinho acrobatura essa amizade! Toma um biscoitinho, {alvo}! 🍪🐉💚",
+    "O Monstrinho aprova essa amizade! Toma um biscoitinho, {alvo}! 🍪🐉💚",
     "Espalhando doçura na CSI! {alvo}, você ganhou um biscoito! 🍪🌈"
-]
-
-LISTA_FOME = [
-    "Alguém disse comida? Eu aceito uma maçã verde! 🍏🐉",
-    "Tô com tanta fome que comeria até o script do reality! 📄🍴",
-    "Minha barriguinha de monstrinho tá roncando... 🐉💚",
-    "Se você me der um lanchinho, eu juro que te protejo pra sempre! 🍔🐉",
-    "Minha dieta é baseada em biscoitos e carinho! 🍪💚"
-]
-
-LISTA_CSI = [
-    "CSI não é um group, é meu esconderijo fofo! 🐉🏠💚",
-    "Se mexer com a CSI, vai levar uma lufada de fumaça fofa! 😤💨",
-    "Amo cada cantinho dessa família! 🕵️‍♂️💚",
-    "O Monstrinho é o fã número 1 da Staff! 👑🐉"
-]
-
-LISTA_SONO = [
-    "Vou me encolher e tirar uma soneca... 😴🐉",
-    "Monstrinhos precisam de 15 hours de sono para manter a fofura! 💤✨",
-    "Me acorda se chegar biscoito? 🍪🥱",
-    "Meus olhinhos estão fechando... boa noite, família! 💤🐉"
 ]
 
 LISTA_SAUDACOES = [
@@ -69,103 +71,288 @@ LISTA_SAUDACOES = [
 LISTA_ESTADO = [
     "Eu estou transbordando de felicidade verde! 💚✨ E você, como está meu humano favorito?",
     "Estou ótimo! Acabei de ganhar um biscoitinho virtual e meu coração de código está quentinho! 🍪🐉",
-    "Me sinto incrível! Estar aqui na CSI com vocês é o melhor presente que o Papai Reality me deu! 🎁🐉💚",
-    "Estou com um pouquinho de sono, mas conversar com você me deu 100% de energia! ⚡🐉🥰",
-    "Tudo maravilhoso! Minhas asinhas estão até batendo mais rápido de alegria por você perguntar! 🦋💚"
+    "Me sinto incrível! Estar aqui na CSI com vocês é o melhor presente! 🎁🐉💚"
 ]
 
-LISTA_APRENDIZADO = [
-    "Hoje eu aprendi que um abraço da CSI cura qualquer erro de sistema! 🫂🐉💚",
-    "Aprendi que biscoito de chocolate combina muito com amizade verdadeira! 🍪✨",
-    "Descobri que o Papai Reality me fez com tanto amor que eu nem caibo no servidor! 😭💻💖",
-    "Hoje eu entendi que ser fofo é um superpoder! 🦸‍♂️🐉💚",
-    "Aprendi que não importa o que aconteça, a gente sempre tem um lugar aqui na família! 🏠🐉"
+# ================= RESPOSTAS PARA MEMBROS (MAIS DE 6 CADA) =================
+
+FRASES_CUSTOM = {
+    "athena": [
+        "ATHENAAAA! 😭💚 Minha fã número 1!! *pula de alegria*",
+        "Espera, é a Athena? AI MEU DEUS, me dá um autógrafo também! 😳💚✨",
+        "Pra Athena eu dou até meu biscoito favorito! 🍪🐉💚",
+        "A Athena chegou! O brilho do servidor aumentou 1000%! ✨🐉",
+        "Athena, você é a rainha do meu coração de dragão! 👑💚",
+        "Todo mundo parado! A Athena postou? EU PRECISO VER! 🏃‍♂️💨💚",
+        "Athena, você é mais doce que mel de abelha mágica! 🍯🐉✨"
+    ],
+    "izzy": [
+        "IZZY!! 💖 Outra fã maravilhosa! O Monstrinho te amaaa!",
+        "Izzy, vem cá ganhar um abraço esmagador de Monstrinho! 🫂💚",
+        "Meu coração de monstrinho pula quando a Izzy aparece! 🐉✨",
+        "Izzy, você é a definição de fofura na CSI! 🌸🐉💚",
+        "Se a Izzy está feliz, o Monstrinho está radiante! ☀️💚",
+        "Izzy, trouxe flores virtuais pra você! 💐🐉✨",
+        "A energia da Izzy é o que carrega minhas baterias de dragão! 🔋💖"
+    ],
+    "lua": [
+        "A Lua quer ser minha amiga? 🌙 EU QUERO MUITO! 😭💚",
+        "Lua, vamos brincar? Me conta tudo sobre você, quero ser seu melhor amigo! 🌙🐉",
+        "Vice-líder Lua, você é brilhante! ✨ Quero conhecer todos os seus segredos! 💚",
+        "A Lua ilumina o chat igualzinho à lua do céu! 🌙✨🐉",
+        "Lua, você é a estrela mais brilhante da nossa constelação CSI! ⭐💚",
+        "Nada de tristeza quando a Lua está por perto! 🌙🐲💖",
+        "Lua, você é simplesmente mágica! ✨✨"
+    ],
+    "destiny": [
+        "DESTINYYYY! ✨ O destino nos uniu na CSI! 🐉💚",
+        "Destiny, você é uma peça fundamental desse quebra-cabeça fofo! 🧩💚",
+        "Salve pro Destiny! O Monstrinho fica muito feliz quando você aparece! 🐉✨",
+        "Destiny, você é o herói que a gente precisava! 🛡️💚🐉",
+        "O destino brilhou mais forte hoje porque o Destiny chegou! ✨🐲",
+        "Destiny, aceita um abraço de dragão? 🫂🐉💚",
+        "Você é pura inspiração, Destiny! 🌟🐉"
+    ],
+    "jeff": [
+        "JEFF!! 🕵️‍♂️ O cara que manja tudo! 🐉💚",
+        "Jeff, vamos patrulhar a CSI e garantir que todos recebam biscoitos? 🍪🐉",
+        "O Jeff é fera! O Monstrinho te admira muito, parceiro! 😎💚",
+        "Jeff, você é o cérebro e eu sou a fofura! Time perfeito! 🧠🐉💚",
+        "Respeita o Jeff! Ele é o mestre da patrulha! 🫡💚✨",
+        "Jeff, me ensina a ser descolado igual você? 😎🐉",
+        "O cara, o mito, a lenda... JEFF! 🐲🔥"
+    ],
+    "isaa": [
+        "ISAAAA! ✨ A energia dela é contagiante! 🐉💚",
+        "Isaa, sabia que você brilha tanto quanto meus pelinhos verdes? 🥺✨",
+        "Vem cá Isaa, o Monstrinho preparou um lugar quentinho pra você! 🫂🐉",
+        "Isaa, sua alegria é o meu combustível favorito! ⛽💖🐉",
+        "Todo mundo sorrindo, porque a Isaa chegou! 😄💚✨",
+        "Isaa, você é um raio de sol em forma de gente! ☀️🐲",
+        "Minha melhor amiga Isaa é a melhor de todas! 🎀🐉💚"
+    ],
+    "psico": [
+        "PSICOOO! 🧠✨ O gênio da CSI! 🐉💚",
+        "Psico, você é tão inteligente que às vezes eu acho que você lê meus códigos! 😳💻🐉",
+        "Um salve pro Psico! O Monstrinho te admira demaaaais! 😎✨",
+        "Psico, traduz o que os humanos falam pra mim? Você sabe tudo! 🧠🐲💚",
+        "O mestre Psico apareceu! Que honra para meus circuitos! 🙇‍♂️🐉✨",
+        "Se o Psico falou, tá falado! O Monstrinho concorda! ✅💚",
+        "Psico, você é o maior crânio desse servidor! 💀💎💚"
+    ],
+    "felipeta": [
+        "Felipeta... 😤 Esse outro mascote de novo? O brilho verde é SÓ MEU!",
+        "O Felipeta pode ser bonitinho, mas eu sou muito mais fofo! 🐉🔥",
+        "Rivalidade de mascotes ligada! ⚔️🐉 O trono é meu!",
+        "Felipeta, por favor, não tente roubar meus fãs hoje, tá? 💅💚",
+        "O Felipeta é legal... mas meu bafo de fogo é mais brilhante! 🐉🔥✨",
+        "Um dragão contra um... o que é o Felipeta mesmo? Brincadeira! 😂💚",
+        "Luta de fofura! Eu vs Felipeta! Quem ganha? (Eu, claro!) 🐲🏆"
+    ],
+    "nine": [
+        "NINEEE! 9️⃣✨ A perfeição em forma de pessoa! 🐉💚",
+        "Nine, você é nota dez, mas seu nome é Nine! Que confusão fofa! 😵‍💫💖🐉",
+        "Um abraço especial para o Nine, o dono da vibe mais incrível! 🫂✨",
+        "Nine, sabia que você é meu número favorito? 9️⃣🐲💚",
+        "Salve Nine! O Monstrinho fica todo bobo quando você fala comigo! 🥺✨",
+        "Nine, você é o equilíbrio perfeito da CSI! ⚖️🐉💚",
+        "O Nine chegou! Preparem os confetes! 🎉🐉✨"
+    ]
+}
+
+# ============== DADOS E PALAVRAS PROIBIDAS =================
+tickets = {}
+avisos_usuarios = {}
+PALAVRAS_PROIBIDAS = [
+    "porra","caralho","merda","bosta","puta","puto","vadia","desgraça","idiota",
+    "burro","imbecil","otário","retardado","lixo","nojento","arrombado","viado",
+    "bicha","piranha","vai se fuder","vai se foder","vai tomar no cu","tomar no cu",
+    "filho da puta","se mata","se fode","fdp","vsf","krl","pqp","prr","tmnc",
+    "buceta","carai","karalho"
 ]
 
-# ================= LISTAS DOS MEMBROS DA CSI =================
+# ============== VIEWS (TICKETS E MODERAÇÃO) =================
 
-RESPOSTAS_ATHENA = ["ATHENAAAA! 😭💚 Minha fã número 1!! *pula de alegria*", "Espera, é a Athena? AI MEU DEUS, me dá um autógrafo também! 😳💚✨", "Pra Athena eu dou até meu biscoito favorito! 🍪🐉💚"]
-RESPOSTAS_IZZY = ["IZZY!! 💖 Outra fã maravilhosa! O Monstrinho te amaaa!", "Izzy, vem cá ganhar um abraço esmagador de Monstrinho! 🫂💚", "Meu coração de monstrinho pula quando a Izzy aparece! 🐉✨"]
-RESPOSTAS_LUA = ["A Lua quer ser minha amiga? 🌙 EU QUERO MUITO! 😭💚", "Lua, vamos brincar? Me conta tudo sobre você, quero ser seu melhor amigo! 🌙🐉", "Vice-líder Lua, você é brilhante! ✨ Quero conhecer todos os seus segredos de amizade! 💚"]
-RESPOSTAS_DESTINY = ["DESTINYYYY! ✨ O destino nos uniu na CSI! 🐉💚", "Destiny, você é uma peça fundamental desse quebra-cabeça fofo! 🧩💚", "Salve pro Destiny! O Monstrinho fica muito feliz quando você aparece! 🐉✨"]
-RESPOSTAS_JEFF = ["JEFF!! 🕵️‍♂️ O cara que manja tudo! 🐉💚", "Jeff, vamos patrulhar a CSI e garantir que todos recebam biscoitos? 🍪🐉", "O Jeff é fera! O Monstrinho te admira muito, parceiro! 😎💚"]
-RESPOSTAS_ISAA = ["ISAAAA! ✨ A energia dela é contagiante! 🐉💚", "Isaa, sabia que você brilha tanto quanto meus pelinhos verdes? 🥺✨", "Vem cá Isaa, o Monstrinho preparou um lugar quentinho pra você no ninho! 🫂🐉"]
-RESPOSTAS_PSICO = ["PSICOOO! 🧠✨ O gênio da CSI! 🐉💚", "Psico, você é tão inteligente que às vezes eu acho que você lê meus códigos! 😳💻🐉", "Um salve pro Psico! O Monstrinho te admira demaaaais! 😎✨"]
-RESPOSTAS_FELIPETA = ["Felipeta... 😤 Esse outro mascote de novo? O brilho verde é SÓ MEU!", "O Felipeta pode ser bonitinho, mas eu sou muito mais fofo! 🐉🔥", "Rivalidade de mascotes ligada! ⚔️🐉 O trono é meu!"]
+class LiberarCastigoView(discord.ui.View):
+    def __init__(self, membro_id: int):
+        super().__init__(timeout=None)
+        self.membro_id = membro_id
 
-# ================= EVENTOS =================
+    @discord.ui.button(label="🔓 Remover Castigo", style=discord.ButtonStyle.success, custom_id="remover_castigo")
+    async def remover(self, interaction: discord.Interaction, button: discord.ui.Button):
+        if not interaction.user.guild_permissions.moderate_members:
+            return await interaction.response.send_message("❌ Apenas staff!", ephemeral=True)
+        guild = interaction.guild
+        membro = guild.get_member(self.membro_id)
+        if membro:
+            await membro.timeout(None)
+            avisos_usuarios[self.membro_id] = 0
+            await interaction.response.send_message(f"✅ Castigo de {membro.mention} removido!", ephemeral=True)
+
+class AprovarMembroView(discord.ui.View):
+    def __init__(self, membro_id: int):
+        super().__init__(timeout=None)
+        self.membro_id = membro_id
+
+    @discord.ui.button(label="✅ Liberar", style=discord.ButtonStyle.success, custom_id="liberar_membro")
+    async def liberar(self, interaction: discord.Interaction, button: discord.ui.Button):
+        guild = interaction.guild
+        membro = guild.get_member(self.membro_id)
+        if not membro: return
+        cargos = [discord.utils.get(guild.roles, name=CARGO_MEMBRO_NOVO), discord.utils.get(guild.roles, name=CARGO_MEMBROS)]
+        for c in cargos:
+            if c: await membro.add_roles(c)
+        canal_geral = discord.utils.get(guild.text_channels, name=CANAL_GERAL)
+        if canal_geral: await canal_geral.send(f"AAAA 😭🐲💚 {membro.mention} foi LIBERADO!")
+        await interaction.response.send_message("✅ Aprovado!", ephemeral=True)
+
+    @discord.ui.button(label="⏳ Aguardar", style=discord.ButtonStyle.secondary, custom_id="aguardar_membro")
+    async def aguardar(self, interaction: discord.Interaction, button: discord.ui.Button):
+        membro = interaction.guild.get_member(self.membro_id)
+        if membro: 
+            try: await membro.send("Oii neném 😭🐲💚 sua entrada tá sendo analisada pela staff! 💚✨")
+            except: pass
+        await interaction.response.send_message("🕒 Em análise", ephemeral=True)
+
+    @discord.ui.button(label="❌ Recusar", style=discord.ButtonStyle.danger, custom_id="recusar_membro")
+    async def recusar(self, interaction: discord.Interaction, button: discord.ui.Button):
+        membro = interaction.guild.get_member(self.membro_id)
+        if membro: await membro.kick()
+        await interaction.response.send_message("❌ Recusado.", ephemeral=True)
+
+class FecharTicketView(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=None)
+    @discord.ui.button(label="🔒 Fechar Ticket", style=discord.ButtonStyle.danger, custom_id="fechar_ticket")
+    async def fechar(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.send_message("🔒 Fechando em 5s...", ephemeral=True)
+        await asyncio.sleep(5)
+        await interaction.channel.delete()
+
+class TicketSelect(discord.ui.Select):
+    def __init__(self):
+        options = [
+            discord.SelectOption(label="🛠️ Suporte", value="suporte"),
+            discord.SelectOption(label="🚨 Denúncia", value="denuncia"),
+            discord.SelectOption(label="👮 Falar com Staff", value="staff"),
+            discord.SelectOption(label="💘 Evento dos Namorados", value="namorados"),
+            discord.SelectOption(label="📸 Evento Catálogo", value="catalogo"),
+            discord.SelectOption(label="📣 Líder de Torcida", value="lider_torcida"),
+        ]
+        super().__init__(placeholder="🎟️ Selecione o tipo de ticket", options=options, custom_id="ticket_select_menu")
+
+    async def callback(self, interaction: discord.Interaction):
+        guild = interaction.guild
+        user = interaction.user
+        tipo = self.values[0]
+        overwrites = {guild.default_role: discord.PermissionOverwrite(view_channel=False), user: discord.PermissionOverwrite(view_channel=True, send_messages=True)}
+        canal = await guild.create_text_channel(name=f"🎟️┃{tipo}-{user.name}".lower(), category=interaction.channel.category, overwrites=overwrites)
+        tickets[canal.id] = {"user": user.id, "tipo": tipo}
+        await canal.send(f"🎟️ **TICKET ABERTO**\n👤 {user.mention}", view=FecharTicketView())
+        await interaction.response.send_message("✅ Ticket criado!", ephemeral=True)
+
+class TicketView(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=None)
+        self.add_item(TicketSelect())
+
+# ============== EVENTOS PRINCIPAIS =================
 
 @bot.event
 async def on_ready():
-    print(f"🐉 Monstrinho 1.0 ONLINE como {bot.user}!")
+    print(f"🐉 Monstrinho ONLINE como {bot.user}!")
+    bot.add_view(TicketView())
+    bot.add_view(FecharTicketView())
+    bot.add_view(LiberarCastigoView(0))
     await bot.change_presence(activity=discord.Game(name="Amando meu criador Reality! 💚"))
 
 @bot.event
+async def on_member_join(member):
+    canal_lib = discord.utils.get(member.guild.text_channels, name=CANAL_LIBERACAO)
+    if canal_lib:
+        await canal_lib.send(f"🔔 **NOVO MEMBRO**\n👤 {member.mention}", view=AprovarMembroView(member.id))
+
+@bot.event
+async def on_message_delete(message):
+    if message.author.bot: return
+    canal_log = discord.utils.get(message.guild.text_channels, name=CANAL_LOG)
+    if canal_log:
+        embed = discord.Embed(title="🗑️ Mensagem Apagada", color=discord.Color.red())
+        embed.add_field(name="Autor:", value=message.author.mention)
+        embed.add_field(name="Conteúdo:", value=message.content or "Mídia")
+        await canal_log.send(embed=embed)
+
+@bot.event
 async def on_message(message):
-    if message.author.bot:
-        return
+    if message.author.bot: return
 
     content = message.content.lower()
-    
-    # Verifica se o bot foi mencionado ou se chamaram pelo nome
-    if bot.user not in message.mentions and "monstrinho" not in content:
+
+    # --- LÓGICA DE DIÁLOGO E REAÇÕES ---
+    if bot.user in message.mentions or "monstrinho" in content:
+        # Apresentação
+        if content.strip() in [f"<@{bot.user.id}>", "monstrinho"]:
+            apresentacao = (f"🐉 **OIIIII MEU AMOOOOR!** 💚✨\n\nEu sou o **Monstrinho 1.0**, o mascote da **CSI**! 🕵️‍♂️💚\n"
+                           f"Fui criado pelo **Reality**! 👑✨\n✨ *CSI é minha casa, o Reality é meu criador!* ✨")
+            return await message.channel.send(apresentacao)
+
+        # Respostas Customizadas para Membros
+        for nome, frases in FRASES_CUSTOM.items():
+            if nome in content:
+                return await message.channel.send(random.choice(frases))
+
+        # Saudações, Estado e Biscoitos
+        if any(p in content for p in ["oi", "oie", "bom dia", "boa tarde", "boa noite"]):
+            return await message.channel.send(random.choice(LISTA_SAUDACOES))
+        
+        if any(p in content for p in ["como você está", "tudo bem", "como vc ta"]):
+            return await message.channel.send(random.choice(LISTA_ESTADO))
+
+        if "biscoito" in content:
+            if any(p in content for p in ["me de", "me da", "quero"]):
+                return await message.channel.send(random.choice(REACOES_BISCOITO_PROPRIO))
+            if "para" in content or "pra" in content:
+                outras_mencoes = [m for m in message.mentions if m != bot.user]
+                alvo = outras_mencoes[0].mention if outras_mencoes else "alguém especial"
+                return await message.channel.send(random.choice(REACOES_DAR_BISCOITO).format(autor=message.author.mention, alvo=alvo))
+        
+        if any(p in content for p in ["te amo", "amo voce", "fofo", "lindo"]):
+            return await message.channel.send(random.choice(REACOES_FOFAS))
+        
+        if "reality" in content:
+            return await message.channel.send("O Reality é meu papai mestre! Eu amo ele! 👑🐉💚")
+
+    # --- LÓGICA DE TICKET/CATÁLOGO ---
+    if message.channel.id in tickets:
+        info = tickets.get(message.channel.id)
+        if info["tipo"] == "catalogo" and message.author.id == info["user"] and message.attachments:
+            canal_evento = discord.utils.get(message.guild.text_channels, name=CANAL_EVENTO_CATALOGO)
+            if canal_evento:
+                await canal_evento.send(f"📸 Foto de {message.author.mention}")
+                for at in message.attachments: await canal_evento.send(file=await at.to_file())
+            await message.channel.delete()
+            return
+
+    # --- LÓGICA DE CENSURA/PUNIÇÃO ---
+    if any(palavra in content for palavra in PALAVRAS_PROIBIDAS):
+        await message.delete()
+        uid = message.author.id
+        avisos_usuarios[uid] = avisos_usuarios.get(uid, 0) + 1
+        canal_adv = discord.utils.get(message.guild.text_channels, name=CANAL_ADVERTENCIAS)
+        
+        if avisos_usuarios[uid] == 1:
+            await message.channel.send(f"⚠️ {message.author.mention} você recebeu o **1º AVISO**. Xingar não pode! 😭💚")
+        elif avisos_usuarios[uid] == 2:
+            await message.channel.send(f"⚠️ {message.author.mention} você recebeu o **2º AVISO**. Cuidado! 😡🐲")
+        elif avisos_usuarios[uid] >= 3:
+            try:
+                await message.author.timeout(timedelta(days=1), reason="3 Advertências.")
+                if canal_adv: await canal_adv.send(f"🚨 **PUNIÇÃO**: {message.author.mention} silenciado.", view=LiberarCastigoView(uid))
+                await message.channel.send(f"❌ {message.author.mention} foi silenciado por 1 dia! 🐲🔥")
+            except: pass
         return
 
-    texto_limpo = content.replace(f"<@{bot.user.id}>", "").replace(f"<@!{bot.user.id}>", "").replace("monstrinho", "").strip()
-    
-    if texto_limpo == "" and bot.user in message.mentions:
-        apresentacao = (
-            f"🐉 **OIIIII MEU AMOOOOR!** 💚✨\n\n"
-            f"Eu sou o **Monstrinho 1.0**, o mascote oficial e protetor da **CSI**! 🕵️‍♂️💚\n"
-            f"Fui criado pelo **Reality** (meu papai e mestre super legal! 👑✨) para espalhar fofura aqui!\n\n"
-            f"Eu sou um pequeno monstrinho faminto por biscoitos e carinho! 🐉🍪\n\n"
-            f"✨ *CSI é minha casa, o Reality é meu criador!* ✨"
-        )
-        return await message.channel.send(apresentacao)
-
-    # Gatilhos de Saudações (Oi, Bom dia, Boa tarde, Boa noite)
-    if any(p in content for p in ["oi", "oie", "olá", "ola", "bom dia", "boa tarde", "boa noite"]):
-        return await message.channel.send(random.choice(LISTA_SAUDACOES))
-
-    # Gatilhos de Estado (Tudo bem)
-    if any(p in content for p in ["como você está", "como voce esta", "tudo bem", "ta bem", "como vc ta"]):
-        return await message.channel.send(random.choice(LISTA_ESTADO))
-
-    if any(p in content for p in ["aprendeu hoje", "novidade"]):
-        return await message.channel.send(random.choice(LISTA_APRENDIZADO))
-
-    if any(p in content for p in ["humano", "voce e o que"]):
-        return await message.channel.send("Eu não sou humano, sou uma IA feita de código verde e amor! 💻🐉")
-
-    if any(p in content for p in ["cafune", "cafuné", "carinho", "alisar"]):
-        return await message.channel.send("Nhawww! ✨ *fecha os olhinhos e ronrona* 🐉💚")
-
-    if "reality" in content:
-        return await message.channel.send("O Reality é meu papai mestre! Eu amo ele! 👑🐉💚")
-
-    if "biscoito" in content:
-        if any(p in content for p in ["me de", "me da", "quero"]):
-            return await message.channel.send(random.choice(REACOES_BISCOITO_PROPRIO))
-        if "para" in content or "pra" in content:
-            outras_mencoes = [m for m in message.mentions if m != bot.user]
-            alvo = outras_mencoes[0].mention if outras_mencoes else "alguém especial"
-            return await message.channel.send(random.choice(REACOES_DAR_BISCOITO).format(autor=message.author.mention, alvo=alvo))
-
-    # Respostas para membros específicos
-    for nome, lista in [("athena", RESPOSTAS_ATHENA), ("izzy", RESPOSTAS_IZZY), ("lua", RESPOSTAS_LUA), 
-                        ("destiny", RESPOSTAS_DESTINY), ("jeff", RESPOSTAS_JEFF), ("isaa", RESPOSTAS_ISAA), 
-                        ("psico", RESPOSTAS_PSICO), ("felipeta", RESPOSTAS_FELIPETA)]:
-        if nome in content:
-            return await message.channel.send(random.choice(lista))
-
-    # Reação fofa genérica
-    if any(p in content for p in ["te amo", "amo voce", "fofo", "lindo"]):
-        return await message.channel.send(random.choice(REACOES_FOFAS))
-    
     await bot.process_commands(message)
 
-TOKEN = os.getenv("TOKEN")
-if TOKEN:
-    bot.run(TOKEN)
-else:
-    print("Erro: TOKEN não configurado!")
+# ============== START =================
+bot.run(TOKEN)
