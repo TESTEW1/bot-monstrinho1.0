@@ -3,28 +3,9 @@ from discord.ext import commands
 import random
 import os
 import asyncio
-import google.generativeai as genai 
 
-# ================= CONFIGURAÇÃO DA IA (ADAPTAÇÃO DE ROTA) =================
-api_key_gemini = os.getenv("GEMINI_KEY")
-
-if api_key_gemini:
-    genai.configure(api_key=api_key_gemini.strip())
-    # A ADAPTAÇÃO: Criamos o modelo forçando a versão 'v1' para evitar o erro 404 da 'v1beta'
-    model = genai.GenerativeModel(
-        model_name='models/gemini-1.5-flash'
-    )
-else:
-    model = None
-    print("Aviso: Chave GEMINI_KEY não encontrada. Usando modo de respostas padrão.")
-
-SYSTEM_PROMPT = (
-    "Você é o Monstrinho 1.0, o mascote oficial e protetor da CSI. "
-    "Seu criador é o Reality. Você é um dragãozinho verde extremamente fofo. "
-    "Sempre use emojis como 🐉, 💚, ✨, 🍪, 🫂. "
-    "Suas respostas devem ser curtas, alegres e muito carinhosas. "
-    "Você ama biscoitos e considera a CSI sua família. Nunca saia do personagem."
-)
+# ================= CONFIGURAÇÃO DO BOT =================
+# Removida a configuração do Gemini/IA conforme solicitado.
 
 # Configuração de Intents
 intents = discord.Intents.default()
@@ -79,8 +60,6 @@ LISTA_SONO = [
     "Me acorda se chegar biscoito? 🍪🥱",
     "Meus olhinhos estão fechando... boa noite, família! 💤🐉"
 ]
-
-# ================= NOVAS LISTAS DE INTERAÇÃO =================
 
 LISTA_SAUDACOES = [
     "Bom diaaa! Acordei com as escamas brilhando hoje! ☀️🐉💚",
@@ -272,25 +251,11 @@ async def on_message(message):
         if nome in content:
             return await message.channel.send(random.choice(lista))
 
-    # Reação fofa genérica ou IA
+    # Reação fofa genérica
     if any(p in content for p in ["te amo", "amo voce", "fofo", "lindo"]):
         return await message.channel.send(random.choice(REACOES_FOFAS))
     
-    # Se houver texto e a IA estiver configurada
-    elif model and texto_limpo:
-        async with message.channel.typing():
-            try:
-                # Chamada de conteúdo reajustada para garantir que o prompt de sistema seja respeitado
-                response = model.generate_content(
-                    f"{SYSTEM_PROMPT}\nUsuário {message.author.display_name} disse: {texto_limpo}"
-                )
-                if response.text:
-                    return await message.reply(response.text[:500])
-            except Exception as e:
-                if "429" in str(e):
-                    return await message.channel.send("Ufa! Comi biscoitos demais e fiquei sem fôlego. 🍪🐉 Me dê uns minutinhos para descansar!")
-                # Mostra o erro de forma fofa se for outra coisa
-                return await message.channel.send(f"⚠️ **Erro no meu cérebro:** `{str(e)}`")
+    # Removida a lógica de resposta automática da IA Gemini.
     
     await bot.process_commands(message)
 
