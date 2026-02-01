@@ -10,7 +10,7 @@ api_key_gemini = os.getenv("GEMINI_KEY")
 if api_key_gemini:
     # Cliente do novo SDK
     client = genai.Client(api_key=api_key_gemini.strip())
-    # AJUSTE: No novo SDK, usamos apenas o nome direto do modelo
+    # AJUSTE REALIZADO: Nome limpo para o novo SDK
     model_name = 'gemini-1.5-flash'
 else:
     client = None
@@ -289,6 +289,10 @@ async def on_message(message):
     await bot.process_commands(message)
 
 TOKEN = os.getenv("TOKEN")
+if TOKEN:
+    bot.run(TOKEN)
+else:
+    print("Erro: TOKEN não configurado!")
 if TOKEN:
     bot.run(TOKEN)
 else:
