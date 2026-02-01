@@ -7,10 +7,11 @@ import google.generativeai as genai
 
 # ================= CONFIGURAÇÃO DA IA (CORREÇÃO 404) =================
 api_key_gemini = os.getenv("GEMINI_KEY")
+# Mude apenas esta parte:
 if api_key_gemini:
     genai.configure(api_key=api_key_gemini.strip())
-    # Usando o GenerativeModel da biblioteca estável
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    # O segredo é garantir que ele use o modelo estável sem o prefixo models/
+    model = genai.GenerativeModel('gemini-1.5-flash') 
 else:
     model = None
     print("Aviso: Chave GEMINI_KEY não encontrada. Usando modo de respostas padrão.")
