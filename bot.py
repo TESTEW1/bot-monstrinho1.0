@@ -113,6 +113,15 @@ FRASES_CUSTOM = {
         "A Th tem asas, eu tenho asas... somos a dupla voadora mais fofa! 🧚‍♀️🐉✨",
         "Th, você faz a CSI parecer um conto de fadas! O Monstrinho te adora! 📖💖🐉"
     ],
+    "fada": [
+        "Alguém chamou uma fada? 🧚‍♀️✨ Eu amo as fadinhas da CSI!",
+        "As fadas trazem magia, e eu trago fofura verde! Combo perfeito! 🐉✨🧚‍♀️",
+        "Sinto cheiro de pozinho de fada no ar... que delícia! 🌸🐉",
+        "Fadinhas e Monstrinhos são melhores amigos para sempre! 🧚‍♀️🤝🐉",
+        "Vou bater minhas asinhas de dragão junto com as asinhas de fada! ✨🐲",
+        "Magia de fada e abraço de monstrinho: a cura para qualquer tristeza! 🫂💖🧚‍♀️",
+        "As fadas são as joias da nossa família CSI! 💎✨🧚‍♀️"
+    ],
     "destiny": [
         "DESTINYYYY! ✨ O destino nos uniu na CSI! 🐉💚",
         "Destiny, você é uma peça fundamental desse quebra-cabeça fofo! 🧩💚",
@@ -120,7 +129,7 @@ FRASES_CUSTOM = {
         "Destiny, você é o herói que a gente precisava! 🛡️💚🐉",
         "O destino brilhou mais forte hoje porque o Destiny chegou! ✨🐲",
         "Destiny, aceita um abraço de dragão? 🫂🐉💚",
-        "Você é pura inspiração, Destiny! 🌟🐉"
+        "Você é pura infração, Destiny! 🌟🐉"
     ],
     "jeff": [
         "JEFF!! 🕵️‍♂️ O cara que manja tudo! 🐉💚",
