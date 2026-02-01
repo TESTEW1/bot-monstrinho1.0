@@ -10,7 +10,8 @@ api_key_gemini = os.getenv("GEMINI_KEY")
 if api_key_gemini:
     # Ajuste para o novo SDK conforme as instruções de manutenção ativa
     client = genai.Client(api_key=api_key_gemini.strip())
-    model_name = 'gemini-2.0-flash'
+    # Reajustado para 1.5-flash para evitar o erro 429 de cota esgotada do 2.0
+    model_name = 'gemini-1.5-flash'
 else:
     client = None
     print("Aviso: Chave GEMINI_KEY não encontrada. Usando modo de respostas padrão.")
@@ -144,7 +145,7 @@ LISTA_PIADAS = [
 LISTA_AMOR = [
     "Conselho amoroso: Se a pessoa não te der nem um pedacinho do biscoito dela, corre que é cilada! 🍪🚩",
     "O amor é como o brilho verde do Monstrinho: se você cuida, ele ilumina tudo ao redor! ✨💚",
-    "Não mendigue attention! Você é um diamante da CSI, merece alguém que te trate como um rei ou rainha! 👑🐉",
+    "Não mendigue attention! Você é um diamante da CSI, merece alguém que te trate como um rei ou queen! 👑🐉",
     "Se o coração apertar, lembra que o Monstrinho te ama e tem sempre um abraço guardado aqui! 🫂💖"
 ]
 
@@ -272,13 +273,16 @@ async def on_message(message):
         elif client:
             async with message.channel.typing():
                 try:
-                    # Ajuste para a nova forma de chamada do SDK mantida ativamente
+                    # Chamada do SDK ajustada
                     response = client.models.generate_content(
                         model=model_name,
                         contents=f"{SYSTEM_PROMPT}\nUsuário {message.author.display_name} disse: {texto_limpo}"
                     )
                     return await message.reply(response.text[:500])
                 except Exception as e:
+                    # Reajuste: Tratamento fofo para erro de cota (429)
+                    if "429" in str(e):
+                        return await message.channel.send("Ufa! Comi biscoitos demais e fiquei sem fôlego. 🍪🐉 Me dê uns minutinhos para descansar e eu já volto a brilhar!")
                     return await message.channel.send(f"⚠️ **Erro no meu cérebro:** `{str(e)}`")
         else:
             return await message.channel.send("Meu cérebro está descansando agora! 🐉💤")
