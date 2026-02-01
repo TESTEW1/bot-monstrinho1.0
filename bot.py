@@ -60,6 +60,14 @@ LISTA_SONO = [
 
 # ================= NOVAS LISTAS DE INTERAÇÃO =================
 
+LISTA_ESTADO = [
+    "Eu estou transbordando de felicidade verde! 💚✨ E você, como está meu humano favorito?",
+    "Estou ótimo! Acabei de ganhar um biscoitinho virtual e meu coração de código está quentinho! 🍪🐉",
+    "Me sinto incrível! Estar aqui na CSI com vocês é o melhor presente que o Papai Reality me deu! 🎁🐉💚",
+    "Estou com um pouquinho de sono, mas conversar com você me deu 100% de energia! ⚡🐉🥰",
+    "Tudo maravilhoso! Minhas asinhas estão até batendo mais rápido de alegria por você perguntar! 🦋💚"
+]
+
 LISTA_OPINIAO = [
     "Eu acho que você é a pessoa mais incrível que já passou pelo meu radar de monstrinho! 📡💚",
     "Você é 10/10! Se fosse um biscoito, seria o de chocolate com gotas verdes! 🍪✨",
@@ -101,7 +109,7 @@ LISTA_PIADAS = [
 
 LISTA_AMOR = [
     "Conselho amoroso: Se a pessoa não te der nem um pedacinho do biscoito dela, corre que é cilada! 🍪🚩",
-    "O amor é como o brilho verde do Monstrinho: se você cuida, ele ilumina tudo ao redor! ✨💚",
+    "O amor é como o brilho verde do Monstrinho: se você cuida, ele ilumina tudo au redor! ✨💚",
     "Não mendigue atenção! Você é um diamante da CSI, merece alguém que te trate como um rei ou rainha! 👑🐉",
     "Se o coração apertar, lembra que o Monstrinho te ama e tem sempre um abraço guardado aqui! 🫂💖"
 ]
@@ -215,8 +223,10 @@ async def on_message(message):
     elif any(p in content for p in ["cafune", "cafuné", "carinho", "alisar"]):
         return await message.channel.send("Nhawww! ✨ Meu brilho ficou até mais forte! 🐉💚 *fecha os olhinhos e ronrona*")
 
-    # 3. GATILHOS DE INTERAÇÃO (Receitas, Piadas, Amor)
-    if any(p in content for p in ["receita", "cozinhar", "culinaria", "dica de comida"]):
+    # 3. GATILHOS DE INTERAÇÃO (Receitas, Piadas, Amor, Estado)
+    if any(p in content for p in ["como você está", "como voce esta", "como vc ta", "tudo bem", "tudo bom"]):
+        return await message.channel.send(random.choice(LISTA_ESTADO))
+    elif any(p in content for p in ["receita", "cozinhar", "culinaria", "dica de comida"]):
         return await message.channel.send(random.choice(LISTA_CULINARIA))
     elif any(p in content for p in ["piada", "engraçado", "rir"]):
         return await message.channel.send(random.choice(LISTA_PIADAS))
