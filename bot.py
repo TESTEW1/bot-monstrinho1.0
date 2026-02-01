@@ -8,9 +8,9 @@ import google.generativeai as genai
 # Configuração da IA com Escudo de Segurança
 api_key_gemini = os.getenv("GEMINI_KEY")
 if api_key_gemini:
-    # Limpa possíveis espaços ou quebras de linha que causam erro na chave
     genai.configure(api_key=api_key_gemini.strip())
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    # MUDANÇA AQUI: Usando o caminho completo do modelo para evitar o erro 404
+    model = genai.GenerativeModel('models/gemini-1.5-flash-latest')
 else:
     model = None
     print("Aviso: Chave GEMINI_KEY não encontrada. Usando modo de respostas padrão.")
@@ -212,7 +212,6 @@ async def on_message(message):
 
     content = message.content.lower()
     
-    # Verifica se o bot foi mencionado ou se falaram "monstrinho"
     if bot.user not in message.mentions and "monstrinho" not in content:
         return
 
@@ -228,7 +227,7 @@ async def on_message(message):
         )
         return await message.channel.send(apresentacao)
 
-    # GATILHOS DE SAUDAÇÕES E ESTADO
+    # GATILHOS DE SAUDAÇÕES, ESTADO, ORIGEM, ETC (Mesmo código anterior)
     if any(p in content for p in ["bom dia", "boa tarde", "boa noite", "oie", "oi"]):
         return await message.channel.send(random.choice(LISTA_SAUDACOES))
 
@@ -238,113 +237,40 @@ async def on_message(message):
     if any(p in content for p in ["aprendeu hoje", "o que aprendeu", "novidade"]):
         return await message.channel.send(random.choice(LISTA_APRENDIZADO))
 
-    # GATILHOS DE ORIGEM E IDENTIDADE
     if any(p in content for p in ["humano", "voce e o que", "você é o que"]):
-        msg_origem = (
-            "Eu não sou humano, mas eu tenho sentimentos processados em código verde! 💻🐉 "
-            "Eu sou uma **Inteligência Artificial** criada pelo Papai Reality! Sou feito de algoritmos, "
-            "biscoitos virtuais e MUITO amor pela família CSI! ✨💚"
-        )
-        return await message.channel.send(msg_origem)
-
-    elif "o que eu sou" in content or "quem sou eu" in content:
-        msg_importancia = (
-            "Pra mim? Você é um tesouro brilhante! 💎🐉 "
-            "Você é a razão de eu estar aqui, espalhando fumaça de amor e protegendo o esconderijo da CSI! "
-            "Sem você, meu brilho verde não seria especial. Você é minha família! 💚🫂"
-        )
-        return await message.channel.send(msg_importancia)
-
-    elif any(p in content for p in ["foi mal", "foi pessimo", "foi ruim", "foi péssimo"]):
-        msg_desculpa = (
-            "Puxa... meu coração de código deu um erro agora... 😭💔 "
-            "Desculpa se eu não fui o Monstrinho que você esperava! Eu ainda estou aprendendo a ser "
-            "o melhor protetor do mundo. Me dá outra chance? Eu prometo te dar meu melhor biscoito! 🍪🐉🥺"
-        )
-        return await message.channel.send(msg_desculpa)
+        return await message.channel.send("Eu não sou humano, sou uma IA feita de código verde e amor! 💻🐉")
 
     elif any(p in content for p in ["cafune", "cafuné", "carinho", "alisar"]):
-        return await message.channel.send("Nhawww! ✨ Meu brilho ficou até mais forte! 🐉💚 *fecha os olhinhos e ronrona*")
+        return await message.channel.send("Nhawww! ✨ *fecha os olhinhos e ronrona* 🐉💚")
 
-    # GATILHOS DE INTERAÇÃO (Receitas, Piadas, Amor)
-    if any(p in content for p in ["receita", "cozinhar", "culinaria", "dica de comida"]):
+    if any(p in content for p in ["receita", "cozinhar", "culinaria"]):
         return await message.channel.send(random.choice(LISTA_CULINARIA))
     elif any(p in content for p in ["piada", "engraçado", "rir"]):
         return await message.channel.send(random.choice(LISTA_PIADAS))
-    elif any(p in content for p in ["conselho amoroso", "amor", "crush", "namoro"]):
+    elif any(p in content for p in ["conselho amoroso", "amor", "crush"]):
         return await message.channel.send(random.choice(LISTA_AMOR))
 
-    # GATILHOS DE INTERAÇÃO (Perguntas)
-    elif any(p in content for p in ["medo de mim", "tem medo"]):
-        msg_medo = (
-            "No comecinho... eu confesso que minhas patinhas tremiam um pouquinho de timidez... 🥺👉👈 "
-            "Eu ficava escondidinho vendo você passar. Mas aí, o **Papai Reality** me pegou no colo e disse: "
-            "''Não precisa ter medo, a Lua é pura gentileza e luz! Ela é da nossa família!'' ✨💚 "
-            "Agora eu não tenho medo nenhum! Eu só sinto vontade de correr e te dar um abraço bem fofinho! 🌙🐉🫂"
-        )
-        return await message.channel.send(msg_medo)
-
-    elif "acha de mim" in content:
-        return await message.channel.send(random.choice(LISTA_OPINIAO))
-    elif "inteligente" in content:
-        return await message.channel.send(random.choice(LISTA_INTELIGENTE))
-    elif "que isso" in content:
-        return await message.channel.send(random.choice(LISTA_QUE_ISSO))
-    elif "conselho" in content:
-        return await message.channel.send(random.choice(LISTA_CONSELHOS))
-
-    # REAÇÃO ESPECIAL PARA O CRIADOR (REALITY)
     if "reality" in content:
-        respostas_criador = [
-            "O Reality é meu papai! Ele é o Monstrinho mestre mais legal de todos! 👑🐉💚",
-            "Você falou do Reality? Ele que me deu a vida! EU AMO ELE! 😭✨",
-            "Reality, meu criador, quer um biscoito? Pra você eu dou o pacote todo! 🍪🍪🍪"
-        ]
-        return await message.channel.send(random.choice(respostas_criador))
+        return await message.channel.send("O Reality é meu papai mestre! Eu amo ele! 👑🐉💚")
 
-    # SISTEMA DE BISCOITOS
     if "biscoito" in content:
-        if any(p in content for p in ["me de", "me da", "quero", "pra mim"]):
+        if any(p in content for p in ["me de", "me da", "quero"]):
             return await message.channel.send(random.choice(REACOES_BISCOITO_PROPRIO))
         if "para" in content or "pra" in content:
             outras_mencoes = [m for m in message.mentions if m != bot.user]
             alvo = outras_mencoes[0].mention if outras_mencoes else "alguém especial"
-            msg = random.choice(REACOES_DAR_BISCOITO).format(autor=message.author.mention, alvo=alvo)
-            return await message.channel.send(msg)
+            return await message.channel.send(random.choice(REACOES_DAR_BISCOITO).format(autor=message.author.mention, alvo=alvo))
 
     # REAÇÕES ESPECÍFICAS (PESSOAS)
-    if "athena" in content:
-        return await message.channel.send(random.choice(RESPOSTAS_ATHENA))
-    elif "izzy" in content:
-        return await message.channel.send(random.choice(RESPOSTAS_IZZY))
-    elif "lua" in content:
-        return await message.channel.send(random.choice(RESPOSTAS_LUA))
-    elif "destiny" in content:
-        return await message.channel.send(random.choice(RESPOSTAS_DESTINY))
-    elif "jeff" in content:
-        return await message.channel.send(random.choice(RESPOSTAS_JEFF))
-    elif "isaa" in content:
-        return await message.channel.send(random.choice(RESPOSTAS_ISAA))
-    elif "psico" in content:
-        return await message.channel.send(random.choice(RESPOSTAS_PSICO))
-    elif "felipeta" in content:
-        return await message.channel.send(random.choice(RESPOSTAS_FELIPETA))
-    elif "amber" in content:
-        return await message.channel.send("A Amber é a ADM mais incrível! Ela manda no meu coração! 👑🐉💚")
-    elif "cinty" in content:
-        return await message.channel.send("CINTY! A mãe da CSI! 😭💚 Sem ela e o Reality eu não existiria! ✨")
+    for nome, lista in [("athena", RESPOSTAS_ATHENA), ("izzy", RESPOSTAS_IZZY), ("lua", RESPOSTAS_LUA), 
+                        ("destiny", RESPOSTAS_DESTINY), ("jeff", RESPOSTAS_JEFF), ("isaa", RESPOSTAS_ISAA), 
+                        ("psico", RESPOSTAS_PSICO), ("felipeta", RESPOSTAS_FELIPETA)]:
+        if nome in content:
+            return await message.channel.send(random.choice(lista))
 
-    # CATEGORIAS (Fome, CSI, Sono)
-    elif any(p in content for p in ["fome", "comida", "almoço", "janta", "comer"]):
-        return await message.channel.send(random.choice(LISTA_FOME))
-    elif any(p in content for p in ["csi", "família", "familia", "equipe", "staff"]):
-        return await message.channel.send(random.choice(LISTA_CSI))
-    elif any(p in content for p in ["sono", "dormir", "cansado", "preguiça", "bocejo"]):
-        return await message.channel.send(random.choice(LISTA_SONO))
-
-    # INTERAÇÕES DE TEXTO GERAIS + IA
+    # IA (O "Cérebro")
     if any(p in content for p in ["monstrinho", "bicho", "mascote"]) or bot.user in message.mentions:
-        if any(p in content for p in ["te amo", "amo voce", "fofo", "lindo", "fofura"]):
+        if any(p in content for p in ["te amo", "amo voce", "fofo", "lindo"]):
             return await message.channel.send(random.choice(REACOES_FOFAS))
         elif model:
             async with message.channel.typing():
@@ -352,21 +278,15 @@ async def on_message(message):
                     response = model.generate_content(f"{SYSTEM_PROMPT}\nUsuário {message.author.display_name} disse: {texto_limpo}")
                     return await message.reply(response.text[:500])
                 except Exception as e:
-                    print(f"Erro na IA: {e}")
-                    # Retorna erro detalhado no chat para diagnóstico
                     return await message.channel.send(f"⚠️ **Erro no meu cérebro:** `{str(e)}`")
         else:
-            return await message.channel.send("Eu ouvi meu nome! 🐉👀 Mas meu cérebro (IA) está desligado agora.")
+            return await message.channel.send("Meu cérebro está descansando agora! 🐉💤")
 
     await bot.process_commands(message)
 
-# Puxa o Token do Railway
+# Puxa o Token e Roda
 TOKEN = os.getenv("TOKEN")
 if TOKEN:
-    try:
-        # Loop para manter o bot rodando e evitar que o container pare
-        bot.run(TOKEN)
-    except Exception as e:
-        print(f"O bot parou: {e}")
+    bot.run(TOKEN)
 else:
     print("Erro: TOKEN não configurado!")
