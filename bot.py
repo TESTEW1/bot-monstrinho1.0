@@ -5,9 +5,14 @@ import os
 import asyncio
 import google.generativeai as genai
 
-# Configuração da IA
-genai.configure(api_key=os.getenv("GEMINI_KEY"))
-model = genai.GenerativeModel('gemini-1.5-flash')
+# Configuração da IA com Escudo de Segurança
+api_key_gemini = os.getenv("GEMINI_KEY")
+if api_key_gemini:
+    genai.configure(api_key=api_key_gemini)
+    model = genai.GenerativeModel('gemini-1.5-flash')
+else:
+    model = None
+    print("Aviso: Chave GEMINI_KEY não encontrada. Usando modo de respostas padrão.")
 
 SYSTEM_PROMPT = (
     "Você é o Monstrinho 1.0, o mascote oficial e protetor da CSI. "
@@ -66,7 +71,7 @@ LISTA_CSI = [
 
 LISTA_SONO = [
     "Vou me encolher e tirar uma soneca... 😴🐉",
-    "Monstrinhos precisam de 15 horas de sono para manter a fofura! 💤✨",
+    "Monstrinhos precisam de 15 hours de sono para manter a fofura! 💤✨",
     "Me acorda se chegar biscoito? 🍪🥱",
     "Meus olhinhos estão fechando... boa noite, família! 💤🐉"
 ]
@@ -137,7 +142,7 @@ LISTA_PIADAS = [
 
 LISTA_AMOR = [
     "Conselho amoroso: Se a pessoa não te der nem um pedacinho do biscoito dela, corre que é cilada! 🍪🚩",
-    "O amor é como o brilho verde do Monstrinho: se você cuida, ele ilumina tudo au redor! ✨💚",
+    "O amor é como o brilho verde do Monstrinho: se você cuida, ele ilumina tudo ao redor! ✨💚",
     "Não mendigue atenção! Você é um diamante da CSI, merece alguém que te trate como um rei ou rainha! 👑🐉",
     "Se o coração apertar, lembra que o Monstrinho te ama e tem sempre um abraço guardado aqui! 🫂💖"
 ]
@@ -204,14 +209,15 @@ async def on_message(message):
     if message.author.bot:
         return
 
-    if bot.user not in message.mentions:
+    content = message.content.lower()
+    
+    # Verifica se o bot foi mencionado ou se falaram "monstrinho"
+    if bot.user not in message.mentions and "monstrinho" not in content:
         return
 
-    content = message.content.lower()
-
-    texto_limpo = content.replace(f"<@{bot.user.id}>", "").replace(f"<@!{bot.user.id}>", "").strip()
+    texto_limpo = content.replace(f"<@{bot.user.id}>", "").replace(f"<@!{bot.user.id}>", "").replace("monstrinho", "").strip()
     
-    if texto_limpo == "":
+    if texto_limpo == "" and bot.user in message.mentions:
         apresentacao = (
             f"🐉 **OIIIII MEU AMOOOOR!** 💚✨\n\n"
             f"Eu sou o **Monstrinho 1.0**, o mascote oficial e protetor da **CSI**! 🕵️‍♂️💚\n"
@@ -270,7 +276,7 @@ async def on_message(message):
     # GATILHOS DE INTERAÇÃO (Perguntas)
     elif any(p in content for p in ["medo de mim", "tem medo"]):
         msg_medo = (
-            "No comecinho... eu confesso que minhas patinhas tremiam un pouquinho de timidez... 🥺👉👈 "
+            "No comecinho... eu confesso que minhas patinhas tremiam um pouquinho de timidez... 🥺👉👈 "
             "Eu ficava escondidinho vendo você passar. Mas aí, o **Papai Reality** me pegou no colo e disse: "
             "''Não precisa ter medo, a Lua é pura gentileza e luz! Ela é da nossa família!'' ✨💚 "
             "Agora eu não tenho medo nenhum! Eu só sinto vontade de correr e te dar um abraço bem fofinho! 🌙🐉🫂"
@@ -339,16 +345,22 @@ async def on_message(message):
     if any(p in content for p in ["monstrinho", "bicho", "mascote"]) or bot.user in message.mentions:
         if any(p in content for p in ["te amo", "amo voce", "fofo", "lindo", "fofura"]):
             return await message.channel.send(random.choice(REACOES_FOFAS))
-        else:
+        elif model:
             async with message.channel.typing():
                 try:
                     response = model.generate_content(f"{SYSTEM_PROMPT}\nUsuário {message.author.display_name} disse: {texto_limpo}")
                     return await message.reply(response.text[:500])
-                except:
+                except Exception as e:
+                    print(f"Erro na IA: {e}")
                     return await message.channel.send("Eu ouvi meu nome! 🐉👀 Como posso te ajudar hoje?")
+        else:
+            return await message.channel.send("Eu ouvi meu nome! 🐉👀 Como posso te ajudar hoje?")
 
     await bot.process_commands(message)
 
 # Puxa o Token do Railway
 TOKEN = os.getenv("TOKEN")
-bot.run(TOKEN)
+if TOKEN:
+    bot.run(TOKEN)
+else:
+    print("Erro: TOKEN não configurado!")
