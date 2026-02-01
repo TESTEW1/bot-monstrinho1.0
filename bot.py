@@ -3,17 +3,16 @@ from discord.ext import commands
 import random
 import os
 import asyncio
-from google import genai
+import google.generativeai as genai # Voltamos para a biblioteca clássica e estável
 
-# Configuração da IA com o novo SDK (google-genai)
+# Configuração da IA - Modo Clássico (Mais estável para 1.5 Flash)
 api_key_gemini = os.getenv("GEMINI_KEY")
 if api_key_gemini:
-    # Cliente do novo SDK
-    client = genai.Client(api_key=api_key_gemini.strip())
-    # AJUSTE REALIZADO: Nome limpo para o novo SDK
-    model_name = 'gemini-1.5-flash'
+    genai.configure(api_key=api_key_gemini.strip())
+    # O modelo 1.5 Flash funciona perfeitamente aqui sem erro 404
+    model = genai.GenerativeModel('gemini-1.5-flash')
 else:
-    client = None
+    model = None
     print("Aviso: Chave GEMINI_KEY não encontrada. Usando modo de respostas padrão.")
 
 SYSTEM_PROMPT = (
@@ -270,16 +269,14 @@ async def on_message(message):
     if any(p in content for p in ["monstrinho", "bicho", "mascote"]) or bot.user in message.mentions:
         if any(p in content for p in ["te amo", "amo voce", "fofo", "lindo"]):
             return await message.channel.send(random.choice(REACOES_FOFAS))
-        elif client:
+        elif model:
             async with message.channel.typing():
                 try:
-                    # Chamada do SDK com o nome corrigido
-                    response = client.models.generate_content(
-                        model=model_name,
-                        contents=f"{SYSTEM_PROMPT}\nUsuário {message.author.display_name} disse: {texto_limpo}"
-                    )
+                    # Método clássico: Estável e sem bugs de nome de modelo
+                    response = model.generate_content(f"{SYSTEM_PROMPT}\nUsuário {message.author.display_name} disse: {texto_limpo}")
                     return await message.reply(response.text[:500])
                 except Exception as e:
+                    # Tratamento de erro de cota (429) e outros erros
                     if "429" in str(e):
                         return await message.channel.send("Ufa! Comi biscoitos demais e fiquei sem fôlego. 🍪🐉 Me dê uns minutinhos para descansar!")
                     return await message.channel.send(f"⚠️ **Erro no meu cérebro:** `{str(e)}`")
@@ -289,10 +286,6 @@ async def on_message(message):
     await bot.process_commands(message)
 
 TOKEN = os.getenv("TOKEN")
-if TOKEN:
-    bot.run(TOKEN)
-else:
-    print("Erro: TOKEN não configurado!")
 if TOKEN:
     bot.run(TOKEN)
 else:
