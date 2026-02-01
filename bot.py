@@ -8,9 +8,9 @@ from google import genai
 # Configuração da IA com o novo SDK (google-genai)
 api_key_gemini = os.getenv("GEMINI_KEY")
 if api_key_gemini:
-    # Ajuste para o novo SDK conforme as instruções de manutenção ativa
+    # Cliente do novo SDK
     client = genai.Client(api_key=api_key_gemini.strip())
-    # Reajustado para 1.5-flash para evitar o erro 429 de cota esgotada do 2.0
+    # AJUSTE: No novo SDK, usamos apenas o nome direto do modelo
     model_name = 'gemini-1.5-flash'
 else:
     client = None
@@ -273,16 +273,15 @@ async def on_message(message):
         elif client:
             async with message.channel.typing():
                 try:
-                    # Chamada do SDK ajustada
+                    # Chamada do SDK com o nome corrigido
                     response = client.models.generate_content(
                         model=model_name,
                         contents=f"{SYSTEM_PROMPT}\nUsuário {message.author.display_name} disse: {texto_limpo}"
                     )
                     return await message.reply(response.text[:500])
                 except Exception as e:
-                    # Reajuste: Tratamento fofo para erro de cota (429)
                     if "429" in str(e):
-                        return await message.channel.send("Ufa! Comi biscoitos demais e fiquei sem fôlego. 🍪🐉 Me dê uns minutinhos para descansar e eu já volto a brilhar!")
+                        return await message.channel.send("Ufa! Comi biscoitos demais e fiquei sem fôlego. 🍪🐉 Me dê uns minutinhos para descansar!")
                     return await message.channel.send(f"⚠️ **Erro no meu cérebro:** `{str(e)}`")
         else:
             return await message.channel.send("Meu cérebro está descansando agora! 🐉💤")
