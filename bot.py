@@ -10,7 +10,8 @@ api_key_gemini = os.getenv("GEMINI_KEY")
 if api_key_gemini:
     genai.configure(api_key=api_key_gemini.strip())
     # MUDANÇA REALIZADA: Usando 'gemini-1.5-flash' diretamente para evitar Erro 404
-    model = genai.GenerativeModel('gemini-1.5-flash')
+  # Tente trocar a linha do model por esta:
+model = genai.GenerativeModel(model_name='gemini-1.5-flash')
 else:
     model = None
     print("Aviso: Chave GEMINI_KEY não encontrada. Usando modo de respostas padrão.")
