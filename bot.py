@@ -8,7 +8,8 @@ import google.generativeai as genai
 # Configuração da IA com Escudo de Segurança
 api_key_gemini = os.getenv("GEMINI_KEY")
 if api_key_gemini:
-    genai.configure(api_key=api_key_gemini)
+    # Limpa possíveis espaços ou quebras de linha que causam erro na chave
+    genai.configure(api_key=api_key_gemini.strip())
     model = genai.GenerativeModel('gemini-1.5-flash')
 else:
     model = None
@@ -352,15 +353,20 @@ async def on_message(message):
                     return await message.reply(response.text[:500])
                 except Exception as e:
                     print(f"Erro na IA: {e}")
-                    return await message.channel.send("Eu ouvi meu nome! 🐉👀 Como posso te ajudar hoje?")
+                    # Retorna erro detalhado no chat para diagnóstico
+                    return await message.channel.send(f"⚠️ **Erro no meu cérebro:** `{str(e)}`")
         else:
-            return await message.channel.send("Eu ouvi meu nome! 🐉👀 Como posso te ajudar hoje?")
+            return await message.channel.send("Eu ouvi meu nome! 🐉👀 Mas meu cérebro (IA) está desligado agora.")
 
     await bot.process_commands(message)
 
 # Puxa o Token do Railway
 TOKEN = os.getenv("TOKEN")
 if TOKEN:
-    bot.run(TOKEN)
+    try:
+        # Loop para manter o bot rodando e evitar que o container pare
+        bot.run(TOKEN)
+    except Exception as e:
+        print(f"O bot parou: {e}")
 else:
     print("Erro: TOKEN não configurado!")
