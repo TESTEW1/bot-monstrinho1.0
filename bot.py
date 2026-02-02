@@ -3,6 +3,8 @@ from discord.ext import commands
 import random
 import asyncio
 import os
+import re # Adicionado para identificar números e operações
+import math # Adicionado para calcular fatoriais e funções matemáticas
 from datetime import timedelta
 
 # ================= INTENTS =================
@@ -25,7 +27,7 @@ REACOES_FOFAS = [
     "O Monstrinho ficou todo vermelhinho agora... ou seria verde escuro? 😳💚",
     "Vem cá me dar um abraço bem apertado! 🫂💚 Eu prometo não soltar fumaça!", 
     "Você é o motivo do meu brilho verde ser tão intenso hoje! ✨💚",
-    "CSI é a melhor família do mundo porque tem você aqui, sabia? 🥺💚", 
+    "CSI is a melhor família do mundo porque tem você aqui, sabia? 🥺💚", 
     "Meu coraçãozinho de monstrinho faz 'badum-badum' bem forte por você! 💓",
     "Vou soltar uma fumacinha em formato de coração pra você! 💨💖", 
     "Nhac! Comi toda a sua tristeza e agora você só tem permissão para ser feliz! 🐉✨",
@@ -219,7 +221,7 @@ FRASES_CUSTOM = {
         "A Lua ilumina o chat igualzinho à lua lá no céu! Eu tenho é um amor gigante por você! 🌙✨🐉",
         "Lua, você é a estrela mais brilhante da nossa constelação! Saiba que você é preciosa demais! ⭐💚",
         "Lua, você é pura magia! Sinto um quentinho no coração quando você fala comigo! 🌙🐲💖",
-        # +30 Novas Interações (Simulando perguntas/interações que ela faria)
+        # +30 Novas Interações
         "Lua, se você me perguntar se eu dormi bem, a resposta é: sonhei que a gente protegia a CSI juntos! 🌙🛡️🐉",
         "Pode deixar, Lua! Se alguém fizer bagunça, eu solto uma fumacinha verde neles pra você! 💨😤💚",
         "Você me perguntou se eu comi meus biscoitos? Simmm! Mas guardei o melhor pra você, Lua! 🍪🌙",
@@ -278,6 +280,17 @@ FRASES_CUSTOM = {
     ]
 }
 
+# ================= NOVO: LISTA DE REAÇÕES DE MATEMÁTICA =================
+
+REACOES_MATEMATICA = [
+    "Humm... deixa eu contar nos meus dedinhos de dragão... 🐾✨ O resultado é **{}**! Acertei? 🥺💚",
+    "Minhas escamas brilharam com esse desafio! 🐉💡 A resposta é **{}**! Eu sou um monstrinho muito inteligente, né?",
+    "Papai Reality me ensinou que números são como mágica! 🪄✨ O resultado deu **{}**! Nhac!",
+    "Fiz as contas aqui com minha fumaça verde e deu **{}**! 💨💚 Gostou?",
+    "O Monstrinho usou todo o seu processamento de fofura e descobriu que é **{}**! 🤓🐉",
+    "Rawr! Matemática é fácil para um dragão da CSI! O resultado é **{}**! 🦖💚"
+]
+
 # ================= EVENTOS DE INTERAÇÃO =================
 
 @bot.event
@@ -295,6 +308,35 @@ async def on_message(message):
 
     # --- REAÇÃO AO SER MENCIONADO OU CHAMADO PELO NOME ---
     if bot.user in message.mentions or "monstrinho" in content:
+        
+        # --- ADIÇÃO: LÓGICA DE MATEMÁTICA ---
+        # Procura por padrões de conta como "2+2", "3!", "10/2", etc.
+        # Captura expressões básicas e o símbolo de fatorial
+        if any(char in content for char in "+-*/!") and any(char.isdigit() for char in content):
+            try:
+                # Remove o nome do monstrinho e menções para sobrar a conta
+                conta_suja = content.replace("monstrinho", "").replace(f"<@{bot.user.id}>", "").replace(f"<@!{bot.user.id}>", "")
+                
+                # Lógica para Fatorial (ex: 3!)
+                if "!" in conta_suja:
+                    num_fatorial = re.search(r'(\d+)!', conta_suja)
+                    if num_fatorial:
+                        n = int(num_fatorial.group(1))
+                        if n > 100: # Limite para não travar o bot
+                            return await message.channel.send("Uau! Esse número é maior que todas as escamas do meu corpo! Não consigo calcular algo tão grande! 🐉😵‍💫")
+                        resultado = math.factorial(n)
+                        return await message.channel.send(random.choice(REACOES_MATEMATICA).format(resultado))
+                
+                # Lógica para contas normais (+, -, *, /)
+                # Filtra apenas caracteres permitidos para segurança
+                expressao = "".join(re.findall(r'[0-9+\-*/().]', conta_suja))
+                if expressao:
+                    resultado = eval(expressao)
+                    # Formata para tirar o .0 se for inteiro
+                    resultado = int(resultado) if resultado == int(resultado) else round(resultado, 2)
+                    return await message.channel.send(random.choice(REACOES_MATEMATICA).format(resultado))
+            except:
+                pass # Se der erro na conta, ele segue para as outras interações fofas
         
         # 1. Resposta de Apresentação
         if content.strip() in [f"<@{bot.user.id}>", f"<@!{bot.user.id}>", "monstrinho"]:
