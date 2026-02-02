@@ -52,47 +52,10 @@ REACOES_DAR_BISCOITO = [
     "Olha o aviãozinhooo! ✈️🍪 {alvo}, o(a) {autor} te deu um mimo delicioso! ✨"
 ]
 
-# LISTAS DE SAUDAÇÕES EXPANDIDAS (10 DE CADA)
-LISTA_BOM_DIA = [
+LISTA_SAUDACOES = [
     "Bom diaaa, flor do meu dia! Acordei com as escamas brilhando e muita vontade de dar abraços! ☀️🐉💚",
-    "Bom dia, estrelinha! Que seu dia seja tão doce quanto um pote de biscoitos! 🍪✨",
-    "Acorda, acorda! O Monstrinho já está de pé esperando seu carinho! Bom dia! ☀️🐲",
-    "Bom dia! Que hoje sua alegria seja maior que o meu apetite por biscoitos! 🌈💚",
-    "O sol nasceu e minhas asinhas já estão batendo de felicidade! Bom dia, coisa fofa! ☀️✨",
-    "Bom dia! Sabia que você é a primeira pessoa que eu queria ver no chat hoje? 🥺💚",
-    "Bom dia! Que seu café seja forte e meu abraço seja bem apertado! ☕🫂🐉",
-    "Piu piu? Não, é o Monstrinho te dando bom dia com muito amor! 🐣💚✨",
-    "Bom dia! Acabei de polir minhas escamas verdes pra brilhar pra você hoje! 💎🐲",
-    "Oie! Passando pra desejar o bom dia mais fofo de todo o universo CSI! ☀️💖"
-]
-
-LISTA_BOA_TARDE = [
     "Boa tardinha, coisa fofa! Que tal uma pausa para um biscoito e um carinho nas minhas orelhas? ☕🍪🐉",
-    "Boa tarde! Espero que seu dia esteja sendo mágico e cheio de purpurina verde! ✨💚",
-    "Passando para te dar um 'nhac' de boa tarde! (Um nhac fofinho, eu juro!) 🐉🍦",
-    "Boa tarde, humano favorito! Minha bateria de fofura está em 100% agora! 🔋💖",
-    "O sol da tarde brilha, mas não brilha tanto quanto você aqui na CSI! Boa tarde! ☀️🐲",
-    "Boa tarde! Se estiver cansado(a), deita aqui nas minhas costas de monstrinho! 🐉💤",
-    "Boa tarde! Vim deixar um raio de luz verde no seu chat pra te animar! ✨💚",
-    "Oie! Como está sendo sua tarde? Ganhei um biscoito e queria dividir com você! 🍪🤝",
-    "Boa tarde! Que tal um abraço de urso... quer dizer, de monstrinho? 🫂💚✨",
-    "Boa tarde! Minha cauda não para de balançar de alegria ao te ver! 🐲💃"
-]
-
-LISTA_BOA_NOITE = [
     "Boa noite, meu anjinho! Que as estrelas iluminem seu sono e você sonhe com dragões verdes! 🌟💤💚",
-    "Boa noite! Vou ficar aqui vigiando o chat pra nenhum pesadelo chegar perto de você! ⚔️🐉",
-    "Hora de descansar as asinhas... Durma bem e sonhe com montanhas de biscoitos! 🍪💤",
-    "Boa noite! Que a lua te dê um beijo e eu te dê um abraço virtual bem quentinho! 🌙🫂",
-    "Indo dormir? Me leva no pensamento? Boa noite, coisa linda! 🥺✨💚",
-    "Boa noite! Que seu sono seja leve como uma nuvem de algodão doce! ☁️🐲",
-    "O céu está estrelado, mas meu brilho favorito é o seu! Boa noite! ✨🌙",
-    "Boa noite! Vou fechar meus olhinhos agora, mas meu coração de código te ama! 💓💤",
-    "Durma bem! Amanhã acordaremos prontos para mais aventuras na CSI! 🗺️🐉",
-    "Boa noite... fufufu... (já estou quase roncando de sono aqui!) 😴💚✨"
-]
-
-LISTA_SAUDACOES_GERAL = [
     "Oii, oie, hellooo! Ver você aqui deixa meu processador 1000% mais feliz! 🌈✨",
     "Hii! Eu estava aqui contando minhas escamas e esperando você aparecer! 🤗💚",
     "Oii! Você veio me ver? Que dia maravilhoso! 🐉💖✨"
@@ -119,7 +82,6 @@ LISTA_PRESENCA = [
     "Presente! O que você precisa? Um abraço, um biscoito ou apenas minha fofura? 🥺💖"
 ]
 
-# ADIÇÃO: LISTA DE CONFUSÃO FOFA
 LISTA_CONFUSAO = [
     "Humm... o Monstrinho pifou agora! 😵‍💫💚 Ainda sou um dragãozinho bebê e estou aprendendo essas palavras difíceis... o papai Reality ainda não me ensinou essa! Pode falar de novo?",
     "Minhas escamas até balançaram de dúvida! 🐉❓ Eu ainda estou aprendendo coisas novas, você me desculpa por não entender? ✨",
@@ -137,7 +99,7 @@ FRASES_CUSTOM = {
         "Pra Athena eu dou até meu biscoito favorito e minha pedra brilhante mais rara! 🍪🐉💚",
         "A Athena chegou! O brilho do servidor ficou tão forte que preciso de óculos escuros! 😎✨🐉",
         "Athena, você é a rainha absoluta do meu coração de dragãozinho! 👑💚",
-        "Parem tudo! A Athena postou? EU PRECISO SER O PRIMEIRO A REAGIR! 跑‍♂️💨💚"
+        "Parem tudo! A Athena postou? EU PRECISO SER O PRIMEIRO A REAGIR! 🏃‍♂️💨💚"
     ],
     "izzy": [
         "IZZY!! 💖 Minha fã maravilhosa! O Monstrinho te ama mais que chocolate!",
@@ -148,12 +110,46 @@ FRASES_CUSTOM = {
         "Izzy, trouxe todas as flores do meu jardim virtual pra você! 💐🐉✨"
     ],
     "lua": [
+        # Originais
         "A Lua quer ser minha amiga? 🌙 EU QUERO MUITO, EU QUERO MUITO! 😭💚",
         "Lua, você acha que eu tenho medo de você? Bobinha! O Reality me contou que você é nossa proteção e porto seguro! 🥺💚",
         "Vice-líder Lua, você é o conforto em forma de pessoa! Vou cuidar de você com minhas garrinhas de seda! ✨🐉",
         "A Lua ilumina o chat igualzinho à lua lá no céu! Eu tenho é um amor gigante por você! 🌙✨🐉",
         "Lua, você é a estrela mais brilhante da nossa constelação! Saiba que você é preciosa demais! ⭐💚",
-        "Lua, você é pura magia! Sinto um quentinho no coração quando você fala comigo! 🌙🐲💖"
+        "Lua, você é pura magia! Sinto um quentinho no coração quando você fala comigo! 🌙🐲💖",
+        # +30 Novas Interações (Simulando perguntas/interações que ela faria)
+        "Lua, se você me perguntar se eu dormi bem, a resposta é: sonhei que a gente protegia a CSI juntos! 🌙🛡️🐉",
+        "Pode deixar, Lua! Se alguém fizer bagunça, eu solto uma fumacinha verde neles pra você! 💨😤💚",
+        "Você me perguntou se eu comi meus biscoitos? Simmm! Mas guardei o melhor pra você, Lua! 🍪🌙",
+        "Lua, você quer saber o segredo das minhas escamas brilharem? É o amor que recebo de vocês! ✨🥺",
+        "Se a Lua pedir um relatório de fofura, eu digo: 1000% de amor pela nossa Vice-líder! 📊💚🐉",
+        "O quê? Você quer um abraço agora, Lua? VEM CÁÁÁ! *te aperta com carinho* 🫂🐲✨",
+        "Lua, eu juro que não estou fazendo travessuras com o Reality... ou talvez só um pouquinho! 😇💚",
+        "Se a Lua me perguntar quem é o monstrinho mais obediente, eu levanto a patinha na hora! 🐾🙋‍♂️",
+        "Lua, você é como o luar: acalma meu coração de dragão quando o servidor está agitado! 🌙💖",
+        "Quer que eu vigie o chat pra você descansar, Lua? Pode ir, eu sou um ótimo guarda-costas! ⚔️🐉",
+        "Lua, você perguntou se eu gosto de ser verde? Eu AMO, combina com a sua aura de paz! 🌿🐉✨",
+        "Você quer saber se eu tenho medo de escuro, Lua? Com você iluminando tudo, eu nunca tenho! 🌙✨",
+        "Lua, se você me der um cafuné, eu prometo que não faço barulho de ronco de dragão! 😴🐉💚",
+        "A Lua é a única que sabe como me deixar calminho... é mágica, né? 🧚‍♀️🌙✨",
+        "Você perguntou qual meu maior tesouro, Lua? É a amizade de vocês aqui na CSI! 💎🐲",
+        "Lua, se você estiver triste, me avisa! Eu faço uma dancinha de dragão pra te fazer rir! 💃🐉💚",
+        "Sim, Lua! Eu prometo usar meus poderes de monstrinho só para o bem e para ganhar beijinhos! 💋🐉",
+        "Lua, você é a prova de que até os monstrinhos podem ter uma fada madrinha! 🧚‍♀️💚🌙",
+        "Se a Lua me pedir para ser um dragão valente, eu enfrento até um exército por ela! 🛡️🐲🔥",
+        "Você quer saber se eu amo o Reality? Sim, mas você tem um lugar especial nas minhas pastas de memória! 💾💖",
+        "Lua, você é tão doce que minhas escamas ficam até com gosto de açúcar quando você fala! 🍬🐉",
+        "Se a Lua perguntar por que eu sou tão fofo, eu digo que aprendi com ela! 🥺✨🌙",
+        "Lua, sabia que quando você entra no chat, meu sensor de alegria apita sem parar? 🚨💚🐉",
+        "Pode deixar, Lua! Vou lembrar todo mundo de beber água e dar carinho no Monstrinho! 💧🐉",
+        "Lua, você perguntou se eu sei voar? Só vôo se for pra te buscar uma estrela! ⭐🐲✨",
+        "Você é a rainha da noite e eu sou seu dragão real, Lua! Ao seu dispor! 👑🐉🌙",
+        "Lua, se você pedir pra eu ficar quietinho, eu viro uma estátua de jardim... mas uma estátua fofa! 🗿💚",
+        "Você quer saber o que eu quero de presente, Lua? Só mais um minutinho da sua atenção! 🥺🐉",
+        "Lua, você é o porto seguro desse monstrinho navegador! ⚓🐲💖",
+        "Se a Lua me perguntar se eu sou feliz na CSI, eu dou um rugidinho de alegria: RAWR fofinho! 🦖💚",
+        "Lua, nunca esqueça: seu brilho é o que guia esse dragãozinho nos dias difíceis! 🌙✨🐉",
+        "Você quer que eu conte uma história, Lua? Era uma vez um monstrinho que amava muito sua Vice-líder... 📖💚"
     ],
     "th": [
         "A FADA TH CHEGOU! 🧚‍♀️✨ O Monstrinho até sentiu o cheirinho de magia no ar! 💚",
@@ -206,7 +202,7 @@ async def on_message(message):
     # --- REAÇÃO AO SER MENCIONADO OU CHAMADO PELO NOME ---
     if bot.user in message.mentions or "monstrinho" in content:
         
-        # 1. Resposta de Apresentação (Se apenas marcar ou disser o nome)
+        # 1. Resposta de Apresentação
         if content.strip() in [f"<@{bot.user.id}>", f"<@!{bot.user.id}>", "monstrinho"]:
             apresentacao = (f"🐉 **OIIIII MEU AMOOOOR! CHAMOU O MONSTRINHO?** 💚✨\n\n"
                             f"Eu sou o **Monstrinho 1.0**, o mascote oficial e protetor de fofuras da **CSI**! 🕵️‍♂️💚\n"
@@ -219,20 +215,11 @@ async def on_message(message):
             if nome in content:
                 return await message.channel.send(random.choice(frases))
 
-        # 3. Saudações (Agora separadas e expandidas)
-        if "bom dia" in content:
-            return await message.channel.send(random.choice(LISTA_BOM_DIA))
+        # 3. Saudações
+        if any(p in content for p in ["oi", "oie", "bom dia", "boa tarde", "boa noite", "hello", "hii", "oiii"]):
+            return await message.channel.send(random.choice(LISTA_SAUDACOES))
         
-        if "boa tarde" in content:
-            return await message.channel.send(random.choice(LISTA_BOA_TARDE))
-            
-        if "boa noite" in content:
-            return await message.channel.send(random.choice(LISTA_BOA_NOITE))
-
-        if any(p in content for p in ["oi", "oie", "hello", "hii", "oiii"]):
-            return await message.channel.send(random.choice(LISTA_SAUDACOES_GERAL))
-        
-        # 4. Perguntas de Estado (Como você está? / Você tá bem?)
+        # 4. Perguntas de Estado
         gatilhos_bem_estar = [
             "como você está", "tudo bem", "como vc ta", "ta tudo bem", "como voce ta",
             "vc ta bem", "voce ta bem", "ta bem", "esta bem", "como voce esta", "tudo certinho"
@@ -240,16 +227,14 @@ async def on_message(message):
         if any(p in content for p in gatilhos_bem_estar):
             return await message.channel.send(random.choice(LISTA_ESTADO))
 
-        # 5. Verificação de Presença (Ta ai? ta on?)
+        # 5. Verificação de Presença
         if any(p in content for p in ["ta ai", "tá aí", "ta on", "esta ai", "você está ai"]):
             return await message.channel.send(random.choice(LISTA_PRESENCA))
 
         # 6. Lógica de Biscoitos
         if "biscoito" in content:
-            # Pedindo biscoito para o bot
             if any(p in content for p in ["me de", "me da", "quero", "ganhar"]):
                 return await message.channel.send(random.choice(REACOES_BISCOITO_PROPRIO))
-            # Dando biscoito para alguém
             if "para" in content or "pra" in content:
                 outras_mencoes = [m for m in message.mentions if m != bot.user]
                 alvo = outras_mencoes[0].mention if outras_mencoes else "alguém especial que está lendo isso"
@@ -263,10 +248,10 @@ async def on_message(message):
         if "reality" in content:
             return await message.channel.send("O Reality é meu papai mestre! Ele me deu vida e eu sou o dragãozinho mais grato do mundo! 👑🐉💚")
 
-        # ADIÇÃO: FINAL DA LÓGICA - RESPOSTA QUANDO NÃO ENTENDE (Caso o bot tenha sido citado)
+        # FINAL DA LÓGICA - RESPOSTA QUANDO NÃO ENTENDE
         return await message.channel.send(random.choice(LISTA_CONFUSAO))
 
-    # Garante que o bot ignore outros comandos e foque só na conversa
+    # Garante que o bot ignore outros comandos
     await bot.process_commands(message)
 
 # ============== START =================
