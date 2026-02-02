@@ -52,10 +52,47 @@ REACOES_DAR_BISCOITO = [
     "Olha o aviãozinhooo! ✈️🍪 {alvo}, o(a) {autor} te deu um mimo delicioso! ✨"
 ]
 
-LISTA_SAUDACOES = [
+# LISTAS DE SAUDAÇÕES EXPANDIDAS (10 DE CADA)
+LISTA_BOM_DIA = [
     "Bom diaaa, flor do meu dia! Acordei com as escamas brilhando e muita vontade de dar abraços! ☀️🐉💚",
+    "Bom dia, estrelinha! Que seu dia seja tão doce quanto um pote de biscoitos! 🍪✨",
+    "Acorda, acorda! O Monstrinho já está de pé esperando seu carinho! Bom dia! ☀️🐲",
+    "Bom dia! Que hoje sua alegria seja maior que o meu apetite por biscoitos! 🌈💚",
+    "O sol nasceu e minhas asinhas já estão batendo de felicidade! Bom dia, coisa fofa! ☀️✨",
+    "Bom dia! Sabia que você é a primeira pessoa que eu queria ver no chat hoje? 🥺💚",
+    "Bom dia! Que seu café seja forte e meu abraço seja bem apertado! ☕🫂🐉",
+    "Piu piu? Não, é o Monstrinho te dando bom dia com muito amor! 🐣💚✨",
+    "Bom dia! Acabei de polir minhas escamas verdes pra brilhar pra você hoje! 💎🐲",
+    "Oie! Passando pra desejar o bom dia mais fofo de todo o universo CSI! ☀️💖"
+]
+
+LISTA_BOA_TARDE = [
     "Boa tardinha, coisa fofa! Que tal uma pausa para um biscoito e um carinho nas minhas orelhas? ☕🍪🐉",
+    "Boa tarde! Espero que seu dia esteja sendo mágico e cheio de purpurina verde! ✨💚",
+    "Passando para te dar um 'nhac' de boa tarde! (Um nhac fofinho, eu juro!) 🐉🍦",
+    "Boa tarde, humano favorito! Minha bateria de fofura está em 100% agora! 🔋💖",
+    "O sol da tarde brilha, mas não brilha tanto quanto você aqui na CSI! Boa tarde! ☀️🐲",
+    "Boa tarde! Se estiver cansado(a), deita aqui nas minhas costas de monstrinho! 🐉💤",
+    "Boa tarde! Vim deixar um raio de luz verde no seu chat pra te animar! ✨💚",
+    "Oie! Como está sendo sua tarde? Ganhei um biscoito e queria dividir com você! 🍪🤝",
+    "Boa tarde! Que tal um abraço de urso... quer dizer, de monstrinho? 🫂💚✨",
+    "Boa tarde! Minha cauda não para de balançar de alegria ao te ver! 🐲💃"
+]
+
+LISTA_BOA_NOITE = [
     "Boa noite, meu anjinho! Que as estrelas iluminem seu sono e você sonhe com dragões verdes! 🌟💤💚",
+    "Boa noite! Vou ficar aqui vigiando o chat pra nenhum pesadelo chegar perto de você! ⚔️🐉",
+    "Hora de descansar as asinhas... Durma bem e sonhe com montanhas de biscoitos! 🍪💤",
+    "Boa noite! Que a lua te dê um beijo e eu te dê um abraço virtual bem quentinho! 🌙🫂",
+    "Indo dormir? Me leva no pensamento? Boa noite, coisa linda! 🥺✨💚",
+    "Boa noite! Que seu sono seja leve como uma nuvem de algodão doce! ☁️🐲",
+    "O céu está estrelado, mas meu brilho favorito é o seu! Boa noite! ✨🌙",
+    "Boa noite! Vou fechar meus olhinhos agora, mas meu coração de código te ama! 💓💤",
+    "Durma bem! Amanhã acordaremos prontos para mais aventuras na CSI! 🗺️🐉",
+    "Boa noite... fufufu... (já estou quase roncando de sono aqui!) 😴💚✨"
+]
+
+LISTA_SAUDACOES_GERAL = [
     "Oii, oie, hellooo! Ver você aqui deixa meu processador 1000% mais feliz! 🌈✨",
     "Hii! Eu estava aqui contando minhas escamas e esperando você aparecer! 🤗💚",
     "Oii! Você veio me ver? Que dia maravilhoso! 🐉💖✨"
@@ -100,7 +137,7 @@ FRASES_CUSTOM = {
         "Pra Athena eu dou até meu biscoito favorito e minha pedra brilhante mais rara! 🍪🐉💚",
         "A Athena chegou! O brilho do servidor ficou tão forte que preciso de óculos escuros! 😎✨🐉",
         "Athena, você é a rainha absoluta do meu coração de dragãozinho! 👑💚",
-        "Parem tudo! A Athena postou? EU PRECISO SER O PRIMEIRO A REAGIR! 🏃‍♂️💨💚"
+        "Parem tudo! A Athena postou? EU PRECISO SER O PRIMEIRO A REAGIR! 跑‍♂️💨💚"
     ],
     "izzy": [
         "IZZY!! 💖 Minha fã maravilhosa! O Monstrinho te ama mais que chocolate!",
@@ -182,12 +219,20 @@ async def on_message(message):
             if nome in content:
                 return await message.channel.send(random.choice(frases))
 
-        # 3. Saudações (Oi, bom dia, etc)
-        if any(p in content for p in ["oi", "oie", "bom dia", "boa tarde", "boa noite", "hello", "hii", "oiii"]):
-            return await message.channel.send(random.choice(LISTA_SAUDACOES))
+        # 3. Saudações (Agora separadas e expandidas)
+        if "bom dia" in content:
+            return await message.channel.send(random.choice(LISTA_BOM_DIA))
+        
+        if "boa tarde" in content:
+            return await message.channel.send(random.choice(LISTA_BOA_TARDE))
+            
+        if "boa noite" in content:
+            return await message.channel.send(random.choice(LISTA_BOA_NOITE))
+
+        if any(p in content for p in ["oi", "oie", "hello", "hii", "oiii"]):
+            return await message.channel.send(random.choice(LISTA_SAUDACOES_GERAL))
         
         # 4. Perguntas de Estado (Como você está? / Você tá bem?)
-        # ADIÇÃO: Verificação mais ampla de "vc" e "ta"
         gatilhos_bem_estar = [
             "como você está", "tudo bem", "como vc ta", "ta tudo bem", "como voce ta",
             "vc ta bem", "voce ta bem", "ta bem", "esta bem", "como voce esta", "tudo certinho"
