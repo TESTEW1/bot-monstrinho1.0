@@ -66,7 +66,13 @@ LISTA_ESTADO = [
     "Estou ótimo! Acabei de ganhar um biscoitinho virtual e meu coração de código está quentinho e vibrando! 🍪🐉",
     "Me sinto incrível! Estar aqui na CSI com vocês é melhor do que qualquer tesouro escondido em cavernas! 🎁🐉💚",
     "Estou com muita energia! Quer brincar? Quer um abraço? Eu estou prontinho pra te dar atenção! ⚡🐲",
-    "Meu estado atual é: apaixonado por essa família maravilhosa! 💖🐉"
+    "Meu estado atual é: apaixonado por essa família maravilhosa! 💖🐉",
+    "Estou me sentindo um dragãozinho de sorte por ter você perguntando por mim! 🥺✨💚",
+    "Minhas asinhas estão até batendo mais rápido de alegria! Estou maravilhosamente bem! 🐲💨",
+    "Estou 100% carregado de amor e energia positiva! 🔋💖🐉",
+    "Sabe aquele quentinho no coração? É assim que eu estou agora falando com você! 🔥💓",
+    "Estou radiante! Minhas escamas nunca brilharam tanto quanto hoje! ✨💚🐲",
+    "Estou pronto para qualquer aventura, desde que seja com você aqui na CSI! 🗺️🐉"
 ]
 
 LISTA_PRESENCA = [
@@ -171,8 +177,12 @@ async def on_message(message):
         if any(p in content for p in ["oi", "oie", "bom dia", "boa tarde", "boa noite", "hello", "hii", "oiii"]):
             return await message.channel.send(random.choice(LISTA_SAUDACOES))
         
-        # 4. Perguntas de Estado (Como você está?)
-        if any(p in content for p in ["como você está", "tudo bem", "como vc ta", "ta tudo bem", "como voce ta"]):
+        # 4. Perguntas de Estado (Como você está? / Você tá bem?)
+        gatilhos_bem_estar = [
+            "como você está", "tudo bem", "como vc ta", "ta tudo bem", "como voce ta",
+            "vc ta bem", "voce ta bem", "ta bem", "esta bem", "como voce esta", "tudo certinho"
+        ]
+        if any(p in content for p in gatilhos_bem_estar):
             return await message.channel.send(random.choice(LISTA_ESTADO))
 
         # 5. Verificação de Presença (Ta ai? ta on?)
