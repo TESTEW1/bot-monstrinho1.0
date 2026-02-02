@@ -224,7 +224,7 @@ FRASES_CUSTOM = {
         # +30 Novas Interações
         "Lua, se você me perguntar se eu dormi bem, a resposta é: sonhei que a gente protegia a CSI juntos! 🌙🛡️🐉",
         "Pode deixar, Lua! Se alguém fizer bagunça, eu solto uma fumacinha verde neles pra você! 💨😤💚",
-        "Você me perguntou se eu comi meus biscoitos? Simmm! Mas guardei o melhor pra você, Lua! 🍪🌙",
+        "Você me perguntou se eu comi meus biscoitos? Simmm! But guardei o melhor pra você, Lua! 🍪🌙",
         "Lua, você quer saber o segredo das minhas escamas brilharem? É o amor que recebo de vocês! ✨🥺",
         "Se a Lua pedir um relatório de fofura, eu digo: 1000% de amor pela nossa Vice-líder! 📊💚🐉",
         "O quê? Você quer um abraço agora, Lua? VEM CÁÁÁ! *te aperta com carinho* 🫂🐲✨",
@@ -251,7 +251,7 @@ FRASES_CUSTOM = {
         "Lua, se você pedir pra eu ficar quietinho, eu viro uma estátua de jardim... mas uma estátua fofa! 🗿💚",
         "Você quer saber o que eu quero de presente, Lua? Só mais um minutinho da sua attention! 🥺🐉",
         "Lua, você é o porto seguro desse monstrinho navegador! ⚓🐲💖",
-        "Se a Lua me perguntar se eu sou feliz na CSI, eu dou um rugidinho de alegria: RAWR fofinho! 🦖💚",
+        "Se a Lua me perguntar se eu sou feliz na CSI, eu dou um rugidinho de alegria: RAWR fofinho! Rex💚",
         "Lua, nunca esqueça: seu brilho é o que guia esse dragãozinho nos dias difíceis! 🌙✨🐉",
         "Você quer que eu conte uma história, Lua? Era uma vez um monstrinho que amava muito sua Vice-líder... 📖💚"
     ],
@@ -309,14 +309,24 @@ async def on_message(message):
     # --- REAÇÃO AO SER MENCIONADO OU CHAMADO PELO NOME ---
     if bot.user in message.mentions or "monstrinho" in content:
         
+        # 1. Pergunta sobre a Capital do Brasil
+        if "capital do brasil" in content:
+            return await message.channel.send("Essa eu sei! A capital do nosso Brasilzão é **Brasília**! 🇧🇷✨ Sabia que de lá eu consigo ver as nuvens em formato de biscoito? 🐉💚")
+
+        # 2. Pedido de Amizade
+        if any(p in content for p in ["amigo", "amiguinho", "amizade"]):
+            return await message.channel.send(f"EU QUERO MUITO SER SEU AMIGUINHO! 😭💚 {message.author.mention}, agora somos melhores amigos para sempre! Vou guardar um lugar pra você no meu ninho de nuvens! ✨🐉")
+
         # --- ADIÇÃO: LÓGICA DE MATEMÁTICA ---
-        # Procura por padrões de conta como "2+2", "3!", "10/2", etc.
-        # Captura expressões básicas e o símbolo de fatorial
-        if any(char in content for char in "+-*/!") and any(char.isdigit() for char in content):
+        # Procura por padrões de conta como "2+2", "3!", "10/2", "3x1", etc.
+        if any(char in content for char in "+-*/!x") and any(char.isdigit() for char in content):
             try:
                 # Remove o nome do monstrinho e menções para sobrar a conta
                 conta_suja = content.replace("monstrinho", "").replace(f"<@{bot.user.id}>", "").replace(f"<@!{bot.user.id}>", "")
                 
+                # Substitui 'x' por '*' para o eval entender como multiplicação
+                conta_suja = conta_suja.replace("x", "*")
+
                 # Lógica para Fatorial (ex: 3!)
                 if "!" in conta_suja:
                     num_fatorial = re.search(r'(\d+)!', conta_suja)
@@ -338,7 +348,7 @@ async def on_message(message):
             except:
                 pass # Se der erro na conta, ele segue para as outras interações fofas
         
-        # 1. Resposta de Apresentação
+        # 3. Resposta de Apresentação
         if content.strip() in [f"<@{bot.user.id}>", f"<@!{bot.user.id}>", "monstrinho"]:
             apresentacao = (f"🐉 **OIIIII MEU AMOOOOR! CHAMOU O MONSTRINHO?** 💚✨\n\n"
                             f"Eu sou o **Monstrinho 1.0**, o mascote oficial e protetor de fofuras da **CSI**! 🕵️‍♂️💚\n"
@@ -346,16 +356,16 @@ async def on_message(message):
                             f"✨ *CSI é meu lar, vocês são minha família e o Reality é meu mestre!* ✨")
             return await message.channel.send(apresentacao)
 
-        # 2. Respostas Customizadas para Membros Específicos
+        # 4. Respostas Customizadas para Membros Específicos
         for nome, frases in FRASES_CUSTOM.items():
             if nome in content:
                 return await message.channel.send(random.choice(frases))
 
-        # 3. Saudações
+        # 5. Saudações
         if any(p in content for p in ["oi", "oie", "bom dia", "boa tarde", "boa noite", "hello", "hii", "oiii"]):
             return await message.channel.send(random.choice(LISTA_SAUDACOES))
         
-        # 4. Perguntas de Estado
+        # 6. Perguntas de Estado
         gatilhos_bem_estar = [
             "como você está", "tudo bem", "como vc ta", "ta tudo bem", "como voce ta",
             "vc ta bem", "voce ta bem", "ta bem", "esta bem", "como voce esta", "tudo certinho"
@@ -363,11 +373,11 @@ async def on_message(message):
         if any(p in content for p in gatilhos_bem_estar):
             return await message.channel.send(random.choice(LISTA_ESTADO))
 
-        # 5. Verificação de Presença
+        # 7. Verificação de Presença
         if any(p in content for p in ["ta ai", "tá aí", "ta on", "esta ai", "você está ai"]):
             return await message.channel.send(random.choice(LISTA_PRESENCA))
 
-        # 6. Lógica de Biscoitos
+        # 8. Lógica de Biscoitos
         if "biscoito" in content:
             if any(p in content for p in ["me de", "me da", "quero", "ganhar"]):
                 return await message.channel.send(random.choice(REACOES_BISCOITO_PROPRIO))
@@ -376,11 +386,11 @@ async def on_message(message):
                 alvo = outras_mencoes[0].mention if outras_mencoes else "alguém especial que está lendo isso"
                 return await message.channel.send(random.choice(REACOES_DAR_BISCOITO).format(autor=message.author.mention, alvo=alvo))
         
-        # 7. Declarações de Amor e Elogios
+        # 9. Declarações de Amor e Elogios
         if any(p in content for p in ["te amo", "amo voce", "fofo", "lindo", "fofinho", "perfeito", "fofura"]):
             return await message.channel.send(random.choice(REACOES_FOFAS))
         
-        # 8. Menção ao Criador
+        # 10. Menção ao Criador
         if "reality" in content:
             return await message.channel.send("O Reality é meu papai mestre! Ele me deu vida e eu sou o dragãozinho mais grato do mundo! 👑🐉💚")
 
