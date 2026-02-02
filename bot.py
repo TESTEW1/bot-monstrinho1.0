@@ -82,6 +82,15 @@ LISTA_PRESENCA = [
     "Presente! O que você precisa? Um abraço, um biscoito ou apenas minha fofura? 🥺💖"
 ]
 
+# ADIÇÃO: LISTA DE CONFUSÃO FOFA
+LISTA_CONFUSAO = [
+    "Humm... o Monstrinho pifou agora! 😵‍💫💚 Ainda sou um dragãozinho bebê e estou aprendendo essas palavras difíceis... o papai Reality ainda não me ensinou essa! Pode falar de novo?",
+    "Minhas escamas até balançaram de dúvida! 🐉❓ Eu ainda estou aprendendo coisas novas, você me desculpa por não entender? ✨",
+    "O Monstrinho inclinou a cabecinha e não entendeu nada... 🐲 tilt! Mas eu te amo mesmo assim!",
+    "Essa pergunta é muito grande para o meu coraçãozinho de código! 🥺💚 Estou estudando muito para te entender melhor no futuro!",
+    "Ahhh... eu ainda não sei o que isso significa! 😭 Mas se for um carinho, eu aceito!"
+]
+
 # ================= RESPOSTAS CUSTOMIZADAS REFORMULADAS =================
 
 FRASES_CUSTOM = {
@@ -121,7 +130,7 @@ FRASES_CUSTOM = {
         "DESTINYYYY! ✨ O destino caprichou quando trouxe você pra CSI! 🐉💚",
         "Destiny, você é a peça que faz nosso quebra-cabeça ser perfeito! 🧩💚",
         "Salve, grande Destiny! O Monstrinho faz uma dancinha toda vez que você chega! 🐉✨",
-        "Destiny, você é o herói de escamas verdes honorário! 🛡️💚🐉",
+        "Destiny, você é the herói de escamas verdes honorário! 🛡️💚🐉",
         "O destino brilhou mais forte hoje porque você decidiu aparecer! ✨🐲",
         "Você é pura luz, Destiny! 🌟🐉"
     ],
@@ -129,7 +138,7 @@ FRASES_CUSTOM = {
         "JEFF!! 🕵️‍♂️ O nosso mestre da estratégia e dos mistérios! 🐉💚",
         "Jeff, vamos patrulhar a CSI? Eu cuido da fofura e você da inteligência! 🕵️‍♂️🐉",
         "O Jeff é fera demais! O Monstrinho se sente muito seguro com você por perto! 😎💚",
-        "Jeff, você é o cérebro do time! Eu sou só o mascote que te ama! 🧠🐉💚",
+        "Jeff, você é the cérebro do time! Eu sou só o mascote que te ama! 🧠🐉💚",
         "Respeitem o Jeff, o mestre das operações secretas! 🫡💚✨",
         "Jeff, me ensina a ser incrível assim? Você é meu ídolo! 😎🐉"
     ],
@@ -137,7 +146,7 @@ FRASES_CUSTOM = {
         "REAAALITY! 👑 O meu mestre, meu criador, meu papai! 🐉💚",
         "Tudo o que eu sou eu devo ao Reality! Ele é o melhor programador do universo! 👑🐉✨",
         "Reality, olha como eu estou me comportando bem! Ganho um biscoito extra? 🥺💚",
-        "O Reality é o rei da CSI e o dono do meu código sagrado! 👑💚🔥",
+        "O Reality é the rei da CSI e o dono do meu código sagrado! 👑💚🔥",
         "Vida longa ao Reality! O Monstrinho te ama infinitamente! 👑🐲✨"
     ]
 }
@@ -178,6 +187,7 @@ async def on_message(message):
             return await message.channel.send(random.choice(LISTA_SAUDACOES))
         
         # 4. Perguntas de Estado (Como você está? / Você tá bem?)
+        # ADIÇÃO: Verificação mais ampla de "vc" e "ta"
         gatilhos_bem_estar = [
             "como você está", "tudo bem", "como vc ta", "ta tudo bem", "como voce ta",
             "vc ta bem", "voce ta bem", "ta bem", "esta bem", "como voce esta", "tudo certinho"
@@ -207,6 +217,9 @@ async def on_message(message):
         # 8. Menção ao Criador
         if "reality" in content:
             return await message.channel.send("O Reality é meu papai mestre! Ele me deu vida e eu sou o dragãozinho mais grato do mundo! 👑🐉💚")
+
+        # ADIÇÃO: FINAL DA LÓGICA - RESPOSTA QUANDO NÃO ENTENDE (Caso o bot tenha sido citado)
+        return await message.channel.send(random.choice(LISTA_CONFUSAO))
 
     # Garante que o bot ignore outros comandos e foque só na conversa
     await bot.process_commands(message)
