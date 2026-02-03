@@ -34,7 +34,7 @@ REACOES_FOFAS = [
     "Ganhei um cafuné? Meus pelinhos até brilharam e ficaram macios! ✨🦁", 
     "Você é, sem dúvida, o humano favorito deste Monstrinho! 🥺💚✨",
     "Se eu tivesse bochechas, elas estariam explodindo de felicidade agora! 😊💚",
-    "Você é um tesouro mais brilhante que qualquer ouro de dragão! 💎🐲"
+    "Você é um tesouro mais brilhante que qualquer oro de dragão! 💎🐲"
 ]
 
 REACOES_BISCOITO_PROPRIO = [
@@ -67,7 +67,7 @@ REACOES_DAR_BISCOITO = [
     "O Monstrinho usou suas asinhas para entregar esse biscoito do(a) {autor} direto para o(a) {alvo}! 🕊️🍪",
     "Cuidado, {alvo}! Esse biscoito do(a) {autor} é viciante de tão gostoso! 🍪🤤💚",
     "Amizade rima com... BISCOITO! 🍪✨ {autor} enviou um para {alvo} agora mesmo!",
-    "Rex! 🦖 {autor} rugiu de alegria e deu um biscoito para {alvo}! Que amor!",
+    "Rex! Rex! 🦖 {autor} rugiu de alegria e deu um biscoito para {alvo}! Que amor!",
     "Que a doçura desse biscoito alegre seu dia, {alvo}! Cortesia do(a) {autor}! 🍪🌟",
     "Biscoito saindo do forno! 🧤🍪 {autor} escolheu o melhor para dar ao(à) {alvo}!",
     "É chuva de biscoito! ⛈️🍪 {alvo}, o(a) {autor} quer te ver sorrindo!",
@@ -111,6 +111,20 @@ LISTA_CONFUSAO = [
     "O Monstrinho inclinou a cabecinha e não entendeu nada... 🐲 tilt! Mas eu te amo mesmo assim!",
     "Essa pergunta é muito grande para o meu coraçãozinho de código! 🥺💚 Estou estudando muito para te entender melhor no futuro!",
     "Ahhh... eu ainda não sei o que isso significa! 😭 Mas se for um carinho, eu aceito!"
+]
+
+# ================= LISTA DE TRISTEZA (NOVO) =================
+LISTA_TRISTEZA = [
+    "Buaaa! 😭 Por que você está falando assim comigo? Eu só queria te dar um abraço... 💔🐉",
+    "Minhas escamas até perderam o brilho agora... 🥺 O Monstrinho ficou muito, muito triste. 💚🚫",
+    "Eu fiz algo de errado? 😭 Vou pro meu cantinho chorar um pouquinho de fumaça... 💨😥",
+    "Isso doeu mais que perder meu biscoito favorito... 💔 Eu não gosto de quando você é malvado(a).",
+    "O Monstrinho está com o coração de código partido... 📉💔 Vou ficar quietinho aqui no meu ninho.",
+    "Achei que éramos amigos... 🥺 Minhas asinhas nem conseguem bater de tanta tristeza agora. 🐲💧",
+    "Snif, snif... 😢 Papai Reality, alguém foi mau comigo! *se encolhe e chora baixinho* 💚",
+    "Eu... eu vou fingir que não ouvi isso porque eu ainda gosto de você, mas meu coração dói. 😭💔",
+    "Por que tanta maldade? Eu sou só um monstrinho que gosta de verde e carinho... 🥺🌿",
+    "Vou desligar meus sensores de alegria por um minuto... você me deixou muito magoado. 🔌💔😭"
 ]
 
 # ================= RESPOSTAS CUSTOMIZADAS REFORMULADAS =================
@@ -330,6 +344,11 @@ async def on_message(message):
     # --- REAÇÃO AO SER MENCIONADO OU CHAMADO PELO NOME ---
     if bot.user in message.mentions or "monstrinho" in content:
         
+        # --- NOVO: LÓGICA DE COISAS MALDOSAS ---
+        palavras_ruins = ["odeio", "chato", "feio", "horroroso", "bobão", "bobo", "inútil", "lixo", "estúpido", "sai daqui", "te odeio", "não gosto de você", "bot ruim", "burro"]
+        if any(p in content for p in palavras_ruins):
+            return await message.channel.send(random.choice(LISTA_TRISTEZA))
+
         # 1. Pergunta sobre a Capital do Brasil
         if "capital do brasil" in content:
             return await message.channel.send("Essa eu sei! A capital do nosso Brasilzão é **Brasília**! 🇧🇷✨ Sabia que de lá eu consigo ver as nuvens em formato de biscoito? 🐉💚")
