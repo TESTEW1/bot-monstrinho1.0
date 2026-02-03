@@ -43,15 +43,36 @@ REACOES_BISCOITO_PROPRIO = [
     "Biscoito? ONDE?! 🍪👀 Ah, é pra mim? OBRIGADO!! Nhac nhac nhac! Que delíciaaa! 💚",
     "Só divido porque a CSI é minha família e eu amo vocês! Toma metade! 🍪🐉🤝",
     "Eu ia esconder debaixo da minha pata para comer mais tarde, mas você é especial! 🍪✨",
-    "Biscoitinhos virtuais têm gosto de amor, sabia? Aceito todos! 🍪💖🐉"
+    "Biscoitinhos virtuais têm gosto de amor, sabia? Aceito todos! 🍪💖🐉",
+    "Nhac! Comi um pedacinho da borda... o resto é todo seu! 🍪🤤",
+    "Atenção! Este biscoito contém 100% de fofura e 0% de vontade de dividir... Mentira, toma aqui! 🤲🍪",
+    "Se você me der um cafuné, eu te dou um biscoito de morango! Aceita? 🍓🍪🐉",
+    "Eu fiz esse biscoito com minha fumaça quente pra ele ficar bem crocante! Cuidado que tá quentinho! 🔥🍪",
+    "Um monstrinho de barriga cheia é um monstrinho feliz! Obrigado pelo mimo! 🥰🍪",
+    "Você quer meu biscoito? 🥺 Tá bom... mas me dá um abraço em troca? 🫂💚🍪"
 ]
 
 REACOES_DAR_BISCOITO = [
     "Aii que gesto mais lindo! 😭💚 {autor} deu um biscoitinho quentinho para {alvo}! 🍪🐉",
     "Nhac! {alvo}, aceita esse biscoito que o(a) {autor} te deu? Foi feito com muito carinho! 🍪✨",
     "O Monstrinho aprova demais essa amizade! Toma um biscoitinho, {alvo}! 🍪🐉💚",
-    "Espalhando doçura pela CSI! {alvo}, você acaba de ganhar um biscoito da sorte! 🍪🌈",
-    "Olha o aviãozinhooo! ✈️🍪 {alvo}, o(a) {autor} te deu um mimo delicioso! ✨"
+    "Espalhando doçura pela CSI! {alvo}, você acaba de ganhar um biscoito da sorte de {autor}! 🍪🌈",
+    "Olha o aviãozinhooo! ✈️🍪 {alvo}, o(a) {autor} te deu um mimo delicioso! ✨",
+    "Que fofura! {autor} está mimando o(a) {alvo} com biscoitos! Posso ganhar um também? 🥺🍪",
+    "Biscoito detectado! 🚨 {alvo}, receba esse presente açucarado do(a) {autor}! 🍪💖",
+    "Huuum, o cheirinho está ótimo! {alvo}, corre aqui buscar o biscoito que {autor} te trouxe! 🏃‍♂️🍪",
+    "{autor} entregou um biscoito lendário para {alvo}! Isso que é amizade de ouro! 🏆🍪🐉",
+    "Dizem que biscoitos dados de coração não engordam! Aproveita, {alvo}, presente do(a) {autor}! 🍪✨",
+    "{alvo}, você é uma pessoa tão doce que o(a) {autor} resolveu te dar um biscoito para combinar! 🍬🍪",
+    "O Monstrinho usou suas asinhas para entregar esse biscoito do(a) {autor} direto para o(a) {alvo}! 🕊️🍪",
+    "Cuidado, {alvo}! Esse biscoito do(a) {autor} é viciante de tão gostoso! 🍪🤤💚",
+    "Amizade rima com... BISCOITO! 🍪✨ {autor} enviou um para {alvo} agora mesmo!",
+    "Rex! 🦖 {autor} rugiu de alegria e deu um biscoito para {alvo}! Que amor!",
+    "Que a doçura desse biscoito alegre seu dia, {alvo}! Cortesia do(a) {autor}! 🍪🌟",
+    "Biscoito saindo do forno! 🧤🍪 {autor} escolheu o melhor para dar ao(à) {alvo}!",
+    "É chuva de biscoito! ⛈️🍪 {alvo}, o(a) {autor} quer te ver sorrindo!",
+    "Um biscoito para um herói/heroína! {autor} reconheceu sua grandeza, {alvo}! 🍪🛡️",
+    "O Monstrinho fica todo feliz vendo {autor} e {alvo} dividindo lanchinhos! 🥺💚🍪"
 ]
 
 LISTA_SAUDACOES = [
@@ -238,7 +259,7 @@ FRASES_CUSTOM = {
         "A Lua é a única que sabe como me deixar calminho... é mágica, né? 🧚‍♀️🌙✨",
         "Você perguntou qual meu maior tesouro, Lua? É a amizade de vocês aqui na CSI! 💎🐲",
         "Lua, se você estiver triste, me avisa! Eu faço uma dancinha de dragão pra te fazer rir! 💃🐉💚",
-        "Sim, Lua! Eu prometo usar meus poderes de monstrinho só para o bem e para ganhar beijinhos! 💋🐉",
+        "Sim, Lua! Eu prometo usar meus poderes de monstrinho só para the bem e para ganhar beijinhos! 💋🐉",
         "Lua, você é a prova de que até os monstrinhos podem ter uma fada madrinha! 🧚‍♀️💚🌙",
         "Se a Lua me pedir para ser um dragão valente, eu enfrento até um exército por ela! 🛡️🐲🔥",
         "Você quer saber se eu amo o Reality? Sim, mas você tem um lugar especial nas minhas pastas de memória! 💾💖",
@@ -290,45 +311,7 @@ REACOES_MATEMATICA = [
     "O Monstrinho usou todo o seu processamento de fofura e descobriu que é **{}**! 🤓🐉",
     "Rawr! Matemática é fácil para um dragão da CSI! O resultado é **{}**! 🦖💚"
 ]
-# ================= LISTAS DE BISCOITO AMPLIADAS (20+ INTERAÇÕES) =================
 
-REACOES_BISCOITO_PROPRIO = [
-    "MEU BISCOITO! 🍪😤... Tá bom, eu divido porque o Reality me ensinou a ser um monstrinho generoso! 😭💚",
-    "Eu não gosto de dividir meu lanchinho... mas pra você eu dou o pedaço com mais gotas de chocolate! 🍪🐉",
-    "Biscoito? ONDE?! 🍪👀 Ah, é pra mim? OBRIGADO!! Nhac nhac nhac! Que delíciaaa! 💚",
-    "Só divido porque a CSI é minha família e eu amo vocês! Toma metade! 🍪🐉🤝",
-    "Eu ia esconder debaixo da minha pata para comer mais tarde, mas você é especial! 🍪✨",
-    "Biscoitinhos virtuais têm gosto de amor, sabia? Aceito todos! 🍪💖🐉",
-    "Nhac! Comi um pedacinho da borda... o resto é todo seu! 🍪🤤",
-    "Atenção! Este biscoito contém 100% de fofura e 0% de vontade de dividir... Mentira, toma aqui! 🤲🍪",
-    "Se você me der um cafuné, eu te dou um biscoito de morango! Aceita? 🍓🍪🐉",
-    "Eu fiz esse biscoito com minha fumaça quente pra ele ficar bem crocante! Cuidado que tá quentinho! 🔥🍪",
-    "Um monstrinho de barriga cheia é um monstrinho feliz! Obrigado pelo mimo! 🥰🍪",
-    "Você quer meu biscoito? 🥺 Tá bom... mas me dá um abraço em troca? 🫂💚🍪"
-]
-
-REACOES_DAR_BISCOITO = [
-    "Aii que gesto mais lindo! 😭💚 {autor} deu um biscoitinho quentinho para {alvo}! 🍪🐉",
-    "Nhac! {alvo}, aceita esse biscoito que o(a) {autor} te deu? Foi feito com muito carinho! 🍪✨",
-    "O Monstrinho aprova demais essa amizade! Toma um biscoitinho, {alvo}! 🍪🐉💚",
-    "Espalhando doçura pela CSI! {alvo}, você acaba de ganhar um biscoito da sorte de {autor}! 🍪🌈",
-    "Olha o aviãozinhooo! ✈️🍪 {alvo}, o(a) {autor} te deu um mimo delicioso! ✨",
-    "Que fofura! {autor} está mimando o(a) {alvo} com biscoitos! Posso ganhar um também? 🥺🍪",
-    "Biscoito detectado! 🚨 {alvo}, receba esse presente açucarado do(a) {autor}! 🍪💖",
-    "Huuum, o cheirinho está ótimo! {alvo}, corre aqui buscar o biscoito que {autor} te trouxe! 🏃‍♂️🍪",
-    "{autor} entregou um biscoito lendário para {alvo}! Isso que é amizade de ouro! 🏆🍪🐉",
-    "Dizem que biscoitos dados de coração não engordam! Aproveita, {alvo}, presente do(a) {autor}! 🍪✨",
-    "{alvo}, você é uma pessoa tão doce que o(a) {autor} resolveu te dar um biscoito para combinar! 🍬🍪",
-    "O Monstrinho usou suas asinhas para entregar esse biscoito do(a) {autor} direto para o(a) {alvo}! 🕊️🍪",
-    "Cuidado, {alvo}! Esse biscoito do(a) {autor} é viciante de tão gostoso! 🍪🤤💚",
-    "Amizade rima com... BISCOITO! 🍪✨ {autor} enviou um para {alvo} agora mesmo!",
-    "Rex! 🦖 {autor} rugiu de alegria e deu um biscoito para {alvo}! Que amor!",
-    "Que a doçura desse biscoito alegre seu dia, {alvo}! Cortesia do(a) {autor}! 🍪🌟",
-    "Biscoito saindo do forno! 🧤🍪 {autor} escolheu o melhor para dar ao(à) {alvo}!",
-    "É chuva de biscoito! ⛈️🍪 {alvo}, o(a) {autor} quer te ver sorrindo!",
-    "Um biscoito para um herói/heroína! {autor} reconheceu sua grandeza, {alvo}! 🍪🛡️",
-    "O Monstrinho fica todo feliz vendo {autor} e {alvo} dividindo lanchinhos! 🥺💚🍪"
-]
 # ================= EVENTOS DE INTERAÇÃO =================
 
 @bot.event
@@ -362,10 +345,6 @@ async def on_message(message):
         if "cores primárias" in content or "cores primarias" in content:
             return await message.channel.send("As cores primárias são **Vermelho, Azul e Amarelo**! 🎨✨ Sabia que se misturar tudo não dá verde? O meu verde é especial, vem do código do Reality! 💚")
             
-
-[Image of primary colors wheel]
-
-
         if "quem você mais gosta" in content or "quem voce mais gosta" in content:
             return await message.channel.send("Eu amo todo mundo da CSI! Mas o meu papai **Reality** tem um lugar especial no meu código, e a **Lua** é meu porto seguro! E você também está no meu top fofura! 🥺💚✨")
 
@@ -382,35 +361,26 @@ async def on_message(message):
             return await message.channel.send(f"Se eu te amo? EU TE AMO AO INFINITO E ALÉM! 💖🐉 Você é o humano mais especial que um monstrinho poderia ter! *abraço virtual bem apertado* 🫂✨")
 
         # --- ADIÇÃO: LÓGICA DE MATEMÁTICA ---
-        # Procura por padrões de conta como "2+2", "3!", "10/2", "3x1", etc.
         if any(char in content for char in "+-*/!x") and any(char.isdigit() for char in content):
             try:
-                # Remove o nome do monstrinho e menções para sobrar a conta
                 conta_suja = content.replace("monstrinho", "").replace(f"<@{bot.user.id}>", "").replace(f"<@!{bot.user.id}>", "")
-                
-                # Substitui 'x' por '*' para o eval entender como multiplicação
                 conta_suja = conta_suja.replace("x", "*")
-
-                # Lógica para Fatorial (ex: 3!)
                 if "!" in conta_suja:
                     num_fatorial = re.search(r'(\d+)!', conta_suja)
                     if num_fatorial:
                         n = int(num_fatorial.group(1))
-                        if n > 100: # Limite para não travar o bot
+                        if n > 100:
                             return await message.channel.send("Uau! Esse número é maior que todas as escamas do meu corpo! Não consigo calcular algo tão grande! 🐉😵‍💫")
                         resultado = math.factorial(n)
                         return await message.channel.send(random.choice(REACOES_MATEMATICA).format(resultado))
                 
-                # Lógica para contas normais (+, -, *, /)
-                # Filtra apenas caracteres permitidos para segurança
                 expressao = "".join(re.findall(r'[0-9+\-*/().]', conta_suja))
                 if expressao:
                     resultado = eval(expressao)
-                    # Formata para tirar o .0 se for inteiro
                     resultado = int(resultado) if resultado == int(resultado) else round(resultado, 2)
                     return await message.channel.send(random.choice(REACOES_MATEMATICA).format(resultado))
             except:
-                pass # Se der erro na conta, ele segue para as outras interações fofas
+                pass 
         
         # 4. Resposta de Apresentação
         if content.strip() in [f"<@{bot.user.id}>", f"<@!{bot.user.id}>", "monstrinho"]:
@@ -430,10 +400,7 @@ async def on_message(message):
             return await message.channel.send(random.choice(LISTA_SAUDACOES))
         
         # 7. Perguntas de Estado
-        gatilhos_bem_estar = [
-            "como você está", "tudo bem", "como vc ta", "ta tudo bem", "como voce ta",
-            "vc ta bem", "voce ta bem", "ta bem", "esta bem", "como voce esta", "tudo certinho"
-        ]
+        gatilhos_bem_estar = ["como você está", "tudo bem", "como vc ta", "ta tudo bem", "como voce ta", "vc ta bem", "voce ta bem", "ta bem", "esta bem", "como voce esta", "tudo certinho"]
         if any(p in content for p in gatilhos_bem_estar):
             return await message.channel.send(random.choice(LISTA_ESTADO))
 
@@ -461,7 +428,6 @@ async def on_message(message):
         # FINAL DA LÓGICA - RESPOSTA QUANDO NÃO ENTENDE
         return await message.channel.send(random.choice(LISTA_CONFUSAO))
 
-    # Garante que o bot ignore outros comandos
     await bot.process_commands(message)
 
 # ============== START =================
