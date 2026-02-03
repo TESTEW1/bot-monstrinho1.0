@@ -290,7 +290,45 @@ REACOES_MATEMATICA = [
     "O Monstrinho usou todo o seu processamento de fofura e descobriu que é **{}**! 🤓🐉",
     "Rawr! Matemática é fácil para um dragão da CSI! O resultado é **{}**! 🦖💚"
 ]
+# ================= LISTAS DE BISCOITO AMPLIADAS (20+ INTERAÇÕES) =================
 
+REACOES_BISCOITO_PROPRIO = [
+    "MEU BISCOITO! 🍪😤... Tá bom, eu divido porque o Reality me ensinou a ser um monstrinho generoso! 😭💚",
+    "Eu não gosto de dividir meu lanchinho... mas pra você eu dou o pedaço com mais gotas de chocolate! 🍪🐉",
+    "Biscoito? ONDE?! 🍪👀 Ah, é pra mim? OBRIGADO!! Nhac nhac nhac! Que delíciaaa! 💚",
+    "Só divido porque a CSI é minha família e eu amo vocês! Toma metade! 🍪🐉🤝",
+    "Eu ia esconder debaixo da minha pata para comer mais tarde, mas você é especial! 🍪✨",
+    "Biscoitinhos virtuais têm gosto de amor, sabia? Aceito todos! 🍪💖🐉",
+    "Nhac! Comi um pedacinho da borda... o resto é todo seu! 🍪🤤",
+    "Atenção! Este biscoito contém 100% de fofura e 0% de vontade de dividir... Mentira, toma aqui! 🤲🍪",
+    "Se você me der um cafuné, eu te dou um biscoito de morango! Aceita? 🍓🍪🐉",
+    "Eu fiz esse biscoito com minha fumaça quente pra ele ficar bem crocante! Cuidado que tá quentinho! 🔥🍪",
+    "Um monstrinho de barriga cheia é um monstrinho feliz! Obrigado pelo mimo! 🥰🍪",
+    "Você quer meu biscoito? 🥺 Tá bom... mas me dá um abraço em troca? 🫂💚🍪"
+]
+
+REACOES_DAR_BISCOITO = [
+    "Aii que gesto mais lindo! 😭💚 {autor} deu um biscoitinho quentinho para {alvo}! 🍪🐉",
+    "Nhac! {alvo}, aceita esse biscoito que o(a) {autor} te deu? Foi feito com muito carinho! 🍪✨",
+    "O Monstrinho aprova demais essa amizade! Toma um biscoitinho, {alvo}! 🍪🐉💚",
+    "Espalhando doçura pela CSI! {alvo}, você acaba de ganhar um biscoito da sorte de {autor}! 🍪🌈",
+    "Olha o aviãozinhooo! ✈️🍪 {alvo}, o(a) {autor} te deu um mimo delicioso! ✨",
+    "Que fofura! {autor} está mimando o(a) {alvo} com biscoitos! Posso ganhar um também? 🥺🍪",
+    "Biscoito detectado! 🚨 {alvo}, receba esse presente açucarado do(a) {autor}! 🍪💖",
+    "Huuum, o cheirinho está ótimo! {alvo}, corre aqui buscar o biscoito que {autor} te trouxe! 🏃‍♂️🍪",
+    "{autor} entregou um biscoito lendário para {alvo}! Isso que é amizade de ouro! 🏆🍪🐉",
+    "Dizem que biscoitos dados de coração não engordam! Aproveita, {alvo}, presente do(a) {autor}! 🍪✨",
+    "{alvo}, você é uma pessoa tão doce que o(a) {autor} resolveu te dar um biscoito para combinar! 🍬🍪",
+    "O Monstrinho usou suas asinhas para entregar esse biscoito do(a) {autor} direto para o(a) {alvo}! 🕊️🍪",
+    "Cuidado, {alvo}! Esse biscoito do(a) {autor} é viciante de tão gostoso! 🍪🤤💚",
+    "Amizade rima com... BISCOITO! 🍪✨ {autor} enviou um para {alvo} agora mesmo!",
+    "Rex! 🦖 {autor} rugiu de alegria e deu um biscoito para {alvo}! Que amor!",
+    "Que a doçura desse biscoito alegre seu dia, {alvo}! Cortesia do(a) {autor}! 🍪🌟",
+    "Biscoito saindo do forno! 🧤🍪 {autor} escolheu o melhor para dar ao(à) {alvo}!",
+    "É chuva de biscoito! ⛈️🍪 {alvo}, o(a) {autor} quer te ver sorrindo!",
+    "Um biscoito para um herói/heroína! {autor} reconheceu sua grandeza, {alvo}! 🍪🛡️",
+    "O Monstrinho fica todo feliz vendo {autor} e {alvo} dividindo lanchinhos! 🥺💚🍪"
+]
 # ================= EVENTOS DE INTERAÇÃO =================
 
 @bot.event
