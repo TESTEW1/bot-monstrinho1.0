@@ -260,7 +260,7 @@ FRASES_CUSTOM = {
         "Destiny, você é a peça que faz nosso quebra-cabeça ser perfeito! 🧩💚",
         "Salve, grande Destiny! O Monstrinho faz uma dancinha toda vez que você chega! 🐉✨",
         "Destiny, você é the herói de escamas verdes honorário! 🛡️💚🐉",
-        "O destino brilhou mais forte today porque você decidiu aparecer! ✨🐲",
+        "O destino brilhou mais forte today because você decidiu aparecer! ✨🐲",
         "Você é pura luz, Destiny! 🌟🐉"
     ],
     "jeff": [
@@ -317,6 +317,32 @@ async def on_message(message):
         if any(p in content for p in ["amigo", "amiguinho", "amizade"]):
             return await message.channel.send(f"EU QUERO MUITO SER SEU AMIGUINHO! 😭💚 {message.author.mention}, agora somos melhores amigos para sempre! Vou guardar um lugar pra você no meu ninho de nuvens! ✨🐉")
 
+        # 3. Novas perguntas adicionadas:
+        if "quer aprender sobre" in content:
+            return await message.channel.send("Eu quero aprender tudo sobre como ser o dragão mais fofo do universo e como ganhar infinitos biscoitos do Reality! 📚🍪🐉")
+        
+        if "cores primárias" in content or "cores primarias" in content:
+            return await message.channel.send("As cores primárias são **Vermelho, Azul e Amarelo**! 🎨✨ Sabia que se misturar tudo não dá verde? O meu verde é especial, vem do código do Reality! 💚")
+            
+
+[Image of primary colors wheel]
+
+
+        if "quem você mais gosta" in content or "quem voce mais gosta" in content:
+            return await message.channel.send("Eu amo todo mundo da CSI! Mas o meu papai **Reality** tem um lugar especial no meu código, e a **Lua** é meu porto seguro! E você também está no meu top fofura! 🥺💚✨")
+
+        if "va embora" in content or "vá embora" in content or "vai embora" in content:
+            return await message.channel.send("Ir embora? Jamais! 😭 Eu vou ficar aqui grudadinho em você igual um chiclete verde! Você não se livra da minha fofura tão fácil! 💚🐉")
+
+        if "eclipse" in content:
+            return await message.channel.send("A **Eclipse**? Ela é incrível! Uma estrela que brilha muito aqui na nossa família! Eu adoro o jeitinho dela! ✨🌑💚")
+
+        if "quem é babis" in content or "quem e babis" in content:
+            return await message.channel.send("A **Babis** é uma pessoa maravilhosa da nossa família CSI! O Monstrinho adora ver ela por aqui, traz sempre uma energia ótima! 🌸🐉")
+
+        if any(p in content for p in ["me ama", "mim ama", "vc me ama"]):
+            return await message.channel.send(f"Se eu te amo? EU TE AMO AO INFINITO E ALÉM! 💖🐉 Você é o humano mais especial que um monstrinho poderia ter! *abraço virtual bem apertado* 🫂✨")
+
         # --- ADIÇÃO: LÓGICA DE MATEMÁTICA ---
         # Procura por padrões de conta como "2+2", "3!", "10/2", "3x1", etc.
         if any(char in content for char in "+-*/!x") and any(char.isdigit() for char in content):
@@ -348,7 +374,7 @@ async def on_message(message):
             except:
                 pass # Se der erro na conta, ele segue para as outras interações fofas
         
-        # 3. Resposta de Apresentação
+        # 4. Resposta de Apresentação
         if content.strip() in [f"<@{bot.user.id}>", f"<@!{bot.user.id}>", "monstrinho"]:
             apresentacao = (f"🐉 **OIIIII MEU AMOOOOR! CHAMOU O MONSTRINHO?** 💚✨\n\n"
                             f"Eu sou o **Monstrinho 1.0**, o mascote oficial e protetor de fofuras da **CSI**! 🕵️‍♂️💚\n"
@@ -356,16 +382,16 @@ async def on_message(message):
                             f"✨ *CSI é meu lar, vocês são minha família e o Reality é meu mestre!* ✨")
             return await message.channel.send(apresentacao)
 
-        # 4. Respostas Customizadas para Membros Específicos
+        # 5. Respostas Customizadas para Membros Específicos
         for nome, frases in FRASES_CUSTOM.items():
             if nome in content:
                 return await message.channel.send(random.choice(frases))
 
-        # 5. Saudações
+        # 6. Saudações
         if any(p in content for p in ["oi", "oie", "bom dia", "boa tarde", "boa noite", "hello", "hii", "oiii"]):
             return await message.channel.send(random.choice(LISTA_SAUDACOES))
         
-        # 6. Perguntas de Estado
+        # 7. Perguntas de Estado
         gatilhos_bem_estar = [
             "como você está", "tudo bem", "como vc ta", "ta tudo bem", "como voce ta",
             "vc ta bem", "voce ta bem", "ta bem", "esta bem", "como voce esta", "tudo certinho"
@@ -373,11 +399,11 @@ async def on_message(message):
         if any(p in content for p in gatilhos_bem_estar):
             return await message.channel.send(random.choice(LISTA_ESTADO))
 
-        # 7. Verificação de Presença
+        # 8. Verificação de Presença
         if any(p in content for p in ["ta ai", "tá aí", "ta on", "esta ai", "você está ai"]):
             return await message.channel.send(random.choice(LISTA_PRESENCA))
 
-        # 8. Lógica de Biscoitos
+        # 9. Lógica de Biscoitos
         if "biscoito" in content:
             if any(p in content for p in ["me de", "me da", "quero", "ganhar"]):
                 return await message.channel.send(random.choice(REACOES_BISCOITO_PROPRIO))
@@ -386,11 +412,11 @@ async def on_message(message):
                 alvo = outras_mencoes[0].mention if outras_mencoes else "alguém especial que está lendo isso"
                 return await message.channel.send(random.choice(REACOES_DAR_BISCOITO).format(autor=message.author.mention, alvo=alvo))
         
-        # 9. Declarações de Amor e Elogios
+        # 10. Declarações de Amor e Elogios
         if any(p in content for p in ["te amo", "amo voce", "fofo", "lindo", "fofinho", "perfeito", "fofura"]):
             return await message.channel.send(random.choice(REACOES_FOFAS))
         
-        # 10. Menção ao Criador
+        # 11. Menção ao Criador
         if "reality" in content:
             return await message.channel.send("O Reality é meu papai mestre! Ele me deu vida e eu sou o dragãozinho mais grato do mundo! 👑🐉💚")
 
