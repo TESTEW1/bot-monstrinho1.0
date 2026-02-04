@@ -174,7 +174,7 @@ FRASES_CUSTOM = {
         "Akeido, você transforma sonhos em realidade aqui dentro! 🌟🐲",
         "Quando o Akeido fala, até o vento para pra escutar! 🐉🍃✨",
         "Akeido, sua sabedoria é maior que qualquer montanha! 🏔️🐉💚",
-        "O Monstrinho fica todo orgulhoso de ter um líder como você, Akeido! 🥰🐉",
+        "O Monstrinho fica todo orgulhoso de tener um líder como você, Akeido! 🥰🐉",
         "Akeido, trouxe o tesouro mais raro: minha amizade eterna! 💎🐉",
         "O Akeido tem o poder de deixar todo mundo motivado! 🚀💚",
         "Akeido, você é a base que sustenta nossa família CSI! 🏛️💚",
@@ -323,7 +323,7 @@ REACOES_MATEMATICA = [
     "Papai Reality me ensinou que números são como mágica! 🪄✨ O resultado deu **{}**! Nhac!",
     "Fiz as contas aqui com minha fumaça verde e deu **{}**! 💨💚 Gostou?",
     "O Monstrinho usou todo o seu processamento de fofura e descobriu que é **{}**! 🤓🐉",
-    "Rawr! Matemática é fácil para um dragão da CSI! O resultado é **{}**! 🦖💚"
+    "Rawr! Matemática é fácil para um dragão da CSI! O resultado é **{}**! Rex💚"
 ]
 
 # ================= EVENTOS DE INTERAÇÃO =================
@@ -340,6 +340,15 @@ async def on_message(message):
     if message.author.bot: return
 
     content = message.content.lower()
+
+    # --- NOVIDADE: DETECTAR MENÇÃO DIRETA À LUA ---
+    # Substitua 'ID_DA_LUA' pelo ID real dela para funcionar mesmo sem o nome dela na mensagem
+    ID_DA_LUA = "1090333792080085073" # Exemplo de ID, ajuste se necessário
+    if f"<@{ID_DA_LUA}>" in content or f"<@!{ID_DA_LUA}>" in content:
+        msg_lua = "O Monstrinho sentiu uma presença iluminada! ✨ A Lua está sendo invocada! Que momento mais fofo e especial! 🌙🐉💚"
+        gif_lua = "https://media.tenor.com/BVQmZqLF76AAAAAM/plug-shoebody-bop.gif"
+        await message.channel.send(msg_lua)
+        return await message.channel.send(gif_lua)
 
     # --- REAÇÃO AO SER MENCIONADO OU CHAMADO PELO NOME ---
     if bot.user in message.mentions or "monstrinho" in content:
