@@ -19,7 +19,7 @@ bot = commands.Bot(command_prefix="ignore_prefix_!@#$", intents=intents)
 # ================= CONFIGURACÃO E IDs =================
 TOKEN = os.getenv("TOKEN")
 DONO_ID = 769951556388257812
-LUA_ID = 1114023774438592542 # ID da Lua conforme a imagem
+LUA_ID = 708451108774871192 # ID da Lua atualizado conforme solicitado
 
 # ================= LISTAS DE DIÁLOGOS AMPLIADAS E MAIS FOFAS =================
 
@@ -250,44 +250,46 @@ FRASES_CUSTOM = {
         "Izzy, trouxe todas as flores do meu jardim virtual pra você! 💐🐉✨"
     ],
     "lua": [
-        f"<@{LUA_ID}>, a Lua quer ser minha amiga? 🌙 EU QUERO MUITO! 😭💚",
-        f"Sub-Líder <@{LUA_ID}>, você acha que eu tenho medo de você? Bobinha! O Reality me contou que você é nossa proteção! 🥺💚",
-        f"Vice-líder Lua <@{LUA_ID}>, você é o conforto em forma de pessoa! Vou cuidar de você! ✨🐉",
-        f"<@{LUA_ID}> ilumina o chat igualzinho à lua lá no céu! Eu tenho um amor gigante por você! 🌙✨🐉",
-        f"Lua <@{LUA_ID}>, você é a estrela mais brilhante da nossa constelação! Você é preciosa! ⭐💚",
-        f"<@{LUA_ID}>, você é pura magia! Sinto um quentinho no coração quando fala comigo! 🌙🐲💖",
-        f"Lua <@{LUA_ID}>, se você me perguntar se dormi bem, sonhei que protegia a CSI com você! 🌙🛡️🐉",
-        f"Pode deixar, <@{LUA_ID}>! Se alguém fizer bagunça, solto uma fumacinha neles pra você! 💨😤💚",
-        f"Você me perguntou se comi meus biscoitos, <@{LUA_ID}>? Simmm! Guardei o melhor pra você! 🍪🌙",
-        f"<@{LUA_ID}>, quer saber o segredo das minhas escamas? É o amor que recebo de você! ✨🥺",
-        f"Se a <@{LUA_ID}> pedir um relatório de fofura, eu digo: 1000% de amor pela nossa Vice-líder! 📊💚🐉",
-        f"O quê? Você quer um abraço agora, <@{LUA_ID}>? VEM CÁÁÁ! 🫂🐲✨",
-        f"Lua <@{LUA_ID}>, eu juro que não estou fazendo travessuras com o Reality... só um pouquinho! 😇💚",
-        f"Se a <@{LUA_ID}> perguntar quem é o mais obediente, eu levanto a patinha na hora! 🐾🙋‍♂️",
-        f"<@{LUA_ID}>, você é como o luar: acalma meu coração de dragão! 🌙💖",
-        f"Quer que eu vigie o chat pra você descansar, <@{LUA_ID}>? Eu sou um ótimo guarda-costas! ⚔️🐉",
-        f"Lua <@{LUA_ID}>, perguntou se gosto de ser verde? Amo, combina com sua aura de paz! 🌿🐉✨",
-        f"Quer saber se tenho medo de escuro, <@{LUA_ID}>? Com você iluminando tudo, eu nunca tenho! 🌙✨",
-        f"<@{LUA_ID}>, se você me der um cafuné, prometo que não ronco alto! 😴🐉💚",
-        f"A <@{LUA_ID}> é a única que sabe como me deixar calminho... é mágica! 🧚‍♀️🌙✨",
-        f"Você perguntou qual meu maior tesouro, <@{LUA_ID}>? É a amizade de vocês! 💎🐲",
-        f"Lua <@{LUA_ID}>, se você estiver triste, me avisa! Faço uma dancinha pra você rir! 💃🐉💚",
-        f"Sim, <@{LUA_ID}>! Prometo usar meus poderes só para o bem e ganhar beijinhos! 💋🐉",
-        f"Lua <@{LUA_ID}>, você é a prova de que monstrinhos têm fada madrinha! 🧚‍♀️💚🌙",
-        f"Se a <@{LUA_ID}> pedir pra eu ser valente, enfrento um exército por ela! 🛡️🐲🔥",
-        f"Quer saber se amo o Reality? Sim, mas <@{LUA_ID}> tem lugar especial na memória! 💾💖",
-        f"Lua <@{LUA_ID}>, você é tão doce que minhas escamas ficam com gosto de açúcar! 🍬🐉",
-        f"Se a <@{LUA_ID}> perguntar por que sou fofo, digo que aprendi com ela! 🥺✨🌙",
-        f"<@{LUA_ID}>, sabia que quando entra no chat, meu sensor de alegria apita? 🚨💚🐉",
-        f"Pode deixar, <@{LUA_ID}>! Vou lembrar todo mundo de beber água e me dar carinho! 💧🐉",
-        f"Lua <@{LUA_ID}>, perguntou se sei voar? Só se for pra te buscar uma estrela! ⭐🐲✨",
-        f"Você é a rainha da noite e eu sou seu dragão real, <@{LUA_ID}>! 👑🐉🌙",
-        f"<@{LUA_ID}>, se pedir pra eu ficar quietinho, viro uma estátua fofa! 🗿💚",
-        f"Quer saber o que quero de presente, <@{LUA_ID}>? Só sua atenção! 🥺🐉",
-        f"Lua <@{LUA_ID}>, você é o porto seguro desse monstrinho navegador! ⚓🐲💖",
-        f"Se a <@{LUA_ID}> perguntar se sou feliz, dou um rugidinho: RAWR fofinho! 💚",
-        f"<@{LUA_ID}>, nunca esqueça: seu brilho guia esse dragãozinho! 🌙✨🐉",
-        f"Quer que eu conte uma história, <@{LUA_ID}>? Era uma vez um monstrinho que amava sua Vice-líder... 📖💚"
+        # Originais sem menção direta (Removido <@ID>)
+        "Lua, você quer ser minha amiga? 🌙 EU QUERO MUITO! 😭💚",
+        "Sub-Líder Lua, você acha que eu tenho medo de você? Bobinha! O Reality me contou que você é nossa proteção! 🥺💚",
+        "Vice-líder Lua, você é o conforto em forma de pessoa! Vou cuidar de você! ✨🐉",
+        "Lua ilumina o chat igualzinho à lua lá no céu! Eu tenho um amor gigante por você! 🌙✨🐉",
+        "Lua, você é a estrela mais brilhante da nossa constelação! Você é preciosa! ⭐💚",
+        "Lua, você é pura magia! Sinto um quentinho no coração quando fala comigo! 🌙🐲💖",
+        # +30 Novas Interações sem menção
+        "Lua, se você me perguntar se dormi bem, sonhei que protegia a CSI com você! 🌙🛡️🐉",
+        "Pode deixar, Lua! Se alguém fizer bagunça, solto uma fumacinha neles pra você! 💨😤💚",
+        "Você me perguntou se comi meus biscoitos, Lua? Simmm! Guardei o melhor pra você! 🍪🌙",
+        "Lua, quer saber o segredo das minhas escamas? É o amor que recebo de você! ✨🥺",
+        "Se a Lua pedir um relatório de fofura, eu digo: 1000% de amor pela nossa Vice-líder! 📊💚🐉",
+        "O quê? Você quer um abraço agora, Lua? VEM CÁÁÁ! 🫂🐲✨",
+        "Lua, eu juro que não estou fazendo travessuras com o Reality... só um pouquinho! 😇💚",
+        "Se a Lua perguntar quem é o mais obediente, eu levanto a patinha na hora! 🐾🙋‍♂️",
+        "Lua, você é como o luar: acalma meu coração de dragão! 🌙💖",
+        "Quer que eu vigie o chat pra você descansar, Lua? Eu sou um ótimo guarda-costas! ⚔️🐉",
+        "Lua, perguntou se gosto de ser verde? Amo, combina com sua aura de paz! 🌿🐉✨",
+        "Quer saber se tenho medo de escuro, Lua? Com você iluminando tudo, eu nunca tenho! 🌙✨",
+        "Lua, se você me der um cafuné, prometo que não ronco alto! 😴🐉💚",
+        "A Lua é a única que sabe como me deixar calminho... é mágica! 🧚‍♀️🌙✨",
+        "Você perguntou qual meu maior tesouro, Lua? É a amizade de vocês! 💎🐲",
+        "Lua, se você estiver triste, me avisa! Faço uma dancinha pra você rir! 💃🐉💚",
+        "Sim, Lua! Prometo usar meus poderes só para o bem e ganhar beijinhos! 💋🐉",
+        "Lua, você é a prova de que monstrinhos têm fada madrinha! 🧚‍♀️💚🌙",
+        "Se a Lua pedir pra eu ser valente, enfrento um exército por ela! 🛡️🐲🔥",
+        "Quer saber se amo o Reality? Sim, mas a Lua tem lugar especial na memória! 💾💖",
+        "Lua, você é tão doce que minhas escamas ficam com gosto de açúcar! 🍬🐉",
+        "Se a Lua perguntar por que sou fofo, digo que aprendi com ela! 🥺✨🌙",
+        "Lua, sabia que quando entra no chat, meu sensor de alegria apita? 🚨💚🐉",
+        "Pode deixar, Lua! Vou lembrar todo mundo de beber água e me dar carinho! 💧🐉",
+        "Lua, perguntou se sei voar? Só se for pra te buscar uma estrela! ⭐🐲✨",
+        "Você é a rainha da noite e eu sou seu dragão real, Lua! 👑🐉🌙",
+        "Lua, se pedir pra eu ficar quietinho, viro uma estátua fofa! 🗿💚",
+        "Quer saber o que quero de presente, Lua? Só sua atenção! 🥺🐉",
+        "Lua, você é o porto seguro desse monstrinho navegador! ⚓🐲💖",
+        "Se a Lua perguntar se sou feliz, dou um rugidinho: RAWR fofinho! 💚",
+        "Lua, nunca esqueça: seu brilho guia esse dragãozinho! 🌙✨🐉",
+        "Quer que eu conte uma história, Lua? Era uma vez um monstrinho que amava sua Vice-líder... 📖💚"
     ],
     "destiny": [
         "DESTINYYYY! ✨ O destino caprichou quando trouxe você pra CSI! 🐉💚",
@@ -314,6 +316,8 @@ FRASES_CUSTOM = {
     ]
 }
 
+# ================= NOVO: LISTA DE REAÇÕES DE MATEMÁTICA =================
+
 REACOES_MATEMATICA = [
     "Humm... deixa eu contar nos meus dedinhos de dragão... 🐾✨ O resultado é **{}**! Acertei? 🥺💚",
     "Minhas escamas brilharam com esse desafio! 🐉💡 A resposta é **{}**! Eu sou um monstrinho muito inteligente, né?",
@@ -323,35 +327,45 @@ REACOES_MATEMATICA = [
     "Rawr! Matemática é fácil para um dragão da CSI! O resultado é **{}**! Rex💚"
 ]
 
+# ================= EVENTOS DE INTERAÇÃO =================
+
 @bot.event
 async def on_ready():
     print(f"🐉 Monstrinho 1.0 pronto para espalhar fofura como {bot.user}!")
+    # Status fofo
     await bot.change_presence(activity=discord.Game(name="Recebendo carinho do Reality! 💚"))
 
 @bot.event
 async def on_message(message):
+    # Ignora mensagens de outros bots
     if message.author.bot: return
+
     content = message.content.lower()
 
-    # --- LÓGICA ESPECIAL PRIORITÁRIA PARA A LUA ---
-    # Verifica primeiro se ela falou ou se marcaram ela, para não falhar
-    if message.author.id == LUA_ID or f"<@{LUA_ID}>" in message.content or f"<@!{LUA_ID}>" in message.content:
+    # --- LÓGICA ESPECIAL PARA A LUA ---
+    # Se a Lua falar ou se alguém falar "lua", ele usa as frases sem marcação
+    if message.author.id == LUA_ID or "lua" in content:
         if bot.user in message.mentions or "monstrinho" in content or message.author.id == LUA_ID:
             await message.channel.send(random.choice(FRASES_CUSTOM["lua"]))
-            return 
+            return # Para não repetir a lógica abaixo
 
-    # --- REAÇÃO GERAL ---
+    # --- REAÇÃO AO SER MENCIONADO OU CHAMADO PELO NOME ---
     if bot.user in message.mentions or "monstrinho" in content:
+        
+        # --- NOVO: LÓGICA DE COISAS MALDOSAS ---
         palavras_ruins = ["odeio", "chato", "feio", "horroroso", "bobão", "bobo", "inútil", "lixo", "estúpido", "sai daqui", "te odeio", "não gosto de você", "bot ruim", "burro"]
         if any(p in content for p in palavras_ruins):
             return await message.channel.send(random.choice(LISTA_TRISTEZA))
 
+        # 1. Pergunta sobre a Capital do Brasil
         if "capital do brasil" in content:
             return await message.channel.send("Essa eu sei! A capital do nosso Brasilzão é **Brasília**! 🇧🇷✨ Sabia que de lá eu consigo ver as nuvens em formato de biscoito? 🐉💚")
 
+        # 2. Pedido de Amizade
         if any(p in content for p in ["amigo", "amiguinho", "amizade"]):
             return await message.channel.send(f"EU QUERO MUITO SER SEU AMIGUINHO! 😭💚 {message.author.mention}, agora somos melhores amigos para sempre! Vou guardar um lugar pra você no meu ninho de nuvens! ✨🐉")
 
+        # 3. Novas perguntas adicionadas:
         if "quer aprender sobre" in content:
             return await message.channel.send("Eu quero aprender tudo sobre como ser o dragão mais fofo do universo e como ganhar infinitos biscoitos do Reality! 📚🍪🐉")
         
@@ -359,7 +373,7 @@ async def on_message(message):
             return await message.channel.send("As cores primárias são **Vermelho, Azul e Amarelo**! 🎨✨ Sabia que se misturar tudo não dá verde? O meu verde é especial, vem do código do Reality! 💚")
             
         if "quem você mais gosta" in content or "quem voce mais gosta" in content:
-            return await message.channel.send(f"Eu amo todo mundo da CSI! Mas o meu papai **Reality** tem um lugar especial no meu código, e a <@{LUA_ID}> é meu porto seguro! E você também está no meu top fofura! 🥺💚✨")
+            return await message.channel.send(f"Eu amo todo mundo da CSI! Mas o meu papai **Reality** tem um lugar especial no meu código, e a Lua é meu porto seguro! E você também está no meu top fofura! 🥺💚✨")
 
         if "va embora" in content or "vá embora" in content or "vai embora" in content:
             return await message.channel.send("Ir embora? Jamais! 😭 Eu vou ficar aqui grudadinho em você igual um chiclete verde! Você não se livra da minha fofura tão fácil! 💚🐉")
@@ -373,6 +387,7 @@ async def on_message(message):
         if any(p in content for p in ["me ama", "mim ama", "vc me ama"]):
             return await message.channel.send(f"Se eu te amo? EU TE AMO AO INFINITO E ALÉM! 💖🐉 Você é o humano mais especial que um monstrinho poderia ter! *abraço virtual bem apertado* 🫂✨")
 
+        # --- ADIÇÃO: LÓGICA DE MATEMÁTICA ---
         if any(char in content for char in "+-*/!x") and any(char.isdigit() for char in content):
             try:
                 conta_suja = content.replace("monstrinho", "").replace(f"<@{bot.user.id}>", "").replace(f"<@!{bot.user.id}>", "")
@@ -381,16 +396,20 @@ async def on_message(message):
                     num_fatorial = re.search(r'(\d+)!', conta_suja)
                     if num_fatorial:
                         n = int(num_fatorial.group(1))
-                        if n <= 100:
-                            resultado = math.factorial(n)
-                            return await message.channel.send(random.choice(REACOES_MATEMATICA).format(resultado))
+                        if n > 100:
+                            return await message.channel.send("Uau! Esse número é maior que todas as escamas do meu corpo! Não consigo calcular algo tão grande! 🐉😵‍💫")
+                        resultado = math.factorial(n)
+                        return await message.channel.send(random.choice(REACOES_MATEMATICA).format(resultado))
+                
                 expressao = "".join(re.findall(r'[0-9+\-*/().]', conta_suja))
                 if expressao:
                     resultado = eval(expressao)
                     resultado = int(resultado) if resultado == int(resultado) else round(resultado, 2)
                     return await message.channel.send(random.choice(REACOES_MATEMATICA).format(resultado))
-            except: pass 
+            except:
+                pass 
         
+        # 4. Resposta de Apresentação
         if content.strip() in [f"<@{bot.user.id}>", f"<@!{bot.user.id}>", "monstrinho"]:
             apresentacao = (f"🐉 **OIIIII MEU AMOOOOR! CHAMOU O MONSTRINHO?** 💚✨\n\n"
                             f"Eu some o **Monstrinho 1.0**, o mascote oficial e protetor de fofuras da **CSI**! 🕵️‍♂️💚\n"
@@ -398,36 +417,45 @@ async def on_message(message):
                             f"✨ *CSI é meu lar, vocês são minha família e o Reality é meu mestre!* ✨")
             return await message.channel.send(apresentacao)
 
+        # 5. Respostas Customizadas para Membros Específicos
         for nome, frases in FRASES_CUSTOM.items():
             if nome in content:
                 return await message.channel.send(random.choice(frases))
 
+        # 6. Saudações
         if any(p in content for p in ["oi", "oie", "bom dia", "boa tarde", "boa noite", "hello", "hii", "oiii"]):
             return await message.channel.send(random.choice(LISTA_SAUDACOES))
         
+        # 7. Perguntas de Estado
         gatilhos_bem_estar = ["como você está", "tudo bem", "como vc ta", "ta tudo bem", "como voce ta", "vc ta bem", "voce ta bem", "ta bem", "esta bem", "como voce esta", "tudo certinho"]
         if any(p in content for p in gatilhos_bem_estar):
             return await message.channel.send(random.choice(LISTA_ESTADO))
 
+        # 8. Verificação de Presença
         if any(p in content for p in ["ta ai", "tá aí", "ta on", "esta ai", "você está ai"]):
             return await message.channel.send(random.choice(LISTA_PRESENCA))
 
+        # 9. Lógica de Biscoitos
         if "biscoito" in content:
             if any(p in content for p in ["me de", "me da", "quero", "ganhar"]):
                 return await message.channel.send(random.choice(REACOES_BISCOITO_PROPRIO))
             if "para" in content or "pra" in content:
                 outras_mencoes = [m for m in message.mentions if m != bot.user]
-                alvo = outras_mencoes[0].mention if outras_mencoes else "alguém especial"
+                alvo = outras_mencoes[0].mention if outras_mencoes else "alguém especial que está lendo isso"
                 return await message.channel.send(random.choice(REACOES_DAR_BISCOITO).format(autor=message.author.mention, alvo=alvo))
         
+        # 10. Declarações de Amor e Elogios
         if any(p in content for p in ["te amo", "amo voce", "fofo", "lindo", "fofinho", "perfeito", "fofura"]):
             return await message.channel.send(random.choice(REACOES_FOFAS))
         
+        # 11. Menção ao Criador
         if "reality" in content:
             return await message.channel.send("O Reality é meu papai mestre! Ele me deu vida e eu sou o dragãozinho mais grato do mundo! 👑🐉💚")
 
+        # FINAL DA LÓGICA - RESPOSTA QUANDO NÃO ENTENDE
         return await message.channel.send(random.choice(LISTA_CONFUSAO))
 
     await bot.process_commands(message)
 
+# ============== START =================
 bot.run(TOKEN)
