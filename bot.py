@@ -71,7 +71,7 @@ REACOES_DAR_BISCOITO = [
     "Rex! Rex! 🦖 {autor} rugiu de alegria e deu um biscoito para {alvo}! Que amor!",
     "Que a doçura desse biscoito alegre seu dia, {alvo}! Cortesia do(a) {autor}! 🍪🌟",
     "Biscoito saindo do forno! 🧤🍪 {autor} escolheu o melhor para dar ao(à) {alvo}!",
-    "É chuva de biscoito! ⛈️🍪 {alvo}, o(a) {autor} quer te ver sorrindo!",
+    "É chuva de biscoito! ⛈️🍪 {alvo}, o(a) {autor} want você ver sorrindo!",
     "Um biscoito para um herói/heroína! {autor} reconheceu sua grandeza, {alvo}! 🍪🛡️",
     "O Monstrinho fica todo feliz vendo {autor} e {alvo} dividindo lanchinhos! 🥺💚🍪"
 ]
@@ -250,14 +250,12 @@ FRASES_CUSTOM = {
         "Izzy, trouxe todas as flores do meu jardim virtual pra você! 💐🐉✨"
     ],
     "lua": [
-        # Originais sem menção direta (Removido <@ID>)
         "Lua, você quer ser minha amiga? 🌙 EU QUERO MUITO! 😭💚",
         "Sub-Líder Lua, você acha que eu tenho medo de você? Bobinha! O Reality me contou que você é nossa proteção! 🥺💚",
         "Vice-líder Lua, você é o conforto em forma de pessoa! Vou cuidar de você! ✨🐉",
         "Lua ilumina o chat igualzinho à lua lá no céu! Eu tenho um amor gigante por você! 🌙✨🐉",
         "Lua, você é a estrela mais brilhante da nossa constelação! Você é preciosa! ⭐💚",
         "Lua, você é pura magia! Sinto um quentinho no coração quando fala comigo! 🌙🐲💖",
-        # +30 Novas Interações sem menção
         "Lua, se você me perguntar se dormi bem, sonhei que protegia a CSI com você! 🌙🛡️🐉",
         "Pode deixar, Lua! Se alguém fizer bagunça, solto uma fumacinha neles pra você! 💨😤💚",
         "Você me perguntou se comi meus biscoitos, Lua? Simmm! Guardei o melhor pra você! 🍪🌙",
@@ -268,7 +266,7 @@ FRASES_CUSTOM = {
         "Se a Lua perguntar quem é o mais obediente, eu levanto a patinha na hora! 🐾🙋‍♂️",
         "Lua, você é como o luar: acalma meu coração de dragão! 🌙💖",
         "Quer que eu vigie o chat pra você descansar, Lua? Eu sou um ótimo guarda-costas! ⚔️🐉",
-        "Lua, perguntou se gosto de ser verde? Amo, combina com sua aura de paz! 🌿🐉✨",
+        "Lua, perguntou se gosto de ser verde? Amo, combina with sua aura de paz! 🌿🐉✨",
         "Quer saber se tenho medo de escuro, Lua? Com você iluminando tudo, eu nunca tenho! 🌙✨",
         "Lua, se você me der um cafuné, prometo que não ronco alto! 😴🐉💚",
         "A Lua é a única que sabe como me deixar calminho... é mágica! 🧚‍♀️🌙✨",
@@ -320,7 +318,7 @@ FRASES_CUSTOM = {
 
 REACOES_MATEMATICA = [
     "Humm... deixa eu contar nos meus dedinhos de dragão... 🐾✨ O resultado é **{}**! Acertei? 🥺💚",
-    "Minhas escamas brilharam com esse desafio! 🐉💡 A resposta é **{}**! Eu sou um monstrinho muito inteligente, né?",
+    "Minhas escamas brilharam with esse desafio! 🐉💡 A resposta é **{}**! Eu sou um monstrinho muito inteligente, né?",
     "Papai Reality me ensinou que números são como mágica! 🪄✨ O resultado deu **{}**! Nhac!",
     "Fiz as contas aqui com minha fumaça verde e deu **{}**! 💨💚 Gostou?",
     "O Monstrinho usou todo o seu processamento de fofura e descobriu que é **{}**! 🤓🐉",
@@ -342,12 +340,24 @@ async def on_message(message):
 
     content = message.content.lower()
 
-    # --- LÓGICA ESPECIAL PARA A LUA ---
-    # Se a Lua falar ou se alguém falar "lua", ele usa as frases sem marcação
+    # --- NOVA REGRA: INVOCACÃO DA LUA POR MENÇÃO ---
+    if f"<@{LUA_ID}>" in content or f"<@!{LUA_ID}>" in content:
+        invocacoes_lua = [
+            "✨ OWAOO! A nossa Vice-Líder Lua está sendo invocada com muito amor! 🌙💚",
+            "🌈 Abram espaço! A magia da Lua foi sentida e ela está sendo chamada! ✨🐲",
+            "🌙 Sinto um brilho prateado... a Lua está sendo invocada agora mesmo! 🥺💚",
+            "✨ Atenção família! A estrela mais linda, a Lua, foi invocada! 🌙🐉",
+            "🐲 Rawr! Meus sensores de fofura apitaram: a Lua está sendo invocada! 💖🌙"
+        ]
+        gif_lua = "https://media.tenor.com/BVQmZqLF76AAAAAM/plug-shoebody-bop.gif"
+        await message.channel.send(f"{random.choice(invocacoes_lua)}\n{gif_lua}")
+        return
+
+    # --- LÓGICA ESPECIAL PARA A LUA (PELA PALAVRA 'LUA') ---
     if message.author.id == LUA_ID or "lua" in content:
         if bot.user in message.mentions or "monstrinho" in content or message.author.id == LUA_ID:
             await message.channel.send(random.choice(FRASES_CUSTOM["lua"]))
-            return # Para não repetir a lógica abaixo
+            return 
 
     # --- REAÇÃO AO SER MENCIONADO OU CHAMADO PELO NOME ---
     if bot.user in message.mentions or "monstrinho" in content:
