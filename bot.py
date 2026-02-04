@@ -3,8 +3,8 @@ from discord.ext import commands
 import random
 import asyncio
 import os
-import re # Adicionado para identificar números e operações
-import math # Adicionado para calcular fatoriais e funções matemáticas
+import re 
+import math 
 from datetime import timedelta
 
 # ================= INTENTS =================
@@ -13,17 +13,17 @@ intents.message_content = True
 intents.members = True
 intents.guilds = True
 
-# Bot focado apenas em interação (sem comandos de prefixo necessários)
 bot = commands.Bot(command_prefix="ignore_prefix_!@#$", intents=intents)
 
 # ================= CONFIGURACÃO E IDs =================
 TOKEN = os.getenv("TOKEN")
 DONO_ID = 769951556388257812
 LUA_ID = 708451108774871192 
-AKEIDO_ID = 445937581566197761 # ID do Líder Akeido
-AMBER_ID = 918222382840291369 # ID da ADM Amber
+AKEIDO_ID = 445937581566197761 
+AMBER_ID = 918222382840291369 
+NINE_ID = 1263912269838811238 # Novo ID do Nine ADM
 
-# ================= LISTAS DE DIÁLOGOS AMPLIADAS E MAIS FOFAS =================
+# ================= LISTAS DE DIÁLOGOS (MANTIDAS) =================
 
 REACOES_FOFAS = [
     "AAAA 😭💚 você é muito gentil!! Meu coraçãozinho de pelúcia não aguenta!", 
@@ -129,7 +129,7 @@ LISTA_TRISTEZA = [
     "Vou desligar meus sensores de alegria por um minuto... você me deixou muito magoado. 🔌💔😭"
 ]
 
-# ================= RESPOSTAS CUSTOMIZADAS REFORMULADAS =================
+# ================= RESPOSTAS CUSTOMIZADAS =================
 
 FRASES_CUSTOM = {
     "amber": [
@@ -179,7 +179,7 @@ FRASES_CUSTOM = {
         "O Monstrinho fica todo orgulhoso de ter um líder como você, Akeido! 🥰🐉",
         "Akeido, trouxe o tesouro mais raro: minha amizade eterna! 💎🐉",
         "O Akeido tem o poder de deixar todo mundo motivado! 🚀💚",
-        "Akeido, você é a base que sustenta nossa família CSI! 🏛️💚",
+        "Akeido, você é la base que sustenta nossa família CSI! 🏛️💚",
         "Um brinde de suco de amora para o nosso líder Akeido! 🍷🐉✨",
         "Akeido, você é o dragão-mestre que todos nós respeitamos! 🐲🔥"
     ],
@@ -315,8 +315,6 @@ FRASES_CUSTOM = {
     ]
 }
 
-# ================= NOVO: LISTA DE REAÇÕES DE MATEMÁTICA =================
-
 REACOES_MATEMATICA = [
     "Humm... deixa eu contar nos meus dedinhos de dragão... 🐾✨ O resultado é **{}**! Acertei? 🥺💚",
     "Minhas escamas brilharam with esse desafio! 🐉💡 A resposta é **{}**! Eu sou um monstrinho muito inteligente, né?",
@@ -338,6 +336,7 @@ async def on_message(message):
     if message.author.bot: return
 
     content = message.content.lower()
+    mencionado = bot.user in message.mentions or "monstrinho" in content
 
     # --- REGRA: INVOCACÃO DA LUA POR MENÇÃO ---
     if f"<@{LUA_ID}>" in content or f"<@!{LUA_ID}>" in content:
@@ -361,7 +360,7 @@ async def on_message(message):
             "🫡 Alerta de autoridade fofa! O Líder Akeido foi mencionado! *bate continência*",
             "🌟 Akeido, o senhor da CSI, acaba de ser invocado para brilhar no chat! 💎🐉"
         ]
-        gif_akeido = "https://c.tenor.com/lnd2-pSdVuoAAAAC/tenor.gif" # Versão direta para não mostrar nome
+        gif_akeido = "https://c.tenor.com/lnd2-pSdVuoAAAAC/tenor.gif"
         await message.channel.send(f"{random.choice(invocacoes_akeido)}\n{gif_akeido}")
         return
 
@@ -378,15 +377,27 @@ async def on_message(message):
         await message.channel.send(f"{random.choice(invocacoes_amber)}\n{gif_amber}")
         return
 
-    # --- LÓGICA ESPECIAL PARA A LUA (PELA PALAVRA 'LUA') ---
-    if message.author.id == LUA_ID or "lua" in content:
-        if bot.user in message.mentions or "monstrinho" in content or message.author.id == LUA_ID:
-            await message.channel.send(random.choice(FRASES_CUSTOM["lua"]))
-            return 
+    # --- NOVO: INVOCACÃO DO ADM NINE POR MENÇÃO ---
+    if f"<@{NINE_ID}>" in content or f"<@!{NINE_ID}>" in content:
+        invocacoes_nine = [
+            "👑 O ADM NINE FOI CONVOCADO! Respeitem a autoridade e o estilo! 🐉✨",
+            "🔥 Alerta de Nine no chat! Preparem os biscoitos de chocolate! 🍪💚",
+            "⚡ A energia subiu! O Nine ADM está sendo invocado para manter a ordem! 🫡🐲",
+            "💎 Nine, o mestre da organização, acaba de ser chamado! O brilho é real! ✨",
+            "🐉 Rawr! O Nine ADM foi mencionado! Deixem o chat organizado para ele!"
+        ]
+        gif_nine = "https://i.pinimg.com/originals/47/df/0f/47df0fe4677bf0dd2b4cf1c53c40fcce.gif"
+        await message.channel.send(f"{random.choice(invocacoes_nine)}\n{gif_nine}")
+        return
 
-    # --- REAÇÃO AO SER MENCIONADO OU CHAMADO PELO NOME ---
-    if bot.user in message.mentions or "monstrinho" in content:
+    # --- LÓGICA DE INTERAÇÃO (PRECISA SER MENCIONADO PARA RESPONDER) ---
+    if mencionado:
         
+        # Especial para Lua: Ela só responde se mencionar ele
+        if message.author.id == LUA_ID or "lua" in content:
+             await message.channel.send(random.choice(FRASES_CUSTOM["lua"]))
+             return
+
         palavras_ruins = ["odeio", "chato", "feio", "horroroso", "bobão", "bobo", "inútil", "lixo", "estúpido", "sai daqui", "te odeio", "não gosto de você", "bot ruim", "burro"]
         if any(p in content for p in palavras_ruins):
             return await message.channel.send(random.choice(LISTA_TRISTEZA))
@@ -440,7 +451,7 @@ async def on_message(message):
             except:
                 pass 
         
-        # Resposta de Apresentação
+        # Apresentação
         if content.strip() in [f"<@{bot.user.id}>", f"<@!{bot.user.id}>", "monstrinho"]:
             apresentacao = (f"🐉 **OIIIII MEU AMOOOOR! CHAMOU O MONSTRINHO?** 💚✨\n\n"
                             f"Eu sou o **Monstrinho 1.0**, o mascote oficial e protetor de fofuras da **CSI**! 🕵️‍♂️💚\n"
@@ -483,6 +494,7 @@ async def on_message(message):
         if "reality" in content:
             return await message.channel.send("O Reality é meu papai mestre! Ele me deu vida e eu sou o dragãozinho mais grato do mundo! 👑🐉💚")
 
+        # Fallback para confusão
         return await message.channel.send(random.choice(LISTA_CONFUSAO))
 
     await bot.process_commands(message)
