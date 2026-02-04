@@ -100,7 +100,7 @@ LISTA_ESTADO = [
 ]
 
 LISTA_PRESENCA = [
-    "Tô aqui, tota aqui! Nunca deixaria você sozinho(a)! 🐉💚",
+    "Tô aqui, tô aqui! Nunca deixaria você sozinho(a)! 🐉💚",
     "Sempre aqui, vigiando seus sonhos e esperando por biscoitos! 👀🍪",
     "Chamou o Monstrinho? Eu apareço num piscar de olhos verdes! ✨🐲",
     "Presente! O que você precisa? Um abraço, um biscoito ou apenas minha fofura? 🥺💖"
@@ -287,7 +287,6 @@ FRASES_CUSTOM = {
         "Se a Lua perguntar se sou feliz, dou um rugidinho: RAWR fofinho! 💚",
         "Lua, nunca esqueça: seu brilho guia esse dragãozinho! 🌙✨🐉",
         "Quer que eu conte uma história, Lua? Era uma vez um monstrinho que amava sua Vice-líder... 📖💚",
-        # --- NOVAS VARIAÇÕES ADICIONADAS ---
         "OWAAOO! A nossa Vice-Líder Lua está sendo invocada com muito amor! 🌙💚",
         "Lua, você é meu raio de luar favorito! Vou te proteger de todo mal! 🐉🛡️",
         "O Monstrinho fez um desenho da Lua nas estrelas! Quer ver? ✨🐲",
@@ -345,40 +344,33 @@ REACOES_MATEMATICA = [
 @bot.event
 async def on_ready():
     print(f"🐉 Monstrinho 1.0 pronto para espalhar fofura como {bot.user}!")
-    # Status fofo
     await bot.change_presence(activity=discord.Game(name="Recebendo carinho do Reality! 💚"))
 
 @bot.event
 async def on_message(message):
-    # Ignora mensagens de outros bots
     if message.author.bot: return
 
     content = message.content.lower()
 
     # --- LÓGICA ESPECIAL PARA A LUA ---
-    # Se a Lua falar ou se alguém falar "lua", ele usa as frases sem marcação
     if message.author.id == LUA_ID or "lua" in content:
         if bot.user in message.mentions or "monstrinho" in content or message.author.id == LUA_ID:
             await message.channel.send(random.choice(FRASES_CUSTOM["lua"]))
-            return # Para não repetir a lógica abaixo
+            return
 
     # --- REAÇÃO AO SER MENCIONADO OU CHAMADO PELO NOME ---
     if bot.user in message.mentions or "monstrinho" in content:
         
-        # --- NOVO: LÓGICA DE COISAS MALDOSAS ---
         palavras_ruins = ["odeio", "chato", "feio", "horroroso", "bobão", "bobo", "inútil", "lixo", "estúpido", "sai daqui", "te odeio", "não gosto de você", "bot ruim", "burro"]
         if any(p in content for p in palavras_ruins):
             return await message.channel.send(random.choice(LISTA_TRISTEZA))
 
-        # 1. Pergunta sobre a Capital do Brasil
         if "capital do brasil" in content:
             return await message.channel.send("Essa eu sei! A capital do nosso Brasilzão é **Brasília**! 🇧🇷✨ Sabia que de lá eu consigo ver as nuvens em formato de biscoito? 🐉💚")
 
-        # 2. Pedido de Amizade
         if any(p in content for p in ["amigo", "amiguinho", "amizade"]):
             return await message.channel.send(f"EU QUERO MUITO SER SEU AMIGUINHO! 😭💚 {message.author.mention}, agora somos melhores amigos para sempre! Vou guardar um lugar pra você no meu ninho de nuvens! ✨🐉")
 
-        # 3. Novas perguntas adicionadas:
         if "quer aprender sobre" in content:
             return await message.channel.send("Eu quero aprender tudo sobre como ser o dragão mais fofo do universo e como ganhar infinitos biscoitos do Reality! 📚🍪🐉")
         
@@ -400,7 +392,7 @@ async def on_message(message):
         if any(p in content for p in ["me ama", "mim ama", "vc me ama"]):
             return await message.channel.send(f"Se eu te amo? EU TE AMO AO INFINITO E ALÉM! 💖🐉 Você é o humano mais especial que um monstrinho poderia ter! *abraço virtual bem apertado* 🫂✨")
 
-        # --- ADIÇÃO: LÓGICA DE MATEMÁTICA ---
+        # --- LÓGICA DE MATEMÁTICA CORRIGIDA ---
         if any(char in content for char in "+-*/!x") and any(char.isdigit() for char in content):
             try:
                 conta_suja = content.replace("monstrinho", "").replace(f"<@{bot.user.id}>", "").replace(f"<@!{bot.user.id}>", "")
@@ -414,7 +406,7 @@ async def on_message(message):
                         resultado = math.factorial(n)
                         return await message.channel.send(random.choice(REACOES_MATEMATICA).format(resultado))
                 
-                expressao = "".join(re.findall(r'[0-9+\-*/().]', conta_su_ja))
+                expressao = "".join(re.findall(r'[0-9+\-*/().]', conta_suja))
                 if expressao:
                     resultado = eval(expressao)
                     resultado = int(resultado) if resultado == int(resultado) else round(resultado, 2)
@@ -465,7 +457,6 @@ async def on_message(message):
         if "reality" in content:
             return await message.channel.send("O Reality é meu papai mestre! Ele me deu vida e eu sou o dragãozinho mais grato do mundo! 👑🐉💚")
 
-        # FINAL DA LÓGICA - RESPOSTA QUANDO NÃO ENTENDE
         return await message.channel.send(random.choice(LISTA_CONFUSAO))
 
     await bot.process_commands(message)
