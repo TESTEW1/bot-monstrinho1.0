@@ -349,8 +349,8 @@ async def on_message(message):
             "✨ Atenção família! A estrela mais linda, a Lua, foi invocada! 🌙🐉",
             "🐲 Rawr! Meus sensores de fofura apitaram: a Lua está sendo invocada! 💖🌙"
         ]
-        gif_lua = "https://media.tenor.com/BVQmZqLF76AAAAAM/plug-shoebody-bop.gif"
-        await message.channel.send(f"{random.choice(invocacoes_lua)}\n<{gif_lua}>")
+      gif_lua = "https://media.tenor.com/BVQmZqLF76AAAAC/plug-shoebody-bop.gif"
+await message.channel.send(f"{random.choice(invocacoes_lua)}\n{gif_lua}")
         return
 
     # --- LÓGICA ESPECIAL PARA A LUA (PELA PALAVRA 'LUA') ---
