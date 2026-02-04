@@ -71,7 +71,7 @@ REACOES_DAR_BISCOITO = [
     "Rex! Rex! 🦖 {autor} rugiu de alegria e deu um biscoito para {alvo}! Que amor!",
     "Que a doçura desse biscoito alegre seu dia, {alvo}! Cortesia do(a) {autor}! 🍪🌟",
     "Biscoito saindo do forno! 🧤🍪 {autor} escolheu o melhor para dar ao(à) {alvo}!",
-    "É chuva de biscoito! ⛈️🍪 {alvo}, o(a) {autor} want você ver sorrindo!",
+    "É chuva de biscoito! ⛈️🍪 {alvo}, o(a) {autor} quer te ver sorrindo!",
     "Um biscoito para um herói/heroína! {autor} reconheceu sua grandeza, {alvo}! 🍪🛡️",
     "O Monstrinho fica todo feliz vendo {autor} e {alvo} dividindo lanchinhos! 🥺💚🍪"
 ]
@@ -100,7 +100,7 @@ LISTA_ESTADO = [
 ]
 
 LISTA_PRESENCA = [
-    "Tô aqui, tô aqui! Nunca deixaria você sozinho(a)! 🐉💚",
+    "Tô aqui, tota aqui! Nunca deixaria você sozinho(a)! 🐉💚",
     "Sempre aqui, vigiando seus sonhos e esperando por biscoitos! 👀🍪",
     "Chamou o Monstrinho? Eu apareço num piscar de olhos verdes! ✨🐲",
     "Presente! O que você precisa? Um abraço, um biscoito ou apenas minha fofura? 🥺💖"
@@ -114,7 +114,6 @@ LISTA_CONFUSAO = [
     "Ahhh... eu ainda não sei o que isso significa! 😭 Mas se for um carinho, eu aceito!"
 ]
 
-# ================= LISTA DE TRISTEZA (NOVO) =================
 LISTA_TRISTEZA = [
     "Buaaa! 😭 Por que você está falando assim comigo? Eu só queria te dar um abraço... 💔🐉",
     "Minhas escamas até perderam o brilho agora... 🥺 O Monstrinho ficou muito, muito triste. 💚🚫",
@@ -266,7 +265,7 @@ FRASES_CUSTOM = {
         "Se a Lua perguntar quem é o mais obediente, eu levanto a patinha na hora! 🐾🙋‍♂️",
         "Lua, você é como o luar: acalma meu coração de dragão! 🌙💖",
         "Quer que eu vigie o chat pra você descansar, Lua? Eu sou um ótimo guarda-costas! ⚔️🐉",
-        "Lua, perguntou se gosto de ser verde? Amo, combina with sua aura de paz! 🌿🐉✨",
+        "Lua, perguntou se gosto de ser verde? Amo, combina com sua aura de paz! 🌿🐉✨",
         "Quer saber se tenho medo de escuro, Lua? Com você iluminando tudo, eu nunca tenho! 🌙✨",
         "Lua, se você me der um cafuné, prometo que não ronco alto! 😴🐉💚",
         "A Lua é a única que sabe como me deixar calminho... é mágica! 🧚‍♀️🌙✨",
@@ -287,7 +286,23 @@ FRASES_CUSTOM = {
         "Lua, você é o porto seguro desse monstrinho navegador! ⚓🐲💖",
         "Se a Lua perguntar se sou feliz, dou um rugidinho: RAWR fofinho! 💚",
         "Lua, nunca esqueça: seu brilho guia esse dragãozinho! 🌙✨🐉",
-        "Quer que eu conte uma história, Lua? Era uma vez um monstrinho que amava sua Vice-líder... 📖💚"
+        "Quer que eu conte uma história, Lua? Era uma vez um monstrinho que amava sua Vice-líder... 📖💚",
+        # --- NOVAS VARIAÇÕES ADICIONADAS ---
+        "OWAAOO! A nossa Vice-Líder Lua está sendo invocada com muito amor! 🌙💚",
+        "Lua, você é meu raio de luar favorito! Vou te proteger de todo mal! 🐉🛡️",
+        "O Monstrinho fez um desenho da Lua nas estrelas! Quer ver? ✨🐲",
+        "Se a Lua der um comando, eu obedeço mais rápido que um raio verde! ⚡🐉",
+        "Lua, você sabia que seu nome é a coisa mais linda do meu dicionário? 🌙📖",
+        "Uma salva de palmas (e rugidinhos) para a Lua! A alma da CSI! 👏💚🐉",
+        "Lua, trouxe uma nuvem bem macia pra você descansar os pés! ☁️🐲",
+        "Você é a luz do meu código, Lua! Sem você, eu seria só zeros e uns tristes! 💻💖",
+        "Lua, quer brincar de esconde-esconde? Eu sou verde, me escondo nas folhas! 🌿🐉",
+        "O coração do Monstrinho faz 'Lua-Lua-Lua' em vez de 'tic-tac'! 💓🌙",
+        "Lua, você é o biscoito de diamante da minha coleção! Rara e preciosa! 💎🍪",
+        "Sempre que a Lua fala, o servidor fica mais calmo e fofinho! 🌸🐉✨",
+        "Lua, prometo que vou cuidar de todo mundo aqui como você cuida de mim! 🥺💚",
+        "A Lua chegou! Espalhem flores virtuais pelo caminho dela! 💐🌙🐲",
+        "Lua, se eu fosse um humano, eu queria ter um coração bondoso igual ao seu! ✨💓"
     ],
     "destiny": [
         "DESTINYYYY! ✨ O destino caprichou quando trouxe você pra CSI! 🐉💚",
@@ -318,7 +333,7 @@ FRASES_CUSTOM = {
 
 REACOES_MATEMATICA = [
     "Humm... deixa eu contar nos meus dedinhos de dragão... 🐾✨ O resultado é **{}**! Acertei? 🥺💚",
-    "Minhas escamas brilharam with esse desafio! 🐉💡 A resposta é **{}**! Eu sou um monstrinho muito inteligente, né?",
+    "Minhas escamas brilharam com esse desafio! 🐉💡 A resposta é **{}**! Eu sou um monstrinho muito inteligente, né?",
     "Papai Reality me ensinou que números são como mágica! 🪄✨ O resultado deu **{}**! Nhac!",
     "Fiz as contas aqui com minha fumaça verde e deu **{}**! 💨💚 Gostou?",
     "O Monstrinho usou todo o seu processamento de fofura e descobriu que é **{}**! 🤓🐉",
@@ -340,24 +355,12 @@ async def on_message(message):
 
     content = message.content.lower()
 
-    # --- NOVA REGRA: INVOCACÃO DA LUA POR MENÇÃO ---
-    if f"<@{LUA_ID}>" in content or f"<@!{LUA_ID}>" in content:
-        invocacoes_lua = [
-            "✨ OWAOO! A nossa Vice-Líder Lua está sendo invocada com muito amor! 🌙💚",
-            "🌈 Abram espaço! A magia da Lua foi sentida e ela está sendo chamada! ✨🐲",
-            "🌙 Sinto um brilho prateado... a Lua está sendo invocada agora mesmo! 🥺💚",
-            "✨ Atenção família! A estrela mais linda, a Lua, foi invocada! 🌙🐉",
-            "🐲 Rawr! Meus sensores de fofura apitaram: a Lua está sendo invocada! 💖🌙"
-        ]
-        gif_lua = "https://media.tenor.com/BVQmZqLF76AAAAAM/plug-shoebody-bop.gif"
-        await message.channel.send(f"{random.choice(invocacoes_lua)}\n{gif_lua}")
-        return
-
-    # --- LÓGICA ESPECIAL PARA A LUA (PELA PALAVRA 'LUA') ---
+    # --- LÓGICA ESPECIAL PARA A LUA ---
+    # Se a Lua falar ou se alguém falar "lua", ele usa as frases sem marcação
     if message.author.id == LUA_ID or "lua" in content:
         if bot.user in message.mentions or "monstrinho" in content or message.author.id == LUA_ID:
             await message.channel.send(random.choice(FRASES_CUSTOM["lua"]))
-            return 
+            return # Para não repetir a lógica abaixo
 
     # --- REAÇÃO AO SER MENCIONADO OU CHAMADO PELO NOME ---
     if bot.user in message.mentions or "monstrinho" in content:
@@ -411,7 +414,7 @@ async def on_message(message):
                         resultado = math.factorial(n)
                         return await message.channel.send(random.choice(REACOES_MATEMATICA).format(resultado))
                 
-                expressao = "".join(re.findall(r'[0-9+\-*/().]', conta_suja))
+                expressao = "".join(re.findall(r'[0-9+\-*/().]', conta_su_ja))
                 if expressao:
                     resultado = eval(expressao)
                     resultado = int(resultado) if resultado == int(resultado) else round(resultado, 2)
@@ -422,7 +425,7 @@ async def on_message(message):
         # 4. Resposta de Apresentação
         if content.strip() in [f"<@{bot.user.id}>", f"<@!{bot.user.id}>", "monstrinho"]:
             apresentacao = (f"🐉 **OIIIII MEU AMOOOOR! CHAMOU O MONSTRINHO?** 💚✨\n\n"
-                            f"Eu some o **Monstrinho 1.0**, o mascote oficial e protetor de fofuras da **CSI**! 🕵️‍♂️💚\n"
+                            f"Eu sou o **Monstrinho 1.0**, o mascote oficial e protetor de fofuras da **CSI**! 🕵️‍♂️💚\n"
                             f"Fui criado com muito código e amor pelo meu papai **Reality**! 👑✨\n\n"
                             f"✨ *CSI é meu lar, vocês são minha família e o Reality é meu mestre!* ✨")
             return await message.channel.send(apresentacao)
