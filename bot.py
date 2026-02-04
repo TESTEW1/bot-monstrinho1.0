@@ -56,7 +56,7 @@ REACOES_BISCOITO_PROPRIO = [
 REACOES_DAR_BISCOITO = [
     "Aii que gesto mais lindo! 😭💚 {autor} deu um biscoitinho quentinho para {alvo}! 🍪🐉",
     "Nhac! {alvo}, aceita esse biscoito que o(a) {autor} te deu? Foi feito com muito carinho! 🍪✨",
-    "O Monstrinho aprova demais essa amizade! Toma um biscoitinho, {alvo}! 🍪🐉💚",
+    "O Monstrinho approve demais essa amizade! Toma um biscoitinho, {alvo}! 🍪🐉💚",
     "Espalhando doçura pela CSI! {alvo}, você acaba de ganhar um biscoito da sorte de {autor}! 🍪🌈",
     "Olha o aviãozinhooo! ✈️🍪 {alvo}, o(a) {autor} te deu um mimo delicioso! ✨",
     "Que fofura! {autor} está mimando o(a) {alvo} com biscoitos! Posso ganhar um também? 🥺🍪",
@@ -220,7 +220,7 @@ FRASES_CUSTOM = {
         "A FADA CHEGOU! 🧚‍♀️✨ Sinto o cheirinho de magia no ar!",
         "Dona Fada, me dá um pouquinho de pó de pirlimpimpim? 🧚‍♀️💨🐉",
         "A Fada é a proteção mágica da CSI! 📖💚",
-        "Fada, você é encantadora! Minhas escamas brilham com você! ✨🧚‍♀️🐲",
+        "Fada, você é encantadora! Minhas escamas brilharam com você! ✨🧚‍♀️🐲",
         "Façam um pedido! A Fada apareceu! 🌟🐉",
         "Fada, você transforma o servidor em um conto de fadas! 🧚‍♀️💬💖",
         "O Monstrinho e a Fada: a dupla mais mágica! 🐲🤝🧚‍♀️",
@@ -412,7 +412,7 @@ async def on_message(message):
         # 4. Resposta de Apresentação
         if content.strip() in [f"<@{bot.user.id}>", f"<@!{bot.user.id}>", "monstrinho"]:
             apresentacao = (f"🐉 **OIIIII MEU AMOOOOR! CHAMOU O MONSTRINHO?** 💚✨\n\n"
-                            f"Eu sou o **Monstrinho 1.0**, o mascote oficial e protetor de fofuras da **CSI**! 🕵️‍♂️💚\n"
+                            f"Eu some o **Monstrinho 1.0**, o mascote oficial e protetor de fofuras da **CSI**! 🕵️‍♂️💚\n"
                             f"Fui criado com muito código e amor pelo meu papai **Reality**! 👑✨\n\n"
                             f"✨ *CSI é meu lar, vocês são minha família e o Reality é meu mestre!* ✨")
             return await message.channel.send(apresentacao)
