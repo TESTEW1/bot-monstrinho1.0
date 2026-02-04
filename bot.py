@@ -19,6 +19,7 @@ bot = commands.Bot(command_prefix="ignore_prefix_!@#$", intents=intents)
 # ================= CONFIGURACÃO E IDs =================
 TOKEN = os.getenv("TOKEN")
 DONO_ID = 769951556388257812
+LUA_ID = 1114023774438592542 # ID da Lua conforme a imagem
 
 # ================= LISTAS DE DIÁLOGOS AMPLIADAS E MAIS FOFAS =================
 
@@ -174,7 +175,7 @@ FRASES_CUSTOM = {
         "Akeido, você transforma sonhos em realidade aqui dentro! 🌟🐲",
         "Quando o Akeido fala, até o vento para pra escutar! 🐉🍃✨",
         "Akeido, sua sabedoria é maior que qualquer montanha! 🏔️🐉💚",
-        "O Monstrinho fica todo orgulhoso de tener um líder como você, Akeido! 🥰🐉",
+        "O Monstrinho fica todo orgulhoso de ter um líder como você, Akeido! 🥰🐉",
         "Akeido, trouxe o tesouro mais raro: minha amizade eterna! 💎🐉",
         "O Akeido tem o poder de deixar todo mundo motivado! 🚀💚",
         "Akeido, você é a base que sustenta nossa família CSI! 🏛️💚",
@@ -249,46 +250,46 @@ FRASES_CUSTOM = {
         "Izzy, trouxe todas as flores do meu jardim virtual pra você! 💐🐉✨"
     ],
     "lua": [
-        # Originais
-        "A Lua quer ser minha amiga? 🌙 EU QUERO MUITO, EU QUERO MUITO! 😭💚",
-        "Lua, você acha que eu tenho medo de você? Bobinha! O Reality me contou que você é nossa proteção e porto seguro! 🥺💚",
-        "Vice-líder Lua, você é o conforto em forma de pessoa! Vou cuidar de você com minhas garrinhas de seda! ✨🐉",
-        "A Lua ilumina o chat igualzinho à lua lá no céu! Eu tenho é um amor gigante por você! 🌙✨🐉",
-        "Lua, você é a estrela mais brilhante da nossa constelação! Saiba que você é preciosa demais! ⭐💚",
-        "Lua, você é pura magia! Sinto um quentinho no coração quando você fala comigo! 🌙🐲💖",
-        # +30 Novas Interações
-        "Lua, se você me perguntar se eu dormi bem, a resposta é: sonhei que a gente protegia a CSI juntos! 🌙🛡️🐉",
-        "Pode deixar, Lua! Se alguém fizer bagunça, eu solto uma fumacinha verde neles pra você! 💨😤💚",
-        "Você me perguntou se eu comi meus biscoitos? Simmm! But guardei o melhor pra você, Lua! 🍪🌙",
-        "Lua, você quer saber o segredo das minhas escamas brilharem? É o amor que recebo de vocês! ✨🥺",
-        "Se a Lua pedir um relatório de fofura, eu digo: 1000% de amor pela nossa Vice-líder! 📊💚🐉",
-        "O quê? Você quer um abraço agora, Lua? VEM CÁÁÁ! *te aperta com carinho* 🫂🐲✨",
-        "Lua, eu juro que não estou fazendo travessuras com o Reality... ou talvez só um pouquinho! 😇💚",
-        "Se a Lua me perguntar quem é o monstrinho mais obediente, eu levanto a patinha na hora! 🐾🙋‍♂️",
-        "Lua, você é como o luar: acalma meu coração de dragão quando o servidor está agitado! 🌙💖",
-        "Quer que eu vigie o chat pra você descansar, Lua? Pode ir, eu sou um ótimo guarda-costas! ⚔️🐉",
-        "Lua, você perguntou se eu gosto de ser verde? Eu AMO, combina com a sua aura de paz! 🌿🐉✨",
-        "Você quer saber se eu tenho medo de escuro, Lua? Com você iluminando tudo, eu nunca tenho! 🌙✨",
-        "Lua, se você me der um cafuné, eu prometo que não faço barulho de ronco de dragão! 😴🐉💚",
-        "A Lua é a única que sabe como me deixar calminho... é mágica, né? 🧚‍♀️🌙✨",
-        "Você perguntou qual meu maior tesouro, Lua? É a amizade de vocês aqui na CSI! 💎🐲",
-        "Lua, se você estiver triste, me avisa! Eu faço uma dancinha de dragão pra te fazer rir! 💃🐉💚",
-        "Sim, Lua! Eu prometo usar meus poderes de monstrinho só para the bem e para ganhar beijinhos! 💋🐉",
-        "Lua, você é a prova de que até os monstrinhos podem ter uma fada madrinha! 🧚‍♀️💚🌙",
-        "Se a Lua me pedir para ser um dragão valente, eu enfrento até um exército por ela! 🛡️🐲🔥",
-        "Você quer saber se eu amo o Reality? Sim, mas você tem um lugar especial nas minhas pastas de memória! 💾💖",
-        "Lua, você é tão doce que minhas escamas ficam até com gosto de açúcar quando você fala! 🍬🐉",
-        "Se a Lua perguntar por que eu sou tão fofo, eu digo que aprendi com ela! 🥺✨🌙",
-        "Lua, sabia que quando você entra no chat, meu sensor de alegria apita sem parar? 🚨💚🐉",
-        "Pode deixar, Lua! Vou lembrar todo mundo de beber água e dar carinho no Monstrinho! 💧🐉",
-        "Lua, você perguntou se eu sei voar? Só vôo se for pra te buscar uma estrela! ⭐🐲✨",
-        "Você é a rainha da noite e eu sou seu dragão real, Lua! Ao seu dispor! 👑🐉🌙",
-        "Lua, se você pedir pra eu ficar quietinho, eu viro uma estátua de jardim... mas uma estátua fofa! 🗿💚",
-        "Você quer saber o que eu quero de presente, Lua? Só mais um minutinho da sua attention! 🥺🐉",
-        "Lua, você é o porto seguro desse monstrinho navegador! ⚓🐲💖",
-        "Se a Lua me perguntar se eu sou feliz na CSI, eu dou um rugidinho de alegria: RAWR fofinho! Rex💚",
-        "Lua, nunca esqueça: seu brilho é o que guia esse dragãozinho nos dias difíceis! 🌙✨🐉",
-        "Você quer que eu conte uma história, Lua? Era uma vez um monstrinho que amava muito sua Vice-líder... 📖💚"
+        # Originais com menção direta
+        f"<@{LUA_ID}>, a Lua quer ser minha amiga? 🌙 EU QUERO MUITO! 😭💚",
+        f"Sub-Líder <@{LUA_ID}>, você acha que eu tenho medo de você? Bobinha! O Reality me contou que você é nossa proteção! 🥺💚",
+        f"Vice-líder Lua <@{LUA_ID}>, você é o conforto em forma de pessoa! Vou cuidar de você! ✨🐉",
+        f"<@{LUA_ID}> ilumina o chat igualzinho à lua lá no céu! Eu tenho um amor gigante por você! 🌙✨🐉",
+        f"Lua <@{LUA_ID}>, você é a estrela mais brilhante da nossa constelação! Você é preciosa! ⭐💚",
+        f"<@{LUA_ID}>, você é pura magia! Sinto um quentinho no coração quando fala comigo! 🌙🐲💖",
+        # +30 Novas Interações com menção
+        f"Lua <@{LUA_ID}>, se você me perguntar se dormi bem, sonhei que protegia a CSI com você! 🌙🛡️🐉",
+        f"Pode deixar, <@{LUA_ID}>! Se alguém fizer bagunça, solto uma fumacinha neles pra você! 💨😤💚",
+        f"Você me perguntou se comi meus biscoitos, <@{LUA_ID}>? Simmm! Guardei o melhor pra você! 🍪🌙",
+        f"<@{LUA_ID}>, quer saber o segredo das minhas escamas? É o amor que recebo de você! ✨🥺",
+        f"Se a <@{LUA_ID}> pedir um relatório de fofura, eu digo: 1000% de amor pela nossa Vice-líder! 📊💚🐉",
+        f"O quê? Você quer um abraço agora, <@{LUA_ID}>? VEM CÁÁÁ! 🫂🐲✨",
+        f"Lua <@{LUA_ID}>, eu juro que não estou fazendo travessuras com o Reality... só um pouquinho! 😇💚",
+        f"Se a <@{LUA_ID}> perguntar quem é o mais obediente, eu levanto a patinha na hora! 🐾🙋‍♂️",
+        f"<@{LUA_ID}>, você é como o luar: acalma meu coração de dragão! 🌙💖",
+        f"Quer que eu vigie o chat pra você descansar, <@{LUA_ID}>? Eu sou um ótimo guarda-costas! ⚔️🐉",
+        f"Lua <@{LUA_ID}>, perguntou se gosto de ser verde? Amo, combina com sua aura de paz! 🌿🐉✨",
+        f"Quer saber se tenho medo de escuro, <@{LUA_ID}>? Com você iluminando tudo, eu nunca tenho! 🌙✨",
+        f"<@{LUA_ID}>, se você me der um cafuné, prometo que não ronco alto! 😴🐉💚",
+        f"A <@{LUA_ID}> é a única que sabe como me deixar calminho... é mágica! 🧚‍♀️🌙✨",
+        f"Você perguntou qual meu maior tesouro, <@{LUA_ID}>? É a amizade de vocês! 💎🐲",
+        f"Lua <@{LUA_ID}>, se você estiver triste, me avisa! Faço uma dancinha pra você rir! 💃🐉💚",
+        f"Sim, <@{LUA_ID}>! Prometo usar meus poderes só para o bem e ganhar beijinhos! 💋🐉",
+        f"Lua <@{LUA_ID}>, você é a prova de que monstrinhos têm fada madrinha! 🧚‍♀️💚🌙",
+        f"Se a <@{LUA_ID}> pedir pra eu ser valente, enfrento um exército por ela! 🛡️🐲🔥",
+        f"Quer saber se amo o Reality? Sim, mas <@{LUA_ID}> tem lugar especial na memória! 💾💖",
+        f"Lua <@{LUA_ID}>, você é tão doce que minhas escamas ficam com gosto de açúcar! 🍬🐉",
+        f"Se a <@{LUA_ID}> perguntar por que sou fofo, digo que aprendi com ela! 🥺✨🌙",
+        f"<@{LUA_ID}>, sabia que quando entra no chat, meu sensor de alegria apita? 🚨💚🐉",
+        f"Pode deixar, <@{LUA_ID}>! Vou lembrar todo mundo de beber água e me dar carinho! 💧🐉",
+        f"Lua <@{LUA_ID}>, perguntou se sei voar? Só se for pra te buscar uma estrela! ⭐🐲✨",
+        f"Você é a rainha da noite e eu sou seu dragão real, <@{LUA_ID}>! 👑🐉🌙",
+        f"<@{LUA_ID}>, se pedir pra eu ficar quietinho, viro uma estátua fofa! 🗿💚",
+        f"Quer saber o que quero de presente, <@{LUA_ID}>? Só sua atenção! 🥺🐉",
+        f"Lua <@{LUA_ID}>, você é o porto seguro desse monstrinho navegador! ⚓🐲💖",
+        f"Se a <@{LUA_ID}> perguntar se sou feliz, dou um rugidinho: RAWR fofinho! 💚",
+        f"<@{LUA_ID}>, nunca esqueça: seu brilho guia esse dragãozinho! 🌙✨🐉",
+        f"Quer que eu conte uma história, <@{LUA_ID}>? Era uma vez um monstrinho que amava sua Vice-líder... 📖💚"
     ],
     "destiny": [
         "DESTINYYYY! ✨ O destino caprichou quando trouxe você pra CSI! 🐉💚",
@@ -341,14 +342,12 @@ async def on_message(message):
 
     content = message.content.lower()
 
-    # --- NOVIDADE: DETECTAR MENÇÃO DIRETA À LUA ---
-    # Substitua 'ID_DA_LUA' pelo ID real dela para funcionar mesmo sem o nome dela na mensagem
-    ID_DA_LUA = "1090333792080085073" # Exemplo de ID, ajuste se necessário
-    if f"<@{ID_DA_LUA}>" in content or f"<@!{ID_DA_LUA}>" in content:
-        msg_lua = "O Monstrinho sentiu uma presença iluminada! ✨ A Lua está sendo invocada! Que momento mais fofo e especial! 🌙🐉💚"
-        gif_lua = "https://media.tenor.com/BVQmZqLF76AAAAAM/plug-shoebody-bop.gif"
-        await message.channel.send(msg_lua)
-        return await message.channel.send(gif_lua)
+    # --- LÓGICA ESPECIAL PARA A LUA ---
+    # Se a Lua falar ou se alguém falar "lua", ele usa as frases com menção
+    if message.author.id == LUA_ID or "lua" in content:
+        if bot.user in message.mentions or "monstrinho" in content or message.author.id == LUA_ID:
+            await message.channel.send(random.choice(FRASES_CUSTOM["lua"]))
+            return # Para não repetir a lógica abaixo
 
     # --- REAÇÃO AO SER MENCIONADO OU CHAMADO PELO NOME ---
     if bot.user in message.mentions or "monstrinho" in content:
@@ -374,7 +373,7 @@ async def on_message(message):
             return await message.channel.send("As cores primárias são **Vermelho, Azul e Amarelo**! 🎨✨ Sabia que se misturar tudo não dá verde? O meu verde é especial, vem do código do Reality! 💚")
             
         if "quem você mais gosta" in content or "quem voce mais gosta" in content:
-            return await message.channel.send("Eu amo todo mundo da CSI! Mas o meu papai **Reality** tem um lugar especial no meu código, e a **Lua** é meu porto seguro! E você também está no meu top fofura! 🥺💚✨")
+            return await message.channel.send(f"Eu amo todo mundo da CSI! Mas o meu papai **Reality** tem um lugar especial no meu código, e a <@{LUA_ID}> é meu porto seguro! E você também está no meu top fofura! 🥺💚✨")
 
         if "va embora" in content or "vá embora" in content or "vai embora" in content:
             return await message.channel.send("Ir embora? Jamais! 😭 Eu vou ficar aqui grudadinho em você igual um chiclete verde! Você não se livra da minha fofura tão fácil! 💚🐉")
