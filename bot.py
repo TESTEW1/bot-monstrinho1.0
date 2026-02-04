@@ -341,6 +341,7 @@ async def on_message(message):
     content = message.content.lower()
 
     # --- NOVA REGRA: INVOCACÃO DA LUA POR MENÇÃO ---
+   # --- NOVA REGRA: INVOCACÃO DA LUA POR MENÇÃO ---
     if f"<@{LUA_ID}>" in content or f"<@!{LUA_ID}>" in content:
         invocacoes_lua = [
             "✨ OWAOO! A nossa Vice-Líder Lua está sendo invocada com muito amor! 🌙💚",
@@ -349,10 +350,11 @@ async def on_message(message):
             "✨ Atenção família! A estrela mais linda, a Lua, foi invocada! 🌙🐉",
             "🐲 Rawr! Meus sensores de fofura apitaram: a Lua está sendo invocada! 💖🌙"
         ]
-      gif_lua = "https://media.tenor.com/BVQmZqLF76AAAAC/plug-shoebody-bop.gif"
-await message.channel.send(f"{random.choice(invocacoes_lua)}\n{gif_lua}")
+        # Usando o link de servidor de mídia direta para evitar o nome do site embaixo
+        gif_lua = "https://c.tenor.com/BVQmZqLF76AAAAAC/tenor.gif"
+        
+        await message.channel.send(f"{random.choice(invocacoes_lua)}\n{gif_lua}")
         return
-
     # --- LÓGICA ESPECIAL PARA A LUA (PELA PALAVRA 'LUA') ---
     if message.author.id == LUA_ID or "lua" in content:
         if bot.user in message.mentions or "monstrinho" in content or message.author.id == LUA_ID:
