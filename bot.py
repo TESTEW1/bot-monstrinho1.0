@@ -373,7 +373,7 @@ async def on_message(message):
             "🦋 A Amber chegou para deixar tudo mais lindo! Invocação de ADM concluída com sucesso!",
             "✨ Atenção! A patroa Amber foi mencionada! Deixem as escamas brilhando para ela! 🧹🐲"
         ]
-        gif_amber = "https://c.tenor.com/D39AC4BBA8A62FC580C61F5BF07EA69B18F44E42/tenor.gif"
+        gif_amber = "https://i.pinimg.com/originals/a6/1d/e1/a61de12663904e43b4a677d200e894e5.gif"
         await message.channel.send(f"{random.choice(invocacoes_amber)}\n{gif_amber}")
         return
 
