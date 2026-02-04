@@ -250,14 +250,12 @@ FRASES_CUSTOM = {
         "Izzy, trouxe todas as flores do meu jardim virtual pra você! 💐🐉✨"
     ],
     "lua": [
-        # Originais com menção direta
         f"<@{LUA_ID}>, a Lua quer ser minha amiga? 🌙 EU QUERO MUITO! 😭💚",
         f"Sub-Líder <@{LUA_ID}>, você acha que eu tenho medo de você? Bobinha! O Reality me contou que você é nossa proteção! 🥺💚",
         f"Vice-líder Lua <@{LUA_ID}>, você é o conforto em forma de pessoa! Vou cuidar de você! ✨🐉",
         f"<@{LUA_ID}> ilumina o chat igualzinho à lua lá no céu! Eu tenho um amor gigante por você! 🌙✨🐉",
         f"Lua <@{LUA_ID}>, você é a estrela mais brilhante da nossa constelação! Você é preciosa! ⭐💚",
         f"<@{LUA_ID}>, você é pura magia! Sinto um quentinho no coração quando fala comigo! 🌙🐲💖",
-        # +30 Novas Interações com menção
         f"Lua <@{LUA_ID}>, se você me perguntar se dormi bem, sonhei que protegia a CSI com você! 🌙🛡️🐉",
         f"Pode deixar, <@{LUA_ID}>! Se alguém fizer bagunça, solto uma fumacinha neles pra você! 💨😤💚",
         f"Você me perguntou se comi meus biscoitos, <@{LUA_ID}>? Simmm! Guardei o melhor pra você! 🍪🌙",
@@ -316,8 +314,6 @@ FRASES_CUSTOM = {
     ]
 }
 
-# ================= NOVO: LISTA DE REAÇÕES DE MATEMÁTICA =================
-
 REACOES_MATEMATICA = [
     "Humm... deixa eu contar nos meus dedinhos de dragão... 🐾✨ O resultado é **{}**! Acertei? 🥺💚",
     "Minhas escamas brilharam com esse desafio! 🐉💡 A resposta é **{}**! Eu sou um monstrinho muito inteligente, né?",
@@ -327,45 +323,35 @@ REACOES_MATEMATICA = [
     "Rawr! Matemática é fácil para um dragão da CSI! O resultado é **{}**! Rex💚"
 ]
 
-# ================= EVENTOS DE INTERAÇÃO =================
-
 @bot.event
 async def on_ready():
     print(f"🐉 Monstrinho 1.0 pronto para espalhar fofura como {bot.user}!")
-    # Status fofo
     await bot.change_presence(activity=discord.Game(name="Recebendo carinho do Reality! 💚"))
 
 @bot.event
 async def on_message(message):
-    # Ignora mensagens de outros bots
     if message.author.bot: return
-
     content = message.content.lower()
 
-    # --- LÓGICA ESPECIAL PARA A LUA ---
-    # Se a Lua falar ou se alguém falar "lua", ele usa as frases com menção
-    if message.author.id == LUA_ID or "lua" in content:
+    # --- LÓGICA ESPECIAL PRIORITÁRIA PARA A LUA ---
+    # Verifica primeiro se ela falou ou se marcaram ela, para não falhar
+    if message.author.id == LUA_ID or f"<@{LUA_ID}>" in message.content or f"<@!{LUA_ID}>" in message.content:
         if bot.user in message.mentions or "monstrinho" in content or message.author.id == LUA_ID:
             await message.channel.send(random.choice(FRASES_CUSTOM["lua"]))
-            return # Para não repetir a lógica abaixo
+            return 
 
-    # --- REAÇÃO AO SER MENCIONADO OU CHAMADO PELO NOME ---
+    # --- REAÇÃO GERAL ---
     if bot.user in message.mentions or "monstrinho" in content:
-        
-        # --- NOVO: LÓGICA DE COISAS MALDOSAS ---
         palavras_ruins = ["odeio", "chato", "feio", "horroroso", "bobão", "bobo", "inútil", "lixo", "estúpido", "sai daqui", "te odeio", "não gosto de você", "bot ruim", "burro"]
         if any(p in content for p in palavras_ruins):
             return await message.channel.send(random.choice(LISTA_TRISTEZA))
 
-        # 1. Pergunta sobre a Capital do Brasil
         if "capital do brasil" in content:
             return await message.channel.send("Essa eu sei! A capital do nosso Brasilzão é **Brasília**! 🇧🇷✨ Sabia que de lá eu consigo ver as nuvens em formato de biscoito? 🐉💚")
 
-        # 2. Pedido de Amizade
         if any(p in content for p in ["amigo", "amiguinho", "amizade"]):
             return await message.channel.send(f"EU QUERO MUITO SER SEU AMIGUINHO! 😭💚 {message.author.mention}, agora somos melhores amigos para sempre! Vou guardar um lugar pra você no meu ninho de nuvens! ✨🐉")
 
-        # 3. Novas perguntas adicionadas:
         if "quer aprender sobre" in content:
             return await message.channel.send("Eu quero aprender tudo sobre como ser o dragão mais fofo do universo e como ganhar infinitos biscoitos do Reality! 📚🍪🐉")
         
@@ -387,7 +373,6 @@ async def on_message(message):
         if any(p in content for p in ["me ama", "mim ama", "vc me ama"]):
             return await message.channel.send(f"Se eu te amo? EU TE AMO AO INFINITO E ALÉM! 💖🐉 Você é o humano mais especial que um monstrinho poderia ter! *abraço virtual bem apertado* 🫂✨")
 
-        # --- ADIÇÃO: LÓGICA DE MATEMÁTICA ---
         if any(char in content for char in "+-*/!x") and any(char.isdigit() for char in content):
             try:
                 conta_suja = content.replace("monstrinho", "").replace(f"<@{bot.user.id}>", "").replace(f"<@!{bot.user.id}>", "")
@@ -396,20 +381,16 @@ async def on_message(message):
                     num_fatorial = re.search(r'(\d+)!', conta_suja)
                     if num_fatorial:
                         n = int(num_fatorial.group(1))
-                        if n > 100:
-                            return await message.channel.send("Uau! Esse número é maior que todas as escamas do meu corpo! Não consigo calcular algo tão grande! 🐉😵‍💫")
-                        resultado = math.factorial(n)
-                        return await message.channel.send(random.choice(REACOES_MATEMATICA).format(resultado))
-                
+                        if n <= 100:
+                            resultado = math.factorial(n)
+                            return await message.channel.send(random.choice(REACOES_MATEMATICA).format(resultado))
                 expressao = "".join(re.findall(r'[0-9+\-*/().]', conta_suja))
                 if expressao:
                     resultado = eval(expressao)
                     resultado = int(resultado) if resultado == int(resultado) else round(resultado, 2)
                     return await message.channel.send(random.choice(REACOES_MATEMATICA).format(resultado))
-            except:
-                pass 
+            except: pass 
         
-        # 4. Resposta de Apresentação
         if content.strip() in [f"<@{bot.user.id}>", f"<@!{bot.user.id}>", "monstrinho"]:
             apresentacao = (f"🐉 **OIIIII MEU AMOOOOR! CHAMOU O MONSTRINHO?** 💚✨\n\n"
                             f"Eu some o **Monstrinho 1.0**, o mascote oficial e protetor de fofuras da **CSI**! 🕵️‍♂️💚\n"
@@ -417,45 +398,36 @@ async def on_message(message):
                             f"✨ *CSI é meu lar, vocês são minha família e o Reality é meu mestre!* ✨")
             return await message.channel.send(apresentacao)
 
-        # 5. Respostas Customizadas para Membros Específicos
         for nome, frases in FRASES_CUSTOM.items():
             if nome in content:
                 return await message.channel.send(random.choice(frases))
 
-        # 6. Saudações
         if any(p in content for p in ["oi", "oie", "bom dia", "boa tarde", "boa noite", "hello", "hii", "oiii"]):
             return await message.channel.send(random.choice(LISTA_SAUDACOES))
         
-        # 7. Perguntas de Estado
         gatilhos_bem_estar = ["como você está", "tudo bem", "como vc ta", "ta tudo bem", "como voce ta", "vc ta bem", "voce ta bem", "ta bem", "esta bem", "como voce esta", "tudo certinho"]
         if any(p in content for p in gatilhos_bem_estar):
             return await message.channel.send(random.choice(LISTA_ESTADO))
 
-        # 8. Verificação de Presença
         if any(p in content for p in ["ta ai", "tá aí", "ta on", "esta ai", "você está ai"]):
             return await message.channel.send(random.choice(LISTA_PRESENCA))
 
-        # 9. Lógica de Biscoitos
         if "biscoito" in content:
             if any(p in content for p in ["me de", "me da", "quero", "ganhar"]):
                 return await message.channel.send(random.choice(REACOES_BISCOITO_PROPRIO))
             if "para" in content or "pra" in content:
                 outras_mencoes = [m for m in message.mentions if m != bot.user]
-                alvo = outras_mencoes[0].mention if outras_mencoes else "alguém especial que está lendo isso"
+                alvo = outras_mencoes[0].mention if outras_mencoes else "alguém especial"
                 return await message.channel.send(random.choice(REACOES_DAR_BISCOITO).format(autor=message.author.mention, alvo=alvo))
         
-        # 10. Declarações de Amor e Elogios
         if any(p in content for p in ["te amo", "amo voce", "fofo", "lindo", "fofinho", "perfeito", "fofura"]):
             return await message.channel.send(random.choice(REACOES_FOFAS))
         
-        # 11. Menção ao Criador
         if "reality" in content:
             return await message.channel.send("O Reality é meu papai mestre! Ele me deu vida e eu sou o dragãozinho mais grato do mundo! 👑🐉💚")
 
-        # FINAL DA LÓGICA - RESPOSTA QUANDO NÃO ENTENDE
         return await message.channel.send(random.choice(LISTA_CONFUSAO))
 
     await bot.process_commands(message)
 
-# ============== START =================
 bot.run(TOKEN)
