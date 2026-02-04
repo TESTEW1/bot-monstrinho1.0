@@ -19,7 +19,9 @@ bot = commands.Bot(command_prefix="ignore_prefix_!@#$", intents=intents)
 # ================= CONFIGURACÃO E IDs =================
 TOKEN = os.getenv("TOKEN")
 DONO_ID = 769951556388257812
-LUA_ID = 708451108774871192 # ID da Lua atualizado conforme solicitado
+LUA_ID = 708451108774871192 
+AKEIDO_ID = 445937581566197761 # ID do Líder Akeido
+AMBER_ID = 918222382840291369 # ID da ADM Amber
 
 # ================= LISTAS DE DIÁLOGOS AMPLIADAS E MAIS FOFAS =================
 
@@ -114,7 +116,6 @@ LISTA_CONFUSAO = [
     "Ahhh... eu ainda não sei o que isso significa! 😭 Mas se for um carinho, eu aceito!"
 ]
 
-# ================= LISTA DE TRISTEZA (NOVO) =================
 LISTA_TRISTEZA = [
     "Buaaa! 😭 Por que você está falando assim comigo? Eu só queria te dar um abraço... 💔🐉",
     "Minhas escamas até perderam o brilho agora... 🥺 O Monstrinho ficou muito, muito triste. 💚🚫",
@@ -330,18 +331,15 @@ REACOES_MATEMATICA = [
 @bot.event
 async def on_ready():
     print(f"🐉 Monstrinho 1.0 pronto para espalhar fofura como {bot.user}!")
-    # Status fofo
     await bot.change_presence(activity=discord.Game(name="Recebendo carinho do Reality! 💚"))
 
 @bot.event
 async def on_message(message):
-    # Ignora mensagens de outros bots
     if message.author.bot: return
 
     content = message.content.lower()
 
-    # --- NOVA REGRA: INVOCACÃO DA LUA POR MENÇÃO ---
-   # --- NOVA REGRA: INVOCACÃO DA LUA POR MENÇÃO ---
+    # --- REGRA: INVOCACÃO DA LUA POR MENÇÃO ---
     if f"<@{LUA_ID}>" in content or f"<@!{LUA_ID}>" in content:
         invocacoes_lua = [
             "✨ OWAOO! A nossa Vice-Líder Lua está sendo invocada com muito amor! 🌙💚",
@@ -350,11 +348,36 @@ async def on_message(message):
             "✨ Atenção família! A estrela mais linda, a Lua, foi invocada! 🌙🐉",
             "🐲 Rawr! Meus sensores de fofura apitaram: a Lua está sendo invocada! 💖🌙"
         ]
-        # Usando o link de servidor de mídia direta para evitar o nome do site embaixo
         gif_lua = "https://c.tenor.com/BVQmZqLF76AAAAAC/tenor.gif"
-        
         await message.channel.send(f"{random.choice(invocacoes_lua)}\n{gif_lua}")
         return
+
+    # --- NOVO: INVOCACÃO DO LÍDER AKEIDO POR MENÇÃO ---
+    if f"<@{AKEIDO_ID}>" in content or f"<@!{AKEIDO_ID}>" in content:
+        invocacoes_akeido = [
+            "👑 SALVEM O REI! O nosso Líder Akeido foi invocado com toda a sua glória! 🏛️💚",
+            "🐉 Meus instintos de monstrinho detectaram a presença suprema do Akeido! Respeitem o mestre!",
+            "✨ O grande líder Akeido está sendo chamado! Preparem os tapetes verdes! 🐲🏆",
+            "🫡 Alerta de autoridade fofa! O Líder Akeido foi mencionado! *bate continência*",
+            "🌟 Akeido, o senhor da CSI, acaba de ser invocado para brilhar no chat! 💎🐉"
+        ]
+        gif_akeido = "https://c.tenor.com/lnd2-pSdVuoAAAAC/tenor.gif" # Versão direta para não mostrar nome
+        await message.channel.send(f"{random.choice(invocacoes_akeido)}\n{gif_akeido}")
+        return
+
+    # --- NOVO: INVOCACÃO DA ADM AMBER POR MENÇÃO ---
+    if f"<@{AMBER_ID}>" in content or f"<@!{AMBER_ID}>" in content:
+        invocacoes_amber = [
+            "🌸 A deusa da organização! A nossa ADM Amber foi invocada com muito carinho! ✨👑",
+            "💖 Abram alas para a Amber! A nossa estrela guia está sendo chamada! 🐉✨",
+            "💎 Sinto um perfume de flores verdes... é a Amber sendo invocada agora! 🥺💚",
+            "🦋 A Amber chegou para deixar tudo mais lindo! Invocação de ADM concluída com sucesso!",
+            "✨ Atenção! A patroa Amber foi mencionada! Deixem as escamas brilhando para ela! 🧹🐲"
+        ]
+        gif_amber = "https://c.tenor.com/D39AC4BBA8A62FC580C61F5BF07EA69B18F44E42/tenor.gif"
+        await message.channel.send(f"{random.choice(invocacoes_amber)}\n{gif_amber}")
+        return
+
     # --- LÓGICA ESPECIAL PARA A LUA (PELA PALAVRA 'LUA') ---
     if message.author.id == LUA_ID or "lua" in content:
         if bot.user in message.mentions or "monstrinho" in content or message.author.id == LUA_ID:
@@ -364,20 +387,16 @@ async def on_message(message):
     # --- REAÇÃO AO SER MENCIONADO OU CHAMADO PELO NOME ---
     if bot.user in message.mentions or "monstrinho" in content:
         
-        # --- NOVO: LÓGICA DE COISAS MALDOSAS ---
         palavras_ruins = ["odeio", "chato", "feio", "horroroso", "bobão", "bobo", "inútil", "lixo", "estúpido", "sai daqui", "te odeio", "não gosto de você", "bot ruim", "burro"]
         if any(p in content for p in palavras_ruins):
             return await message.channel.send(random.choice(LISTA_TRISTEZA))
 
-        # 1. Pergunta sobre a Capital do Brasil
         if "capital do brasil" in content:
             return await message.channel.send("Essa eu sei! A capital do nosso Brasilzão é **Brasília**! 🇧🇷✨ Sabia que de lá eu consigo ver as nuvens em formato de biscoito? 🐉💚")
 
-        # 2. Pedido de Amizade
         if any(p in content for p in ["amigo", "amiguinho", "amizade"]):
             return await message.channel.send(f"EU QUERO MUITO SER SEU AMIGUINHO! 😭💚 {message.author.mention}, agora somos melhores amigos para sempre! Vou guardar um lugar pra você no meu ninho de nuvens! ✨🐉")
 
-        # 3. Novas perguntas adicionadas:
         if "quer aprender sobre" in content:
             return await message.channel.send("Eu quero aprender tudo sobre como ser o dragão mais fofo do universo e como ganhar infinitos biscoitos do Reality! 📚🍪🐉")
         
@@ -399,7 +418,7 @@ async def on_message(message):
         if any(p in content for p in ["me ama", "mim ama", "vc me ama"]):
             return await message.channel.send(f"Se eu te amo? EU TE AMO AO INFINITO E ALÉM! 💖🐉 Você é o humano mais especial que um monstrinho poderia ter! *abraço virtual bem apertado* 🫂✨")
 
-        # --- ADIÇÃO: LÓGICA DE MATEMÁTICA ---
+        # --- LÓGICA DE MATEMÁTICA ---
         if any(char in content for char in "+-*/!x") and any(char.isdigit() for char in content):
             try:
                 conta_suja = content.replace("monstrinho", "").replace(f"<@{bot.user.id}>", "").replace(f"<@!{bot.user.id}>", "")
@@ -421,33 +440,33 @@ async def on_message(message):
             except:
                 pass 
         
-        # 4. Resposta de Apresentação
+        # Resposta de Apresentação
         if content.strip() in [f"<@{bot.user.id}>", f"<@!{bot.user.id}>", "monstrinho"]:
             apresentacao = (f"🐉 **OIIIII MEU AMOOOOR! CHAMOU O MONSTRINHO?** 💚✨\n\n"
-                            f"Eu some o **Monstrinho 1.0**, o mascote oficial e protetor de fofuras da **CSI**! 🕵️‍♂️💚\n"
+                            f"Eu sou o **Monstrinho 1.0**, o mascote oficial e protetor de fofuras da **CSI**! 🕵️‍♂️💚\n"
                             f"Fui criado com muito código e amor pelo meu papai **Reality**! 👑✨\n\n"
                             f"✨ *CSI é meu lar, vocês são minha família e o Reality é meu mestre!* ✨")
             return await message.channel.send(apresentacao)
 
-        # 5. Respostas Customizadas para Membros Específicos
+        # Respostas Customizadas para Membros Específicos
         for nome, frases in FRASES_CUSTOM.items():
             if nome in content:
                 return await message.channel.send(random.choice(frases))
 
-        # 6. Saudações
+        # Saudações
         if any(p in content for p in ["oi", "oie", "bom dia", "boa tarde", "boa noite", "hello", "hii", "oiii"]):
             return await message.channel.send(random.choice(LISTA_SAUDACOES))
         
-        # 7. Perguntas de Estado
+        # Perguntas de Estado
         gatilhos_bem_estar = ["como você está", "tudo bem", "como vc ta", "ta tudo bem", "como voce ta", "vc ta bem", "voce ta bem", "ta bem", "esta bem", "como voce esta", "tudo certinho"]
         if any(p in content for p in gatilhos_bem_estar):
             return await message.channel.send(random.choice(LISTA_ESTADO))
 
-        # 8. Verificação de Presença
+        # Verificação de Presença
         if any(p in content for p in ["ta ai", "tá aí", "ta on", "esta ai", "você está ai"]):
             return await message.channel.send(random.choice(LISTA_PRESENCA))
 
-        # 9. Lógica de Biscoitos
+        # Lógica de Biscoitos
         if "biscoito" in content:
             if any(p in content for p in ["me de", "me da", "quero", "ganhar"]):
                 return await message.channel.send(random.choice(REACOES_BISCOITO_PROPRIO))
@@ -456,15 +475,14 @@ async def on_message(message):
                 alvo = outras_mencoes[0].mention if outras_mencoes else "alguém especial que está lendo isso"
                 return await message.channel.send(random.choice(REACOES_DAR_BISCOITO).format(autor=message.author.mention, alvo=alvo))
         
-        # 10. Declarações de Amor e Elogios
+        # Declarações de Amor e Elogios
         if any(p in content for p in ["te amo", "amo voce", "fofo", "lindo", "fofinho", "perfeito", "fofura"]):
             return await message.channel.send(random.choice(REACOES_FOFAS))
         
-        # 11. Menção ao Criador
+        # Menção ao Criador
         if "reality" in content:
             return await message.channel.send("O Reality é meu papai mestre! Ele me deu vida e eu sou o dragãozinho mais grato do mundo! 👑🐉💚")
 
-        # FINAL DA LÓGICA - RESPOSTA QUANDO NÃO ENTENDE
         return await message.channel.send(random.choice(LISTA_CONFUSAO))
 
     await bot.process_commands(message)
