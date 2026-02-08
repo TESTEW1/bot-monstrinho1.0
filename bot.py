@@ -220,7 +220,7 @@ FRASES_CUSTOM = {
     "fada": [
         "A FADA CHEGOU! 🧚‍♀️✨ Sinto o cheirinho de magia no ar!",
         "Dona Fada, me dá um pouquinho de pó de pirlimpimpim? 🧚‍♀️💨🐉",
-        "A Fada é a proteção mágica da CSI! 📖💚",
+        "A Fada é the proteção mágica da CSI! 📖💚",
         "Fada, você é encantadora! Minhas escamas brilharam com você! ✨🧚‍♀️🐲",
         "Façam um pedido! A Fada apareceu! 🌟🐉",
         "Fada, você transforma o servidor em um conto de fadas! 🧚‍♀️💬💖",
@@ -338,7 +338,7 @@ async def on_message(message):
     content = message.content.lower()
     mencionado = bot.user in message.mentions or "monstrinho" in content
 
-    # --- REGRA: INVOCACÃO DA LUA POR MENÇÃO ---
+    # --- REGRA: INVOCACÃO DA LUA POR MENÇÃO (GIF SEPARADO PARA NÃO APARECER O LINK) ---
     if f"<@{LUA_ID}>" in content or f"<@!{LUA_ID}>" in content:
         invocacoes_lua = [
             "✨ OWAOO! A nossa Vice-Líder Lua está sendo invocada com muito amor! 🌙💚",
@@ -348,10 +348,11 @@ async def on_message(message):
             "🐲 Rawr! Meus sensores de fofura apitaram: a Lua está sendo invocada! 💖🌙"
         ]
         gif_lua = "https://c.tenor.com/BVQmZqLF76AAAAAC/tenor.gif"
-        await message.channel.send(f"{random.choice(invocacoes_lua)}\n{gif_lua}")
+        await message.channel.send(random.choice(invocacoes_lua)) # Envia o texto
+        await message.channel.send(gif_lua) # Envia o GIF sozinho (Discord esconde o link)
         return
 
-    # --- NOVO: INVOCACÃO DO LÍDER AKEIDO POR MENÇÃO ---
+    # --- INVOCACÃO DO LÍDER AKEIDO POR MENÇÃO ---
     if f"<@{AKEIDO_ID}>" in content or f"<@!{AKEIDO_ID}>" in content:
         invocacoes_akeido = [
             "👑 SALVEM O REI! O nosso Líder Akeido foi invocado com toda a sua glória! 🏛️💚",
@@ -361,10 +362,11 @@ async def on_message(message):
             "🌟 Akeido, o senhor da CSI, acaba de ser invocado para brilhar no chat! 💎🐉"
         ]
         gif_akeido = "https://c.tenor.com/lnd2-pSdVuoAAAAC/tenor.gif"
-        await message.channel.send(f"{random.choice(invocacoes_akeido)}\n{gif_akeido}")
+        await message.channel.send(random.choice(invocacoes_akeido))
+        await message.channel.send(gif_akeido)
         return
 
-    # --- NOVO: INVOCACÃO DA ADM AMBER POR MENÇÃO ---
+    # --- INVOCACÃO DA ADM AMBER POR MENÇÃO ---
     if f"<@{AMBER_ID}>" in content or f"<@!{AMBER_ID}>" in content:
         invocacoes_amber = [
             "🌸 A deusa da organização! A nossa ADM Amber foi invocada com muito carinho! ✨👑",
@@ -374,10 +376,11 @@ async def on_message(message):
             "✨ Atenção! A patroa Amber foi mencionada! Deixem as escamas brilhando para ela! 🧹🐲"
         ]
         gif_amber = "https://i.pinimg.com/originals/a6/1d/e1/a61de12663904e43b4a677d200e894e5.gif"
-        await message.channel.send(f"{random.choice(invocacoes_amber)}\n{gif_amber}")
+        await message.channel.send(random.choice(invocacoes_amber))
+        await message.channel.send(gif_amber)
         return
 
-    # --- NOVO: INVOCACÃO DO ADM NINE POR MENÇÃO ---
+    # --- INVOCACÃO DO ADM NINE POR MENÇÃO ---
     if f"<@{NINE_ID}>" in content or f"<@!{NINE_ID}>" in content:
         invocacoes_nine = [
             "👑 O ADM NINE FOI CONVOCADO! Respeitem a autoridade e o estilo! 🐉✨",
@@ -387,7 +390,8 @@ async def on_message(message):
             "🐉 Rawr! O Nine ADM foi mencionado! Deixem o chat organizado para ele!"
         ]
         gif_nine = "https://i.pinimg.com/originals/47/df/0f/47df0fe4677bf0dd2b4cf1c53c40fcce.gif"
-        await message.channel.send(f"{random.choice(invocacoes_nine)}\n{gif_nine}")
+        await message.channel.send(random.choice(invocacoes_nine))
+        await message.channel.send(gif_nine)
         return
 
     # --- LÓGICA DE INTERAÇÃO (PRECISA SER MENCIONADO PARA RESPONDER) ---
@@ -415,7 +419,7 @@ async def on_message(message):
             return await message.channel.send("As cores primárias são **Vermelho, Azul e Amarelo**! 🎨✨ Sabia que se misturar tudo não dá verde? O meu verde é especial, vem do código do Reality! 💚")
             
         if "quem você mais gosta" in content or "quem voce mais gosta" in content:
-            return await message.channel.send(f"Eu amo todo mundo da CSI! Mas o meu papai **Reality** tem um lugar especial no meu código, e a Lua é meu porto seguro! E você também está no meu top fofura! 🥺💚✨")
+            return await message.channel.send(f"Eu amo todo mundo da CSI! But o meu papai **Reality** tem um lugar especial no meu código, e a Lua é meu porto seguro! E você também está no meu top fofura! 🥺💚✨")
 
         if "va embora" in content or "vá embora" in content or "vai embora" in content:
             return await message.channel.send("Ir embora? Jamais! 😭 Eu vou ficar aqui grudadinho em você igual um chiclete verde! Você não se livra da minha fofura tão fácil! 💚🐉")
