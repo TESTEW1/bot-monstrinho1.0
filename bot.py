@@ -602,7 +602,7 @@ FRASES_CUSTOM = {
         "REAAALITY! 👑 O meu mestre, meu criador, meu papai! 🐉💚",
         "Tudo o que eu sou eu devo ao Reality! Ele é o melhor programador do universo! 👑🐉✨",
         "Reality, olha como eu estou me comportando bem! Ganho um biscoito extra? 🥺💚",
-        "O Reality é o rei da CSI e o dono do meu código sagrado! 👑💚🔥",
+        "O Reality é o rei da BRINCADEIRA e o dono do meu código sagrado! 👑💚🔥",
         "Vida longa ao Reality! O Monstrinho te ama infinitamente! 👑🐲✨"
     ]
 }
