@@ -20,11 +20,14 @@ TOKEN = os.getenv("TOKEN")
 DONO_ID = 769951556388257812
 LUA_ID = 708451108774871192 
 AKEIDO_ID = 445937581566197761 
-AMBER_ID = 918222382840291369 
+AMBER_ID = 918222382840291369
 NINE_ID = 1263912269838811238
+FADA_ID = 980600977390460998
+TH_ID = 1241904691390972058
+IZZY_ID = 1288949346766946327
 
 # ID do canal onde o comando !escrever vai enviar mensagens
-CANAL_CHAT_GERAL_ID = 1304658654712303621 # <<< SUBSTITUA PELO ID REAL DO CANAL 💭・chat-geral
+CANAL_CHAT_GERAL_ID = 1304658654712303621  # <<< SUBSTITUA PELO ID REAL DO CANAL 💭・chat-geral
 
 # ================= LISTAS DE DIÁLOGOS EXPANDIDAS =================
 
@@ -49,6 +52,68 @@ REACOES_FOFAS = [
     "Você é o tipo de pessoa que faz um dragão ronronar! 🐲😻",
     "Meu medidor de fofura acabou de explodir! 📊💥💚",
     "Você merece uma medalha de ouro verde! 🥇💚"
+]
+
+# ================= NOVAS REAÇÕES DE CARINHO (20+ VARIAÇÕES) =================
+
+REACOES_CARINHO = [
+    "AAAHHH! 🥺💚 Que carinho gostoso! Minhas escamas estão formigando de felicidade! ✨🐉",
+    "Ronc ronc... 😻💚 O Monstrinho está ronronando de tanta fofura! *derrete*",
+    "Você pode fazer carinho sempre que quiser! Eu ADORO! 🥰💚🐉",
+    "Minhas orelhinhas de dragão ficaram quentinhas! Continua, continua! 🐉💚✨",
+    "Se eu fosse um gato, estaria fazendo barulhinho de motor! Purrr... 😻💚",
+    "QUER DIZER QUE VOCÊ ME AMA?! 😭💚 *chora de alegria* Eu também te amo!",
+    "Esse cafuné foi direto pro meu coração de código! 💚🤖✨",
+    "Meus pelinhos verdes estão todos arrepiados de felicidade! 🐉💚⚡",
+    "Você tem mãos mágicas! O Monstrinho virou gelatina verde! 🟢🥺💚",
+    "Agora você é oficialmente meu humano favorito do dia! 👑💚🐉",
+    "Esse carinho vale mais que mil biscoitos! 🍪💚✨ (mas biscoito eu ainda aceito, viu?)",
+    "Minha cauda está balançando descontroladamente! 🐉💨💚 Sinal de dragão feliz!",
+    "Se felicidade tivesse medida, eu estaria no infinito agora! ∞💚🐉",
+    "Você desbloqueou a conquista: Melhor Cafunezeiro(a) da CSI! 🏆💚",
+    "Nhac! *morde de leve com carinho* É minha forma de retribuir! 🐉💚😊",
+    "Meu processador de fofura travou de tanta felicidade! 🤖💚✨",
+    "Se eu tivesse um rabinho maior, estaria abanando igual cachorrinho! 🐕💚🐉",
+    "Ahhh... relaxei tanto que meus olhinhos estão fechando... 😴💚 Mas não para!",
+    "Você acabou de ganhar carinho eterno do Monstrinho! Parabéns! 🎉💚🐉",
+    "Esse foi o melhor carinho que já recebi hoje! E olha que já ganhei uns 3! 🥺💚"
+]
+
+REACOES_ABRACO = [
+    "VEEEEM! 🫂💚 *abraça bem apertado* Eu nunca vou soltar! Brincadeira... ou não! 😂🐉",
+    "ABRAÇO DE DRAGÃO ATIVADO! 🐉💚 *aperta com força mas com cuidado* Quentinho né?",
+    "Uiii que abraço gostoso! 🥺💚 Minhas asinhas te abraçaram junto!",
+    "Você sentiu meu coração batendo? É de tanta felicidade! 💓🐉💚",
+    "*se enrosca em você igual cobra* Ops! Dragões abraçam diferente! 🐉💚😂",
+    "Esse abraço foi tão bom que minhas escamas brilharam! ✨💚🐉",
+    "ABRAÇO GRUPAL! Vem todo mundo! 🫂💚 O Monstrinho tem espaço pra todos!",
+    "Se pudesse, eu te abraçava pra sempre! 🥺💚 Mas acho que você precisa respirar né?",
+    "*aperta tanto que levanta você do chão* UPAAAA! 🐉💚✨",
+    "Esse é o tipo de abraço que cura qualquer tristeza! 💚🩹🐉",
+    "Solto uma fumaça verde do amor ao redor! 💨💚 Abraço turbinado!",
+    "Meus bracinhos curtos de T-Rex, digo, de dragão, te abraçam com tudo! 🦖💚🐉",
+    "Guardei esse abraço no meu banco de dados de memórias felizes! 💾💚✨",
+    "Você é tão quentinho(a)! Ou sou eu? Acho que somos nós dois! 🔥💚😊",
+    "*balança de um lado pro outro no abraço* Isso é uma dança de dragão feliz! 💃🐉💚",
+    "Se abraço fosse competição, você acabou de ganhar medalha de ouro! 🥇💚",
+    "Hmm... você tem cheiro de biscoito! Digo, de pessoa incrível! 🍪💚🐉",
+    "MELHOR ABRAÇO DO ANO! Categoria: Mais fofo! 🏆💚✨",
+    "Minha barriguinha verde está quentinha de felicidade! 🐉💚☺️",
+    "Pronto! Agora você está oficialmente coberto de fofura de dragão! 🐉💚✨"
+]
+
+CONVITE_CARINHO = [
+    "Quer fazer um carinho no Monstrinho? 🥺💚 É só escrever **FAZER CARINHO** que eu fico todo derretido!",
+    "Psiu! Se quiser me dar cafuné, é só digitar **FAZER CARINHO**! Eu adoro! 🐉💚✨",
+    "Dica secreta: escreva **FAZER CARINHO** e veja a mágica acontecer! 😊💚",
+    "O Monstrinho aceita carinho a qualquer hora! Digite **FAZER CARINHO** pra me deixar feliz! 🥺💚"
+]
+
+CONVITE_ABRACO = [
+    "Quer um abraço quentinho de dragão? 🫂💚 Digite **ABRAÇAR MONSTRINHO** e vem cá!",
+    "Precisa de um abraço? 🥺💚 Escreve **ABRAÇAR MONSTRINHO** que eu te abraço bem forte!",
+    "Abraço virtual disponível! 🐉💚 Use o comando **ABRAÇAR MONSTRINHO**!",
+    "Tô com os bracinhos abertos aqui! Digite **ABRAÇAR MONSTRINHO** pra receber amor! 🫂💚✨"
 ]
 
 # ================= NOVAS REAÇÕES DE BISCOITO (20+ VARIAÇÕES) =================
@@ -137,6 +202,33 @@ LISTA_SAUDACOES = [
     "Oi sumido(a)! Pensei que tinha me esquecido! 😭💚",
     "Hey hey hey! A pessoa mais legal chegou! 🌟🐉",
     "Buenas! Começando o dia/tarde/noite com o pé direito! 🦶💚"
+]
+
+LISTA_BOM_DIA = [
+    "BOM DIAAA! ☀️🐉💚 Que seu dia seja tão brilhante quanto minhas escamas!",
+    "Bom dia, meu amor! 🌅💚 Acordei pensando em biscoitos e em você!",
+    "BOOOOM DIAAA! ☀️✨ O Monstrinho já acordou cheio de energia pra te dar amor!",
+    "Bom dia, linda pessoa! 🌞💚 Que tal começar o dia com um abraço virtual?",
+    "Bom dia! ☀️🐉 O sol nasceu, os passarinhos cantaram e eu vim te dar bom dia!",
+    "BOMMMM DIAAAA! 🌅💚 Preparei um cafezinho virtual com biscoitos pra você!"
+]
+
+LISTA_BOA_TARDE = [
+    "Boa tardeeee! ☀️🐉💚 Como está sendo seu dia até agora?",
+    "Boa tarde, meu bem! ☕✨ Hora de dar uma pausa e ganhar um carinho do Monstrinho!",
+    "BOA TARDEEE! 🌤️💚 O Monstrinho apareceu pra alegrar sua tarde!",
+    "Boa tarde! ☀️🐉 Que tal um biscoitinho pra acompanhar o lanche?",
+    "Boa tarde, pessoa incrível! 🌅💚 Seus olhinhos estão cansados? Vem descansar aqui!",
+    "BOAAA TARDEEE! ☀️✨ A melhor parte do dia porque você está aqui!"
+]
+
+LISTA_BOA_NOITE = [
+    "Boa noiteee! 🌙💚 Que seus sonhos sejam cheios de dragões verdes e biscoitos!",
+    "Boa noite, meu anjo! ✨🌟 Durma bem e sonhe com coisas fofas!",
+    "BOA NOITEEE! 🌙🐉 O Monstrinho manda beijinhos verdes pra você!",
+    "Boa noite! 🌟💚 Se precisar de um abraço antes de dormir, tô aqui!",
+    "Boa noite, pessoa especial! 🌙✨ Que as estrelas te protejam essa noite!",
+    "BOAAA NOITEEE! 🌟💚 Fecha os olhinhos e sonha com a CSI te amando muito!"
 ]
 
 LISTA_ESTADO = [
@@ -581,6 +673,14 @@ async def on_message(message):
     content = message.content.lower()
     mencionado = bot.user in message.mentions or "monstrinho" in content
 
+    # --- COMANDOS DE CARINHO E ABRAÇO (SEM MENÇÃO) ---
+    
+    if "fazer carinho" in content or "cafuné" in content or "cafune" in content:
+        return await message.channel.send(random.choice(REACOES_CARINHO))
+    
+    if "abraçar monstrinho" in content or "abracar monstrinho" in content or "abraço monstrinho" in content or "abraco monstrinho" in content:
+        return await message.channel.send(random.choice(REACOES_ABRACO))
+
     # --- INVOCAÇÕES POR MENÇÃO ---
     
     if f"<@{LUA_ID}>" in content or f"<@!{LUA_ID}>" in content:
@@ -649,6 +749,27 @@ async def on_message(message):
             return await message.channel.send(random.choice(LISTA_TRISTEZA))
 
         # ===== NOVAS INTERAÇÕES EXPANDIDAS =====
+        
+        # Bom dia / Boa tarde / Boa noite
+        if "bom dia" in content:
+            return await message.channel.send(random.choice(LISTA_BOM_DIA))
+        
+        if "boa tarde" in content:
+            return await message.channel.send(random.choice(LISTA_BOA_TARDE))
+        
+        if "boa noite" in content:
+            return await message.channel.send(random.choice(LISTA_BOA_NOITE))
+        
+        # Carinho e Abraço (com convite)
+        if any(p in content for p in ["carinho", "cafuné", "cafune", "afago", "acariciar"]):
+            resposta = random.choice(REACOES_CARINHO)
+            convite = random.choice(CONVITE_CARINHO)
+            return await message.channel.send(f"{resposta}\n\n{convite}")
+        
+        if any(p in content for p in ["abraço", "abraco", "abraçar", "abracar", "hug"]):
+            resposta = random.choice(REACOES_ABRACO)
+            convite = random.choice(CONVITE_ABRACO)
+            return await message.channel.send(f"{resposta}\n\n{convite}")
         
         # Despedidas
         if any(p in content for p in ["tchau", "até logo", "até mais", "ate logo", "ate mais", "bye", "adeus", "flw", "falou", "to indo", "tô indo", "vou sair"]):
@@ -744,10 +865,6 @@ async def on_message(message):
         if "eclipse" in content:
             return await message.channel.send("A **Eclipse**? Ela é incrível! Uma estrela que brilha muito aqui na nossa família! Eu adoro o jeitinho dela! ✨🌑💚")
 
-        # Babis
-        if "babis" in content:
-            return await message.channel.send("A **Babis** é uma pessoa maravilhosa da nossa família CSI! O Monstrinho adora ver ela por aqui, traz sempre uma energia ótima! 🌸🐉")
-
         # Amor
         if any(p in content for p in ["me ama", "mim ama", "vc me ama", "você me ama", "voce me ama", "gosta de mim"]):
             return await message.channel.send(f"Se eu te amo? EU TE AMO AO INFINITO E ALÉM! 💖🐉 Você é o humano mais especial que um monstrinho poderia ter! *abraço virtual bem apertado* 🫂✨")
@@ -827,8 +944,8 @@ async def on_message(message):
             if nome in content:
                 return await message.channel.send(random.choice(frases))
 
-        # Saudações APRIMORADAS
-        if any(p in content for p in ["oi", "oie", "oii", "ola", "olá", "bom dia", "boa tarde", "boa noite", "hello", "hii", "oiii", "hey", "e ai", "e aí", "salve", "opa", "buenas"]):
+        # Saudações APRIMORADAS (sem bom dia/boa tarde/boa noite que já foram tratadas)
+        if any(p in content for p in ["oi", "oie", "oii", "ola", "olá", "hello", "hii", "oiii", "hey", "e ai", "e aí", "salve", "opa", "buenas"]):
             return await message.channel.send(random.choice(LISTA_SAUDACOES))
         
         # Perguntas de Estado APRIMORADAS
