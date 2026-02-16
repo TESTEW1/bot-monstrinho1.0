@@ -25,6 +25,9 @@ NINE_ID = 1263912269838811238
 FADA_ID = 980600977390460998
 TH_ID = 1241904691390972058
 IZZY_ID = 1288949346766946327
+ATHENA_ID = None  # Adicione o ID da Athena aqui se souber
+DESTINY_ID = None  # Adicione o ID do Destiny aqui se souber
+JEFF_ID = None  # Adicione o ID do Jeff aqui se souber
 REALITY_ID = DONO_ID  # Reality é o dono
 
 # ID do canal onde o comando !escrever vai enviar mensagens
@@ -561,7 +564,28 @@ LISTA_EMOJI_REACTIONS = [
     "Me manda mais emojis! Eu amo! 🥺💚"
 ]
 
-# ================= RESPOSTAS CUSTOMIZADAS =================
+# ================= RESPOSTAS CUSTOMIZADAS POR ID =================
+
+# Dicionário que mapeia IDs para nomes (para facilitar detecção)
+ID_PARA_NOME = {
+    AMBER_ID: "amber",
+    NINE_ID: "nine",
+    AKEIDO_ID: "akeido",
+    TH_ID: "th",
+    FADA_ID: "fada",
+    LUA_ID: "lua",
+    REALITY_ID: "reality"
+}
+
+# Se você tiver os IDs da Athena, Izzy, Destiny e Jeff, adicione aqui:
+if ATHENA_ID:
+    ID_PARA_NOME[ATHENA_ID] = "athena"
+if IZZY_ID:
+    ID_PARA_NOME[IZZY_ID] = "izzy"
+if DESTINY_ID:
+    ID_PARA_NOME[DESTINY_ID] = "destiny"
+if JEFF_ID:
+    ID_PARA_NOME[JEFF_ID] = "jeff"
 
 FRASES_CUSTOM = {
     "amber": [
@@ -838,6 +862,10 @@ async def on_message(message):
 
     content = message.content.lower()
     mencionado = bot.user in message.mentions or "monstrinho" in content
+    
+    # Verifica se o autor tem resposta customizada pelo ID
+    autor_id = message.author.id
+    nome_customizado = ID_PARA_NOME.get(autor_id)
 
     # --- COMANDOS DE CARINHO E ABRAÇO (SEM MENÇÃO - FUNCIONA SEMPRE) ---
     
@@ -908,6 +936,12 @@ async def on_message(message):
         palavras_ruins = ["odeio", "chato", "feio", "horroroso", "bobão", "bobo", "inútil", "lixo", "estúpido", "sai daqui", "te odeio", "não gosto de você", "bot ruim", "burro", "idiota"]
         if any(p in content for p in palavras_ruins):
             return await message.channel.send(random.choice(LISTA_TRISTEZA))
+
+        # ===== RESPOSTAS AUTOMÁTICAS POR ID (quando o Monstrinho é mencionado) =====
+        if nome_customizado and nome_customizado in FRASES_CUSTOM:
+            # 30% de chance de responder com frase customizada quando mencionado
+            if random.random() < 0.3:
+                return await message.channel.send(random.choice(FRASES_CUSTOM[nome_customizado]))
 
         # ===== NOVAS INTERAÇÕES EXPANDIDAS =====
         
@@ -1100,7 +1134,7 @@ async def on_message(message):
                             f"✨ *CSI é meu lar, vocês são minha família e o Reality é meu mestre!* ✨")
             return await message.channel.send(apresentacao)
 
-        # Respostas Customizadas para Membros Específicos (quando mencionados)
+        # Respostas Customizadas para Membros Específicos (quando mencionados junto com o nome)
         for nome, frases in FRASES_CUSTOM.items():
             if nome in content:
                 return await message.channel.send(random.choice(frases))
