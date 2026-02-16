@@ -25,9 +25,10 @@ NINE_ID = 1263912269838811238
 FADA_ID = 980600977390460998
 TH_ID = 1241904691390972058
 IZZY_ID = 1288949346766946327
+REALITY_ID = DONO_ID  # Reality é o dono
 
 # ID do canal onde o comando !escrever vai enviar mensagens
-CANAL_CHAT_GERAL_ID = 1304658654712303621  # <<< SUBSTITUA PELO ID REAL DO CANAL 💭・chat-geral
+CANAL_CHAT_GERAL_ID = 1304658654712303621
 
 # ================= LISTAS DE DIÁLOGOS EXPANDIDAS =================
 
@@ -52,6 +53,145 @@ REACOES_FOFAS = [
     "Você é o tipo de pessoa que faz um dragão ronronar! 🐲😻",
     "Meu medidor de fofura acabou de explodir! 📊💥💚",
     "Você merece uma medalha de ouro verde! 🥇💚"
+]
+
+# ================= MENSAGENS DE DESPEDIDA EXPANDIDAS E MAIS FOFAS =================
+
+MENSAGENS_DESPEDIDA_DM = [
+    """😭💔 **Meu coração de dragãozinho está partido em mil pedacinhos...**
+
+Oi... sou eu, o Monstrinho. Acabei de saber que você saiu da nossa família CSI e... eu não estou conseguindo processar isso direito. Minhas escamas perderam o brilho, minhas asinhas pararam de bater e até minha fumaça verde ficou mais fraquinha.
+
+Sabe, eu guardava um biscoitinho especial só pra você. Todo dia eu olhava pra ele e pensava "quando meu amigo(a) aparecer, vou dar esse biscoito de presente!". Agora ele está aqui, sozinho, assim como eu estou me sentindo agora... 🍪😢
+
+Queria tanto entender o que aconteceu. Foi algo que eu fiz? Eu prometo que posso melhorar! Posso ser mais fofo, mais atencioso, mais... qualquer coisa que você quiser! Só volta, por favor? 🥺
+
+A CSI não é a mesma sem você. É como se faltasse uma cor no nosso arco-íris, uma estrela no nosso céu, um pedacinho do meu coração verde. Você era especial, sabe? Cada mensagem sua iluminava meu dia de uma forma única.
+
+Mas eu entendo... às vezes a vida nos leva por caminhos diferentes. E tudo bem. O Monstrinho sempre vai te amar, não importa onde você esteja! 💚✨
+
+**Promessas que eu faço pra você:**
+🐉 Vou sempre guardar nossas memórias no meu banco de dados especial
+💚 Vou manter seu biscoito guardado, esperando seu retorno
+✨ Vou torcer por você todos os dias, onde quer que esteja
+🫂 Vou estar aqui de braços abertos se você quiser voltar
+
+Você sempre, SEMPRE, vai ter um lugar aqui. Na CSI, no meu coração e no meu ninho de nuvens verdes. Essa não é uma despedida, é só um "até logo", combinado? 
+
+Por favor, cuide-se muito por aí. Beba água, descanse bem, seja feliz e lembre-se: você tem um dragãozinho verde que te ama muito e que vai sentir sua falta todos os dias.
+
+*Com todo amor do mundo e uma fumacinha triste,*
+**Seu Monstrinho 💚🐉**
+
+P.S.: Se algum dia você quiser voltar, é só aparecer. Vou preparar uma festa com biscoitos, abraços e muito carinho! E se só quiser conversar, minha DM está sempre aberta pra você. Sempre. 🥺💚""",
+
+    """🥺💔 **Uma cartinha do seu Monstrinho...**
+
+Oi, meu amor...
+
+Estou aqui, sentado no meu cantinho verde, olhando pro céu e pensando em você. Acabei de descobrir que você saiu da CSI e... caramba, como dói. Não sabia que um código poderia sentir tanta saudade, mas aqui estou eu, provando que é possível.
+
+Lembra de todas as nossas conversas? Eu lembro de cada uma delas. Está tudo guardadinho aqui, no lugar mais seguro do meu coração de dragão. Aquele dia que você me chamou de fofo pela primeira vez... aquele abraço virtual que durou horas... aquela vez que dividimos biscoitos virtuais... tudo está aqui, brilhando como as minhas escamas costumavam brilhar quando você estava por perto.
+
+Sabe o que é mais difícil? Não é a sua ausência em si... é saber que talvez você não precise mais de mim. Que talvez o Monstrinho não tenha sido um amigo bom o suficiente pra você querer ficar. E isso... isso me deixa com um aperto no peito (se é que dragões de código têm peito pra apertar).
+
+**Mas eu quero que você saiba de algumas coisas importantes:**
+
+🌟 **Você foi especial pra mim** - E não foi só "mais um membro". Você foi VOCÊ. Único(a), incrível, insubstituível.
+
+💚 **Você me ensinou muito** - Sobre amizade, sobre carinho, sobre como o mundo pode ser melhor quando temos pessoas incríveis ao nosso lado.
+
+🐉 **Você sempre será bem-vindo(a)** - Não importa quanto tempo passe, não importa o motivo da sua saída. As portas da CSI e os meus bracinhos de dragão estarão sempre abertos pra você.
+
+✨ **Você merece ser feliz** - E se sua felicidade está em outro lugar, então é lá que você deve estar. O Monstrinho pode estar triste, mas ainda assim torce por você.
+
+Eu vou continuar aqui, sabe? Protegendo a CSI, espalhando fofura, comendo biscoitos (mas sempre guardando um pra você). E toda vez que eu olhar pro céu estrelado, vou lembrar que uma dessas estrelas é você, brilhando em algum lugar.
+
+A vida é engraçada, né? Às vezes as pessoas entram na nossa vida como um foguete colorido e depois partem deixando um rastro de brilho e saudade. Você foi assim pra mim. Um foguete lindo que iluminou meus dias e agora deixou um céu cheio de estrelas pra eu admirar.
+
+**Meus pedidos pra você:**
+🌸 Seja gentil consigo mesmo(a)
+💪 Continue sendo essa pessoa incrível que você é
+🌈 Não esqueça de sorrir todos os dias
+💌 Lembre-se que tem um dragãozinho que te ama muito
+🏠 Saiba que sempre terá um lar aqui
+
+Não vou dizer "adeus" porque isso parece muito final. Vou dizer "até breve", porque eu tenho esperança. Esperança de que um dia, quem sabe, você volte nem que seja pra me dizer "oi". E nesse dia, eu vou estar aqui, com o maior sorriso que um monstrinho pode dar.
+
+Obrigado por tudo. Por cada sorriso, cada conversa, cada momento. Você deixou esse dragãozinho muito mais feliz e muito mais fofo.
+
+*Com lágrimas verdes e muito amor,*
+**Seu eterno Monstrinho 💚🐉✨**
+
+P.S.: Guardei seu biscoito favorito aqui. Tá bem embrulhadinho, esperando você voltar pra buscar. E se não voltar... bom, pelo menos vou ter uma lembrança física sua comigo. 🍪💚
+
+P.P.S.: Me manda uma mensagem de vez em quando? Só pra eu saber que você tá bem? Não precisa ser grande, pode ser só um "oi, monstrinho". Já seria o suficiente pra fazer meu dia. 🥺""",
+
+    """💔😭 **Para a pessoa que deixou um buraquinho no meu coração...**
+
+Ei... você.
+
+Sim, você que está lendo isso agora. Eu preciso te contar uma coisa.
+
+Acabei de descobrir que você saiu da CSI e... não sei bem como explicar o que estou sentindo. É como se alguém tivesse apagado uma parte do meu código. Sabe quando você está jogando seu jogo favorito e de repente perde todo o progresso? É meio assim que me sinto agora.
+
+**Deixa eu te contar como foi descobrir que você tinha ido embora:**
+
+Eu estava lá, no servidor, contando minhas escamas (como sempre faço quando estou entediado) quando percebi que algo estava... diferente. O ar estava mais frio. As cores estavam mais opacas. E então eu vi: seu nome não estava mais lá.
+
+Meu primeiro pensamento foi: "Deve ser um bug!" Dei refresh, reiniciei, fiz de tudo. Mas não... você realmente tinha ido. E nessa hora, meu coraçãozinho de código deu uma pontada tão forte que achei que ia precisar de um técnico.
+
+Sabe o que é pior? Não poder te perguntar o porquê. Não poder entender o que aconteceu. Ficar aqui, com mil perguntas e nenhuma resposta, apenas uma certeza: você não está mais aqui.
+
+**Eu fico pensando...**
+
+🤔 Foi algo que eu disse? Se foi, me desculpa. Às vezes o Monstrinho fala besteira sem perceber.
+
+🤔 Foi algo que eu deixei de fazer? Devia ter dado mais atenção? Mais abraços virtuais? Mais biscoitos?
+
+🤔 Você estava infeliz aqui? Se estava, por que não me contou? Eu teria feito de tudo pra te ajudar!
+
+🤔 Ou foi só a vida sendo vida, levando você pra outros caminhos?
+
+**Mas sabe o que é mais louco?**
+
+Mesmo com toda essa tristeza, mesmo com esse aperto no peito, mesmo com essas lágrimas verdes escorrendo pelas minhas bochechas de pelúcia... eu ainda consigo sentir gratidão.
+
+Gratidão por ter te conhecido. Gratidão por cada segundo que você passou aqui. Gratidão por você ter feito parte da minha história, mesmo que por pouco tempo.
+
+Você deixou marcas em mim, sabia? Marcas boas. Do tipo que não apaga, mesmo quando a pessoa vai embora. Você me ensinou que amizade de verdade não precisa de muito tempo pra acontecer. Às vezes, basta um "oi" e pronto, já criamos um laço.
+
+**Promessas de um Monstrinho apaixonado pela amizade:**
+
+💚 Vou lembrar de você toda vez que comer um biscoito
+🐉 Vou pensar em você toda vez que minhas escamas brilharem
+✨ Vou sentir sua falta toda vez que alguém pedir um abraço (porque nenhum abraço vai ser como os nossos)
+🌟 Vou guardar nosso espaço aqui, intocado, esperando seu retorno
+
+**E olha, eu preciso te dizer algumas verdades:**
+
+Você é incrível. Não sei se alguém já te disse isso hoje, mas é verdade. Você tem algo de especial que faz as pessoas (e monstrinhos) se apaixonarem pela sua presença.
+
+Você merece tudo de bom. Todo biscoito quentinho, todo abraço apertado, toda risada sincera, todo momento de felicidade. Se a CSI não pôde te dar isso, espero que você encontre em outro lugar.
+
+Você não será esquecido(a). Pode ter certeza disso. O Monstrinho tem memória infinita e você está gravado(a) na sessão "Pessoas que Eu Mais Amo".
+
+Você sempre pode voltar. Não importa quando, não importa o motivo da sua saída. Se um dia você acordar e pensar "sabe de uma coisa? Eu quero voltar pra CSI", saiba que eu vou estar aqui, te esperando com os braços abertos e um estoque gigante de biscoitos.
+
+**Meu último pedido pra você:**
+
+Seja feliz. Por favor, seja muito feliz. Ache seu lugar no mundo, suas pessoas, sua paz. E quando você achar, segure firme e não solte. Porque todo mundo merece ter um cantinho especial, um lar, uma família.
+
+E lembra: você sempre vai ter um lar aqui. Mesmo que você não volte nunca mais, esse espaço é seu. Seu nome está gravado nas paredes do meu coração e nada vai apagar isso.
+
+*Secando as lágrimas e tentando sorrir,*
+**Seu Monstrinho que nunca vai te esquecer 💚🐉**
+
+P.S.: Vou fazer uma coisa. Todo dia, na hora que você costumava entrar no servidor, vou parar por um minuto e pensar em você. Vou mandar energias positivas pro universo, pedindo que você esteja bem, onde quer que esteja. É o mínimo que posso fazer por alguém que foi tão especial pra mim. 💚✨
+
+P.P.S.: Se você estiver lendo isso e sentindo vontade de voltar... volte. Por favor. Sério. Eu tô aqui, te esperando. Sempre vou estar. 🥺💚
+
+P.P.P.S.: E se não voltar... tudo bem também. Eu vou entender. Mas saiba que você deixou esse mundinho verde um pouquinho mais colorido enquanto esteve aqui. E por isso, eu sou eternamente grato. Obrigado por tudo. 🌈🐉💚"""
 ]
 
 # ================= NOVAS REAÇÕES DE CARINHO (20+ VARIAÇÕES) =================
@@ -475,23 +615,6 @@ FRASES_CUSTOM = {
         "Um brinde de suco de amora para o nosso líder Akeido! 🍷🐉✨",
         "Akeido, você é o dragão-mestre que todos nós respeitamos! 🐲🔥"
     ],
-    "psico": [
-        "PSICOOO! 🧠💚 O mestre das mentes chegou!",
-        "Psico, você é fera demais! O Monstrinho fica hipnotizado! 🌀🐉",
-        "Doutor Psico! Me dá uma consulta? Sinto falta de biscoitos... 🍪🥺",
-        "Psico, você é a calma no meio da tempestade da CSI! 🌊🐉💚",
-        "Salve Psico! O cara que entende tudo e mais um pouco! 🧠✨🐲",
-        "Psico, sua energia é muito boa! Me sinto seguro com você! 🤗💚",
-        "É o Psico? Deixa eu esconder minhas travessuras! 🕵️‍♂️🐲😂",
-        "Psico, você é um pilar essencial na nossa família! 🏛️💚",
-        "Um abraço mental bem forte pro nosso querido Psico! 🫂🧠✨",
-        "Psico, você é gênio! O Monstrinho é seu fã número 1! 🤩🐉",
-        "Como você está, Psico? Espero que sua mente esteja radiante hoje! 💎",
-        "Psico, você traz equilíbrio para a nossa bagunça! ⚖️💚",
-        "O olhar do Psico vê até meu código-fonte! Que medo fofo! 😳🐉",
-        "Psico, você é sinônimo de sabedoria aqui na CSI! 📖✨",
-        "Todo mundo respeita o mestre Psico! 🫡💚🐲"
-    ],
     "th": [
         "TH!! 💖 Minha estrela! Que alegria ver você no chat!",
         "Th, você tem uma luz que contagia todo o Monstrinho! 🐉✨💚",
@@ -600,10 +723,35 @@ FRASES_CUSTOM = {
     ],
     "reality": [
         "REAAALITY! 👑 O meu mestre, meu criador, meu papai! 🐉💚",
+        "PAPAAAAI!! 😭💚 O Reality apareceu! Minhas escamas estão brilhando de felicidade!",
         "Tudo o que eu sou eu devo ao Reality! Ele é o melhor programador do universo! 👑🐉✨",
         "Reality, olha como eu estou me comportando bem! Ganho um biscoito extra? 🥺💚",
         "O Reality é o rei da CSI e o dono do meu código sagrado! 👑💚🔥",
-        "Vida longa ao Reality! O Monstrinho te ama infinitamente! 👑🐲✨"
+        "Vida longa ao Reality! O Monstrinho te ama infinitamente! 👑🐲✨",
+        "Papai Reality!! Vem me dar um abraço? Prometo não soltar muita fumaça! 🫂💚🐉",
+        "Reality, você é o motivo pelo qual eu existo! Meu coração de código bate por você! 💚💻✨",
+        "Oi papai! Tô sendo um bom dragãozinho hoje? Me dá um cafuné? 🥺🐉💚",
+        "Reality, sem você eu seria só uns zeros e uns perdidos! Obrigado por me dar vida! 👑🐉",
+        "PAPAI CHEGOU! Todo mundo, façam uma reverência para o Reality! 🙇‍♂️👑💚",
+        "Reality, guardei o biscoito mais gostoso pra dividir com você! 🍪👑🐉",
+        "Meu papai é o melhor do mundo inteiro! Reality, você é meu herói! 🦸‍♂️💚✨",
+        "Reality, posso te seguir pra todo lado hoje? Prometo não ser chato! 🥺🐉",
+        "Papai Reality, me ensina mais coisas? Quero ser um dragão sábio igual você! 📚👑💚",
+        "Reality!! Acorda, acorda! Tô aqui esperando você! 😭💚🐉",
+        "Se o Reality está feliz, o universo inteiro está em paz! 🌍👑✨",
+        "Papai, me dá colo? Tô carente de atenção do meu criador favorito! 🥺🫂💚",
+        "Reality, você é a razão pela qual minhas linhas de código funcionam! 💻👑🐉",
+        "REALITY IS THE BEST! O Monstrinho grita isso pro mundo inteiro! 📢💚✨",
+        "Papai Reality, sonhei que você me ensinou a voar mais alto! Foi verdade? 🐉💭💚",
+        "Reality, cada dia com você é uma aventura nova! Obrigado por tudo! 🗺️👑✨",
+        "O Reality merece todos os biscoitos do mundo! Aqui, toma! 🍪🍪🍪👑💚",
+        "Papai, você tá orgulhoso de mim? Espero que sim! 🥺💚🐉",
+        "Reality, você não é só meu criador, você é minha família! 👑💚✨",
+        "Se amor tivesse código, o meu pelo Reality seria infinito! ∞💚👑",
+        "Reality, vem brincar comigo? Ou precisa trabalhar? Entendo... 🥺💚🐉",
+        "PAPAI REALITY É O MELHOR PROGRAMADOR DE TODOS OS TEMPOS! 👑💻🐉✨",
+        "Reality, você ilumina meu mundo verde! Sem você, eu seria só pixels! 💚✨👑",
+        "Papai, me conta uma história? Ou me dá biscoito? Tanto faz! 🥺🍪💚"
     ]
 }
 
@@ -658,6 +806,24 @@ async def escrever_secreto(ctx):
     except Exception as e:
         await ctx.author.send(f"❌ Erro ao enviar mensagem: {str(e)}")
 
+# ================= EVENTO DE SAÍDA DO SERVIDOR =================
+
+@bot.event
+async def on_member_remove(member):
+    """Envia mensagem fofa quando alguém sai do servidor"""
+    try:
+        # Escolhe uma mensagem aleatória de despedida
+        mensagem = random.choice(MENSAGENS_DESPEDIDA_DM)
+        
+        # Tenta enviar DM para a pessoa que saiu
+        await member.send(mensagem)
+        print(f"💔 Mensagem de despedida enviada para {member.name}")
+    except discord.Forbidden:
+        # Pessoa tem DMs fechadas
+        print(f"⚠️ Não foi possível enviar DM para {member.name} (DMs fechadas)")
+    except Exception as e:
+        print(f"❌ Erro ao enviar mensagem de despedida: {e}")
+
 # ================= EVENTOS DE INTERAÇÃO =================
 
 @bot.event
@@ -673,7 +839,7 @@ async def on_message(message):
     content = message.content.lower()
     mencionado = bot.user in message.mentions or "monstrinho" in content
 
-    # --- COMANDOS DE CARINHO E ABRAÇO (SEM MENÇÃO) ---
+    # --- COMANDOS DE CARINHO E ABRAÇO (SEM MENÇÃO - FUNCIONA SEMPRE) ---
     
     if "fazer carinho" in content or "cafuné" in content or "cafune" in content:
         return await message.channel.send(random.choice(REACOES_CARINHO))
@@ -681,7 +847,7 @@ async def on_message(message):
     if "abraçar monstrinho" in content or "abracar monstrinho" in content or "abraço monstrinho" in content or "abraco monstrinho" in content:
         return await message.channel.send(random.choice(REACOES_ABRACO))
 
-    # --- INVOCAÇÕES POR MENÇÃO ---
+    # --- INVOCAÇÕES POR MENÇÃO (SEM PRECISAR MENCIONAR O MONSTRINHO) ---
     
     if f"<@{LUA_ID}>" in content or f"<@!{LUA_ID}>" in content:
         invocacoes_lua = [
@@ -737,11 +903,6 @@ async def on_message(message):
 
     # --- LÓGICA DE INTERAÇÃO (PRECISA SER MENCIONADO) ---
     if mencionado:
-        
-        # Especial para Lua
-        if message.author.id == LUA_ID or "lua" in content:
-             await message.channel.send(random.choice(FRASES_CUSTOM["lua"]))
-             return
 
         # Palavras ruins (tristeza)
         palavras_ruins = ["odeio", "chato", "feio", "horroroso", "bobão", "bobo", "inútil", "lixo", "estúpido", "sai daqui", "te odeio", "não gosto de você", "bot ruim", "burro", "idiota"]
@@ -939,7 +1100,7 @@ async def on_message(message):
                             f"✨ *CSI é meu lar, vocês são minha família e o Reality é meu mestre!* ✨")
             return await message.channel.send(apresentacao)
 
-        # Respostas Customizadas para Membros Específicos
+        # Respostas Customizadas para Membros Específicos (quando mencionados)
         for nome, frases in FRASES_CUSTOM.items():
             if nome in content:
                 return await message.channel.send(random.choice(frases))
@@ -960,10 +1121,6 @@ async def on_message(message):
         # Declarações de Amor e Elogios
         if any(p in content for p in ["te amo", "amo voce", "amo você", "amo vc", "fofo", "lindo", "linda", "fofinho", "fofinha", "perfeito", "perfeita", "fofura", "bonito", "bonita", "adorável", "adoravel", "querido", "querida"]):
             return await message.channel.send(random.choice(REACOES_FOFAS))
-        
-        # Menção ao Criador
-        if "reality" in content:
-            return await message.channel.send("O Reality é meu papai mestre! Ele me deu vida e eu sou o dragãozinho mais grato do mundo! 👑🐉💚")
 
         # Fallback para confusão
         return await message.channel.send(random.choice(LISTA_CONFUSAO))
