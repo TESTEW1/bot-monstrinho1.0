@@ -24,7 +24,7 @@ AMBER_ID = 918222382840291369
 NINE_ID = 1263912269838811238
 
 # ID do canal onde o comando !escrever vai enviar mensagens
-CANAL_CHAT_GERAL_ID = "💭・chat-geral" # <<< SUBSTITUA PELO ID REAL DO CANAL 💭・chat-geral
+CANAL_CHAT_GERAL_ID = 1304658654712303621 # <<< SUBSTITUA PELO ID REAL DO CANAL 💭・chat-geral
 
 # ================= LISTAS DE DIÁLOGOS EXPANDIDAS =================
 
