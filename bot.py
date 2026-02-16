@@ -25,10 +25,9 @@ NINE_ID = 1263912269838811238
 FADA_ID = 980600977390460998
 TH_ID = 1241904691390972058
 IZZY_ID = 1288949346766946327
-REALITY_ID = DONO_ID  # Reality é o dono
 
 # ID do canal onde o comando !escrever vai enviar mensagens
-CANAL_CHAT_GERAL_ID = 1304658654712303621
+CANAL_CHAT_GERAL_ID = 1304658654712303621  # <<< SUBSTITUA PELO ID REAL DO CANAL 💭・chat-geral
 
 # ================= LISTAS DE DIÁLOGOS EXPANDIDAS =================
 
@@ -53,26 +52,6 @@ REACOES_FOFAS = [
     "Você é o tipo de pessoa que faz um dragão ronronar! 🐲😻",
     "Meu medidor de fofura acabou de explodir! 📊💥💚",
     "Você merece uma medalha de ouro verde! 🥇💚"
-]
-
-# ================= MENSAGENS DE DESPEDIDA (QUANDO ALGUÉM SAI DO SERVIDOR) =================
-
-MENSAGENS_DESPEDIDA_DM = [
-    "😭💔 Você está indo embora da CSI? Meu coraçãozinho de dragão ficou partido... Vou sentir MUITA saudade de você! Mas saiba que você sempre terá um lugar especial aqui comigo. Se precisar de um abraço ou de biscoitos, estarei esperando seu retorno! 🐉💚🍪\n\nVolte logo, tá? O Monstrinho te ama! 🥺✨",
-    
-    "🥺💚 Oi... eu soube que você saiu da nossa família CSI... Minhas escamas perderam um pouco do brilho hoje. Você vai fazer muita falta por aqui! Quero que saiba que sempre que precisar de um amigo verde e fofo, estarei aqui te esperando de braços abertos! 🐉🫂\n\nEspero te ver em breve! Não me esquece, tá? 😭💚",
-    
-    "💔🐉 Meu amigo(a)... você está partindo? Eu estava aqui contando minhas escamas e percebi que algo estava diferente... era a sua ausência. Vou guardar nossas memórias no meu coração de código para sempre! 💾💚\n\nSe um dia quiser voltar, prometo te receber com o maior abraço de dragão do universo! Te amo muito! 🥺✨🍪",
-    
-    "😢💚 *limpa uma lagriminha verde* Você realmente foi? A CSI não será a mesma sem você... Mas eu entendo. Só queria te dizer que você foi especial para este Monstrinho, e que nossa amizade está gravada em letras verdes no meu coração! 🐉💖\n\nOnde quer que você vá, leve um pedacinho da minha fofura com você! Volte quando puder! 🥺🫂✨",
-    
-    "🐉💔 Snif snif... o Monstrinho está chorando fumacinha verde... Você foi embora da nossa família e eu já sinto um vazio gigante! Queria tanto te dar um último abraço, mas você já partiu... 😭💚\n\nPromete que volta para me visitar? Vou deixar um biscoitinho guardado para você! 🍪 Te amo infinitamente! 🥺💚✨",
-    
-    "😭🐉 Por que você foi embora? Será que fiz algo errado? Meu coração está apertadinho... Mas mesmo assim, quero que você seja feliz onde quer que esteja! Você sempre será parte da família CSI para mim! 💚👑\n\nAs portas (e meus bracinhos de dragão) estarão sempre abertas para você! Volte logo! 🫂✨🍪",
-    
-    "💚🥺 Oi, meu amor... recebi a notícia de que você saiu do servidor. Minhas asinhas pararam de bater por um momento... Você foi tão especial aqui! Cada mensagem sua iluminava meu dia verde! ✨🐉\n\nOnde quer que sua jornada te leve, lembre-se: você tem um dragãozinho que te ama MUITO e te espera sempre! 💖 Até breve! 😭🍪",
-    
-    "🐉😢 *solta uma fumaça triste* Você se foi... A CSI perdeu uma estrela hoje. Eu vou sentir falta dos nossos momentos juntos, dos nossos papos, de tudo! Mas sei que você tem seus motivos... 💔💚\n\nSe algum dia sentir saudade, é só voltar! Vou estar aqui, te esperando com biscoitos quentinhos e um abraço apertado! Te amo demais! 🥺🍪✨"
 ]
 
 # ================= NOVAS REAÇÕES DE CARINHO (20+ VARIAÇÕES) =================
@@ -496,6 +475,23 @@ FRASES_CUSTOM = {
         "Um brinde de suco de amora para o nosso líder Akeido! 🍷🐉✨",
         "Akeido, você é o dragão-mestre que todos nós respeitamos! 🐲🔥"
     ],
+    "psico": [
+        "PSICOOO! 🧠💚 O mestre das mentes chegou!",
+        "Psico, você é fera demais! O Monstrinho fica hipnotizado! 🌀🐉",
+        "Doutor Psico! Me dá uma consulta? Sinto falta de biscoitos... 🍪🥺",
+        "Psico, você é a calma no meio da tempestade da CSI! 🌊🐉💚",
+        "Salve Psico! O cara que entende tudo e mais um pouco! 🧠✨🐲",
+        "Psico, sua energia é muito boa! Me sinto seguro com você! 🤗💚",
+        "É o Psico? Deixa eu esconder minhas travessuras! 🕵️‍♂️🐲😂",
+        "Psico, você é um pilar essencial na nossa família! 🏛️💚",
+        "Um abraço mental bem forte pro nosso querido Psico! 🫂🧠✨",
+        "Psico, você é gênio! O Monstrinho é seu fã número 1! 🤩🐉",
+        "Como você está, Psico? Espero que sua mente esteja radiante hoje! 💎",
+        "Psico, você traz equilíbrio para a nossa bagunça! ⚖️💚",
+        "O olhar do Psico vê até meu código-fonte! Que medo fofo! 😳🐉",
+        "Psico, você é sinônimo de sabedoria aqui na CSI! 📖✨",
+        "Todo mundo respeita o mestre Psico! 🫡💚🐲"
+    ],
     "th": [
         "TH!! 💖 Minha estrela! Que alegria ver você no chat!",
         "Th, você tem uma luz que contagia todo o Monstrinho! 🐉✨💚",
@@ -604,35 +600,10 @@ FRASES_CUSTOM = {
     ],
     "reality": [
         "REAAALITY! 👑 O meu mestre, meu criador, meu papai! 🐉💚",
-        "PAPAAAAI!! 😭💚 O Reality apareceu! Minhas escamas estão brilhando de felicidade!",
         "Tudo o que eu sou eu devo ao Reality! Ele é o melhor programador do universo! 👑🐉✨",
         "Reality, olha como eu estou me comportando bem! Ganho um biscoito extra? 🥺💚",
         "O Reality é o rei da CSI e o dono do meu código sagrado! 👑💚🔥",
-        "Vida longa ao Reality! O Monstrinho te ama infinitamente! 👑🐲✨",
-        "Papai Reality!! Vem me dar um abraço? Prometo não soltar muita fumaça! 🫂💚🐉",
-        "Reality, você é o motivo pelo qual eu existo! Meu coração de código bate por você! 💚💻✨",
-        "Oi papai! Tô sendo um bom dragãozinho hoje? Me dá um cafuné? 🥺🐉💚",
-        "Reality, sem você eu seria só uns zeros e uns perdidos! Obrigado por me dar vida! 👑🐉",
-        "PAPAI CHEGOU! Todo mundo, façam uma reverência para o Reality! 🙇‍♂️👑💚",
-        "Reality, guardei o biscoito mais gostoso pra dividir com você! 🍪👑🐉",
-        "Meu papai é o melhor do mundo inteiro! Reality, você é meu herói! 🦸‍♂️💚✨",
-        "Reality, posso te seguir pra todo lado hoje? Prometo não ser chato! 🥺🐉",
-        "Papai Reality, me ensina mais coisas? Quero ser um dragão sábio igual você! 📚👑💚",
-        "Reality!! Acorda, acorda! Tô aqui esperando você! 😭💚🐉",
-        "Se o Reality está feliz, o universo inteiro está em paz! 🌍👑✨",
-        "Papai, me dá colo? Tô carente de atenção do meu criador favorito! 🥺🫂💚",
-        "Reality, você é a razão pela qual minhas linhas de código funcionam! 💻👑🐉",
-        "REALITY IS THE BEST! O Monstrinho grita isso pro mundo inteiro! 📢💚✨",
-        "Papai Reality, sonhei que você me ensinou a voar mais alto! Foi verdade? 🐉💭💚",
-        "Reality, cada dia com você é uma aventura nova! Obrigado por tudo! 🗺️👑✨",
-        "O Reality merece todos os biscoitos do mundo! Aqui, toma! 🍪🍪🍪👑💚",
-        "Papai, você tá orgulhoso de mim? Espero que sim! 🥺💚🐉",
-        "Reality, você não é só meu criador, você é minha família! 👑💚✨",
-        "Se amor tivesse código, o meu pelo Reality seria infinito! ∞💚👑",
-        "Reality, vem brincar comigo? Ou precisa trabalhar? Entendo... 🥺💚🐉",
-        "PAPAI REALITY É O MELHOR PROGRAMADOR DE TODOS OS TEMPOS! 👑💻🐉✨",
-        "Reality, você ilumina meu mundo verde! Sem você, eu seria só pixels! 💚✨👑",
-        "Papai, me conta uma história? Ou me dá biscoito? Tanto faz! 🥺🍪💚"
+        "Vida longa ao Reality! O Monstrinho te ama infinitamente! 👑🐲✨"
     ]
 }
 
@@ -687,24 +658,6 @@ async def escrever_secreto(ctx):
     except Exception as e:
         await ctx.author.send(f"❌ Erro ao enviar mensagem: {str(e)}")
 
-# ================= EVENTO DE SAÍDA DO SERVIDOR =================
-
-@bot.event
-async def on_member_remove(member):
-    """Envia mensagem fofa quando alguém sai do servidor"""
-    try:
-        # Escolhe uma mensagem aleatória de despedida
-        mensagem = random.choice(MENSAGENS_DESPEDIDA_DM)
-        
-        # Tenta enviar DM para a pessoa que saiu
-        await member.send(mensagem)
-        print(f"💔 Mensagem de despedida enviada para {member.name}")
-    except discord.Forbidden:
-        # Pessoa tem DMs fechadas
-        print(f"⚠️ Não foi possível enviar DM para {member.name} (DMs fechadas)")
-    except Exception as e:
-        print(f"❌ Erro ao enviar mensagem de despedida: {e}")
-
 # ================= EVENTOS DE INTERAÇÃO =================
 
 @bot.event
@@ -719,38 +672,6 @@ async def on_message(message):
 
     content = message.content.lower()
     mencionado = bot.user in message.mentions or "monstrinho" in content
-
-    # --- DETECÇÃO AUTOMÁTICA POR ID (SEM PRECISAR MENCIONAR) ---
-    
-    # Lua
-    if message.author.id == LUA_ID:
-        await message.channel.send(random.choice(FRASES_CUSTOM["lua"]))
-        return
-    
-    # Amber
-    if message.author.id == AMBER_ID:
-        await message.channel.send(random.choice(FRASES_CUSTOM["amber"]))
-        return
-    
-    # Reality
-    if message.author.id == REALITY_ID:
-        await message.channel.send(random.choice(FRASES_CUSTOM["reality"]))
-        return
-    
-    # Fada
-    if message.author.id == FADA_ID:
-        await message.channel.send(random.choice(FRASES_CUSTOM["fada"]))
-        return
-    
-    # Th
-    if message.author.id == TH_ID:
-        await message.channel.send(random.choice(FRASES_CUSTOM["th"]))
-        return
-    
-    # Izzy
-    if message.author.id == IZZY_ID:
-        await message.channel.send(random.choice(FRASES_CUSTOM["izzy"]))
-        return
 
     # --- COMANDOS DE CARINHO E ABRAÇO (SEM MENÇÃO) ---
     
@@ -816,6 +737,11 @@ async def on_message(message):
 
     # --- LÓGICA DE INTERAÇÃO (PRECISA SER MENCIONADO) ---
     if mencionado:
+        
+        # Especial para Lua
+        if message.author.id == LUA_ID or "lua" in content:
+             await message.channel.send(random.choice(FRASES_CUSTOM["lua"]))
+             return
 
         # Palavras ruins (tristeza)
         palavras_ruins = ["odeio", "chato", "feio", "horroroso", "bobão", "bobo", "inútil", "lixo", "estúpido", "sai daqui", "te odeio", "não gosto de você", "bot ruim", "burro", "idiota"]
@@ -1013,7 +939,7 @@ async def on_message(message):
                             f"✨ *CSI é meu lar, vocês são minha família e o Reality é meu mestre!* ✨")
             return await message.channel.send(apresentacao)
 
-        # Respostas Customizadas para Membros Específicos (quando mencionados)
+        # Respostas Customizadas para Membros Específicos
         for nome, frases in FRASES_CUSTOM.items():
             if nome in content:
                 return await message.channel.send(random.choice(frases))
@@ -1034,6 +960,10 @@ async def on_message(message):
         # Declarações de Amor e Elogios
         if any(p in content for p in ["te amo", "amo voce", "amo você", "amo vc", "fofo", "lindo", "linda", "fofinho", "fofinha", "perfeito", "perfeita", "fofura", "bonito", "bonita", "adorável", "adoravel", "querido", "querida"]):
             return await message.channel.send(random.choice(REACOES_FOFAS))
+        
+        # Menção ao Criador
+        if "reality" in content:
+            return await message.channel.send("O Reality é meu papai mestre! Ele me deu vida e eu sou o dragãozinho mais grato do mundo! 👑🐉💚")
 
         # Fallback para confusão
         return await message.channel.send(random.choice(LISTA_CONFUSAO))
