@@ -974,6 +974,107 @@ async def escrever_secreto(ctx):
     except Exception as e:
         await ctx.author.send(f"❌ Erro ao enviar mensagem: {str(e)}")
 
+# ================= BOAS VINDAS POR CARGO =================
+
+# Mapeamento: ID do cargo → (nome do cargo, ID do canal, mensagem de boas vindas, gif)
+CARGO_BOAS_VINDAS = {
+    # @Anjo. 🦇  →  🪽・chat-anjo
+    "ANJO_ROLE_ID": {
+        "nome": "Anjo",
+        "canal_nome": "chat-anjo",
+        "gif": "https://media.tenor.com/wgUcT9CVp8MAAAAM/anime-magic.gif",
+        "mensagens": [
+            """\n✨🪽 **ESPERA, ESPERA, ESPERA!!** 🪽✨\n\nHoje é um dia muito especial para a nossa família CSI!\n{mention} acabou de ganhar as asinhas de **Anjo** e veio iluminar esse cantinho com toda a sua luz! 🦇💫\n\nO Monstrinho colocou o hatozinho, soprou purpurina mágica e veio correndo te dar um abraço gigante! 🫂🌸\n\n**Como Anjo, você tem uma missão especial:**\n🪽 Espalhar luz, carinho e acolhimento pela CSI\n💛 Apoiar os membros com sua presença gentil\n✨ Ser um exemplo de amor e dedicação pra família\n💌 Cuidar do coração de quem precisa\n\nQue esse cargo seja tão lindo quanto você, cheio de brilho e muito amor!\n\n**Bem-vindo(a) ao céu da CSI, meu Anjo!!** 🪽💛✨"""
+        ]
+    },
+    # @Coreografo(a).  →  👯・chat-sync
+    "COREO_ROLE_ID": {
+        "nome": "Coreógrafo(a)",
+        "canal_nome": "chat-sync",
+        "gif": "https://lh3.googleusercontent.com/EUhFUvNYOoo1tzWFCHLIIoL0ifuVapHHTST54VwMC0afbb3_nL5araxGQbuZyl5m0kscAyMMii_A0fEccwSXHyuz8Y279jOM6RvzNb2qOxpv65SUm2GNltUh9KJhbfsD0ypaTz5I",
+        "mensagens": [
+            """\n✨👯 **ESPERA, ESPERA, ESPERA!!** 👯✨\n\nO palco está pronto e as luzes acenderam!\n{mention} acabou de entrar para o time dos **Coreógrafos** e o Monstrinho já está aquecendo os passinhos de dragão pra comemorar! 🕺🐉\n\nO ritmo aqui ficou muito mais gostoso com você! 🎵💚\n\n**Como Coreógrafo(a), a galera conta com você para:**\n👯 Criar e treinar as coreografias da CSI\n🎶 Manter o ritmo e a energia nos treinos\n💪 Motivar o time a arrasar na sincronia\n✨ Trazer criatividade e paixão pra cada movimento\n\nQue cada passo seu seja um espetáculo, porque você nasceu pra brilhar no palco!\n\n**Seja muito bem-vindo(a) ao sync, Coreógrafo(a)!!** 👯🎵✨"""
+        ]
+    },
+    # @Influencer CSI. 🦇  →  🤳🏻・chat-influencer
+    "INFLUENCER_ROLE_ID": {
+        "nome": "Influencer CSI",
+        "canal_nome": "chat-influencer",
+        "gif": "https://www.intoxianime.com/wp-content/uploads/2017/08/gif1-9.gif",
+        "mensagens": [
+            """\n✨🤳🏻 **ESPERA, ESPERA, ESPERA!!** 🤳🏻✨\n\nA câmera ligou e os seguidores estão prontos!\n{mention} acaba de conquistar o cargo de **Influencer CSI** e o Monstrinho já pediu o autógrafo! 📸🐉💚\n\nA CSI nunca esteve tão em alta! O brilho aqui ficou ainda mais intenso! ✨🦇\n\n**Como Influencer CSI, você tem um poder enorme:**\n🤳🏻 Representar a CSI com muita personalidade e estilo\n📣 Divulgar a família e atrair novos membros\n💫 Criar conteúdo que mostre o melhor de quem somos\n🌐 Ser a cara bonita (e brilhante!) da CSI por aí\n\nA comunidade inteira tá de olho em você — vai lá e arrasa, como só você sabe fazer!\n\n**Bem-vindo(a) ao holofote, Influencer!!** 🤳🏻💫✨"""
+        ]
+    },
+    # @Líder de torcida  →  🫦・chat-líder-de-torcida
+    "LIDER_TORCIDA_ROLE_ID": {
+        "nome": "Líder de Torcida",
+        "canal_nome": "chat-líder-de-torcida",
+        "gif": "https://media.tenor.com/71xYVOEE0OIAAAAM/shimoochiai-toka-alice-gear-aegis.gif",
+        "mensagens": [
+            """\n✨🫦 **ESPERA, ESPERA, ESPERA!!** 🫦✨\n\nOs pompons estão no ar e a arquibancada está de pé!\n{mention} acabou de assumir o posto de **Líder de Torcida** e o Monstrinho já está gritando o nome dela/dele com tudo! 📣🐉💚\n\nA energia da CSI nunca foi tão alta! Você chegou pra incendiar tudo! 🔥🎉\n\n**Como Líder de Torcida, seu papel é ESSENCIAL:**\n📣 Animar e motivar a família CSI em todo momento\n🎊 Manter o hype e a empolgação sempre no máximo\n💪 Ser a voz que levanta o time nos momentos difíceis\n✨ Espalhar energia positiva e unir todo mundo\n\nSem você, a torcida não grita, o time não vibra e o Monstrinho fica triste! Bora que a CSI precisa de você!\n\n**Seja muito bem-vindo(a), Líder de Torcida!!** 🫦📣✨"""
+        ]
+    },
+    # @Recrutador. 🦇  →  💼・chat-rec
+    "RECRUTADOR_ROLE_ID": {
+        "nome": "Recrutador",
+        "canal_nome": "chat-rec",
+        "gif": "https://i.imgur.com/Ik0brKv.gif",
+        "mensagens": [
+            """\n✨💼 **ESPERA, ESPERA, ESPERA!!** 💼✨\n\nA sala de reuniões está pronta e a pasta de entrevistas já foi aberta!\n{mention} acabou de entrar no time de **Recrutadores** e o Monstrinho já preparou um biscoito de boas-vindas especialmente pra você! 🍪🐉💚\n\nA família CSI vai crescer ainda mais com você aqui! 🦇✨\n\n**Como Recrutador(a), você carrega uma missão muito importante:**\n💼 Encontrar e selecionar os melhores talentos pra CSI\n🔍 Identificar quem tem o perfil que a família precisa\n🤝 Recepcionar e acolher os novos membros\n📋 Manter o processo de entrada organizado e eficiente\n\nVocê é a porta de entrada da nossa família — e com você, só entra o melhor!\n\n**Bem-vindo(a) ao time de recrutamento, Recrutador(a)!!** 💼🔍✨"""
+        ]
+    },
+}
+
+# IDs dos cargos e canais — preencha com os IDs reais do seu servidor
+CARGO_IDS = {
+    "ANJO_ROLE_ID": 1327814055871643679,          # ID do cargo @Anjo. 🦇
+    "COREO_ROLE_ID": 1353708500752011265,          # ID do cargo @Coreografo(a).
+    "INFLUENCER_ROLE_ID": 1306223835640758353,     # ID do cargo @Influencer CSI. 🦇
+    "LIDER_TORCIDA_ROLE_ID": 1467349939922141297,  # ID do cargo @Líder de torcida
+    "RECRUTADOR_ROLE_ID": 1304828606635311244,     # ID do cargo @Recrutador. 🦇
+}
+
+CANAL_IDS_BOAS_VINDAS = {
+    "ANJO_ROLE_ID": 1369304571511570493,           # ID do canal 🪽・chat-anjo
+    "COREO_ROLE_ID": 1355175394457948320,          # ID do canal 👯・chat-sync
+    "INFLUENCER_ROLE_ID": 1429324738294972648,     # ID do canal 🤳🏻・chat-influencer
+    "LIDER_TORCIDA_ROLE_ID": 1467357834537734285,  # ID do canal 🫦・chat-líder-de-torcida
+    "RECRUTADOR_ROLE_ID": 1304658655354028113,     # ID do canal 💼・chat-rec
+}
+
+@bot.event
+async def on_member_update(before, after):
+    """Detecta quando um cargo especial é adicionado e manda boas-vindas no canal correto"""
+    cargos_antes = {role.id for role in before.roles}
+    cargos_depois = {role.id for role in after.roles}
+    novos_cargos = cargos_depois - cargos_antes
+
+    if not novos_cargos:
+        return
+
+    for chave, cargo_id in CARGO_IDS.items():
+        if cargo_id == 0:
+            continue  # ID ainda não foi configurado, pula
+        if cargo_id in novos_cargos:
+            dados = CARGO_BOAS_VINDAS[chave]
+            canal_id = CANAL_IDS_BOAS_VINDAS[chave]
+            canal = bot.get_channel(canal_id)
+
+            if canal is None:
+                print(f"⚠️ Canal de boas-vindas não encontrado para o cargo {dados['nome']} (ID: {canal_id})")
+                continue
+
+            mensagem = random.choice(dados["mensagens"]).format(mention=after.mention)
+
+            try:
+                await canal.send(mensagem)
+                await canal.send(dados["gif"])
+                print(f"✅ Boas-vindas enviadas para {after.name} no canal {dados['canal_nome']} (cargo: {dados['nome']})")
+            except discord.Forbidden:
+                print(f"❌ Sem permissão para enviar mensagem no canal {dados['canal_nome']}")
+            except Exception as e:
+                print(f"❌ Erro ao enviar boas-vindas para {dados['nome']}: {e}")
+
 # ================= EVENTO DE SAÍDA DO SERVIDOR =================
 
 @bot.event
