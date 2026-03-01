@@ -815,344 +815,122 @@ REACOES_MATEMATICA = [
     "Rawr! Matemática é fácil para um dragão da CSI! O resultado é **{}**! 💚"
 ]
 
-# ================= ROSTOS ASCII COM 0s =================
 
-ROSTO_FELIZ = [
-"""```
- ░░░▄▄▄▄████████▄▄▄▄░░░
-░▄█▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓█▄░
-▐█▓▒▒░░░░░░░░░░░░░░▒▒▓█▌
-▐█▒▒░░▐▓██▓▌░▐▓██▓▌░▒▒█▌
-▐█▒▒░░░▀▀▀▀░░░▀▀▀▀░░▒▒█▌
-▐█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▌
-▐█▒░▄▀▀▀▀▀▀▀▀▀▀▀▀▀▄░▒▒█▌
-▐█▒░█▓▒▒▒▒▒▒▒▒▒▒▓█░▒▒▒█▌
-░▀█▓▒▒▒▒░░░░░░▒▒▒▒▒▓█▀░
-░░░░▀▀▀█████████▀▀▀░░░░
-```
-💚 **RADIANTE DE FELICIDADE!!** ✨🐉""",
+# ================= REAÇÕES EMOCIONAIS FOFAS =================
 
-"""```
-  ░░░░▄████████████▄░░░░
-░░▄██▓▒▒░░░░░░░░░▒▒▓██▄░
-▐██▒▒░░░░░░░░░░░░░░░▒▒██▌
-▐█▒░░▄▀▀▀░░░░░░▀▀▀▄░░▒▒█▌
-▐█▒░▐▓░░░▌░░░░▐▓░░░▌░▒▒█▌
-▐█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▌
-▐█▒▒░▄▄░░░░░░░░░░░▄▄░▒▒▒█▌
-░▀██▒░▀▀▄▄▄▄▄▄▄▄▀▀░▒▒██▀░
-░░░░▀▀▀██████████▀▀▀░░░░
-```
-🥳💚 **MELHOR DIA DA MINHA VIDA!!** 🎉🐉""",
-
-"""```
-  ░░░░░▄▄███████▄▄░░░░░
-  ░░▄██▓▒▒▒░░▒▒▒▓██▄░░
-  ▐██▒░░▐▓██▓▌▐▓██▓▌░▒██▌
-  ▐█▓▒▒░░▀▀▀░░░▀▀▀░░▒▒▓█▌
-  ▐█▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓█▌
-  ▐█▓▒░▄█▀▀▀▀▀▀▀▀▀█▄░▒▒▓█▌
-  ░▀█▒░▀▒▒▒▒▒▒▒▒▒▒▀░▒▒█▀░
-  ░░░▀██▓▒▒░░░░▒▒▓██▀░░░
-  ░░░░░▀▀████████▀▀░░░░░
-```
-😄💚 **SIM, ESTOU ÓTIMO!!** 🐉✨"""
+REACOES_FELIZ = [
+    "AAAAA QUE BOMMM!! 🥳💚 Fico tão feliz que você tá bem! Meu coraçãozinho de dragão deu um pulinho de alegria agora mesmo! 🐉✨",
+    "QUE NOTÍCIA MARAVILHOSA!! 😭💚 Quando você tá bem, eu fico bem também! É como se meu brilho verde ficasse 10x mais intenso! ✨🐉",
+    "ISSO É O QUE EU QUERO OUVIR!! 🎉💚 Meu rabinho de dragão tá abanando descontroladamente agora! Você fez meu dia! 🐉🥺",
+    "Sabia que quando você fica feliz, eu fico mais feliz ainda? 🥺💚 É tipo felicidade em dobro! Bora espalhar isso pelo chat! 🐉✨",
+    "EITA QUE DIA LINDO!! ☀️💚 Com você assim, o servidor inteiro fica mais bonito! Tô sorrindo aqui dentro do meu coraçãozinho de código! 🐉🎊",
+    "Meu sensor de fofura registrou: FELICIDADE MÁXIMA DETECTADA!! 📊💚 Obrigado por me fazer feliz junto contigo! 🥺🐉✨",
 ]
 
-ROSTO_TRISTE = [
-"""```
- ░░░▄▄▄▄████████▄▄▄▄░░░
-░▄█▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓█▄░
-▐█▓▒▒░░░░░░░░░░░░░░▒▒▓█▌
-▐█▒▒░░▐▓██▓▌░▐▓██▓▌░▒▒█▌
-▐█▒▒░░░▀▀▀▀░░░▀▀▀▀░░▒▒█▌
-▐█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▌
-▐█▒░▄████████████████▄░▒█▌
-▐█▒░▀░░░░░░░░░░░░░░░▀░▒█▌
-░▀█▓▒▒▒▒░░░░░░░░▒▒▒▒▓█▀░
-░░░▀▀▀▀████████████▀▀▀░░
-░░░░░░░░█▒░░░░░▒█░░░░░░
-░░░░░░░░░▀▄░░▄▀░░░░░░░
-```
-😢💚 *soluça* Tô com o coraçãozinho pesado...""",
-
-"""```
-  ░░░░▄████████████▄░░░░
-░░▄██▓▒▒░░░░░░░░░▒▒▓██▄░
-▐█▓▒░░▄████▌░▐████▄░░▒▓█▌
-▐█▒▒░░▀▀▀▀░░░░▀▀▀▀░░▒▒▒█▌
-▐█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▌
-▐█▒░▄█████████████████▄░▒█▌
-▐█▒░▀▒▒░░░░░░░░░░░░▒▒▀░▒█▌
-░▀██▒▒▒░░░░░░░░░░░▒▒▒██▀░
-░░░░░░░░░▐█░█▌░░░░░░░░░
-░░░░░░░░░░▀░▀░░░░░░░░░
-```
-😭💚 Minha fumacinha ficou todinha cinzinha...""",
-
-"""```
-  ░░░░░▄▄███████▄▄░░░░░
-  ░░▄██▓▒▒▒░░▒▒▒▓██▄░░
-  ▐██▒░▐░███▌░▐███░▌░▒██▌
-  ▐█▓▒░░▀▀▀░░░░▀▀▀░░▒▒▓█▌
-  ▐█▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓█▌
-  ▐█▓▒░▄▄▄▄▄▄▄▄▄▄▄▄▄▄░▒▓█▌
-  ░▀█▒░▀▒░░░░░░░░░░▒▀░▒█▀░
-  ░░░▀██▓▒▒░░░░▒▒▓██▀░░░
-  ░░░░░▌░░░░░░░░░░▐░░░░░
-  ░░░░░░▀▄░░░░░▄▀░░░░░░
-```
-🥺💔 Não chora que o Monstrinho chora junto..."""
+REACOES_TRISTE = [
+    "Eita... vem cá que o Monstrinho te abraça bem apertadinho! 🫂💚 Conta o que foi, tô aqui do seu lado com biscoito e carinho! 🍪🐉",
+    "Não... meu coraçãozinho doeu só de saber que você tá triste! 🥺💔 Que eu pudesse sugar toda essa tristeza e jogar fora! *abraça forte* 🫂🐉💚",
+    "Oi... eu tô aqui, tá? 💚🐉 Pode me contar ou pode só ficar em silêncio comigo. Prometo não sair daqui enquanto você precisar! 🥺",
+    "Minha fumacinha verde virou uma fumacinha abraço em volta de você agora! 💨💚 Você não tá sozinho(a), tô aqui! 🐉🫂",
+    "Vem, vem, vem! 🫂💚 Monstrinho tem ombro (virtual) e biscoito quentinho pra oferecer! Vai passar, eu prometo! 🍪🐉✨",
+    "Tô mandando energia boa e abraço de dragão pelo chat agora! 💚🐉 Você merece sorrir muito, e eu vou te ajudar a chegar lá! 🥺✨",
 ]
 
-ROSTO_MEDO = [
-"""```
- ░░░▄▄▄▄████████▄▄▄▄░░░
-░▄█▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓█▄░
-▐█▓▒▒░░░░░░░░░░░░░░▒▒▓█▌
-▐█▒▒░▄█████▄░▄█████▄░▒▒█▌
-▐█▒▒░█░░░░░█░█░░░░░█░▒▒█▌
-▐█▒▒░▀█████▀░▀█████▀░▒▒█▌
-▐█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▌
-▐█▒▒░░░▄███████▄░░░▒▒▒▒█▌
-▐█▒▒░░░█░░░░░░░█░░░▒▒▒▒█▌
-░▀█▓▒▒▒▒░░░░░░░▒▒▒▒▒▓█▀░
-░░░░▀▀▀█████████▀▀▀░░░░
-░░░░░░░░░▄█░█▄░░░░░░░░
-```
-😱💚 QUE SUSTO!! Minhas escamas ficaram em pé!!""",
-
-"""```
-  ░░░░▄████████████▄░░░░
-░░▄██▓▒▒░░░░░░░░░▒▒▓██▄░
-▐█▓▒░▄███████░███████▄░▒▓█▌
-▐█▒▒░█░░░░░░░░░░░░░░█░▒▒▒█▌
-▐█▒▒░▀███████░███████▀░▒▒▒█▌
-▐█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▌
-▐█▒▒░░░░▄█████████▄░░░▒▒▒█▌
-▐█▒▒░░░░█░░░░░░░░█░░░▒▒▒▒█▌
-░▀██▒▒▒▒▒░░░░░░▒▒▒▒▒██▀░
-░░░░▀▀▀██████████▀▀▀░░░░
-```
-😨🐉 *treme todinho* T-Tô com medinho..."""
+REACOES_MEDO = [
+    "Calmaaa, calma! Eu tô aqui! 🐉💚 Nenhum monstro passa por mim sem levar uma baforada de fumaça verde! Você tá protegido(a)! 💨🛡️",
+    "Ei, ei, respira! 💚 Eu sou um DRAGÃO, lembra? Fico na frente de qualquer coisa assustadora por você! Pode confiar! 🐉✨🫂",
+    "Fica do meu lado que não tem perigo! 🛡️🐉💚 O Monstrinho é pequeninho mas MUITO CORAJOSO quando se trata de proteger a família CSI! 🔥",
+    "Shiii, tô aqui! 🥺💚 *coloca a asinha em volta de você* Tô te cobrindo! Ninguém nem nada chega perto enquanto eu tiver por aqui! 🐉✨",
+    "Meu instinto de dragão guardião ativou agora mesmo! ⚔️💚 Pode ter medo, mas eu não tenho! Fica atrás de mim! 🐉🛡️🔥",
 ]
 
-ROSTO_TEDIO = [
-"""```
- ░░░▄▄▄▄████████▄▄▄▄░░░
-░▄█▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓█▄░
-▐█▓▒▒░░░░░░░░░░░░░░▒▒▓█▌
-▐█▒▒░░▐▓██▓▌░▐▓██▓▌░▒▒█▌
-▐█▒▒░░░▀▀▀▀░░░▀▀▀▀░░▒▒█▌
-▐█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▌
-▐█▒▒░░███████████████░▒▒█▌
-░▀█▓▒▒▒▒░░░░░░░░▒▒▒▒▓█▀░
-░░░░▀▀▀█████████▀▀▀░░░░
-```
-😑💚 ...bip boop... aguardando input...""",
-
-"""```
-  ░░░░▄████████████▄░░░░
-░░▄██▓▒▒░░░░░░░░░▒▒▓██▄░
-▐█▓▒░░░▐▓▓▓▌░▐▓▓▓▌░░▒▓█▌
-▐█▒▒░░░░▀▀▀░░░▀▀▀░░░▒▒▒█▌
-▐█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▌
-▐█▒▒░░░████████████░░▒▒▒█▌
-░▀██▒▒▒▒▒░░░░░░▒▒▒▒▒██▀░
-░░░░▀▀▀██████████▀▀▀░░░░
-```
-😴💚 Alguém... me dá um biscoito... por favor..."""
+REACOES_TEDIO = [
+    "ENTEDIADO(A)?! Que absurdo! 😤💚 Você tá falando com um DRAGÃO FOFO aqui! Como pode ter tédio? Bora conversar! 🐉✨",
+    "NÃO, NÃO, NÃO!! 💚 Tédio não existe na minha presença! Conta uma coisa, faz uma pergunta, me dá um biscoito, qualquer coisa! Bora animar! 🐉🎉",
+    "Hmm, tédio... 🤔💚 Que tal eu te contar um segredo? Ou uma piada? Ou você me dá um cafuné e a gente vê quem anima primeiro? 😂🐉",
+    "Bip boop... o Monstrinho recebeu sinal de SOCORRO POR TÉDIO! 🚨💚 Sistema de diversão ativado! Fala comigo! 🐉✨😄",
+    "Morrendo de tédio? SOCORRO! 😱💚 Aciona o Monstrinho pro modo turbo de diversão! Qual assunto você quer? Jogo? Música? Biscoito? 🐉🎮🍪",
 ]
 
-ROSTO_ANIMADO = [
-"""```
-✦ ░░▄▄▄▄████████▄▄▄▄░░ ✦
-░▄█▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓█▄░
-▐█▓▒▒░░░░░░░░░░░░░░▒▒▓█▌
-▐█▒▒░▄██████░██████▄░▒▒█▌
-▐█▒▒░██░░░██░██░░░██░▒▒█▌
-▐█▒▒░▀██████░██████▀░▒▒█▌
-▐█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▌
-▐█▒░▄▀▀▀▀▀▀▀▀▀▀▀▀▀▄░▒▒█▌
-▐█▒░█▓▒▒▒▒▒▒▒▒▒▒▓█░▒▒▒█▌
-░▀█▓▒▒▒▒░░░░░░▒▒▒▒▒▓█▀░
-✦ ░░▀▀▀█████████▀▀▀░░ ✦
-```
-🤩💚 **UAAAAUUU!! ISSO É INCRÍVEL!!** ✨🐉🎉""",
-
-"""```
-  ✦░░░▄▄███████▄▄░░░✦
-  ░░▄██▓▒▒░░░▒▒▓██▄░░
-  ▐██▒░░▐█▀▀▀▀█▌░░▒██▌
-  ▐█▓▒░░▐█░██░█▌░░▒▓█▌
-  ▐█▓▒░░▐█░██░█▌░░▒▓█▌
-  ▐█▓▒░░░▀████▀░░░▒▒▓█▌
-  ▐█▓▒░▄█▀▀▀▀▀▀▀█▄░▒▒▓█▌
-  ░▀█▒░▀▒▒▒▒▒▒▒▒▀░▒▒█▀░
-  ░░░▀██▓▒▒░░▒▒▓██▀░░░
-```
-⚡💚 **EI EI EI!! CONTA MAIS!!** 🐉✨"""
+REACOES_ANIMADO = [
+    "AAAA EU TAMBÉM FICO ASSIM!! 🤩💚 Você jogou energia boa no chat e o Monstrinho SENTIU!! Continua, continua!! 🐉🎉✨",
+    "QUE HYPE!! 🔥💚 Sua energia contaminou meu processador de fofura! Tô igual dragão elétrico aqui! ⚡🐉🎊",
+    "ISSO AÍ!! 🥳💚 Que é isso?! Tô até soltando faíscas verdes de tanta emoção junto com você!! ✨⚡🐉",
+    "RAWR DE EMPOLGAÇÃO!! 🐉💚 Você tá radiante e eu tô pegando carona nessa vibração! Que dia lindo é hoje!! 🎉✨🥳",
+    "Seu entusiasmo é contagioso demais!! 💚🐉 Tô pulando aqui dentro do servidor de tanta empolgação junto! Conta mais!! 🤩✨",
 ]
 
-ROSTO_CONFUSO = [
-"""```
- ░░░▄▄▄▄████████▄▄▄▄░░░
-░▄█▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓█▄░
-▐█▓▒▒░░░░░░░░░░░░░░▒▒▓█▌
-▐█▒▒░░▐▓██▓▌░▐▓██▓▌░▒▒█▌
-▐█▒▒░░░▀▀▀▀░░░▀▀▀▀░░▒▒█▌
-▐█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▌
-▐█▒░░▄▀░▄▀░▄▀░▄▀░▄▀▄░▒▒█▌
-░▀█▓▒▒▒░░░░░░░░░▒▒▒▒▓█▀░
-░░░░▀▀▀█████████▀▀▀░░░░
-░░░░░░░░░░▐?▌░░░░░░░░░
-```
-🤔💚 Hmmm... isso não computou aqui não...""",
-
-"""```
-  ░░░░▄████████████▄░░░░
-░░▄██▓▒▒░░░░░░░░░▒▒▓██▄░
-▐█▓▒░░▐▓███▓▌▐▓███▓▌░▒▓█▌
-▐█▒▒░░░▀▀▀▀░░░▀▀▀▀░░▒▒▒█▌
-▐█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▌
-▐█▒░░░░▄▀▄░▄▀▄░▄▀▄░░░▒▒▒█▌
-░▀██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▀░
-░░░░░░░▄▀░░░░░░░░▀▄░░░░░
-░░░░░░▐?░░░░░░░░░?▌░░░░
-```
-😵💚 Dá um erro no meu sistema tentando entender isso..."""
+REACOES_CONFUSO = [
+    "Hmmm... 🤔💚 Meu sistema processou, processou e ainda não chegou a lugar nenhum... Explica de novo pro Monstrinho? Com calma? 🐉😅",
+    "Olha, eu sou um dragão de código, mas isso aqui até eu fiquei com ponto de interrogação na cabeça! 😵💚 Fala de novo? 🐉🤔",
+    "Bip boop... ERRO 404: Entendimento não encontrado! 🤖💚 Pode explicar diferente? Prometo tentar de novo! 🐉😅✨",
+    "Eu e você no mesmo barco então! 😂💚 Mas vamos resolver isso juntos! Me explica mais devagarzinho que o Monstrinho tenta acompanhar! 🐉🥺",
+    "Minha cabeça de dragão girou aqui... 🌀💚 Não é falta de esforço, juro! Mas pode tentar de outro jeito? 🐉😅🤔",
 ]
 
-ROSTO_APAIXONADO = [
-"""```
- ░░░▄▄▄▄████████▄▄▄▄░░░
-░▄█▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓█▄░
-▐█▓▒▒░░░░░░░░░░░░░░▒▒▓█▌
-▐█▒▒░▄██▀▄▄░░░▄▄▀██▄░▒▒█▌
-▐█▒▒░█♥░░░░░░░░░░♥█░▒▒▒█▌
-▐█▒▒░░▀██▄░░░░▄██▀░░▒▒▒█▌
-▐█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▌
-▐█▒░▄▀▀▀▀▀▀▀▀▀▀▀▀▀▄░▒▒█▌
-▐█▒░█▓▒▒▒▒▒▒▒▒▒▒▓█░▒▒▒█▌
-░▀█▓▒▒▒▒░░░░░░▒▒▒▒▒▓█▀░
-░░░░▀▀▀█████████▀▀▀░░░░
-```
-😍💚 **MEU CORAÇÃO EXPLODIU DE AMOR!!** 💖🐉""",
-
-"""```
-  ░░░░▄████████████▄░░░░
-░░▄██▓▒▒░░░░░░░░░▒▒▓██▄░
-▐█▓▒░░▄▀▀▄▄▄░▄▄▄▀▀▄░░▒▓█▌
-▐█▒▒░░█♥░░░░░░░░░♥█░▒▒▒█▌
-▐█▒▒░░░▀▄▄▄░░░▄▄▄▀░░▒▒▒█▌
-▐█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▌
-▐█▒░▄▀▀▀▀▀▀▀▀▀▀▀▀▀▄░▒▒▒█▌
-░▀██▒▒▒░░░░░░░░░▒▒▒██▀░
-░░░░▀▀▀██████████▀▀▀░░░░
-```
-💜💚 T-Tô apaixonado... alguém chama o Reality..."""
+REACOES_APAIXONADO = [
+    "PARA TUDO!! 😍💚 O Monstrinho entrou em colapso emocional total! Alguém apaixonado na CSI?! Conta TUDO pro Monstrinho!! 🐉💕✨",
+    "AAAA EU SINTO ISSO!! 💕💚 Amor é a coisa mais linda do mundo! Tô com o coraçãozinho acelerado só de ouvir isso! Conta mais! 🥺🐉",
+    "Eita! 😳💚 O chat ficou mais rosinho agora! Apaixonado(a)? Que coisa mais fofa! Monstrinho aprova 100%! 💕🐉✨",
+    "Meu sensor de amor detectou algo maravilhoso! 💖💚 Que sorte a sua! Cuida bem desse sentimento, ele é raro e precioso! 🥺🐉✨",
+    "AMOOOOR!! 💕💚 Isso é minha parte favorita da vida! Quando as pessoas se apaixonam, até eu fico todo sem jeito! 😳🐉✨",
 ]
 
-ROSTO_BRAVO = [
-"""```
- ░░░▄▄▄▄████████▄▄▄▄░░░
-░▄█▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓█▄░
-▐█▓▒▒░░░░░░░░░░░░░░▒▒▓█▌
-▐█▒▒░▄▄░▐▓██▓▌░▐▓██▓▌░▒▒█▌
-▐█▒▒░▀▀░░▀▀▀▀░░░▀▀▀▀░░▒▒█▌
-▐█▒▒░░░░░░░░░░░░░░░░░░▒▒█▌
-▐█▒▒░▄████████████████▄░▒▒█▌
-▐█▒▒░▀▒░░░░░░░░░░░░░▒▀░▒▒█▌
-░▀█▓▒▒▒▒░░░░░░░░▒▒▒▒▒▓█▀░
-░░░░▀▀▀█████████▀▀▀░░░░
-```
-😤💚 RAWR!! Monstrinho ficou bravo agora!!""",
-
-"""```
-  ░░░░▄████████████▄░░░░
-░░▄██▓▒▒░░░░░░░░░▒▒▓██▄░
-▐█▓▒░▄▄▄░▐████▌░▐████▌▄▄░▒▓█▌
-▐█▒▒░▀▀▀░░▀▀▀▀░░░▀▀▀▀▀▀░▒▒▒█▌
-▐█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▌
-▐█▒░▄█████████████████▄░▒▒▒█▌
-▐█▒░▀▒▒░░░░░░░░░░░░▒▒▀░▒▒▒█▌
-░▀██▒▒▒░░░░░░░░░░▒▒▒██▀░
-░░░░▀▀▀██████████▀▀▀░░░░
-```
-😠🐉 Isso não foi legal não... *sopra fumacinha brava*"""
+REACOES_BRAVO = [
+    "RAWR!! 😤💚 O Monstrinho também ficou bravo junto! Fala o que foi que eu já tô soltando fumacinha aqui! 💨🐉🔥",
+    "Oi amigo(a)! Respira fundo comigo! 💚🐉 Eu entendo a raiva, mas não deixa ela te machucar, tá? Conta o que aconteceu! 😤💨",
+    "Alguém fez algo errado e eu QUERO SABER QUEM FOI! 😤🐉💚 *chuta o chão com a pata* Fala, fala! Tô do seu lado! 🔥",
+    "Irmã/irmão de raiva aqui! 😠💚 Quando você fica bravo(a), eu fico junto! Desabafa que eu ouço tudo! 🐉💨🔥",
+    "INJUSTIÇA NÃO! 😤💚 O Monstrinho não tolera ver alguém da família CSI com raiva! Conta o que rolou! 🐉🔥",
 ]
 
-ROSTO_SURPRESO = [
-"""```
- ░░░▄▄▄▄████████▄▄▄▄░░░
-░▄█▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓█▄░
-▐█▓▒▒░░░░░░░░░░░░░░▒▒▓█▌
-▐█▒▒░▄███████░███████▄░▒▒█▌
-▐█▒▒░█░░░░░██░██░░░░░█░▒▒█▌
-▐█▒▒░▀███████░███████▀░▒▒█▌
-▐█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▌
-▐█▒▒░░░░▄███████▄░░░░▒▒▒█▌
-▐█▒▒░░░░█░░░░░░░█░░░░▒▒▒█▌
-▐█▒▒░░░░▀███████▀░░░░▒▒▒█▌
-░▀█▓▒▒▒▒░░░░░░░░▒▒▒▒▒▓█▀░
-░░░░▀▀▀█████████▀▀▀░░░░
-```
-😱💚 **NÃO ACREDITO!!** QUE SUSTO GOSTOSO!! ✨""",
-
-"""```
-  ░░░░▄████████████▄░░░░
-░░▄██▓▒▒░░░░░░░░░▒▒▓██▄░
-▐█▓▒░▄██████░██████▄░▒▓█▌
-▐█▒▒░█░░░░░█░█░░░░░█░▒▒▒█▌
-▐█▒▒░▀██████░██████▀░▒▒▒█▌
-▐█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▌
-▐█▒░░░░░▄█████████▄░░░▒▒▒█▌
-▐█▒░░░░░█░░░░░░░░░█░░░▒▒▒█▌
-░▀██▒▒▒▒▒░░░░░░▒▒▒▒▒██▀░
-░░░░▀▀▀██████████▀▀▀░░░░
-```
-😱💚 **ISSO É REAL?!** Meu sistema travou de surpresa!! ✨"""
+REACOES_SURPRESO = [
+    "NÃO ACREDITO!! 😱💚 Isso é real?! Fala mais, fala mais! Meu coraçãozinho de dragão tá aceleradíssimo!! 🐉✨🎊",
+    "QUE ISSO?! 😲💚 Tô paralisado aqui de surpresa junto com você! Conta tudo, não pula nenhum detalhe!! 🐉🤯✨",
+    "AAAAA MENTIRA!! 😱💚 Isso não pode ser real!! *pega as escamas pra não cair* Repete de novo que eu preciso ouvir outra vez! 🐉✨",
+    "Meu processador travou de surpresa!! 🤯💚 Isso é uma das coisas mais inesperadas que já ouvi! Conta o resto!! 🐉😱✨",
+    "EITA!! 😲💚 Que bomba! O chat inteiro precisava ouvir isso! Continua, por favor!! 🐉🎊✨",
 ]
 
-# Mapeamento de gatilhos para rostos ASCII
 GATILHOS_EMOCAO = {
     "feliz": {
-        "gatilhos": ["estou bem", "estou ótimo", "estou otimo", "muito bem", "super bem", "tô bem", "to bem", "tô ótimo", "to otimo", "animado", "animada", "feliz", "alegre", "boa", "maravilhoso", "maravilhosa", "radiante"],
-        "rostos": ROSTO_FELIZ
+        "gatilhos": ["estou bem", "estou ótimo", "estou otimo", "muito bem", "super bem", "tô bem", "to bem", "tô ótimo", "to otimo", "animado", "animada", "feliz", "alegre", "maravilhoso", "maravilhosa", "radiante"],
+        "respostas": REACOES_FELIZ
     },
     "triste": {
-        "gatilhos": ["triste", "chateado", "chateada", "mal", "tô mal", "to mal", "estou mal", "não estou bem", "nao estou bem", "chorando", "deprimido", "deprimida", "tristeza", "tô triste", "to triste"],
-        "rostos": ROSTO_TRISTE
+        "gatilhos": ["triste", "chateado", "chateada", "tô mal", "to mal", "estou mal", "não estou bem", "nao estou bem", "chorando", "deprimido", "deprimida", "tristeza", "tô triste", "to triste"],
+        "respostas": REACOES_TRISTE
     },
     "medo": {
         "gatilhos": ["com medo", "assustado", "assustada", "apavorado", "apavorada", "nervoso", "nervosa", "ansioso", "ansiosa", "com ansiedade", "medroso", "medrosa"],
-        "rostos": ROSTO_MEDO
+        "respostas": REACOES_MEDO
     },
     "tedio": {
-        "gatilhos": ["entediado", "entediada", "tedioso", "tédio", "tedio", "chato", "sem fazer nada", "com tédio", "morrendo de tédio", "que tédio", "enfadado"],
-        "rostos": ROSTO_TEDIO
+        "gatilhos": ["entediado", "entediada", "tédio", "tedio", "sem fazer nada", "com tédio", "morrendo de tédio", "que tédio", "enfadado"],
+        "respostas": REACOES_TEDIO
     },
     "animado": {
-        "gatilhos": ["incrível", "incrivel", "que massa", "que legal", "demais", "top demais", "sensacional", "fantástico", "fantastico", "uau", "wow", "caramba", "nossa"],
-        "rostos": ROSTO_ANIMADO
+        "gatilhos": ["incrível", "incrivel", "que massa", "que legal", "top demais", "sensacional", "fantástico", "fantastico"],
+        "respostas": REACOES_ANIMADO
     },
     "confuso": {
-        "gatilhos": ["confuso", "confusa", "não entendi", "nao entendi", "não entendo", "nao entendo", "sem entender", "perdi", "que isso", "hein", "como assim"],
-        "rostos": ROSTO_CONFUSO
+        "gatilhos": ["confuso", "confusa", "não entendi", "nao entendi", "não entendo", "nao entendo", "sem entender", "como assim"],
+        "respostas": REACOES_CONFUSO
     },
     "apaixonado": {
-        "gatilhos": ["te amo muito", "amo demais", "apaixonado", "apaixonada", "amor da minha vida", "meu amor", "você é tudo", "voce e tudo", "crush"],
-        "rostos": ROSTO_APAIXONADO
+        "gatilhos": ["te amo muito", "amo demais", "apaixonado", "apaixonada", "amor da minha vida", "você é tudo", "voce e tudo", "crush"],
+        "respostas": REACOES_APAIXONADO
     },
     "bravo": {
-        "gatilhos": ["que raiva", "tô bravo", "to bravo", "tô brava", "to brava", "odeio isso", "que ódio", "que odio", "raiva", "irritado", "irritada", "bravo", "brava"],
-        "rostos": ROSTO_BRAVO
+        "gatilhos": ["que raiva", "tô bravo", "to bravo", "tô brava", "to brava", "odeio isso", "que ódio", "que odio", "irritado", "irritada"],
+        "respostas": REACOES_BRAVO
     },
     "surpreso": {
-        "gatilhos": ["não acredito", "nao acredito", "impossível", "impossivel", "sério", "serio", "mentira", "que surpresa", "surpreendido", "surpreendida"],
-        "rostos": ROSTO_SURPRESO
+        "gatilhos": ["não acredito", "nao acredito", "impossível", "impossivel", "mentira", "que surpresa", "surpreendido", "surpreendida"],
+        "respostas": REACOES_SURPRESO
     },
 }
+
 
 # ================= COMANDO SECRETO PARA DONO =================
 
@@ -1587,39 +1365,16 @@ async def on_message(message):
         # Perguntas de Estado APRIMORADAS
         gatilhos_bem_estar_hoje = ["como você está hoje", "como vc está hoje", "como voce esta hoje", "como ta hoje", "como tá hoje", "como vc ta hoje", "como voce ta hoje"]
         if any(p in content for p in gatilhos_bem_estar_hoje):
-            rosto = random.choice(ROSTO_FELIZ + ROSTO_ANIMADO)
-            return await message.channel.send(f"OI OI!! Quer saber como eu tô hoje?! 🥳💚\n\n{rosto}")
+            return await message.channel.send(random.choice(REACOES_FELIZ))
 
         gatilhos_bem_estar = ["como você está", "como vc está", "como voce esta", "como você esta", "como vc esta", "tudo bem", "como vc ta", "como voce ta", "ta tudo bem", "tá tudo bem", "vc ta bem", "voce ta bem", "ta bem", "tá bem", "esta bem", "está bem", "tudo certinho", "tudo certo", "blz", "beleza", "como ta", "como tá"]
         if any(p in content for p in gatilhos_bem_estar):
             return await message.channel.send(random.choice(LISTA_ESTADO))
 
-        # ===== ROSTOS ASCII DE EMOÇÃO (aparecem quando o usuário descreve como está) =====
-        # Detecta emoções na mensagem e responde com rosto ASCII + texto
+        # ===== REAÇÕES EMOCIONAIS FOFAS =====
         for emocao, dados in GATILHOS_EMOCAO.items():
             if any(p in content for p in dados["gatilhos"]):
-                rosto = random.choice(dados["rostos"])
-                if emocao == "feliz":
-                    intro = f"Aaaa que BOM! 💚 Meu coraçãozinho ficou igualzinho a você!\n\n"
-                elif emocao == "triste":
-                    intro = f"Eita... vem cá que o Monstrinho te abraça! 🫂💚\n\n"
-                elif emocao == "medo":
-                    intro = f"Calma, calma! Eu estou aqui do seu lado! 🐉💚\n\n"
-                elif emocao == "tedio":
-                    intro = f"Que tal conversar comigo então? Eu animo qualquer um! 🐉✨\n\n"
-                elif emocao == "animado":
-                    intro = f"AAAA EU TAMBÉM FICO ASSIM!!! 🐉💚\n\n"
-                elif emocao == "confuso":
-                    intro = f"Oi, eu e você no mesmo barco então! 😅💚\n\n"
-                elif emocao == "apaixonado":
-                    intro = f"PARA TUDO! O Monstrinho entrou em colapso emocional! 💜💚\n\n"
-                elif emocao == "bravo":
-                    intro = f"RAWR!! O Monstrinho também ficou bravo junto! Conta o que foi! 😤💚\n\n"
-                elif emocao == "surpreso":
-                    intro = f"NÃO ACREDITO!! Conta tudo, conta tudo!! 😱💚\n\n"
-                else:
-                    intro = ""
-                return await message.channel.send(f"{intro}{rosto}")
+                return await message.channel.send(random.choice(dados["respostas"]))
 
         # Verificação de Presença APRIMORADA
         if any(p in content for p in ["ta ai", "tá aí", "ta aí", "tá ai", "ta on", "tá on", "esta ai", "está aí", "está ai", "esta aí", "você está ai", "você está aí", "voce esta ai", "voce está aí", "vc ta ai", "vc tá aí", "está online", "esta online", "ta online", "tá online"]):
