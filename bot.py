@@ -991,7 +991,7 @@ CARGO_BOAS_VINDAS = {
     "COREO_ROLE_ID": {
         "nome": "Coreógrafo(a)",
         "canal_nome": "chat-sync",
-        "gif": "https://lh3.googleusercontent.com/EUhFUvNYOoo1tzWFCHLIIoL0ifuVapHHTST54VwMC0afbb3_nL5araxGQbuZyl5m0kscAyMMii_A0fEccwSXHyuz8Y279jOM6RvzNb2qOxpv65SUm2GNltUh9KJhbfsD0ypaTz5I",
+        "gif": "https://i.imgur.com/jhFy1dS.gif",
         "mensagens": [
             """\n✨👯 **ESPERA, ESPERA, ESPERA!!** 👯✨\n\nO palco está pronto e as luzes acenderam!\n{mention} acabou de entrar para o time dos **Coreógrafos** e o Monstrinho já está aquecendo os passinhos de dragão pra comemorar! 🕺🐉\n\nO ritmo aqui ficou muito mais gostoso com você! 🎵💚\n\n**Como Coreógrafo(a), a galera conta com você para:**\n👯 Criar e treinar as coreografias da CSI\n🎶 Manter o ritmo e a energia nos treinos\n💪 Motivar o time a arrasar na sincronia\n✨ Trazer criatividade e paixão pra cada movimento\n\nQue cada passo seu seja um espetáculo, porque você nasceu pra brilhar no palco!\n\n**Seja muito bem-vindo(a) ao sync, Coreógrafo(a)!!** 👯🎵✨"""
         ]
