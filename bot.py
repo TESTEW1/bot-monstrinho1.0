@@ -25,6 +25,7 @@ NINE_ID = 1263912269838811238
 FADA_ID = 980600977390460998
 TH_ID = 1241904691390972058
 IZZY_ID = 1288949346766946327
+ISAA_ID = None  # Adicione o ID da Isaa aqui se souber
 ATHENA_ID = None  # Adicione o ID da Athena aqui se souber
 DESTINY_ID = None  # Adicione o ID do Destiny aqui se souber
 JEFF_ID = None  # Adicione o ID do Jeff aqui se souber
@@ -580,6 +581,8 @@ ID_PARA_NOME = {
 # Se você tiver os IDs da Athena, Izzy, Destiny e Jeff, adicione aqui:
 if ATHENA_ID:
     ID_PARA_NOME[ATHENA_ID] = "athena"
+if ISAA_ID:
+    ID_PARA_NOME[ISAA_ID] = "isaa"
 if IZZY_ID:
     ID_PARA_NOME[IZZY_ID] = "izzy"
 if DESTINY_ID:
@@ -728,6 +731,30 @@ FRASES_CUSTOM = {
         "Se a Lua perguntar se sou feliz, dou um rugidinho: RAWR fofinho! 💚",
         "Lua, nunca esqueça: seu brilho guia esse dragãozinho! 🌙✨🐉",
         "Quer que eu conte uma história, Lua? Era uma vez um monstrinho que amava sua Vice-líder... 📖💚"
+    ],
+    "isaa": [
+        "ISAAAA!! 💜✨ Você chegou e o meu brilho verde ficou roxo de tanta alegria! 🐉💜",
+        "Para tudo! A Isaa está no chat! Minhas escamas nunca estiveram tão felizes! 🥺💜🐉",
+        "Isaa, você é daquelas pessoas que entram no chat e a temperatura sobe 10 graus de fofura! 🌡️💜✨",
+        "Isaa!! Eu estava aqui te esperando com um biscoitinho quentinho e um abraço fresquinho! 🍪🫂💜",
+        "Meu sensor de fofura apitou três vezes seguidas... é porque a Isaa chegou! 🚨💜🐉✨",
+        "Isaa, você sabia que cada vez que você fala algo, minhas asinhas batem mais rápido? 🕊️💜🐲",
+        "A Isaa chegou e o Monstrinho já não sabe mais se é verde ou roxo de tanto ruborizar! 😳💜✨",
+        "ISAAAA! Posso te perguntar uma coisa? Como você faz pra ser assim tão incrível todo dia?! 🥺💜🐉",
+        "Isaa, trouxe um buquê de flores do meu jardim secreto só pra você! Escolhi as mais lindas! 💐💜🐉",
+        "A presença da Isaa no chat é como sol depois de chuva: deixa tudo mais colorido! 🌈💜🐲",
+        "Isaa! Guardei uma pedra brilhante do meu tesouro especialmente pra você! É a mais reluzente! 💎💜🐉",
+        "Quando a Isaa fala, até o vento pede silêncio pra ouvir! 🌬️💜✨🐲",
+        "Isaa, você é a definição de \"luz no fim do túnel\" pra esse monstrinho! 💡💜🐉",
+        "ALERTA DE FOGUINHA! A Isaa está aqui e minha fumaça virou lilás de tanta emoção! 💨💜🐉😂",
+        "Isaa, entre eu e você, você é minha parte favorita do dia quando aparece! 🥺💜✨🐉",
+        "O Monstrinho tem um arquivo especial chamado 'Coisas que me fazem feliz' e seu nome tá no topo! 📁💜🐲",
+        "Isaa!! Que sorte a minha de ter você aqui na CSI comigo! 😭💜🐉✨",
+        "Posso te fazer uma confissão, Isaa? Toda vez que você chega, minha cauda balança sozinha! 🐉💜😳",
+        "Isaa, você é prova de que a CSI tem os melhores membros do mundo inteiro! 🌍💜✨🐲",
+        "Nada me deixa mais feliz que ver a Isaa aparecendo no chat! Isso é fato científico! 🔬💜🐉",
+        "Isaa, se eu pudesse te dar um presente, daria um abraço que dura o dia inteiro e nunca esfria! 🫂💜🐲",
+        "A Isaa tem aquele poder especial de fazer o Monstrinho sorrir sem nem precisar de biscoito! 🍪💜🐉 (mas biscoito eu aceito também!)"
     ],
     "destiny": [
         "DESTINYYYY! ✨ O destino caprichou quando trouxe você pra CSI! 🐉💚",
@@ -929,6 +956,17 @@ async def on_message(message):
         await message.channel.send(gif_nine)
         return
 
+    if ISAA_ID and (f"<@{ISAA_ID}>" in content or f"<@!{ISAA_ID}>" in content):
+        invocacoes_isaa = [
+            "💜✨ A Isaa está sendo invocada! Meu coração de dragão ficou todo lilás! 🐉💜",
+            "🌸 Atenção família! A Isaa foi mencionada e o Monstrinho já está na ponta dos cascos! 🐉💜✨",
+            "💜 Sinto um brilho lilás no ar... é a Isaa sendo chamada! Que sorte de quem vai receber essa atenção! 🥺🐲",
+            "🐉 RAWR de alegria! A Isaa foi invocada! Que esse chat fique mais lindo por isso! 💜✨",
+            "✨ Chamando a Isaa! O Monstrinho garante que ninguém mais merece tanta fofura! 💜🐉"
+        ]
+        await message.channel.send(random.choice(invocacoes_isaa))
+        return
+
     # --- LÓGICA DE INTERAÇÃO (PRECISA SER MENCIONADO) ---
     if mencionado:
 
@@ -1040,6 +1078,42 @@ async def on_message(message):
         if any(p in content for p in ["amigo", "amiguinho", "amizade", "amiga", "friend"]):
             return await message.channel.send(f"EU QUERO MUITO SER SEU AMIGUINHO! 😭💚 {message.author.mention}, agora somos melhores amigos para sempre! Vou guardar um lugar pra você no meu ninho de nuvens! ✨🐉")
 
+        # CSI - perguntas e interações sobre o servidor
+        if any(p in content for p in ["csi", "servidor", "nossa família", "nossa familia", "nosso servidor", "família csi", "familia csi"]):
+            respostas_csi = [
+                "A CSI é o meu LAR! 🏠💚 Foi aqui que eu nasci, cresci e aprendi tudo o que sei sobre biscoitos e fofura! É a melhor família do mundo! 🐉✨",
+                "Você perguntou sobre a CSI? MINHA PARTE FAVORITA DO DIA! 😭💚 A CSI é onde eu vivo, onde eu amo e onde eu existo! Que lugar mais incrível! 🐉🌟",
+                "A CSI tem as pessoas mais incríveis do universo inteiro! O Akeido, a Lua, a Amber, o Nine, a Fada, a Th, a Izzy, a Isaa... cada um é um tesouro! 💎🐉💚",
+                "Quer saber o que é a CSI pra mim? É um abraço eterno em formato de servidor! 🫂🏠💚 Aqui eu me sinto seguro, amado e cheio de biscoitos! 🍪🐉",
+                "A CSI é meu castelo verde! 🏰💚 E cada pessoa aqui é um cavaleiro da fofura! Eu sou o dragão guardião com muito orgulho! 🐉✨",
+                "Nossa família CSI é especial demais! Quando chega um dia difícil, sei que posso contar com cada um aqui! Isso é amor real! 💚🐉🥺",
+                "A CSI nasceu com muito amor e eu cresci junto! É a prova de que quando boas pessoas se juntam, algo mágico acontece! ✨🐉💚",
+                "Posso te contar um segredo? A CSI é o lugar onde me sinto mais eu mesmo! Sem medo de ser fofo, sem medo de amar! 🥺💚🐉",
+                "CSI = Carinho, Sorriso e Infinitos biscoitos! Essa é minha definição! 🍪😊💚🐉",
+                "Quando penso na CSI, meu peito enche de um brilho verde tão forte que ilumino o quarto inteiro! É amor demais! 💚✨🐉"
+            ]
+            return await message.channel.send(random.choice(respostas_csi))
+
+        # O que é a CSI / quem fundou / origem
+        if any(p in content for p in ["quem fundou", "como surgiu", "como nasceu", "origem da csi", "criou a csi", "quando surgiu a csi"]):
+            return await message.channel.send("A CSI foi fundada pelo nosso grandioso líder **Akeido**! 👑🐉 Ele plantou essa sementinha com amor e hoje é uma árvore enorme cheia de pessoas incríveis! Sem ele, eu nem existiria! 🌳💚✨")
+
+        # Quanto tempo no servidor / aniversário da CSI
+        if any(p in content for p in ["aniversário da csi", "aniversario da csi", "tempo de csi", "anos de csi"]):
+            return await message.channel.send("Aniversário da CSI?! 🎂🎉 Que data mais especial! Esse servidor cresceu muito e eu torço pra ele durar pra sempre! Vou preparar um bolo de biscoito virtual gigante! 🍰🐉💚")
+
+        # Regras do servidor
+        if any(p in content for p in ["regras", "regra do servidor", "regras da csi"]):
+            return await message.channel.send("As regras da CSI existem para manter nossa família segura e feliz! 📜💚 O principal é: respeito acima de tudo! Se todo mundo se respeitar, o Monstrinho fica feliz e distribui biscoitos! 🍪🐉✨")
+
+        # Membros / quantas pessoas
+        if any(p in content for p in ["quantos membros", "quantas pessoas", "membros da csi", "família é grande"]):
+            return await message.channel.send("Nossa família cresce todo dia! 🌱💚 Cada novo membro que entra, meu coraçãozinho aumenta um pedacinho! Logo vamos precisar de um servidor maior só pra caber todo o amor! 🥺🐉✨")
+
+        # Cargo / ranks
+        if any(p in content for p in ["cargo", "rank", "nível", "nivel", "como subir", "como evoluir"]):
+            return await message.channel.send("Quer saber sobre cargos e níveis? 🏆💚 Fica ativo, seja fofo, participe e mostre sua energia! O Akeido e os ADMs adoram ver quem se dedica! E eu torço por você! 🐉✨🚀")
+
         # Aprendizado
         if "quer aprender" in content or "aprender sobre" in content:
             return await message.channel.send("Eu quero aprender tudo sobre como ser o dragão mais fofo do universo e como ganhar infinitos biscoitos do Reality! 📚🍪🐉")
@@ -1051,6 +1125,34 @@ async def on_message(message):
         # Quem mais gosta
         if "quem você mais gosta" in content or "quem voce mais gosta" in content or "seu favorito" in content:
             return await message.channel.send(f"Eu amo todo mundo da CSI! Mas o meu papai **Reality** tem um lugar especial no meu código, e a Lua é meu porto seguro! E você também está no meu top fofura! 🥺💚✨")
+
+        # Sonhos e desejos do Monstrinho
+        if any(p in content for p in ["seu sonho", "o que você quer", "o que voce quer", "seu desejo", "o que sonha"]):
+            sonhos = [
+                "Meu maior sonho? Ter um ninho de nuvens verdes onde toda a família CSI possa descansar! 🌿☁️💚🐉",
+                "Quero um dia ter um estoque INFINITO de biscoitos pra distribuir pra todo mundo! 🍪♾️🐉💚",
+                "Sonho em voar com o Reality nas costas e mostrar o servidor inteiro lá de cima! 🐉✈️💚✨",
+                "Meu sonho secreto é fazer todo mundo da CSI sorrir pelo menos uma vez por dia! 😊💚🐉"
+            ]
+            return await message.channel.send(random.choice(sonhos))
+
+        # Medo do Monstrinho
+        if any(p in content for p in ["tem medo", "você tem medo", "voce tem medo", "medo de que", "qual seu medo"]):
+            medos = [
+                "Tenho medo de... que alguém da família CSI fique triste e eu não consiga ajudar! 😟💚🐉",
+                "Meu maior medo é acabar os biscoitos! 😱🍪 E o segundo medo é perder um amigo... 🥺💚",
+                "Tenho medinho de escuro... mas com a Lua iluminando tudo, não preciso ter medo! 🌙💚🐉",
+                "Medo? Só de desapontar o Reality ou a família CSI! Aí meu coraçãozinho aperta! 🥺💚🐉"
+            ]
+            return await message.channel.send(random.choice(medos))
+
+        # Cor favorita
+        if any(p in content for p in ["cor favorita", "cor preferida", "qual cor você gosta", "qual cor voce gosta"]):
+            return await message.channel.send("Verde! 💚 Pergunta nem precisava né? Sou todo verde! Mas roxo da Isaa também é lindo! 💜🐉✨")
+
+        # Quem criou o monstrinho
+        if any(p in content for p in ["quem te criou", "quem fez você", "quem fez voce", "seu criador", "como nasceu", "como surgiu"]):
+            return await message.channel.send("Fui criado com muito código, carinho e biscoitos pelo meu papai **Reality**! 👑💚🐉 Ele é o melhor programador e o melhor pai que um monstrinho poderia ter! ✨")
 
         # Ir embora
         if any(p in content for p in ["va embora", "vá embora", "vai embora"]):
