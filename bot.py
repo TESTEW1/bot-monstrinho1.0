@@ -25,7 +25,7 @@ NINE_ID = 1263912269838811238
 FADA_ID = 980600977390460998
 TH_ID = 1241904691390972058
 IZZY_ID = 1288949346766946327
-ISAA_ID = None  # Adicione o ID da Isaa aqui se souber
+ISAA_ID = 1036091491346550885
 ATHENA_ID = None  # Adicione o ID da Athena aqui se souber
 DESTINY_ID = None  # Adicione o ID do Destiny aqui se souber
 JEFF_ID = None  # Adicione o ID do Jeff aqui se souber
@@ -815,6 +815,328 @@ REACOES_MATEMATICA = [
     "Rawr! Matemática é fácil para um dragão da CSI! O resultado é **{}**! 💚"
 ]
 
+# ================= ROSTOS ASCII COM 0s =================
+
+ROSTO_FELIZ = [
+"""```
+    00000000000000000
+  0000000000000000000000
+ 000000              000000
+000000                000000
+00000   000    000    000000
+00000   000    000    000000
+000000                000000
+ 00000   00000000000  00000
+  000000   0000000  000000
+    0000000000000000000
+      000000000000000
+```
+💚 **RADIANTE DE FELICIDADE!!** ✨🐉""",
+
+"""```
+   0000000000000000000
+  000000000000000000000
+ 00000               00000
+ 0000   000    000    0000
+00000                 00000
+ 00000  0000000000   00000
+  00000  000000000  00000
+   000000000000000000000
+     000000000000000
+```
+😄💚 **SIM, ESTOU ÓTIMO!!** 🐉✨""",
+
+"""```
+      000000000000
+   000000000000000000
+  00000            00000
+ 0000   00      00   0000
+ 0000               0000
+  0000  0        0  0000
+   00000  000000  00000
+    000000000000000000
+      00000000000000
+```
+🥳💚 **MELHOR DIA DA MINHA VIDA!!** 🎉🐉"""
+]
+
+ROSTO_TRISTE = [
+"""```
+    00000000000000000
+  0000000000000000000000
+ 000000              000000
+000000                000000
+00000   000    000    000000
+00000   000    000    000000
+000000   0          0 000000
+ 00000    00000000000  00000
+  000000             000000
+    0000000000000000000
+```
+😢💚 *soluça* Tô com o coraçãozinho pesado...""",
+
+"""```
+   000000000000000000
+  00000000000000000000
+ 00000              00000
+ 0000  000      000  0000
+ 0000               0000
+ 0000  00000000000  0000
+  0000 0         0 0000
+   000000000000000000
+     000000000000
+```
+😭💚 Minha fumacinha ficou todinha cinzinha...""",
+
+"""```
+     0000000000000
+   000000000000000000
+  00000            00000
+ 00000  00      00  00000
+  0000               0000
+  0000  00000000000  0000
+   000  0           0 000
+    0000  000000000 0000
+      0000000000000000
+```
+🥺💔 Não chora que o Monstrinho chora junto..."""
+]
+
+ROSTO_MEDO = [
+"""```
+    00000000000000000
+  0000000000000000000000
+ 000000              000000
+000000  0000  0000    000000
+00000   0000  0000    000000
+000000   00000000     000000
+ 00000  00      000   00000
+  000000  0000000   000000
+    0000000000000000000
+         000000
+        00000000
+       0000000000
+```
+😱💚 QUE SUSTO!! Minhas escamas ficaram em pé!!""",
+
+"""```
+   000000000000000000
+  00000000000000000000
+ 00000              00000
+ 0000  0000  0000    0000
+ 0000               0000
+ 00000  00000000   00000
+  00000  0    0   00000
+    00000000000000000
+   00000         00000
+  000               000
+```
+😨🐉 *treme todinho* T-Tô com medinho..."""
+]
+
+ROSTO_TEDIO = [
+"""```
+    00000000000000000
+  0000000000000000000000
+ 000000              000000
+000000   000    000   000000
+000000   000    000   000000
+000000                000000
+ 00000  0000000000000  00000
+  000000000000000000000000
+    00000000000000000
+```
+😑💚 ...bip boop... aguardando input...""",
+
+"""```
+   000000000000000000
+  00000000000000000000
+ 00000              00000
+ 0000  000      000  0000
+ 0000               0000
+ 0000  00000000000  0000
+  000000000000000000000
+    0000000000000000
+```
+😴💚 Alguém... me dá um biscoito... por favor..."""
+]
+
+ROSTO_ANIMADO = [
+"""```
+    00000000000000000
+  0000000000000000000000
+ 000000              000000
+000000  00000  00000  000000
+000000  00000  00000  000000
+000000   000000000    000000
+ 00000  00000000000   00000
+  000000  0000000   000000
+    0000000000000000000
+```
+🤩💚 **UAAAAUUU!! ISSO É INCRÍVEL!!** ✨🐉🎉""",
+
+"""```
+   000000000000000000
+  00000000000000000000
+ 00000              00000
+ 0000  0000  0000    0000
+ 0000               0000
+  0000  00000000   0000
+   000000        000000
+    000000000000000000
+      000000000000
+```
+⚡💚 **EI EI EI!! CONTA MAIS!!** 🐉✨"""
+]
+
+ROSTO_CONFUSO = [
+"""```
+    00000000000000000
+  0000000000000000000000
+ 000000              000000
+000000   000    000   000000
+000000              0000000
+ 000000   000000   0000000
+  0000000         0000000
+    0000000000000000000
+         0000000
+        000   000
+```
+🤔💚 Hmmm... isso não computou aqui não...""",
+
+"""```
+   000000000000000000
+  00000000000000000000
+ 00000              00000
+ 0000  000      000  0000
+ 0000  0            0000
+  0000   000000    0000
+   0000  0    0   0000
+    00000000000000000
+        000   000
+       000     000
+```
+😵💚 Dá um erro no meu sistema tentando entender isso..."""
+]
+
+ROSTO_APAIXONADO = [
+"""```
+    00000000000000000
+  0000000000000000000000
+ 000000              000000
+000000  00000  00000  000000
+000000  00000  00000  000000
+ 00000                00000
+  000000  00000000  000000
+   000000000000000000000
+      0000  0000  0000
+       000  0000  000
+        000000000000
+          00000000
+```
+😍💚 **MEU CORAÇÃO EXPLODIU DE AMOR!!** 💖🐉""",
+
+"""```
+   000000000000000000
+  00000000000000000000
+ 00000              00000
+ 0000  0000  0000    0000
+ 0000               0000
+  0000   000000    0000
+   000000      000000
+    00000  00  00000
+      000000000000
+       0000  0000
+        00000000
+```
+💜💚 T-Tô apaixonado... alguém chama o Reality..."""
+]
+
+ROSTO_BRAVO = [
+"""```
+    00000000000000000
+  0000000000000000000000
+ 000000              000000
+000000 000000  000000 000000
+000000   000000000    000000
+000000   000    000   000000
+ 000000               00000
+  000000  0000000   000000
+    0000000000000000000
+```
+😤💚 RAWR!! Monstrinho ficou bravo agora!!""",
+
+"""```
+   000000000000000000
+  00000000000000000000
+ 00000              00000
+ 000000000  000000000000
+ 0000   000000000   0000
+ 0000  000      000 0000
+  0000              0000
+   000000000000000000
+     000000000000
+```
+😠🐉 Isso não foi legal não... *sopra fumacinha brava*"""
+]
+
+ROSTO_SURPRESO = [
+"""```
+    00000000000000000
+  0000000000000000000000
+ 000000              000000
+000000  00000  00000  000000
+000000  00000  00000  000000
+000000                000000
+ 00000    000000000   00000
+  000000  000000000 000000
+    00000000000000000000
+         0000000
+        000000000
+```
+😱💚 **NAO ACREDITO!!** QUE SUSTO GOSTOSO!! ✨""",
+]
+
+# Mapeamento de gatilhos para rostos ASCII
+GATILHOS_EMOCAO = {
+    "feliz": {
+        "gatilhos": ["estou bem", "estou ótimo", "estou otimo", "muito bem", "super bem", "tô bem", "to bem", "tô ótimo", "to otimo", "animado", "animada", "feliz", "alegre", "boa", "maravilhoso", "maravilhosa", "radiante"],
+        "rostos": ROSTO_FELIZ
+    },
+    "triste": {
+        "gatilhos": ["triste", "chateado", "chateada", "mal", "tô mal", "to mal", "estou mal", "não estou bem", "nao estou bem", "chorando", "deprimido", "deprimida", "tristeza", "tô triste", "to triste"],
+        "rostos": ROSTO_TRISTE
+    },
+    "medo": {
+        "gatilhos": ["com medo", "assustado", "assustada", "apavorado", "apavorada", "nervoso", "nervosa", "ansioso", "ansiosa", "com ansiedade", "medroso", "medrosa"],
+        "rostos": ROSTO_MEDO
+    },
+    "tedio": {
+        "gatilhos": ["entediado", "entediada", "tedioso", "tédio", "tedio", "chato", "sem fazer nada", "com tédio", "morrendo de tédio", "que tédio", "enfadado"],
+        "rostos": ROSTO_TEDIO
+    },
+    "animado": {
+        "gatilhos": ["incrível", "incrivel", "que massa", "que legal", "demais", "top demais", "sensacional", "fantástico", "fantastico", "uau", "wow", "caramba", "nossa"],
+        "rostos": ROSTO_ANIMADO
+    },
+    "confuso": {
+        "gatilhos": ["confuso", "confusa", "não entendi", "nao entendi", "não entendo", "nao entendo", "sem entender", "perdi", "que isso", "hein", "como assim"],
+        "rostos": ROSTO_CONFUSO
+    },
+    "apaixonado": {
+        "gatilhos": ["te amo muito", "amo demais", "apaixonado", "apaixonada", "amor da minha vida", "meu amor", "você é tudo", "voce e tudo", "crush"],
+        "rostos": ROSTO_APAIXONADO
+    },
+    "bravo": {
+        "gatilhos": ["que raiva", "tô bravo", "to bravo", "tô brava", "to brava", "odeio isso", "que ódio", "que odio", "raiva", "irritado", "irritada", "bravo", "brava"],
+        "rostos": ROSTO_BRAVO
+    },
+    "surpreso": {
+        "gatilhos": ["não acredito", "nao acredito", "impossível", "impossivel", "sério", "serio", "mentira", "que surpresa", "surpreendido", "surpreendida"],
+        "rostos": ROSTO_SURPRESO
+    },
+}
+
 # ================= COMANDO SECRETO PARA DONO =================
 
 @bot.command(name="escrever")
@@ -1246,9 +1568,41 @@ async def on_message(message):
             return await message.channel.send(random.choice(LISTA_SAUDACOES))
         
         # Perguntas de Estado APRIMORADAS
+        gatilhos_bem_estar_hoje = ["como você está hoje", "como vc está hoje", "como voce esta hoje", "como ta hoje", "como tá hoje", "como vc ta hoje", "como voce ta hoje"]
+        if any(p in content for p in gatilhos_bem_estar_hoje):
+            rosto = random.choice(ROSTO_FELIZ)
+            return await message.channel.send(f"OI OI!! Quer saber como eu tô hoje?! 🥳💚\n\n{rosto}")
+
         gatilhos_bem_estar = ["como você está", "como vc está", "como voce esta", "como você esta", "como vc esta", "tudo bem", "como vc ta", "como voce ta", "ta tudo bem", "tá tudo bem", "vc ta bem", "voce ta bem", "ta bem", "tá bem", "esta bem", "está bem", "tudo certinho", "tudo certo", "blz", "beleza", "como ta", "como tá"]
         if any(p in content for p in gatilhos_bem_estar):
             return await message.channel.send(random.choice(LISTA_ESTADO))
+
+        # ===== ROSTOS ASCII DE EMOÇÃO (aparecem quando o usuário descreve como está) =====
+        # Detecta emoções na mensagem e responde com rosto ASCII + texto
+        for emocao, dados in GATILHOS_EMOCAO.items():
+            if any(p in content for p in dados["gatilhos"]):
+                rosto = random.choice(dados["rostos"])
+                if emocao == "feliz":
+                    intro = f"Aaaa que BOM! 💚 Meu coraçãozinho ficou igualzinho a você!\n\n"
+                elif emocao == "triste":
+                    intro = f"Eita... vem cá que o Monstrinho te abraça! 🫂💚\n\n"
+                elif emocao == "medo":
+                    intro = f"Calma, calma! Eu estou aqui do seu lado! 🐉💚\n\n"
+                elif emocao == "tedio":
+                    intro = f"Que tal conversar comigo então? Eu animo qualquer um! 🐉✨\n\n"
+                elif emocao == "animado":
+                    intro = f"AAAA EU TAMBÉM FICO ASSIM!!! 🐉💚\n\n"
+                elif emocao == "confuso":
+                    intro = f"Oi, eu e você no mesmo barco então! 😅💚\n\n"
+                elif emocao == "apaixonado":
+                    intro = f"PARA TUDO! O Monstrinho entrou em colapso emocional! 💜💚\n\n"
+                elif emocao == "bravo":
+                    intro = f"RAWR!! O Monstrinho também ficou bravo junto! Conta o que foi! 😤💚\n\n"
+                elif emocao == "surpreso":
+                    intro = f"NÃO ACREDITO!! Conta tudo, conta tudo!! 😱💚\n\n"
+                else:
+                    intro = ""
+                return await message.channel.send(f"{intro}{rosto}")
 
         # Verificação de Presença APRIMORADA
         if any(p in content for p in ["ta ai", "tá aí", "ta aí", "tá ai", "ta on", "tá on", "esta ai", "está aí", "está ai", "esta aí", "você está ai", "você está aí", "voce esta ai", "voce está aí", "vc ta ai", "vc tá aí", "está online", "esta online", "ta online", "tá online"]):
