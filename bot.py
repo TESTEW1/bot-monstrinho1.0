@@ -984,7 +984,7 @@ CARGO_BOAS_VINDAS = {
         "canal_nome": "chat-anjo",
         "gif": "https://media.tenor.com/wgUcT9CVp8MAAAAM/anime-magic.gif",
         "mensagens": [
-            """\n✨🪽 **ESPERA, ESPERA, ESPERA!!** 🪽✨\n\nHoje é um dia muito especial para a nossa família CSI!\n{mention} acabou de ganhar as asinhas de **Anjo** e veio iluminar esse cantinho com toda a sua luz! 🦇💫\n\nO Monstrinho colocou o hatozinho, soprou purpurina mágica e veio correndo te dar um abraço gigante! 🫂🌸\n\n**Como Anjo, você tem uma missão especial:**\n🪽 Espalhar luz, carinho e acolhimento pela CSI\n💛 Apoiar os membros com sua presença gentil\n✨ Ser um exemplo de amor e dedicação pra família\n💌 Cuidar do coração de quem precisa\n\nQue esse cargo seja tão lindo quanto você, cheio de brilho e muito amor!\n\n**Bem-vindo(a) ao céu da CSI, meu Anjo!!** 🪽💛✨"""
+            """\n✨🪽 **ESPERA, ESPERA, ESPERA!!** 🪽✨\n\nHoje é um dia muito especial para a nossa família CSI!\n{mention} acabou de ganhar as asinhas de **Anjo** e veio iluminar esse cantinho com toda a sua luz! 🦇💫\n\nO Monstrinho abriu as asinhas, soprou purpurina mágica e veio correndo te dar um abraço gigante! 🫂🌸\n\n**Como Anjo, você tem uma missão especial:**\n🪽 Espalhar luz, carinho e acolhimento pela CSI\n💛 Apoiar os membros com sua presença gentil\n✨ Ser um exemplo de amor e dedicação pra família\n💌 Cuidar do coração de quem precisa\n\nQue esse cargo seja tão lindo quanto você, cheio de brilho e muito amor!\n\n**Bem-vindo(a) ao céu da CSI, meu Anjo!!** 🪽💛✨"""
         ]
     },
     # @Coreografo(a).  →  👯・chat-sync
