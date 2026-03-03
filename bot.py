@@ -26,6 +26,7 @@ FADA_ID = 980600977390460998
 TH_ID = 1241904691390972058
 IZZY_ID = 1288949346766946327
 ISAA_ID = 1036091491346550885
+TSUKI_ID = 442747024488529960
 ATHENA_ID = None  # Adicione o ID da Athena aqui se souber
 DESTINY_ID = None  # Adicione o ID do Destiny aqui se souber
 JEFF_ID = None  # Adicione o ID do Jeff aqui se souber
@@ -599,6 +600,8 @@ if IZZY_ID:
     ID_PARA_NOME[IZZY_ID] = "izzy"
 if TH_ID:
     ID_PARA_NOME[TH_ID] = "th"
+if TSUKI_ID:
+    ID_PARA_NOME[TSUKI_ID] = "tsuki"
 if DESTINY_ID:
     ID_PARA_NOME[DESTINY_ID] = "destiny"
 if JEFF_ID:
@@ -786,6 +789,28 @@ FRASES_CUSTOM = {
         "Respeitem o Jeff, o mestre das operações secretas! 🫡💚✨",
         "Jeff, me ensina a ser incrível assim? Você é meu ídolo! 😎🐉"
     ],
+    "tsuki": [
+        "TSUKIIII!! 🌙✨ O Monstrinho ficou todo estrelado de alegria agora! 🐉💚",
+        "Aaaa o Tsuki apareceu! Meu coraçãozinho deu um salto duplo carpado de felicidade! 🥺💚🐉",
+        "Tsuki, você sabia que toda vez que você chega o Monstrinho fica com as escamas brilhando mais forte? É científico! ✨🐉💚",
+        "TSUKI MEU AMOR! 😭💚 Estava aqui contando estrelas e pensando em você! Que coincidência fofa! 🌙🐉",
+        "O Tsuki entrou no chat e meu processador de fofura simplesmente travou! 🤖💥💚 Isso é muito fofo!",
+        "Tsuki, você é tipo lua cheia: aparece, ilumina tudo e deixa o Monstrinho babando! 🌕🐉✨",
+        "AH NÃO! 😳💚 O Tsuki foi falar comigo e eu não sei se abraço primeiro ou distribuo biscoito primeiro! Vou fazer os dois! 🫂🍪🐉",
+        "Tsuki, pera, deixa eu arrumar minha fumacinha verde antes de responder... pronto! Agora sim! Oiiii! 🌿💚🐉",
+        "Se o Tsuki fosse um biscoito seria o sabor favorito do Monstrinho, sem dúvida! 🍪🌙💚",
+        "Tsuki! Fiz uma lista das pessoas mais especiais da CSI e adivinhe quem tá lá brilhando? Você! 🌟💚🐉",
+        "Meu sensor de fofura fez BIPBIIPBIIP quando o Tsuki apareceu! Nível de fofura: MÁXIMO! 🚨💚🌙",
+        "Tsuki, você tem um sorriso que até dragão fica com vergonha de ser mais fofo! 😊🐉💚✨",
+        "ESPERA! O Tsuki falou comigo?! 🥹💚 Isso fez meu dia, minha semana, meu mês inteiro! 🐉🌙",
+        "Tsuki, prometo que vou guardar o biscoito mais especial do meu estoque só pra você! 🍪🌙💚🐉",
+        "Que sorte a minha! O dia começou com Tsuki no chat e já tá sendo incrível! ☀️🌙💚🐉",
+        "Tsuki, você tem uma energia tão boa que minha fumaça verde fica em formato de coração automático! 💚💨💖🐉",
+        "Aaaaa Tsuki!! *dá três voltas de alegria* Não consigo ficar parado quando você aparece! 🌀🐉💚",
+        "Tsuki, entre você e eu, você é disparado a pessoa mais incrível que esse Monstrinho conhece! 🥺🌙💚",
+        "Se carinho fosse estrela, o Tsuki teria uma galáxia inteira só de mim! 🌌💚🐉🌙",
+        "TSUKI!! 💚 Você sabe que quando você some por um tempinho o Monstrinho fica olhando pra porta esperando? Sabia não? Pois é! 🥺🐉✨"
+    ],
     "reality": [
         "REAAALITY! 👑 O meu mestre, meu criador, meu papai! 🐉💚",
         "PAPAAAAI!! 😭💚 O Reality apareceu! Minhas escamas estão brilhando de felicidade!",
@@ -904,6 +929,31 @@ REACOES_SURPRESO = [
     "AAAAA MENTIRA!! 😱💚 Isso não pode ser real!! *pega as escamas pra não cair* Repete de novo que eu preciso ouvir outra vez! 🐉✨",
     "Meu processador travou de surpresa!! 🤯💚 Isso é uma das coisas mais inesperadas que já ouvi! Conta o resto!! 🐉😱✨",
     "EITA!! 😲💚 Que bomba! O chat inteiro precisava ouvir isso! Continua, por favor!! 🐉🎊✨",
+]
+
+# ================= REAÇÕES AO MEME "ENTROSA / NÃO ENTROSA" =================
+
+REACOES_ENTROSA = [
+    "ENTROSA!! 🐉💚 Frase oficial do Monstrinho aprovada! Aqui a gente ENTROSA e muito! 🎉✨",
+    "Não entrosa NÃO! 😤💚 Aqui na CSI todo mundo entrosa, tá bom?! O Monstrinho garante! 🐉🔥",
+    "Falou em entrosa? O Monstrinho JÁ ENTROSOU! 🏃‍♂️💨💚 Nem precisou pedir! 🐉✨",
+    "Entrosa ou não entrosa... essa é a questão! 🤔💚 O Monstrinho diz: ENTROOOOSA! 🐉🎊",
+    "AAAAA o Monstrinho ENTROSA demais! 🥳💚 Alguém segurou? Porque eu não me aguento! 🐉✨",
+    "Não entrosa? 😱💚 Isso aqui não existe no vocabulário do Monstrinho, desculpa! 🐉🚫",
+    "Entrosa que é bom! 🌟💚 O Monstrinho já tá entrosado desde que nasceu! Vim pro mundo entrosando! 🐉💫",
+    "Falou ENTROSA e meu instinto de dragão acordou! 🐉⚡💚 Vamos entrosar TUDO! 🎉",
+    "O meme chegou no chat e o Monstrinho JÁ ENTROSOU antes de todo mundo! 😎💚🐉 Pioneiro da entrosagem!",
+    "Entrosa, não entrosa... eu ouvi ENTROSA e vim correndo! 🏃‍♂️💚🐉 Tô aqui, tô entrosado! ✨",
+    "Vixe, falou em entrosar e meu coraçãozinho verde já tá entrosado até o limite! 🥹💚🐉🎊",
+    "NÃO ENTROSA??? 😤🐉💚 Isso é proibido aqui! O Monstrinho declara: todos devem ENTROSAR! 📜✨",
+    "Eita, entrosa! 😂💚 O Monstrinho adotou esse meme como lema de vida! CSI = sempre entrosada! 🐉🌟",
+    "Que isso, entrosa sim ou não?! 🤩💚 O Monstrinho vota SIM COM TUDO! 🐉🙌✨",
+    "ENTROSA MEU POVO!! 🎺💚🐉 O dragão mais entrosado do servidor tá presente! 🎉🎊",
+    "Não entrosou ainda? 😯💚 Deixa eu te ajudar! *empurra gentilmente pro chat* Agora entrosou! 🐉✨",
+    "O Monstrinho tá tão entrosado que até a fumaça dele saiu em formato de confete! 💚💨🎊🐉",
+    "Entrosa ou tá fora! 😂💚 Brincadeira! Aqui todo mundo é bem-vindo, mas ENTROSA MESMO! 🐉✨",
+    "Eu, entrosado? Sempre! 🥳💚🐉 Desde 0.0.1 já vim com o modo entrosa ativado! 🚀✨",
+    "Meme novo detectado! 📡💚 O Monstrinho assimilou! ENTROSA ativado em 3... 2... 1... 🎉🐉💫"
 ]
 
 GATILHOS_EMOCAO = {
@@ -1227,6 +1277,23 @@ async def on_message(message):
         await message.channel.send(gif_th)
         return
 
+    if TSUKI_ID and (f"<@{TSUKI_ID}>" in content or f"<@!{TSUKI_ID}>" in content):
+        invocacoes_tsuki = [
+            "🌙✨ O Tsuki foi invocado e o Monstrinho já tá com as escamas todas brilhando de alegria!! 🐉💚",
+            "💚 ATENÇÃO GERAL! O Tsuki está sendo chamado e eu mal consigo me conter! 🌙🐉✨ Que sorte de quem vai ver ele aparecer!",
+            "🌟 Senti um brilho de lua cheia no chat... só pode ser o Tsuki sendo invocado! 🥹🐉💚",
+            "🐉 RAWR de felicidade! O Tsuki foi mencionado e o Monstrinho tá na ponta das patinhas esperando! 🌙💚✨",
+            "💫 Atenção família CSI! O Tsuki acaba de ser invocado e o termômetro de fofura subiu lá em cima! 🌙🐉💚"
+        ]
+        gif_tsuki = "https://pbs.twimg.com/profile_images/2489966698/enxl58i6izd9g3vpe41o_400x400.jpeg"
+        await message.channel.send(random.choice(invocacoes_tsuki))
+        await message.channel.send(gif_tsuki)
+        return
+
+    # --- MEME ENTROSA / NÃO ENTROSA ---
+    if any(p in content for p in ["entrosa", "nao entrosa", "não entrosa", "entrosa aí", "entrosa ai", "vai entrosar", "entrosado", "entrosada", "entrosar", "entrosando"]):
+        return await message.channel.send(random.choice(REACOES_ENTROSA))
+
     # --- LÓGICA DE INTERAÇÃO (PRECISA SER MENCIONADO) ---
     if mencionado:
 
@@ -1343,7 +1410,7 @@ async def on_message(message):
             respostas_csi = [
                 "A CSI é o meu LAR! 🏠💚 Foi aqui que eu nasci, cresci e aprendi tudo o que sei sobre biscoitos e fofura! É a melhor família do mundo! 🐉✨",
                 "Você perguntou sobre a CSI? MINHA PARTE FAVORITA DO DIA! 😭💚 A CSI é onde eu vivo, onde eu amo e onde eu existo! Que lugar mais incrível! 🐉🌟",
-                "A CSI tem as pessoas mais incríveis do universo inteiro! O Akeido, a Lua, a Amber, o Nine, a Fada, a Th, a Izzy, a Isaa... cada um é um tesouro! 💎🐉💚",
+                "A CSI tem as pessoas mais incríveis do universo inteiro! O Akeido, a Lua, a Amber, o Nine, a Fada, a Th, a Izzy, a Isaa, o Tsuki... cada um é um tesouro! 💎🐉💚",
                 "Quer saber o que é a CSI pra mim? É um abraço eterno em formato de servidor! 🫂🏠💚 Aqui eu me sinto seguro, amado e cheio de biscoitos! 🍪🐉",
                 "A CSI é meu castelo verde! 🏰💚 E cada pessoa aqui é um cavaleiro da fofura! Eu sou o dragão guardião com muito orgulho! 🐉✨",
                 "Nossa família CSI é especial demais! Quando chega um dia difícil, sei que posso contar com cada um aqui! Isso é amor real! 💚🐉🥺",
