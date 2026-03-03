@@ -345,7 +345,19 @@ LISTA_SAUDACOES = [
     "Olá, olá! Meu coração bateu mais forte quando você chegou! 💓🐉",
     "Oi sumido(a)! Pensei que tinha me esquecido! 😭💚",
     "Hey hey hey! A pessoa mais legal chegou! 🌟🐉",
-    "Buenas! Começando o dia/tarde/noite com o pé direito! 🦶💚"
+    "Buenas! Começando o dia/tarde/noite com o pé direito! 🦶💚",
+    # gírias mineiras
+    "Uai, sô! 😄💚 Que saudade! Trem bão demais te ver por aqui! 🐉✨",
+    "Uai, chegou! 🥺💚 Cê num tava sumido não? O Monstrinho tava com saudade, trem ruim! 🐉",
+    "Oxente! 😱💚 Apareceu de surpresa! Tô bão demais de te ver, meu bem! 🐉✨",
+    # gírias sulistas / gaúchas
+    "Bah tchê! 🥹💚 Que bom que chegou! O Monstrinho tá tri feliz agora! 🐉✨",
+    "Bah, gurizado(a) querido(a)! 💚 Que barbaridade de sorte a minha de te ver aqui! 🐉🎉",
+    "Tri bom te ver, tchê! 😊💚 O Monstrinho capaz que ia explodir de felicidade! 🐉✨",
+    # gírias gerais
+    "Eita, chegou mano! 💚 O Monstrinho já tava te esperando com biscoito quentinho! 🍪🐉",
+    "Vixe! 😲💚 Olha quem apareceu! Que alegria, pow! 🐉✨",
+    "Fala aí, véi! 💚 Que saudade! Bora se jogar no chat? 🐉🎉"
 ]
 
 LISTA_BOM_DIA = [
@@ -585,6 +597,8 @@ if ISAA_ID:
     ID_PARA_NOME[ISAA_ID] = "isaa"
 if IZZY_ID:
     ID_PARA_NOME[IZZY_ID] = "izzy"
+if TH_ID:
+    ID_PARA_NOME[TH_ID] = "th"
 if DESTINY_ID:
     ID_PARA_NOME[DESTINY_ID] = "destiny"
 if JEFF_ID:
@@ -910,7 +924,9 @@ GATILHOS_EMOCAO = {
         "respostas": REACOES_TEDIO
     },
     "animado": {
-        "gatilhos": ["incrível", "incrivel", "que massa", "que legal", "top demais", "sensacional", "fantástico", "fantastico"],
+        "gatilhos": ["incrível", "incrivel", "que massa", "que legal", "top demais", "sensacional", "fantástico", "fantastico",
+            # gírias
+            "tri bom", "bão demais", "show demais", "muito tri", "que trem bão", "barbaridade", "bah que tri", "é nois", "tô irado", "to irado", "mó top", "mo top", "firmeza"],
         "respostas": REACOES_ANIMADO
     },
     "confuso": {
@@ -1183,6 +1199,32 @@ async def on_message(message):
             "✨ Chamando a Isaa! O Monstrinho garante que ninguém mais merece tanta fofura! 💜🐉"
         ]
         await message.channel.send(random.choice(invocacoes_isaa))
+        return
+
+    if IZZY_ID and (f"<@{IZZY_ID}>" in content or f"<@!{IZZY_ID}>" in content):
+        invocacoes_izzy = [
+            "🌸💖 AI MINHA SANTA FOFURA! A Izzy foi invocada e meu coraçãozinho deu três piruetas seguidas! 🐉✨",
+            "💖 Avisem geral! A Izzy entrou no chat e o Monstrinho já tá todo vermelhinho de alegria! 🐲🌸✨",
+            "🥺💖 Senti um cheirinho de flores e biscoito quentinho no ar... só pode ser a Izzy sendo chamada! 🐉💕",
+            "✨ IZZY DETECTED! Meu sensor de fofura apitou tanto que quase voou! Ela merece todo o amor! 🌸🐉💖",
+            "🌺 Para tudo! A Izzy mais fofa da CSI acabou de ser invocada! O Monstrinho tá babando de amor! 🐉💕✨"
+        ]
+        gif_izzy = "https://64.media.tumblr.com/349e829a87d4a56558b8e3ca7e9134b3/tumblr_o4ttmkyPpt1vq1hqzo1_500.gif"
+        await message.channel.send(random.choice(invocacoes_izzy))
+        await message.channel.send(gif_izzy)
+        return
+
+    if TH_ID and (f"<@{TH_ID}>" in content or f"<@!{TH_ID}>" in content):
+        invocacoes_th = [
+            "💕✨ Oba oba oba! A minha Th foi invocada e o Monstrinho já tá pulando de alegria por aqui! 🐉💖",
+            "🌟 Shhh... senti um brilhinho especial no ar... é a Th sendo chamada! Que dia mais gostoso! 🐲💕✨",
+            "💕 ALERTA DE FOFURA NÍVEL MÁXIMO! A Th foi mencionada e meu peito encheu de quentinho! 🥺🐉🌸",
+            "✨ Chamando a Th, a mais doce da CSI! O Monstrinho promete que ela vai chegar cheia de abraços! 🐉💕🌷",
+            "🌸 Ei família! A Th foi invocada e o chat ficou automaticamente mais lindo e mais fofo! 💕🐉✨"
+        ]
+        gif_th = "https://media.tenor.com/tPfEQC6tWyYAAAAM/wink-anime.gif"
+        await message.channel.send(random.choice(invocacoes_th))
+        await message.channel.send(gif_th)
         return
 
     # --- LÓGICA DE INTERAÇÃO (PRECISA SER MENCIONADO) ---
@@ -1460,7 +1502,13 @@ async def on_message(message):
                 return await message.channel.send(random.choice(frases))
 
         # Saudações APRIMORADAS (sem bom dia/boa tarde/boa noite que já foram tratadas)
-        if any(p in content for p in ["oi", "oie", "oii", "ola", "olá", "hello", "hii", "oiii", "hey", "e ai", "e aí", "salve", "opa", "buenas"]):
+        if any(p in content for p in ["oi", "oie", "oii", "ola", "olá", "hello", "hii", "oiii", "hey", "e ai", "e aí", "salve", "opa", "buenas",
+            # gírias mineiras
+            "uai", "trem bão", "sô", "oxente", "égua", "bão demais", "meu bem",
+            # gírias sulistas / gaúchas
+            "bah", "tri", "tchê", "bah tchê", "mas bah", "capaz", "barbaridade", "gurizão", "gurizada",
+            # gírias gerais BR
+            "mano", "véi", "pow", "eita", "vixe", "poxa", "e então", "e aew", "e aew mano", "fala aí", "fala tu"]):
             return await message.channel.send(random.choice(LISTA_SAUDACOES))
         
         # Perguntas de Estado APRIMORADAS
@@ -1468,7 +1516,9 @@ async def on_message(message):
         if any(p in content for p in gatilhos_bem_estar_hoje):
             return await message.channel.send(random.choice(REACOES_FELIZ))
 
-        gatilhos_bem_estar = ["como você está", "como vc está", "como voce esta", "como você esta", "como vc esta", "tudo bem", "como vc ta", "como voce ta", "ta tudo bem", "tá tudo bem", "vc ta bem", "voce ta bem", "ta bem", "tá bem", "esta bem", "está bem", "tudo certinho", "tudo certo", "blz", "beleza", "como ta", "como tá"]
+        gatilhos_bem_estar = ["como você está", "como vc está", "como voce esta", "como você esta", "como vc esta", "tudo bem", "como vc ta", "como voce ta", "ta tudo bem", "tá tudo bem", "vc ta bem", "voce ta bem", "ta bem", "tá bem", "esta bem", "está bem", "tudo certinho", "tudo certo", "blz", "beleza", "como ta", "como tá",
+            # gírias regionais
+            "tô bão", "to bao", "tô tri", "to tri", "tô show", "to show", "tri bem", "bão demais", "show de bola", "tudo na faixa", "tudo certo memo", "tá massa", "ta massa"]
         if any(p in content for p in gatilhos_bem_estar):
             return await message.channel.send(random.choice(LISTA_ESTADO))
 
@@ -1482,7 +1532,9 @@ async def on_message(message):
             return await message.channel.send(random.choice(LISTA_PRESENCA))
         
         # Declarações de Amor e Elogios
-        if any(p in content for p in ["te amo", "amo voce", "amo você", "amo vc", "fofo", "lindo", "linda", "fofinho", "fofinha", "perfeito", "perfeita", "fofura", "bonito", "bonita", "adorável", "adoravel", "querido", "querida"]):
+        if any(p in content for p in ["te amo", "amo voce", "amo você", "amo vc", "fofo", "lindo", "linda", "fofinho", "fofinha", "perfeito", "perfeita", "fofura", "bonito", "bonita", "adorável", "adoravel", "querido", "querida",
+            # gírias carinhosas
+            "mó fofo", "mo fofo", "muito fofo", "demais da conta", "bão demais", "tri fofo", "capaz que é fofo", "bah que fofo"]):
             return await message.channel.send(random.choice(REACOES_FOFAS))
 
         # Fallback para confusão
