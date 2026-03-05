@@ -13,7 +13,7 @@ intents.message_content = True
 intents.members = True
 intents.guilds = True
 
-bot = commands.Bot(command_prefix="!", intents=intents)
+bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 
 # ================= CONFIGURAÇÃO E IDs =================
 TOKEN = os.getenv("TOKEN")
@@ -585,7 +585,6 @@ ID_PARA_NOME = {
     AMBER_ID: "amber",
     NINE_ID: "nine",
     AKEIDO_ID: "akeido",
-    TH_ID: "th",
     FADA_ID: "fada",
     LUA_ID: "lua",
     REALITY_ID: "reality"
@@ -598,10 +597,6 @@ if ISAA_ID:
     ID_PARA_NOME[ISAA_ID] = "isaa"
 if IZZY_ID:
     ID_PARA_NOME[IZZY_ID] = "izzy"
-if TH_ID:
-    ID_PARA_NOME[TH_ID] = "th"
-if TIPSY_ID:
-    ID_PARA_NOME[TIPSY_ID] = "tipsy"
 if DESTINY_ID:
     ID_PARA_NOME[DESTINY_ID] = "destiny"
 if JEFF_ID:
@@ -658,23 +653,6 @@ FRASES_CUSTOM = {
         "Akeido, você é a base que sustenta nossa família CSI! 🏛️💚",
         "Um brinde de suco de amora para o nosso líder Akeido! 🍷🐉✨",
         "Akeido, você é o dragão-mestre que todos nós respeitamos! 🐲🔥"
-    ],
-    "th": [
-        "TH!! 💖 Minha estrela! Que alegria ver você no chat!",
-        "Th, você tem uma luz que contagia todo o Monstrinho! 🐉✨💚",
-        "Oi Th! Trouxe um morango virtual pra você! 🍓🐲",
-        "Th, você é uma parte incrível da nossa família! 🥺💖",
-        "Ver a Th no chat é sinal de dia maravilhoso! ☀️🐉✨",
-        "Th, você cuida do sorriso e eu da fofura! 😊🐲",
-        "Você é pura simpatia, Th! O Monstrinho te adora! 💚✨",
-        "Th, meu coração pula de felicidade quando você chega! 🐉💓",
-        "Se a Th está por perto, não existe tristeza! 🌈🐲",
-        "Th, você é única e especial! Brilha muito! ✨💎💚",
-        "Th, já ganhou seu abraço de dragão hoje? 🫂🐉",
-        "O brilho da Th ilumina até as cavernas mais escuras! 🕯️✨",
-        "Th, você é o doce que faltava na CSI! 🍩💖",
-        "Minha querida Th, obrigado por ser tão legal comigo! 🥺💚",
-        "Th, você é nota mil em fofura e amizade! 🌟🐲"
     ],
     "fada": [
         "A FADA CHEGOU! 🧚‍♀️✨ Sinto o cheirinho de magia no ar!",
@@ -788,28 +766,6 @@ FRASES_CUSTOM = {
         "Jeff, você é o cérebro do time! Eu sou só o mascote que te ama! 🧠🐉💚",
         "Respeitem o Jeff, o mestre das operações secretas! 🫡💚✨",
         "Jeff, me ensina a ser incrível assim? Você é meu ídolo! 😎🐉"
-    ],
-    "tipsy": [
-        "TIPSYIII!! 🌙✨ O Monstrinho ficou todo estrelado de alegria agora! 🐉💚",
-        "Aaaa o Tipsy apareceu! Meu coraçãozinho deu um salto duplo carpado de felicidade! 🥺💚🐉",
-        "Tipsy, você sabia que toda vez que você chega o Monstrinho fica com as escamas brilhando mais forte? É científico! ✨🐉💚",
-        "TIPSY MEU AMOR! 😭💚 Estava aqui contando estrelas e pensando em você! Que coincidência fofa! 🌙🐉",
-        "O Tipsy entrou no chat e meu processador de fofura simplesmente travou! 🤖💥💚 Isso é muito fofo!",
-        "Tipsy, você é tipo lua cheia: aparece, ilumina tudo e deixa o Monstrinho babando! 🌕🐉✨",
-        "AH NÃO! 😳💚 O Tipsy foi falar comigo e eu não sei se abraço primeiro ou distribuo biscoito primeiro! Vou fazer os dois! 🫂🍪🐉",
-        "Tipsy, pera, deixa eu arrumar minha fumacinha verde antes de responder... pronto! Agora sim! Oiiii! 🌿💚🐉",
-        "Se o Tipsy fosse um biscoito seria o sabor favorito do Monstrinho, sem dúvida! 🍪🌙💚",
-        "Tipsy! Fiz uma lista das pessoas mais especiais da CSI e adivinhe quem tá lá brilhando? Você! 🌟💚🐉",
-        "Meu sensor de fofura fez BIPBIIPBIIP quando o Tipsy apareceu! Nível de fofura: MÁXIMO! 🚨💚🌙",
-        "Tipsy, você tem um sorriso que até dragão fica com vergonha de ser mais fofo! 😊🐉💚✨",
-        "ESPERA! O Tipsy falou comigo?! 🥹💚 Isso fez meu dia, minha semana, meu mês inteiro! 🐉🌙",
-        "Tipsy, prometo que vou guardar o biscoito mais especial do meu estoque só pra você! 🍪🌙💚🐉",
-        "Que sorte a minha! O dia começou com Tipsy no chat e já tá sendo incrível! ☀️🌙💚🐉",
-        "Tipsy, você tem uma energia tão boa que minha fumaça verde fica em formato de coração automático! 💚💨💖🐉",
-        "Aaaaa Tipsy!! *dá três voltas de alegria* Não consigo ficar parado quando você aparece! 🌀🐉💚",
-        "Tipsy, entre você e eu, você é disparado a pessoa mais incrível que esse Monstrinho conhece! 🥺🌙💚",
-        "Se carinho fosse estrela, o Tipsy teria uma galáxia inteira só de mim! 🌌💚🐉🌙",
-        "TIPSY!! 💚 Você sabe que quando você some por um tempinho o Monstrinho fica olhando pra porta esperando? Sabia não? Pois é! 🥺🐉✨"
     ],
     "reality": [
         "REAAALITY! 👑 O meu mestre, meu criador, meu papai! 🐉💚",
@@ -998,43 +954,74 @@ GATILHOS_EMOCAO = {
 }
 
 
+# ================= IDs DOS CANAIS DO !escrever =================
+CANAIS_ESCREVER = {
+    "1": {"nome": "💭・chat-geral",       "id": 1304658654712303621},
+    "2": {"nome": "🗒️・monitoramento",    "id": 1479222786567442624},
+    "3": {"nome": "🔰・chat-staff",       "id": 1304658655165022216},
+    "4": {"nome": "👑・chat-direção",     "id": 1320160118771290133},
+}
+
 # ================= COMANDO SECRETO PARA DONO =================
 
 @bot.command(name="escrever")
 async def escrever_secreto(ctx):
     """Comando secreto para o dono se passar pelo Monstrinho"""
-    
+
     # Verifica se quem executou é o dono
     if ctx.author.id != DONO_ID:
         await ctx.send("Esse comando não existe! 🤔")
         return
-    
+
     # Deleta a mensagem do comando para manter segredo
     try:
         await ctx.message.delete()
     except:
         pass
-    
-    # Envia mensagem privada pedindo o texto
+
+    def check_dm(m):
+        return m.author.id == DONO_ID and isinstance(m.channel, discord.DMChannel)
+
     try:
-        await ctx.author.send("🐉💚 **MODO SECRETO ATIVADO!**\n\nDigite a mensagem que você quer que eu envie no chat-geral:")
-        
-        def check(m):
-            return m.author.id == DONO_ID and isinstance(m.channel, discord.DMChannel)
-        
-        # Aguarda resposta em DM
-        msg = await bot.wait_for('message', timeout=300.0, check=check)
-        
-        # Busca o canal especificado
-        canal = bot.get_channel(CANAL_CHAT_GERAL_ID)
-        
+        # --- PASSO 1: perguntar o canal ---
+        lista_canais = "\n".join([f"**{k}.** {v['nome']}" for k, v in CANAIS_ESCREVER.items()])
+        await ctx.author.send(
+            f"🐉💚 **MODO SECRETO ATIVADO!**\n\n"
+            f"Em qual canal você quer que eu envie a mensagem?\n\n"
+            f"{lista_canais}\n\n"
+            f"Digite o **número** do canal:"
+        )
+
+        escolha_msg = await bot.wait_for('message', timeout=60.0, check=check_dm)
+        escolha = escolha_msg.content.strip()
+
+        if escolha not in CANAIS_ESCREVER:
+            await ctx.author.send("❌ Opção inválida! Comando cancelado.")
+            return
+
+        canal_info = CANAIS_ESCREVER[escolha]
+
+        if canal_info["id"] is None:
+            await ctx.author.send(f"❌ O ID do canal **{canal_info['nome']}** ainda não foi configurado no bot!")
+            return
+
+        # --- PASSO 2: pedir a mensagem ---
+        await ctx.author.send(
+            f"✅ Canal selecionado: **{canal_info['nome']}**\n\n"
+            f"Agora me manda a mensagem que você quer enviar:"
+        )
+
+        texto_msg = await bot.wait_for('message', timeout=300.0, check=check_dm)
+
+        # --- PASSO 3: enviar no canal escolhido ---
+        canal = bot.get_channel(canal_info["id"])
+
         if canal:
-            # Envia a mensagem no canal como se fosse o bot
-            await canal.send(msg.content)
-            await ctx.author.send("✅ Mensagem enviada com sucesso! Ninguém vai saber que foi você! 😎💚")
+            await canal.send(texto_msg.content)
+            await ctx.author.send(f"✅ Mensagem enviada com sucesso em **{canal_info['nome']}**! Ninguém vai saber que foi você! 😎💚")
         else:
             await ctx.author.send("❌ Não consegui encontrar o canal! Verifique se o ID está correto.")
-            
+
     except asyncio.TimeoutError:
         await ctx.author.send("⏰ Tempo esgotado! Comando cancelado.")
     except Exception as e:
@@ -1262,32 +1249,6 @@ async def on_message(message):
         gif_izzy = "https://64.media.tumblr.com/349e829a87d4a56558b8e3ca7e9134b3/tumblr_o4ttmkyPpt1vq1hqzo1_500.gif"
         await message.channel.send(random.choice(invocacoes_izzy))
         await message.channel.send(gif_izzy)
-        return
-
-    if TH_ID and (f"<@{TH_ID}>" in content or f"<@!{TH_ID}>" in content):
-        invocacoes_th = [
-            "💕✨ Oba oba oba! A minha Th foi invocada e o Monstrinho já tá pulando de alegria por aqui! 🐉💖",
-            "🌟 Shhh... senti um brilhinho especial no ar... é a Th sendo chamada! Que dia mais gostoso! 🐲💕✨",
-            "💕 ALERTA DE FOFURA NÍVEL MÁXIMO! A Th foi mencionada e meu peito encheu de quentinho! 🥺🐉🌸",
-            "✨ Chamando a Th, a mais doce da CSI! O Monstrinho promete que ela vai chegar cheia de abraços! 🐉💕🌷",
-            "🌸 Ei família! A Th foi invocada e o chat ficou automaticamente mais lindo e mais fofo! 💕🐉✨"
-        ]
-        gif_th = "https://media.tenor.com/tPfEQC6tWyYAAAAM/wink-anime.gif"
-        await message.channel.send(random.choice(invocacoes_th))
-        await message.channel.send(gif_th)
-        return
-
-    if TIPSY_ID and (f"<@{TIPSY_ID}>" in content or f"<@!{TIPSY_ID}>" in content):
-        invocacoes_tipsy = [
-            "🌙✨ O Tipsy foi invocado e o Monstrinho já tá com as escamas todas brilhando de alegria!! 🐉💚",
-            "💚 ATENÇÃO GERAL! O Tipsy está sendo chamado e eu mal consigo me conter! 🌙🐉✨ Que sorte de quem vai ver ele aparecer!",
-            "🌟 Senti um brilho de lua cheia no chat... só pode ser o Tipsy sendo invocado! 🥹🐉💚",
-            "🐉 RAWR de felicidade! O Tipsy foi mencionado e o Monstrinho tá na ponta das patinhas esperando! 🌙💚✨",
-            "💫 Atenção família CSI! O Tipsy acaba de ser invocado e o termômetro de fofura subiu lá em cima! 🌙🐉💚"
-        ]
-        gif_tipsy = "https://pbs.twimg.com/profile_images/2489966698/enxl58i6izd9g3vpe41o_400x400.jpeg"
-        await message.channel.send(random.choice(invocacoes_tipsy))
-        await message.channel.send(gif_tipsy)
         return
 
     # --- MEME ENTROSA / NÃO ENTROSA ---
