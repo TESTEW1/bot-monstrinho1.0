@@ -887,29 +887,29 @@ REACOES_SURPRESO = [
     "EITA!! 😲💚 Que bomba! O chat inteiro precisava ouvir isso! Continua, por favor!! 🐉🎊✨",
 ]
 
-# ================= REAÇÕES AO MEME "ENTROSA / NÃO ENTROSA" =================
+# ================= INTERAÇÕES DE HYPE E ENERGIA =================
 
-REACOES_ENTROSA = [
-    "ENTROSA!! 🐉💚 Frase oficial do Monstrinho aprovada! Aqui a gente ENTROSA e muito! 🎉✨",
-    "Não entrosa NÃO! 😤💚 Aqui na CSI todo mundo entrosa, tá bom?! O Monstrinho garante! 🐉🔥",
-    "Falou em entrosa? O Monstrinho JÁ ENTROSOU! 🏃‍♂️💨💚 Nem precisou pedir! 🐉✨",
-    "Entrosa ou não entrosa... essa é a questão! 🤔💚 O Monstrinho diz: ENTROOOOSA! 🐉🎊",
-    "AAAAA o Monstrinho ENTROSA demais! 🥳💚 Alguém segurou? Porque eu não me aguento! 🐉✨",
-    "Não entrosa? 😱💚 Isso aqui não existe no vocabulário do Monstrinho, desculpa! 🐉🚫",
-    "Entrosa que é bom! 🌟💚 O Monstrinho já tá entrosado desde que nasceu! Vim pro mundo entrosando! 🐉💫",
-    "Falou ENTROSA e meu instinto de dragão acordou! 🐉⚡💚 Vamos entrosar TUDO! 🎉",
-    "O meme chegou no chat e o Monstrinho JÁ ENTROSOU antes de todo mundo! 😎💚🐉 Pioneiro da entrosagem!",
-    "Entrosa, não entrosa... eu ouvi ENTROSA e vim correndo! 🏃‍♂️💚🐉 Tô aqui, tô entrosado! ✨",
-    "Vixe, falou em entrosar e meu coraçãozinho verde já tá entrosado até o limite! 🥹💚🐉🎊",
-    "NÃO ENTROSA??? 😤🐉💚 Isso é proibido aqui! O Monstrinho declara: todos devem ENTROSAR! 📜✨",
-    "Eita, entrosa! 😂💚 O Monstrinho adotou esse meme como lema de vida! CSI = sempre entrosada! 🐉🌟",
-    "Que isso, entrosa sim ou não?! 🤩💚 O Monstrinho vota SIM COM TUDO! 🐉🙌✨",
-    "ENTROSA MEU POVO!! 🎺💚🐉 O dragão mais entrosado do servidor tá presente! 🎉🎊",
-    "Não entrosou ainda? 😯💚 Deixa eu te ajudar! *empurra gentilmente pro chat* Agora entrosou! 🐉✨",
-    "O Monstrinho tá tão entrosado que até a fumaça dele saiu em formato de confete! 💚💨🎊🐉",
-    "Entrosa ou tá fora! 😂💚 Brincadeira! Aqui todo mundo é bem-vindo, mas ENTROSA MESMO! 🐉✨",
-    "Eu, entrosado? Sempre! 🥳💚🐉 Desde 0.0.1 já vim com o modo entrosa ativado! 🚀✨",
-    "Meme novo detectado! 📡💚 O Monstrinho assimilou! ENTROSA ativado em 3... 2... 1... 🎉🐉💫"
+REACOES_HYPE = [
+    "CHEGA CHEGANDO COM TUDO!! 🔥💚 O chat tomou vida agora! O Monstrinho sente a energia daqui! 🐉✨",
+    "QUE ENERGIA É ESSA?! 🚀💚 Meu processador de fofura não aguenta! Tô pegando carona nessa vibe! 🐉🎉",
+    "AAAA SIM!! 🥳💚 É isso! Isso aqui! Exatamente isso! O Monstrinho aprova TUDO que tá acontecendo! 🐉⚡",
+    "Bora que bora!! 🏃‍♂️💚 O Monstrinho acordou e já tá no modo turbo junto com vocês! 🐉🔥✨",
+    "Que vibe boa rolando aqui! 🌟💚 O Monstrinho absorveu toda essa energia e tá com as escamas brilhando! 🐉✨",
+    "ISSO AÍ MEU POVO!! 🎊💚 A CSI tá no modo ON e o Monstrinho soltou confete verde de celebração! 🎉🐉",
+    "Alguém pediu hype? 🤩💚 O dragão mais animado do servidor chegou! Bora espalhar essa energia! 🐉⚡🎊",
+    "Que atmosfera incrível! 🌈💚 O Monstrinho tá sorrindo tanto que até a fumaça saiu colorida! 💨🐉✨",
+    "VAMO QUE VAMO!! 💪💚 Com essa energia aqui a CSI vai longe! O Monstrinho acredita muito em vocês! 🐉🚀",
+    "O chat ficou 10x mais lindo agora! ✨💚 O Monstrinho registrou esse momento na memória especial! 💾🐉🎉",
+    "Pega essa energia e vai!! 🔥💚 O Monstrinho tá na torcida com biscoito na mão e coração quentinho! 🍪🐉",
+    "Sinto aquela faísca boa no ar!! ⚡💚 É o tipo de momento que faz o Monstrinho vibrar de alegria! 🐉🎊",
+    "Gente... que momento LINDO de ser testemunha! 🥹💚 O Monstrinho tá arrepiado (de felicidade)! 🐉✨",
+    "É ISSO!! 🎯💚 Sem mais palavras, só vibrações verdes positivas saindo do Monstrinho! 🐉💫🎉",
+    "A energia aqui tá tão boa que minhas asas bateram sozinhas! 🕊️💚 Tô voando de alegria! 🐉✨🚀",
+    "CSI no modo LIGADA!! 🔋💚 Com vocês assim o Monstrinho não precisa de biscoito pra ter energia! 🐉⚡",
+    "Que momento, que momento! 🌟💚 Guardei isso no meu banco de memórias favoritas! Obrigado por existirem! 🥺🐉",
+    "RAWR de empolgação máxima!! 🐉💚 Não sei o que é isso mas AMEI e quero mais! 🎉✨",
+    "Meu coraçãozinho verde tá acelerado!! 💓💚 Isso aqui é puro combustível de dragão! 🔥🐉✨",
+    "Pode continuar que o Monstrinho tá AQUI pra tudo isso!! 🥳💚 Não para! Nunca para! 🐉🎊🚀"
 ]
 
 GATILHOS_EMOCAO = {
@@ -1227,17 +1227,6 @@ async def on_message(message):
         await message.channel.send(gif_nine)
         return
 
-    if ISAA_ID and (f"<@{ISAA_ID}>" in content or f"<@!{ISAA_ID}>" in content):
-        invocacoes_isaa = [
-            "💜✨ A Isaa está sendo invocada! Meu coração de dragão ficou todo lilás! 🐉💜",
-            "🌸 Atenção família! A Isaa foi mencionada e o Monstrinho já está na ponta dos cascos! 🐉💜✨",
-            "💜 Sinto um brilho lilás no ar... é a Isaa sendo chamada! Que sorte de quem vai receber essa atenção! 🥺🐲",
-            "🐉 RAWR de alegria! A Isaa foi invocada! Que esse chat fique mais lindo por isso! 💜✨",
-            "✨ Chamando a Isaa! O Monstrinho garante que ninguém mais merece tanta fofura! 💜🐉"
-        ]
-        await message.channel.send(random.choice(invocacoes_isaa))
-        return
-
     if IZZY_ID and (f"<@{IZZY_ID}>" in content or f"<@!{IZZY_ID}>" in content):
         invocacoes_izzy = [
             "🌸💖 AI MINHA SANTA FOFURA! A Izzy foi invocada e meu coraçãozinho deu três piruetas seguidas! 🐉✨",
@@ -1250,10 +1239,6 @@ async def on_message(message):
         await message.channel.send(random.choice(invocacoes_izzy))
         await message.channel.send(gif_izzy)
         return
-
-    # --- MEME ENTROSA / NÃO ENTROSA ---
-    if any(p in content for p in ["entrosa", "nao entrosa", "não entrosa", "entrosa aí", "entrosa ai", "vai entrosar", "entrosado", "entrosada", "entrosar", "entrosando"]):
-        return await message.channel.send(random.choice(REACOES_ENTROSA))
 
     # --- LÓGICA DE INTERAÇÃO (PRECISA SER MENCIONADO) ---
     if mencionado:
@@ -1268,6 +1253,10 @@ async def on_message(message):
             # 30% de chance de responder com frase customizada quando mencionado
             if random.random() < 0.3:
                 return await message.channel.send(random.choice(FRASES_CUSTOM[nome_customizado]))
+
+        # --- HYPE E ENERGIA ---
+        if any(p in content for p in ["hype", "bora", "vamo", "vamos lá", "chega chegando", "que energia", "que vibe", "animado", "animada", "tô on", "to on", "chegou chegando", "chegou com tudo", "bateu aquela vontade", "tô aqui", "to aqui", "apareci", "apareceu", "vibe boa", "energia boa", "tô ligado", "to ligado"]):
+            return await message.channel.send(random.choice(REACOES_HYPE))
 
         # ===== NOVAS INTERAÇÕES EXPANDIDAS =====
         
