@@ -1261,7 +1261,7 @@ async def on_message(message):
             "✨👑 Para tudo que está acontecendo!! A Amber, nossa Vice-Líder poderosa e fofa ao mesmo tempo, acaba de ser invocada!! O chat ficou mais bonito agora!! 🌸💚🐉",
             "🐉💖 Meu coraçãozinho de dragão deu um salto!! É a Vice-Líder Amber!! Ela carrega a CSI com tanto amor e força que até minhas escamas ficam com inveja do brilho dela!! 👑🌸✨"
         ]
-        gif_amber = "https://64.media.tumblr.com/fe204a5f4c1e52571017d8675b0d6a38/tumblr_ml4efwSxYt1r6ei21o1_250.gif"
+        gif_amber = "https://cdn.discordapp.com/attachments/1458272176057618432/1481418351615148313/baixados_19.gif?ex=69b33dda&is=69b1ec5a&hm=0ac07317e0f2adad95890a3077501475a26166221e4f1f305897de78b0a78e58"
         await message.channel.send(random.choice(invocacoes_amber))
         await message.channel.send(gif_amber)
         return
