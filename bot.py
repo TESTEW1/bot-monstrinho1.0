@@ -1255,11 +1255,11 @@ async def on_message(message):
 
     if f"<@{AMBER_ID}>" in content or f"<@!{AMBER_ID}>" in content:
         invocacoes_amber = [
-            "🌸 A deusa da organização! A nossa ADM Amber foi invocada com muito carinho! ✨👑",
-            "💖 Abram alas para a Amber! A nossa estrela guia está sendo chamada! 🐉✨",
-            "💎 Sinto um perfume de flores verdes... é a Amber sendo invocada agora! 🥺💚",
-            "🦋 A Amber chegou para deixar tudo mais lindo! Invocação de ADM concluída com sucesso!",
-            "✨ Atenção! A patroa Amber foi mencionada! Deixem as escamas brilhando para ela! 🧹🐲"
+            "👑🌸 ABRAM ALAS!! A nossa Vice-Líder Amber acaba de ser invocada e o Monstrinho já tá fazendo reverência!! Que presença, que elegância, que tudo!! 🐉💚✨",
+            "💎✨ Senti um brilho dourado diferente no ar... só pode ser a Vice-Líder Amber sendo chamada ao trono!! A CSI está em boas mãos!! 🌸🐉💚",
+            "🌺💚 ALERTA DE REALEZA!! Nossa Vice-Líder Amber foi mencionada e o Monstrinho tá tremendo das patinhas de tanto orgulho!! Ela é incrível demais!! 👑🐉✨",
+            "✨👑 Para tudo que está acontecendo!! A Amber, nossa Vice-Líder poderosa e fofa ao mesmo tempo, acaba de ser invocada!! O chat ficou mais bonito agora!! 🌸💚🐉",
+            "🐉💖 Meu coraçãozinho de dragão deu um salto!! É a Vice-Líder Amber!! Ela carrega a CSI com tanto amor e força que até minhas escamas ficam com inveja do brilho dela!! 👑🌸✨"
         ]
         gif_amber = "https://64.media.tumblr.com/fe204a5f4c1e52571017d8675b0d6a38/tumblr_ml4efwSxYt1r6ei21o1_250.gif"
         await message.channel.send(random.choice(invocacoes_amber))
