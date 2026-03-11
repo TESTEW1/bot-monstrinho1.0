@@ -1196,7 +1196,7 @@ async def on_message(message):
             "🫡 Alerta de autoridade fofa! O Líder Akeido foi mencionado! *bate continência*",
             "🌟 Akeido, o senhor da CSI, acaba de ser invocado para brilhar no chat! 💎🐉"
         ]
-        gif_akeido = "https://media1.tenor.com/m/ZtGJnU_AYUgAAAAd/dexter-james-doakes.gif"
+        gif_akeido = "https://c.tenor.com/ZtGJnU_AYUgAAAAd/tenor.gif"
         await message.channel.send(random.choice(invocacoes_akeido))
         await message.channel.send(gif_akeido)
         return
@@ -1209,7 +1209,7 @@ async def on_message(message):
             "🦋 A Amber chegou para deixar tudo mais lindo! Invocação de ADM concluída com sucesso!",
             "✨ Atenção! A patroa Amber foi mencionada! Deixem as escamas brilhando para ela! 🧹🐲"
         ]
-        gif_amber = "https://25.media.tumblr.com/fe204a5f4c1e52571017d8675b0d6a38/tumblr_ml4efwSxYt1r6ei21o1_250.gif"
+        gif_amber = "https://64.media.tumblr.com/fe204a5f4c1e52571017d8675b0d6a38/tumblr_ml4efwSxYt1r6ei21o1_250.gif"
         await message.channel.send(random.choice(invocacoes_amber))
         await message.channel.send(gif_amber)
         return
@@ -1235,7 +1235,7 @@ async def on_message(message):
             "✨ IZZY DETECTED! Meu sensor de fofura apitou tanto que quase voou! Ela merece todo o amor! 🌸🐉💖",
             "🌺 Para tudo! A Izzy mais fofa da CSI acabou de ser invocada! O Monstrinho tá babando de amor! 🐉💕✨"
         ]
-        gif_izzy = "https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyc3ZrMjliNjlzejFpOGlvdW9lejNwcHYxcnMyZmxlczZ3Y20xbWh1ZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/SZReF1EJ2JpVS/200w.gif"
+        gif_izzy = "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3dwa3pxcnY2MGVlbDc1bzZxNWQ3YzhvdXI4bTd0ZXZqNjl4bGp4byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SZReF1EJ2JpVS/giphy.gif"
         await message.channel.send(random.choice(invocacoes_izzy))
         await message.channel.send(gif_izzy)
         return
