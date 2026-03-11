@@ -1197,10 +1197,8 @@ async def on_message(message):
             "🌟 Akeido, o senhor da CSI, acaba de ser invocado para brilhar no chat! 💎🐉"
         ]
         gif_akeido = "https://media1.tenor.com/m/ZtGJnU_AYUgAAAAd/dexter-james-doakes.gif"
-        embed_akeido = discord.Embed()
-        embed_akeido.set_image(url=gif_akeido)
         await message.channel.send(random.choice(invocacoes_akeido))
-        await message.channel.send(embed=embed_akeido)
+        await message.channel.send(gif_akeido)
         return
 
     if f"<@{AMBER_ID}>" in content or f"<@!{AMBER_ID}>" in content:
@@ -1212,10 +1210,8 @@ async def on_message(message):
             "✨ Atenção! A patroa Amber foi mencionada! Deixem as escamas brilhando para ela! 🧹🐲"
         ]
         gif_amber = "https://25.media.tumblr.com/fe204a5f4c1e52571017d8675b0d6a38/tumblr_ml4efwSxYt1r6ei21o1_250.gif"
-        embed_amber = discord.Embed()
-        embed_amber.set_image(url=gif_amber)
         await message.channel.send(random.choice(invocacoes_amber))
-        await message.channel.send(embed=embed_amber)
+        await message.channel.send(gif_amber)
         return
 
     if f"<@{NINE_ID}>" in content or f"<@!{NINE_ID}>" in content:
@@ -1240,10 +1236,8 @@ async def on_message(message):
             "🌺 Para tudo! A Izzy mais fofa da CSI acabou de ser invocada! O Monstrinho tá babando de amor! 🐉💕✨"
         ]
         gif_izzy = "https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyc3ZrMjliNjlzejFpOGlvdW9lejNwcHYxcnMyZmxlczZ3Y20xbWh1ZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/SZReF1EJ2JpVS/200w.gif"
-        embed_izzy = discord.Embed()
-        embed_izzy.set_image(url=gif_izzy)
         await message.channel.send(random.choice(invocacoes_izzy))
-        await message.channel.send(embed=embed_izzy)
+        await message.channel.send(gif_izzy)
         return
 
     # --- LÓGICA DE INTERAÇÃO (PRECISA SER MENCIONADO) ---
