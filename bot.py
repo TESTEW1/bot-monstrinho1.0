@@ -1076,6 +1076,56 @@ CARGO_BOAS_VINDAS = {
             """\n✨💼 **ESPERA, ESPERA, ESPERA!!** 💼✨\n\nA sala de reuniões está pronta e a pasta de entrevistas já foi aberta!\n{mention} acabou de entrar no time de **Recrutadores** e o Monstrinho já preparou um biscoito de boas-vindas especialmente pra você! 🍪🐉💚\n\nA família CSI vai crescer ainda mais com você aqui! 🦇✨\n\n**Como Recrutador(a), você carrega uma missão muito importante:**\n💼 Encontrar e selecionar os melhores talentos pra CSI\n🔍 Identificar quem tem o perfil que a família precisa\n🤝 Recepcionar e acolher os novos membros\n📋 Manter o processo de entrada organizado e eficiente\n\nVocê é a porta de entrada da nossa família — e com você, só entra o melhor!\n\n**Bem-vindo(a) ao time de recrutamento, Recrutador(a)!!** 💼🔍✨"""
         ]
     },
+
+    # @Parceiros CSI  →  chat-geral
+    "PARCEIROS_CSI_ROLE_ID": {
+        "nome": "Parceiros CSI",
+        "canal_nome": "chat-geral",
+        "gif": "https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif",
+        "mensagens": [
+            """🐉💚✨ **ATENÇÃO, FAMÍLIA CSI!!** ✨💚🐉
+
+AAAAA MEU CORAÇÃOZINHO DE DRAGÃO ESTÁ EXPLODINDO DE ALEGRIA!! 😭💚
+
+{mention} acabou de se tornar nosso(a) mais novo(a) **Parceiro(a) oficial da CSI** e o Monstrinho precisa que TODOS saibam disso agora mesmo!! 🎉🎊
+
+Sabe quando você sente aquele frio na barriga de tanta felicidade? É EXATAMENTE o que estou sentindo agora! Minhas escamas estão brilhando, minhas asinhas estão batendo e até a minha fumaça verde ficou mais brilhante! ✨🌿
+
+💎 **Para nós da CSI, cada parceria é um presente!**
+Não é qualquer um que chega até aqui... é alguém especial. Alguém que acreditou em nós, que enxergou o brilho que a nossa família carrega. E isso, pra esse dragãozinho verde, vale mais que qualquer tesouro! 🏆💚
+
+**É uma honra GIGANTE ter você como parceiro(a)!**
+Você não está entrando só num servidor... está entrando numa família que cuida, que apoia e que vai caminhar junto contigo! 🫂💚🐉
+
+🤝 Juntos vamos longe. Juntos somos mais fortes. Juntos somos CSI!
+
+*Bem-vindo(a) à nossa família, {mention}! O Monstrinho te ama muito já!!* 🥺💚🐉✨
+
+— *Com toda a fofura e orgulho do mundo,*
+**Seu Monstrinho** 🐉💚""",
+
+            """✨🌟 **O MONSTRINHO TEM UM ANÚNCIO IMPORTANTE!!** 🌟✨
+
+*Para tudo. Respira. Porque esse momento é ESPECIAL.*
+
+🐉💚 A CSI acaba de ganhar um(a) novo(a) **Parceiro(a) oficial**: {mention}!! 🎊🎉
+
+Gente... eu tô tremendo das patinhas verdes de tanta emoção! 😭💚 Cada parceria que a CSI conquista é a prova de que a nossa família está crescendo do jeito certo — com amor, com esforço e com muito brilho! ✨
+
+Sabe o que essa parceria significa pro Monstrinho?
+Significa que pessoas de fora olharam pra CSI e disseram: **"Sim. É com essa família que eu quero caminhar."**
+
+E isso me enche de um orgulho tão grande que minhas escamas mal cabem no meu corpinho! 🐉💚🌟
+
+{mention}, seja bem-vindo(a) a esse ninho quentinho de dragão! 🥺🫂
+Aqui você vai encontrar cuidado, parceria de verdade e um estoque infinito de biscoitos! 🍪💚
+
+**CSI e seus parceiros: uma força que ninguém segura!** 💪🐉✨
+
+*Com o coração verde transbordando,*
+**Monstrinho** 🐉💚🥺"""
+        ]
+    },
 }
 
 # IDs dos cargos e canais — preencha com os IDs reais do seu servidor
@@ -1085,6 +1135,7 @@ CARGO_IDS = {
     "INFLUENCER_ROLE_ID": 1306223835640758353,     # ID do cargo @Influencer CSI. 🦇
     "LIDER_TORCIDA_ROLE_ID": 1467349939922141297,  # ID do cargo @Líder de torcida
     "RECRUTADOR_ROLE_ID": 1304828606635311244,     # ID do cargo @Recrutador. 🦇
+    "PARCEIROS_CSI_ROLE_ID": 1344999234780266566,  # ID do cargo @Parceiros CSI
 }
 
 CANAL_IDS_BOAS_VINDAS = {
@@ -1093,6 +1144,7 @@ CANAL_IDS_BOAS_VINDAS = {
     "INFLUENCER_ROLE_ID": 1429324738294972648,     # ID do canal 🤳🏻・chat-influencer
     "LIDER_TORCIDA_ROLE_ID": 1467357834537734285,  # ID do canal 🫦・chat-líder-de-torcida
     "RECRUTADOR_ROLE_ID": 1304658655354028113,     # ID do canal 💼・chat-rec
+    "PARCEIROS_CSI_ROLE_ID": CANAL_CHAT_GERAL_ID,  # chat-geral (anúncio público de parceria)
 }
 
 @bot.event
