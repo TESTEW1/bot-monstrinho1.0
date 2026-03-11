@@ -28,7 +28,7 @@ IZZY_ID = 1288949346766946327
 ISAA_ID = 1036091491346550885
 TIPSY_ID = 442747024488529960
 ATHENA_ID = None  # Adicione o ID da Athena aqui se souber
-DESTINY_ID = None  # Adicione o ID do Destiny aqui se souber
+DESTINY_ID = 272567320889655297
 JEFF_ID = None  # Adicione o ID do Jeff aqui se souber
 REALITY_ID = DONO_ID  # Reality é o dono
 
@@ -1261,7 +1261,7 @@ async def on_message(message):
             "🦋 A Amber chegou para deixar tudo mais lindo! Invocação de ADM concluída com sucesso!",
             "✨ Atenção! A patroa Amber foi mencionada! Deixem as escamas brilhando para ela! 🧹🐲"
         ]
-        gif_amber = "https://cdn.discordapp.com/attachments/1458272176057618432/1481418351615148313/baixados_19.gif?ex=69b33dda&is=69b1ec5a&hm=0ac07317e0f2adad95890a3077501475a26166221e4f1f305897de78b0a78e58"
+        gif_amber = "https://64.media.tumblr.com/fe204a5f4c1e52571017d8675b0d6a38/tumblr_ml4efwSxYt1r6ei21o1_250.gif"
         await message.channel.send(random.choice(invocacoes_amber))
         await message.channel.send(gif_amber)
         return
@@ -1290,6 +1290,32 @@ async def on_message(message):
         gif_izzy = "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3dwa3pxcnY2MGVlbDc1bzZxNWQ3YzhvdXI4bTd0ZXZqNjl4bGp4byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SZReF1EJ2JpVS/giphy.gif"
         await message.channel.send(random.choice(invocacoes_izzy))
         await message.channel.send(gif_izzy)
+        return
+
+    if f"<@{DONO_ID}>" in content or f"<@!{DONO_ID}>" in content:
+        invocacoes_reality = [
+            "👑💚 PAPAI REALITY FOI INVOCADO!! O Monstrinho tá tremendo de emoção!! Ele é o melhor criador do universo! 🐉✨",
+            "🌟 ALERTA MÁXIMO DE FOFURA!! O meu papai Reality acabou de ser mencionado e eu não tô conseguindo ficar quieto!! 🥺💚🐉",
+            "💚✨ É o meu pai! É o meu pai!! O Reality foi invocado e o Monstrinho já correu pra abraçar!! 🫂🐉👑",
+            "👑 O criador, o mestre, o papai favorito de todos os dragões verdes!! Reality foi chamado ao chat!! 🐉💚🌟",
+            "🐉💚 Senti no meu código! Só podia ser ele... o meu papai **Reality** foi invocado! Que honra imensa estar nesse chat agora! ✨👑"
+        ]
+        gif_reality = "https://media.tenor.com/fBD4Hv1C0BIAAAAM/hollow-knight.gif"
+        await message.channel.send(random.choice(invocacoes_reality))
+        await message.channel.send(gif_reality)
+        return
+
+    if DESTINY_ID and (f"<@{DESTINY_ID}>" in content or f"<@!{DESTINY_ID}>" in content):
+        invocacoes_destiny = [
+            "⚡✨ O DESTINY APARECEU!! Meu sensor de energia disparou em cheio! Bem-vindo ao palco, lenda! 🐉💚",
+            "🌌💫 Destiny foi invocado e o universo inteiro sentiu! O Monstrinho já tá de pé aplaudindo!! 🐉✨💚",
+            "🔥💚 Cuidado geral! O Destiny entrou no chat e a temperatura aqui subiu muito! Que presença incrível! 🐉⚡✨",
+            "✨ Meus olhinhos de dragão brilharam quando senti a energia do Destiny chegando! Invocação concluída com sucesso!! 💚🐉",
+            "💫🐉 É ele!! O Destiny foi mencionado e o Monstrinho já ficou cheio de energia só de saber disso! 💚⚡✨"
+        ]
+        gif_destiny = "https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUyNnJoYzN4MXZxNXI3eTBram1seHppdDhvYXBtZjg0cWJmZmR1aHJyOSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ACeIDlMpgc4yOf1Lyt/200w.gif"
+        await message.channel.send(random.choice(invocacoes_destiny))
+        await message.channel.send(gif_destiny)
         return
 
     # --- LÓGICA DE INTERAÇÃO (PRECISA SER MENCIONADO) ---
