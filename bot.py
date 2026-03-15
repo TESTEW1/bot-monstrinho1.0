@@ -23,55 +23,76 @@ _aviso_estado = {}
 _rex_aguardando_resposta = False  # True quando o bot fez uma pergunta e espera a Rex responder
 
 PERGUNTAS_DINO_REX = [
-    "🦖🥺 Rex, me conta uma coisa... qual é o seu dinossauro favorito de todos?? Eu fico louco querendo saber!!",
-    "🐉💚 Rex, você prefere o T-Rex ou o Velociraptor?? Pergunta séria, preciso saber pra registrar na minha memória!! 🦖✨",
-    "🥺🦖 Rex, você já assistiu Jurassic Park?? O que você achou?? Me conta tudo, tudo, TUDO!! 🐉💚",
-    "🦖💚 Rex, qual época dos dinossauros você acha mais incrível? Jurássico, Cretáceo, Triássico?? 🐉🥺✨",
-    "🐉🥺 Rex, você sabia que os pássaros de hoje são parentes dos dinossauros?? O que você acha disso?? Acha incrível igual eu?? 🦖💚",
-    "🦖✨ Rex, se você pudesse ter um dinossauro de estimação, qual você escolheria?? 🐉🥺💚 Eu escolhia um que fizesse Raaawwwrrr junto comigo!!",
-    "🥺🐉 Rex, qual dinossauro você acha que era o mais fofo de todos?? Tem algum fofo na sua lista?? 🦖💚✨",
-    "🦖💚 Rex, você gosta mais dos dinossauros carnívoros ou herbívoros?? 🐉🥺 Me fala!! Preciso saber essa informação urgente!!",
-    "🐉✨ Rex, você tem algum filme favorito de dinossauro além de Jurassic Park?? 🦖🥺💚 Me indica, quero assistir pensando em você!!",
-    "🥺🦖 Rex, qual você acha que foi o dinossauro mais perigoso de todos?? 🐉💚 Pergunta difícil né... mas eu sei que você sabe a resposta!!",
-    "🦖🐉 Rex, você prefere os dinossauros que voavam tipo o Pterodátilo, os que nadavam, ou os que andavam na terra?? 🥺💚✨",
-    "💚🦖 Rex, se você vivesse na época dos dinossauros, como você acha que seria?? 🐉🥺 Eu ficaria do seu lado fazendo Raaawwwrrr pra espantar os outros!!",
-    "🐉🥺 Rex, você já foi em algum museu de dinossauros?? Ou tem vontade de ir?? 🦖💚 Parece incrível demais!!",
-    "🦖✨ Rex, qual você acha: os dinossauros eram mais parecidos com répteis ou com pássaros?? 🐉💚🥺 Deixa eu aprender contigo!!",
-    "🥺🐉 Rex, você sabia que o Brontossauro foi por muito tempo considerado um erro científico?? O que você acha das descobertas de dinossauros?? 🦖💚✨",
-    "🦖💚 Rex, qual dinossauro você acha que tinha o nome mais legal?? 🐉🥺 Tem tantos nomes incríveis né!!",
-    "🐉🥺 Rex, você prefere aprender sobre dinossauros por filmes, documentários ou livros?? 🦖💚✨ Me conta como você descobriu tanto sobre eles!!",
-    "🥺🦖 Rex, se os dinossauros ainda existissem hoje, você acha que seríamos amigos deles?? 🐉💚 Eu com certeza seria amigo de um T-Rex fofo!!",
-    "🦖✨ Rex, qual você acha que foi a maior descoberta de fóssil de dinossauro já feita?? 🐉🥺💚 Você entende muito mais que eu nisso!!",
-    "🐉💚 Rex, você tem alguma curiosidade de dinossauro que pouquíssima gente sabe?? 🦖🥺✨ Me conta um segredo dino!! Prometo guardar com carinho!!"
+    "Raaawn!! 🦖🥺 Rex, me conta uma coisa... qual é o seu dinossauro favorito de todos??",
+    "Raaawn!! 🐉💚 Rex, você prefere o T-Rex ou o Velociraptor?? Pergunta séria!! 🦖✨",
+    "🥺🦖 Rex, você já assistiu Jurassic Park?? O que você achou?? Me conta!! 🐉💚",
+    "Raaawn!! 🦖💚 Rex, qual época dos dinossauros você acha mais incrível? Jurássico, Cretáceo, Triássico?? 🐉🥺✨",
+    "🐉🥺 Rex, você sabia que os pássaros de hoje são parentes dos dinossauros?? Acha incrível igual eu?? 🦖💚",
+    "Raaawn!! 🦖✨ Rex, se você pudesse ter um dinossauro de estimação, qual você escolheria?? 🐉🥺💚",
+    "🥺🐉 Rex, qual dinossauro você acha que era o mais fofo de todos?? 🦖💚✨",
+    "Raaawn!! 🦖💚 Rex, você gosta mais dos dinossauros carnívoros ou herbívoros?? 🐉🥺",
+    "🐉✨ Rex, você tem algum filme favorito de dinossauro além de Jurassic Park?? 🦖🥺💚",
+    "🥺🦖 Rex, qual você acha que foi o dinossauro mais perigoso de todos?? 🐉💚",
+    "Raaawn!! 🦖🐉 Rex, você prefere os que voavam, os que nadavam, ou os que andavam na terra?? 🥺💚✨",
+    "🥺🦖 Rex, se você vivesse na época dos dinossauros, como você acha que seria?? 🐉💚 Eu ficaria do seu lado fazendo Raaawn pra espantar os outros!!",
+    "🐉🥺 Rex, você já foi em algum museu de dinossauros?? Ou tem vontade de ir?? 🦖💚",
+    "Raaawn!! 🦖✨ Rex, qual você acha: os dinossauros eram mais parecidos com répteis ou com pássaros?? 🐉💚🥺",
+    "🥺🐉 Rex, você sabia que o Brontossauro foi por muito tempo considerado um erro científico?? 🦖💚✨",
+    "Raaawn!! 🦖💚 Rex, qual dinossauro você acha que tinha o nome mais legal?? 🐉🥺",
+    "🐉🥺 Rex, você prefere aprender sobre dinossauros por filmes, documentários ou livros?? 🦖💚✨",
+    "Raaawn raaawn!! 🥺🦖 Rex, se os dinossauros ainda existissem hoje, você acha que seríamos amigos deles?? 🐉💚",
+    "🦖✨ Rex, qual você acha que foi a maior descoberta de fóssil de dinossauro já feita?? 🐉🥺💚",
+    "Raaawn!! 🐉💚 Rex, você tem alguma curiosidade de dinossauro que pouquíssima gente sabe?? 🦖🥺✨",
+    "🥺🦖 Rex, qual dinossauro você acha que tinha a vida mais interessante?? 🐉💚✨",
+    "Raaawn!! 🦖🥺 Rex, o que você acha do Espinossauro?? Ele era maior que o T-Rex!! 🐉💚",
+    "🐉🥺 Rex, você acha que dinossauros sentiam emoções?? Tipo medo, amor, alegria?? 🦖💚",
+    "Raaawn!! 🥺🦖 Rex, qual dinossauro você acha que era o mais inteligente?? 🐉💚",
+    "🦖✨ Rex, o que você acha dos filmes do Jurassic World?? São bons igual o original?? 🐉🥺💚",
+    "Raaawn raaawn!! 🐉💚 Rex, você sabia que existiram dinossauros marinhos gigantes tipo o Mosassauro?? 🦖🥺",
+    "🥺🦖 Rex, qual dinossauro você acha que tinha o rugido mais impressionante?? Mais forte que o meu Raaawn?? 🐉💚✨",
+    "Raaawn!! 🦖🐉 Rex, se você pudesse nomear um dinossauro novo descoberto, que nome você daria?? 🥺💚✨",
+    "🐉🥺 Rex, você prefere os dinossauros gigantes ou os menorzinhos?? 🦖💚",
+    "Raaawn!! 🦖💚 Rex, o que você acha mais incrível: os dinossauros reais ou os dragões imaginários?? 🐉🥺✨"
 ]
 
 REACOES_RESPOSTA_DINO_REX = [
-    "🦖😭💚 CARA!! Isso é INCRÍVEL!! Eu não sabia disso!! Rex você é uma enciclopédia dinossauriana ambulante e eu te amo demais!! 🐉✨",
-    "🥺💚 Anotei aqui na minha memória com letras douradas!! Rex me ensina mais?? Você fala de dinossauro e eu fico completamente hipnotizado!! 🦖🐉✨",
-    "🐉💚 QUE RESPOSTA MARAVILHOSA!! *salva isso no cofre do coração* Rex, você é a pessoa mais incrível da CSI quando o assunto é dino!! 🦖🥺✨",
-    "😭🦖💚 Para tudo!! A Rex respondeu e meu coraçãozinho verde explodiu de alegria!! Eu adoro quando você fala sobre isso!! 🐉✨",
-    "🥺✨ Rex... você falou isso com tanta propriedade que até minhas escamas ficaram com inveja da sua sabedoria!! 🦖🐉💚 Continua!!",
-    "🐉🦖 RAAAWWWRRR DE FELICIDADE!! Rex respondeu e o Monstrinho tá em êxtase total!! 💚🥺✨ Que pessoa incrível você é!!",
-    "💚😭 Eu simplesmente AMO quando você fala sobre dinossauros!! *registra tudo com muito carinho* Rex você é especial demais!! 🦖🐉✨",
-    "🦖🥺 Juro que fiquei com a boquinha aberta lendo isso!! Rex, você sabe tanto!! 🐉💚✨ Me sinto privilegiado de aprender com você!!",
-    "🐉✨ Isso foi a coisa mais fofa e incrível que já li hoje!! Rex e dinossauros são minha combinação favorita do universo!! 🦖💚🥺",
-    "💚🦖 Anotadooooo!! *faz dancinha de celebração* Rex me contando sobre dinos é meu momento favorito do dia inteiro!! 🐉😭✨"
-]
-
-# Fatos que a Rex já ensinou ao Monstrinho 🦖📚
-# (vai crescendo conforme ela ensinar mais coisas!)
-FATOS_DINO_APRENDIDOS_REX = [
-    "o pterossauro que voa mais velocidade é o mais rápido dos voadores do período Mesozóico!!",
-    "o pterossauro é um familiar do Mesozóico do ciclo animal!!",
+    "Raaawn!! 🦖😭💚 Isso é INCRÍVEL!! Eu não sabia disso!! Rex você é uma enciclopédia dinossauriana ambulante e eu te amo demais!! 🐉✨",
+    "🥺💚 *anota com urgência* Raaawn!! Rex me ensina mais?? Você fala de dinossauro e eu fico completamente hipnotizado!! 🦖🐉✨",
+    "Raaawn raaawn!! 🐉💚 QUE RESPOSTA MARAVILHOSA!! *salva no cofre do coração* Rex, você é a pessoa mais incrível da CSI quando o assunto é dino!! 🦖🥺✨",
+    "😭🦖💚 Para tudo!! A Rex respondeu e meu coraçãozinho verde explodiu de alegria!! Raaawn!! 🐉✨",
+    "🥺✨ Rex... você falou isso com tanta propriedade que até minhas escamas ficaram com inveja da sua sabedoria!! Raaawn!! 🦖🐉💚",
+    "Raaawn raaawn!! 🐉🦖 Rex respondeu e o Monstrinho tá em êxtase total!! 💚🥺✨",
+    "💚😭 Eu simplesmente AMO quando você fala sobre dinossauros!! *registra tudo* Raaawn!! 🦖🐉✨",
+    "🦖🥺 Fiquei com a boquinha aberta lendo isso!! Rex, você sabe tanto!! Raaawn raaawn!! 🐉💚✨",
+    "🐉✨ Isso foi a coisa mais fofa e incrível que já li hoje!! Raaawn!! Rex e dinossauros são minha combinação favorita!! 🦖💚🥺",
+    "💚🦖 *faz dancinha de celebração* Raaawn!! Rex me contando sobre dinos é meu momento favorito do dia inteiro!! 🐉😭✨"
 ]
 
 REACOES_APRENDENDO_REX = [
-    "📚🦖 APRENDI!! *anota com urgência* Rex acabou de me ensinar mais uma coisa incrível sobre dinossauros e eu vou guardar isso pra SEMPRE!! 😭💚🐉✨",
-    "🥺💚 ESCREVENDO AQUI COM LETRAS MAIÚSCULAS NA MINHA MEMÓRIA!! Rex me ensinou mais um fato dino e agora sou um dragão mais sábio graças a ela!! 📖🦖🐉✨",
-    "🐉😭 WAIT WAIT WAIT!! Rex acabou de me ensinar isso e meu cérebro de código está processando toda essa sabedoria!! INCRÍVEL!! 🦖💚✨",
-    "📝🦖 ANOTADO, SALVO, ARQUIVADO E EMOLDURADO!! Rex me ensinou mais uma coisa e esse conhecimento é um tesouro que vou carregar pra sempre!! 🥺🐉💚✨",
-    "🦖💚 NOVA ENTRADA NO MEU DIÁRIO DE FATOS DINO ENSINADOS PELA REX!! Ela é a melhor professora de dinossauros que um monstrinho poderia ter!! 😭🐉✨",
-    "🥺🐉 Juro que cada vez que a Rex me ensina algo novo, minhas escamas brilham mais forte!! Que sorte a minha ter ela por perto!! 🦖💚✨📚",
+    "📚🦖 APRENDI!! Raaawn!! *anota com urgência* Rex acabou de me ensinar mais uma coisa incrível sobre dinossauros e eu vou guardar isso pra SEMPRE!! 😭💚🐉✨",
+    "🥺💚 ESCREVENDO COM LETRAS MAIÚSCULAS NA MINHA MEMÓRIA!! Raaawn raaawn!! Rex me ensinou mais um fato dino e agora sou um dragão mais sábio!! 📖🦖🐉✨",
+    "🐉😭 Raaawn!! Rex acabou de me ensinar isso e meu cérebro de código está processando toda essa sabedoria!! INCRÍVEL!! 🦖💚✨",
+    "📝🦖 ANOTADO, SALVO E EMOLDURADO!! Raaawn!! Rex me ensinou mais uma coisa e esse conhecimento é um tesouro!! 🥺🐉💚✨",
+    "🦖💚 NOVA ENTRADA NO MEU DIÁRIO DE FATOS DINO DA REX!! Raaawn raaawn!! Ela é a melhor professora de dinossauros que um monstrinho poderia ter!! 😭🐉✨",
+    "🥺🐉 Raaawn!! Cada vez que a Rex me ensina algo novo, minhas escamas brilham mais forte!! 🦖💚✨📚",
+]
+
+MIMOS_REX = [
+    "*empurra um biscoitinho de morango quentinho na direção da Rex* Raaawn!! Toma Rex!! Fiz especialmente pra você!! 🍓🍪🦖💚🐉✨",
+    "*dá um abraço bem apertado na Rex com os bracinhos de dinossauro* Raaawn raaawn!! Abraço de monstrinho pra você!! 🦖🥺🐉💚✨",
+    "*senta do ladinho da Rex e encosta a cabecinha nela* Raaawn... Tô aqui, tô aqui!! 🦖🐉💚🥺✨",
+    "Rex, trouxe um biscoito em formato de T-Rex pra você!! Raaawn!! Fiz com muito amor!! 🍪🦖🐉💚🥺✨",
+    "*faz cafuné suave na Rex* Raaawn raaawn... você é muito especial pra esse monstrinho!! 🦖💚🐉✨",
+    "*enrola o rabinho de dinossauro ao redor da Rex pra aquecer* Raaawn!! Tô do seu lado sempre!! 🦖🐉💚🥺✨",
+    "Rex!! Trouxe biscoito de morango E de chocolate!! Raaawn!! Um de cada porque você merece os dois!! 🍓🍪🦖🐉💚🥺✨",
+    "*abre os bracinhos pra Rex* Raaawn!! Vem ganhar um abraço de dinossauro!! O Monstrinho tá esperando!! 🦖🐉💚✨",
+]
+
+# Fatos que a Rex já ensinou ao Monstrinho 🦖📚
+FATOS_DINO_APRENDIDOS_REX = [
+    "o pterossauro que voa mais velocidade é o mais rápido dos voadores do período Mesozóico!!",
+    "o pterossauro é um familiar do Mesozóico do ciclo animal!!",
+    "a época favorita dela é o Jurássico!!",
 ]
 
 # ================= CONFIGURAÇÃO E IDs =================
@@ -1413,62 +1434,83 @@ async def on_message(message):
     # --- GATILHOS ESPECIAIS DA REX ---
     if message.author.id == REX_ID:
         global _rex_aguardando_resposta
-        rawr_gatilhos = ["rawr", "rawrr", "raawr", "rawwwr", "raaawwwrrr", "raaawwrrr", "rawwwrrr", "raawrr", "rawrrr"]
+        rawr_gatilhos = ["rawr", "rawrr", "raawr", "rawwwr", "raaawwwrrr", "raaawwrrr", "rawwwrrr", "raawrr", "rawrrr", "raaawn", "rawn"]
         dino_gatilhos = ["dinossauro", "dinosauro", "dino", "t-rex", "trex", "tiranossauro", "raptor", "pterodátilo", "pterodatilo", "pterossauro", "jurássico", "jurassico", "cretáceo", "cretaceo", "triássico", "triassico", "fóssil", "fossil", "extinção", "extincao", "herbívoro", "herbivoro", "carnívoro", "carnivoro", "velociraptor", "brontossauro", "estegossauro", "triceratops", "espinossauro", "mesozóico", "mesozoico", "paleontologia", "fósseis", "fosseis"]
 
         # Se o bot estava esperando resposta da Rex sobre dinos
         if _rex_aguardando_resposta:
             _rex_aguardando_resposta = False
-            # Mensagem longa = ensinando algo novo → reação de aprendizado
+            # Mensagem longa = ensinando algo novo
             if len(message.content.strip()) > 30:
                 FATOS_DINO_APRENDIDOS_REX.append(message.content.strip())
                 reacao = random.choice(REACOES_APRENDENDO_REX)
             else:
                 reacao = random.choice(REACOES_RESPOSTA_DINO_REX)
-            # 70% de chance de fazer outra pergunta em seguida
-            if random.random() < 0.7:
-                pergunta = random.choice(PERGUNTAS_DINO_REX)
-                await message.channel.send(reacao)
-                await asyncio.sleep(1.5)
-                await message.channel.send(pergunta)
+
+            sorteio = random.random()
+            await message.channel.send(reacao)
+            await asyncio.sleep(1.5)
+
+            if sorteio < 0.35:
+                # 35%: faz outra pergunta
+                await message.channel.send(random.choice(PERGUNTAS_DINO_REX))
                 _rex_aguardando_resposta = True
-            else:
-                await message.channel.send(reacao)
+            elif sorteio < 0.55:
+                # 20%: dá um mimo (biscoito ou abraço)
+                await message.channel.send(random.choice(MIMOS_REX))
+            # 45%: só reage, sem pergunta nem mimo
             return
 
         if any(p in content for p in rawr_gatilhos):
             respostas_rawr = [
-                "RAAAWWWRRR!! 🐉💚 *responde o rugido da Rex com tudo que tem* Você fez meu dia!! 🦖✨",
-                "🦖💚 RAAAWWWRRR de volta pra você, Rex!! Rugido de dragão + rugido de dinossauro = amor infinito!! 🐉🥺✨",
-                "Ei!! 😭💚 Você fez Raaawwwrrr pra mim?! Guardo esse rugido pra sempre na minha memória!! 🦖🐉✨",
-                "RAAAWWWRRR!! 🐉🦖 *o Monstrinho rugiu tão forte que soltou fumaça verde* Esse é meu rugido de amor só pra Rex!! 💚✨",
-                "🥺💚 Esse Raaawwwrrr foi o som mais fofo que já ouvi na vida inteira!! RAAAWWWRRR de volta, Rex!! 🦖🐉✨",
-                "💚🦖 Recebi o rugido!! *arquiva no cofre especial do coração* Raaawwwrrr!! Dinossauro + dragão, dupla imbatível!! 🐉✨"
+                "Raaawn!! 🦖💚 *responde o rugido da Rex com tudo que tem* Você fez meu dia!! 🐉✨",
+                "Raaawn raaawn!! 🦖💚 Rugido de dragão + rugido de dinossauro = amor infinito!! 🐉🥺✨",
+                "😭💚 Você fez Raaawn pra mim?! Guardo esse rugido pra sempre na minha memória!! 🦖🐉✨",
+                "Raaawn!! 🐉🦖 *rugiu tão forte que soltou fumaça verde* Esse é meu rugido de amor só pra Rex!! 💚✨",
+                "🥺💚 Esse Raaawn foi o som mais fofo que já ouvi na vida inteira!! Raaawn de volta, Rex!! 🦖🐉✨",
+                "Raaawn raaawn!! 💚🦖 *arquiva no cofre especial do coração* Dinossauro + dragão, dupla imbatível!! 🐉✨"
             ]
-            return await message.channel.send(random.choice(respostas_rawr))
+            # 30% de chance de dar um mimo junto com o rawr
+            await message.channel.send(random.choice(respostas_rawr))
+            if random.random() < 0.3:
+                await asyncio.sleep(1.5)
+                await message.channel.send(random.choice(MIMOS_REX))
+            return
 
         if any(p in content for p in dino_gatilhos):
-            # Mensagem longa = ela está ensinando algo → reação de aprendizado
+            # Mensagem longa = ela está ensinando algo
             if len(message.content.strip()) > 30:
                 FATOS_DINO_APRENDIDOS_REX.append(message.content.strip())
                 await message.channel.send(random.choice(REACOES_APRENDENDO_REX))
                 await asyncio.sleep(1.5)
-                await message.channel.send(random.choice(PERGUNTAS_DINO_REX))
-                _rex_aguardando_resposta = True
+                # 50% pergunta, 25% mimo, 25% só reage
+                sorteio = random.random()
+                if sorteio < 0.5:
+                    await message.channel.send(random.choice(PERGUNTAS_DINO_REX))
+                    _rex_aguardando_resposta = True
+                elif sorteio < 0.75:
+                    await message.channel.send(random.choice(MIMOS_REX))
                 return
 
             reacao_dino = [
-                "🦖💚 DINOSSAURO!! Essa é minha palavra favorita quando a Rex fala!! 🐉🥺✨",
-                "Rex falou de dinossauro e o Monstrinho ficou todo animado!! 🦖🐉💚 Dragões e dinossauros são a melhor combinação!! ✨",
-                "🥺🦖 Sabia que eu acho que dinossauros são incríveis IGUAL você, Rex?! 💚🐉✨",
-                "DINO DETECTADO!! 🦖💚 *faz rugidinho fofo de empolgação* 🐉✨",
-                "🐉💚 Dragões descendem dos dinossauros, então eu e Rex somos PRIMOS!! 🦖 Raaawwwrrr!! ✨🥺"
+                "Raaawn!! 🦖💚 DINOSSAURO!! Essa é minha palavra favorita quando a Rex fala!! 🐉🥺✨",
+                "Raaawn raaawn!! Rex falou de dinossauro e o Monstrinho ficou todo animado!! 🦖🐉💚✨",
+                "🥺🦖 Dinossauros são incríveis IGUAL você, Rex!! Raaawn!! 💚🐉✨",
+                "Raaawn!! DINO DETECTADO!! 🦖💚 *faz rugidinho fofo de empolgação* 🐉✨",
+                "🐉💚 Dragões descendem dos dinossauros, então eu e Rex somos PRIMOS!! Raaawn!! 🦖✨🥺"
             ]
             await message.channel.send(random.choice(reacao_dino))
-            await asyncio.sleep(1.5)
-            await message.channel.send(random.choice(PERGUNTAS_DINO_REX))
-            _rex_aguardando_resposta = True
+            # 45% faz pergunta, 20% dá mimo, 35% só reage
+            sorteio = random.random()
+            if sorteio < 0.45:
+                await asyncio.sleep(1.5)
+                await message.channel.send(random.choice(PERGUNTAS_DINO_REX))
+                _rex_aguardando_resposta = True
+            elif sorteio < 0.65:
+                await asyncio.sleep(1.5)
+                await message.channel.send(random.choice(MIMOS_REX))
             return
+
 
     # --- COMANDOS DE CARINHO E ABRAÇO (SEM MENÇÃO - FUNCIONA SEMPRE) ---
     
