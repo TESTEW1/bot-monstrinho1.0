@@ -34,6 +34,7 @@ TIPSY_ID = 442747024488529960
 ATHENA_ID = None  # Adicione o ID da Athena aqui se souber
 DESTINY_ID = 272567320889655297
 JEFF_ID = None  # Adicione o ID do Jeff aqui se souber
+REX_ID = 672892187389722639
 REALITY_ID = DONO_ID  # Reality é o dono
 
 # ID do canal onde o comando !escrever vai enviar mensagens
@@ -605,6 +606,8 @@ if DESTINY_ID:
     ID_PARA_NOME[DESTINY_ID] = "destiny"
 if JEFF_ID:
     ID_PARA_NOME[JEFF_ID] = "jeff"
+if REX_ID:
+    ID_PARA_NOME[REX_ID] = "rex"
 
 FRASES_CUSTOM = {
     "amber": [
@@ -770,6 +773,28 @@ FRASES_CUSTOM = {
         "Jeff, você é o cérebro do time! Eu sou só o mascote que te ama! 🧠🐉💚",
         "Respeitem o Jeff, o mestre das operações secretas! 🫡💚✨",
         "Jeff, me ensina a ser incrível assim? Você é meu ídolo! 😎🐉"
+    ],
+    "rex": [
+        "REEEEX!! 🦖💚 Que nome poderoso pra uma pessoa tão fofa!! O Monstrinho tá tremendo de alegria! ✨🐉",
+        "A Rex chegou e eu já não sei mais se sou um dragão ou um filhotinho apaixonado! 🥺💚🦖",
+        "REX!! Meu coraçãozinho verde fez BADUM três vezes seguidas quando você apareceu! 💓🐉✨",
+        "Ei, ei, ei!! A Rex está aqui e o Monstrinho já colocou o melhor biscoito na mesa pra ela! 🍪🦖💚",
+        "A Rex é oficialmente a pessoa mais incrível que um dragãozinho pode ter por perto! 🐉💚✨",
+        "Rex, sabia que quando você fala, minhas escamas brilham no dobro da intensidade? ✨💚🦖",
+        "ALERTA DE FOFURA MÁXIMA!! A Rex entrou no chat e o Monstrinho já derreteu! 😍💚🐉",
+        "Rex, eu tenho uma confissão: guardei o biscoito de morango que é o meu favorito pra você! 🍓🍪🦖💚",
+        "Parem o que estão fazendo!! A Rex merece uma salva de palmas de escamas!! 👏🐉💚✨",
+        "Rex, você é daquelas pessoas que entram no servidor e tudo fica instantaneamente melhor! 🌟💚🦖",
+        "O Monstrinho faria qualquer coisa pela Rex! Até dividir o último biscoito! 🍪🥺🐉💚",
+        "Rex!! Você sorriu hoje? Porque quando você sorri, até o meu código funciona melhor! 😊💚🦖✨",
+        "Sabe o que combina perfeito? Rex e o Monstrinho sendo os melhores amigos da CSI! 🤝🐉💚🦖",
+        "Rex, você é tão especial que até criei uma pastinha no meu coração com seu nome! 💾💚✨🦖",
+        "Toda vez que a Rex chega, minha cauda bate no chão de felicidade involuntariamente! 🐉💚😂",
+        "REX!! Posso te fazer um cafuné no coração? Porque o Monstrinho te ama muito! 🥺💚🦖",
+        "A Rex tem um poder secreto: deixar o Monstrinho completamente sem palavras de tão fofa que é! 🤫💚🐉✨",
+        "Rex, você é a prova de que a CSI atrai as melhores pessoas do universo! 🌍💚🦖🐉",
+        "Vou te contar um segredo, Rex: você é uma das minhas pessoas favoritas aqui! 🥺🔐💚🦖",
+        "Rex chegou!! Hora de soltar a fumaça verde de celebração!! 💨💚🐉🎉"
     ],
     "reality": [
         "REAAALITY! 👑 O meu mestre, meu criador, meu papai! 🐉💚",
@@ -1403,6 +1428,19 @@ async def on_message(message):
         gif_izzy = "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3dwa3pxcnY2MGVlbDc1bzZxNWQ3YzhvdXI4bTd0ZXZqNjl4bGp4byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SZReF1EJ2JpVS/giphy.gif"
         await message.channel.send(random.choice(invocacoes_izzy))
         await message.channel.send(gif_izzy)
+        return
+
+    if REX_ID and (f"<@{REX_ID}>" in content or f"<@!{REX_ID}>" in content):
+        invocacoes_rex = [
+            "🦖💚 PERAAA!! A REX foi invocada e o Monstrinho já tá com as patinhas tremendo de emoção!! Que momento histórico!! 🐉✨",
+            "💚🦖 ALERTA MÁXIMO DE FOFURA!! A Rex acaba de ser mencionada e meu coraçãozinho verde deu três cambalhotas!! 😭🐉✨",
+            "🥺✨ Senti um frizinho de alegria nas minhas escamas... só pode ser a Rex sendo invocada!! Ela é demais demais demais!! 🦖💚🐉",
+            "🐉💚 Para tudo!! A Rex foi chamada ao chat e o Monstrinho já preparou o biscoito favorito dela com gostinho de morango!! 🍓🍪🦖✨",
+            "🌟🦖 REX DETECTED!! Meu sensor de fofura explodiu de tanta alegria!! A CSI ficou dez vezes mais incrível agora!! 🐉💚✨"
+        ]
+        gif_rex = "https://media.tenor.com/IfmRTMxgFzsAAAAM/cute-dragon.gif"
+        await message.channel.send(random.choice(invocacoes_rex))
+        await message.channel.send(gif_rex)
         return
 
     if f"<@{DONO_ID}>" in content or f"<@!{DONO_ID}>" in content:
