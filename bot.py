@@ -17,7 +17,7 @@ bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 
 # ================= SISTEMA DE AVISOS =================
 _aviso_estado = {}
-# { user_id: { "etapa": "aguardando_mencao" | "aguardando_justificativa", "alvo": Member | None } }
+# { user_id: { "etapa": "aguardando_alvo" | "aguardando_justificativa", "alvo": Member } }
 
 # ================= CONFIGURAÇÃO E IDs =================
 TOKEN = os.getenv("TOKEN")
@@ -1202,33 +1202,103 @@ async def on_member_remove(member):
     except Exception as e:
         print(f"❌ Erro ao enviar mensagem de despedida: {e}")
 
-# ================= COMANDO DE AVISO =================
+# ================= SISTEMA DE AVISOS =================
 
 @bot.command(name="APLICARAVISO")
 async def aplicar_aviso(ctx):
-    """Inicia o fluxo de aviso. Apenas no PV, apenas para o Reality."""
+    # Só no PV, só o Reality
     if not isinstance(ctx.channel, discord.DMChannel):
         return
     if ctx.author.id != REALITY_ID:
         return
 
-    # Se já passou a menção direto no comando: !APLICARAVISO @pessoa
-    if ctx.message.mentions:
-        alvo = ctx.message.mentions[0]
-        _aviso_estado[ctx.author.id] = {"etapa": "aguardando_justificativa", "alvo": alvo}
-        await ctx.send(
-            f"✅ Pessoa: **{alvo.display_name}**\n\n"
-            "📝 Agora me envie o **motivo do aviso**:"
+    _aviso_estado[ctx.author.id] = {"etapa": "aguardando_alvo", "alvo": None}
+    await ctx.send(
+        "⚠️ **Sistema de Aviso iniciado.**\n\n"
+        "🔢 Me manda o **ID numérico** da pessoa.\n\n"
+        "*(Ative o Modo Desenvolvedor no Discord → clique com botão direito no usuário → Copiar ID)*"
+    )
+
+@bot.event
+async def on_message_aviso(message):
+    """Intercepta DMs do Reality para o fluxo de aviso."""
+    if not isinstance(message.channel, discord.DMChannel):
+        return
+    if message.author.id != REALITY_ID:
+        return
+    if message.author.id not in _aviso_estado:
+        return
+
+    estado = _aviso_estado[message.author.id]
+
+    # ---- ETAPA 1: recebe o ID do usuário ----
+    if estado["etapa"] == "aguardando_alvo":
+        texto = message.content.strip()
+
+        if not texto.isdigit():
+            await message.channel.send(
+                "❌ Precisa ser o **ID numérico**.\n"
+                "Exemplo: `769951556388257812`\n\n"
+                "*(Modo Desenvolvedor → botão direito no usuário → Copiar ID)*"
+            )
+            return
+
+        user_id = int(texto)
+
+        try:
+            canal_geral = await bot.fetch_channel(CANAL_CHAT_GERAL_ID)
+            membro = await canal_geral.guild.fetch_member(user_id)
+        except discord.NotFound:
+            await message.channel.send("❌ Usuário não encontrado no servidor. Confere o ID e tenta de novo:")
+            return
+        except Exception as e:
+            await message.channel.send(f"❌ Erro ao buscar usuário: `{e}`\nTenta novamente:")
+            return
+
+        estado["alvo"] = membro
+        estado["etapa"] = "aguardando_justificativa"
+        await message.channel.send(
+            f"✅ Encontrado: **{membro.display_name}** (`{membro.name}`)\n\n"
+            "📝 Agora me manda o **motivo do aviso**:"
         )
         return
 
-    # Sem menção: pede que mande no próximo passo
-    _aviso_estado[ctx.author.id] = {"etapa": "aguardando_mencao", "alvo": None}
-    await ctx.send(
-        "⚠️ **Sistema de Aviso iniciado.**\n\n"
-        "👤 Mencione a pessoa que vai receber o aviso.\n"
-        "Exemplo: `@NomeDaPessoa`"
-    )
+    # ---- ETAPA 2: recebe o motivo ----
+    elif estado["etapa"] == "aguardando_justificativa":
+        justificativa = message.content.strip()
+
+        if not justificativa:
+            await message.channel.send("❌ Motivo não pode ser vazio. Manda o motivo:")
+            return
+
+        alvo = estado["alvo"]
+        del _aviso_estado[message.author.id]
+
+        try:
+            canal_geral = await bot.fetch_channel(CANAL_CHAT_GERAL_ID)
+        except Exception as e:
+            await message.channel.send(f"❌ Erro ao acessar o canal geral: `{e}`")
+            return
+
+        # Tenta timeout de 1 dia
+        timeout_aplicado = False
+        try:
+            await alvo.timeout(timedelta(days=1), reason=justificativa)
+            timeout_aplicado = True
+        except Exception:
+            pass
+
+        # Mensagem pública — zero rastro do Reality
+        await canal_geral.send(
+            f"🚨 **AVISO OFICIAL** 🚨\n\n"
+            f"{alvo.mention}, você acaba de receber um **aviso oficial** da CSI.\n\n"
+            f"📋 **Motivo:** {justificativa}\n\n"
+            f"⏳ **Punição:** Silenciado(a) por **1 dia**.\n\n"
+            f"Caso queira recorrer, fale com um membro da **staff** pelo PV. 🐉💚"
+        )
+
+        status = "✅ Timeout de 1 dia aplicado." if timeout_aplicado else "⚠️ Aviso publicado! (Timeout não aplicado — verifique a permissão 'Moderar Membros' do bot)"
+        await message.channel.send(f"✅ **Aviso enviado com sucesso!**\n{status}")
 
 # ================= EVENTOS DE INTERAÇÃO =================
 
@@ -1243,70 +1313,14 @@ async def on_message(message):
         return
 
     # ===== SISTEMA DE AVISO =====
+    # Redireciona DMs do Reality para o handler de aviso quando fluxo estiver ativo
     if (
         isinstance(message.channel, discord.DMChannel)
         and message.author.id == REALITY_ID
         and message.author.id in _aviso_estado
     ):
-        estado = _aviso_estado[message.author.id]
-
-        # ETAPA 1: aguardando menção da pessoa
-        if estado["etapa"] == "aguardando_mencao":
-            if not message.mentions:
-                await message.channel.send(
-                    "❌ Não encontrei nenhuma menção.\n"
-                    "Manda assim: `@NomeDaPessoa`"
-                )
-                return
-
-            alvo = message.mentions[0]
-            estado["alvo"] = alvo
-            estado["etapa"] = "aguardando_justificativa"
-
-            await message.channel.send(
-                f"✅ Pessoa: **{alvo.display_name}**\n\n"
-                "📝 Agora me envie o **motivo do aviso**:"
-            )
-            return
-
-        # ETAPA 2: aguardando motivo
-        elif estado["etapa"] == "aguardando_justificativa":
-            justificativa = message.content.strip()
-
-            if not justificativa:
-                await message.channel.send("❌ Motivo não pode ser vazio. Digite o motivo:")
-                return
-
-            alvo = estado["alvo"]
-            del _aviso_estado[message.author.id]
-
-            canal_geral = bot.get_channel(CANAL_CHAT_GERAL_ID)
-            if canal_geral is None:
-                await message.channel.send("❌ Canal geral não encontrado.")
-                return
-
-            # Tenta aplicar timeout de 1 dia
-            membro = canal_geral.guild.get_member(alvo.id)
-            timeout_aplicado = False
-            if membro:
-                try:
-                    await membro.timeout(timedelta(days=1), reason=justificativa)
-                    timeout_aplicado = True
-                except Exception:
-                    pass
-
-            # Mensagem pública — sem rastro do Reality
-            await canal_geral.send(
-                f"🚨 **AVISO OFICIAL** 🚨\n\n"
-                f"{alvo.mention}, você acaba de receber um **aviso oficial** da CSI.\n\n"
-                f"📋 **Motivo:** {justificativa}\n\n"
-                f"⏳ **Punição:** Você está **silenciado(a) por 1 dia**.\n\n"
-                f"Caso queira recorrer, entre em contato com um membro da **staff** pelo PV. 🐉💚"
-            )
-
-            status = "✅ Timeout de 1 dia aplicado." if timeout_aplicado else "⚠️ Aviso publicado, mas o timeout falhou (verifique as permissões do bot)."
-            await message.channel.send(f"✅ **Aviso enviado com sucesso!**\n{status}")
-            return
+        await on_message_aviso(message)
+        return
     # ===== FIM DO SISTEMA DE AVISO =====
 
     content = message.content.lower()
