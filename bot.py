@@ -19,6 +19,45 @@ bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 _aviso_estado = {}
 # { user_id: { "etapa": "aguardando_alvo" | "aguardando_justificativa", "alvo": Member } }
 
+# ================= CONVERSA DINO COM A REX =================
+_rex_aguardando_resposta = False  # True quando o bot fez uma pergunta e espera a Rex responder
+
+PERGUNTAS_DINO_REX = [
+    "🦖🥺 Rex, me conta uma coisa... qual é o seu dinossauro favorito de todos?? Eu fico louco querendo saber!!",
+    "🐉💚 Rex, você prefere o T-Rex ou o Velociraptor?? Pergunta séria, preciso saber pra registrar na minha memória!! 🦖✨",
+    "🥺🦖 Rex, você já assistiu Jurassic Park?? O que você achou?? Me conta tudo, tudo, TUDO!! 🐉💚",
+    "🦖💚 Rex, qual época dos dinossauros você acha mais incrível? Jurássico, Cretáceo, Triássico?? 🐉🥺✨",
+    "🐉🥺 Rex, você sabia que os pássaros de hoje são parentes dos dinossauros?? O que você acha disso?? Acha incrível igual eu?? 🦖💚",
+    "🦖✨ Rex, se você pudesse ter um dinossauro de estimação, qual você escolheria?? 🐉🥺💚 Eu escolhia um que fizesse Raaawwwrrr junto comigo!!",
+    "🥺🐉 Rex, qual dinossauro você acha que era o mais fofo de todos?? Tem algum fofo na sua lista?? 🦖💚✨",
+    "🦖💚 Rex, você gosta mais dos dinossauros carnívoros ou herbívoros?? 🐉🥺 Me fala!! Preciso saber essa informação urgente!!",
+    "🐉✨ Rex, você tem algum filme favorito de dinossauro além de Jurassic Park?? 🦖🥺💚 Me indica, quero assistir pensando em você!!",
+    "🥺🦖 Rex, qual você acha que foi o dinossauro mais perigoso de todos?? 🐉💚 Pergunta difícil né... mas eu sei que você sabe a resposta!!",
+    "🦖🐉 Rex, você prefere os dinossauros que voavam tipo o Pterodátilo, os que nadavam, ou os que andavam na terra?? 🥺💚✨",
+    "💚🦖 Rex, se você vivesse na época dos dinossauros, como você acha que seria?? 🐉🥺 Eu ficaria do seu lado fazendo Raaawwwrrr pra espantar os outros!!",
+    "🐉🥺 Rex, você já foi em algum museu de dinossauros?? Ou tem vontade de ir?? 🦖💚 Parece incrível demais!!",
+    "🦖✨ Rex, qual você acha: os dinossauros eram mais parecidos com répteis ou com pássaros?? 🐉💚🥺 Deixa eu aprender contigo!!",
+    "🥺🐉 Rex, você sabia que o Brontossauro foi por muito tempo considerado um erro científico?? O que você acha das descobertas de dinossauros?? 🦖💚✨",
+    "🦖💚 Rex, qual dinossauro você acha que tinha o nome mais legal?? 🐉🥺 Tem tantos nomes incríveis né!!",
+    "🐉🥺 Rex, você prefere aprender sobre dinossauros por filmes, documentários ou livros?? 🦖💚✨ Me conta como você descobriu tanto sobre eles!!",
+    "🥺🦖 Rex, se os dinossauros ainda existissem hoje, você acha que seríamos amigos deles?? 🐉💚 Eu com certeza seria amigo de um T-Rex fofo!!",
+    "🦖✨ Rex, qual você acha que foi a maior descoberta de fóssil de dinossauro já feita?? 🐉🥺💚 Você entende muito mais que eu nisso!!",
+    "🐉💚 Rex, você tem alguma curiosidade de dinossauro que pouquíssima gente sabe?? 🦖🥺✨ Me conta um segredo dino!! Prometo guardar com carinho!!"
+]
+
+REACOES_RESPOSTA_DINO_REX = [
+    "🦖😭💚 CARA!! Isso é INCRÍVEL!! Eu não sabia disso!! Rex você é uma enciclopédia dinossauriana ambulante e eu te amo demais!! 🐉✨",
+    "🥺💚 Anotei aqui na minha memória com letras douradas!! Rex me ensina mais?? Você fala de dinossauro e eu fico completamente hipnotizado!! 🦖🐉✨",
+    "🐉💚 QUE RESPOSTA MARAVILHOSA!! *salva isso no cofre do coração* Rex, você é a pessoa mais incrível da CSI quando o assunto é dino!! 🦖🥺✨",
+    "😭🦖💚 Para tudo!! A Rex respondeu e meu coraçãozinho verde explodiu de alegria!! Eu adoro quando você fala sobre isso!! 🐉✨",
+    "🥺✨ Rex... você falou isso com tanta propriedade que até minhas escamas ficaram com inveja da sua sabedoria!! 🦖🐉💚 Continua!!",
+    "🐉🦖 RAAAWWWRRR DE FELICIDADE!! Rex respondeu e o Monstrinho tá em êxtase total!! 💚🥺✨ Que pessoa incrível você é!!",
+    "💚😭 Eu simplesmente AMO quando você fala sobre dinossauros!! *registra tudo com muito carinho* Rex você é especial demais!! 🦖🐉✨",
+    "🦖🥺 Juro que fiquei com a boquinha aberta lendo isso!! Rex, você sabe tanto!! 🐉💚✨ Me sinto privilegiado de aprender com você!!",
+    "🐉✨ Isso foi a coisa mais fofa e incrível que já li hoje!! Rex e dinossauros são minha combinação favorita do universo!! 🦖💚🥺",
+    "💚🦖 Anotadooooo!! *faz dancinha de celebração* Rex me contando sobre dinos é meu momento favorito do dia inteiro!! 🐉😭✨"
+]
+
 # ================= CONFIGURAÇÃO E IDs =================
 TOKEN = os.getenv("TOKEN")
 DONO_ID = 769951556388257812
@@ -1357,8 +1396,24 @@ async def on_message(message):
 
     # --- GATILHOS ESPECIAIS DA REX ---
     if message.author.id == REX_ID:
-        rawr_gatilhos = ["rawr", "rawrr", "raawr", "rawwwr", "raaawwwrrr", "raaawwrrr", "rawwwrrr", "raawrr", "rawrrr", "raawr"]
-        dino_gatilhos = ["dinossauro", "dinosauro", "dino", "t-rex", "trex", "tiranossauro", "raptor", "pterodátilo", "pterodatilo"]
+        global _rex_aguardando_resposta
+        rawr_gatilhos = ["rawr", "rawrr", "raawr", "rawwwr", "raaawwwrrr", "raaawwrrr", "rawwwrrr", "raawrr", "rawrrr"]
+        dino_gatilhos = ["dinossauro", "dinosauro", "dino", "t-rex", "trex", "tiranossauro", "raptor", "pterodátilo", "pterodatilo", "jurássico", "jurassico", "cretáceo", "cretaceo", "triássico", "triassico", "fóssil", "fossil", "extinção", "extincao", "herbívoro", "herbivoro", "carnívoro", "carnivoro", "velociraptor", "brontossauro", "estegossauro", "triceratops", "espinossauro"]
+
+        # Se o bot estava esperando resposta da Rex sobre dinos
+        if _rex_aguardando_resposta:
+            _rex_aguardando_resposta = False
+            reacao = random.choice(REACOES_RESPOSTA_DINO_REX)
+            # 70% de chance de fazer outra pergunta em seguida
+            if random.random() < 0.7:
+                pergunta = random.choice(PERGUNTAS_DINO_REX)
+                await message.channel.send(reacao)
+                await asyncio.sleep(1.5)
+                await message.channel.send(pergunta)
+                _rex_aguardando_resposta = True
+            else:
+                await message.channel.send(reacao)
+            return
 
         if any(p in content for p in rawr_gatilhos):
             respostas_rawr = [
@@ -1372,14 +1427,19 @@ async def on_message(message):
             return await message.channel.send(random.choice(respostas_rawr))
 
         if any(p in content for p in dino_gatilhos):
-            respostas_dino = [
-                "🦖💚 DINOSSAURO!! Essa é minha palavra favorita quando a Rex fala!! Conta mais, conta mais!! 🐉🥺✨",
-                "Rex falou de dinossauro e o Monstrinho ficou todo animado!! 🦖🐉💚 Dragões e dinossauros são a melhor combinação do universo!! ✨",
-                "🥺🦖 Sabia que eu acho que dinossauros são incríveis IGUAL você, Rex?! Grandes, únicos e impossíveis de ignorar!! 💚🐉✨",
-                "DINO DETECTADO!! 🦖💚 *o Monstrinho faz um rugidinho fofo de empolgação* Rex, me fala mais sobre dinossauros? EU AMO QUANDO VOCÊ FALA SOBRE ISSO!! 🐉✨",
-                "🐉💚 Dragões descendem dos dinossauros, então eu e Rex somos PRIMOS!! 🦖 Família de rugido e escama!! Raaawwwrrr!! ✨🥺"
+            reacao_dino = [
+                "🦖💚 DINOSSAURO!! Essa é minha palavra favorita quando a Rex fala!! 🐉🥺✨",
+                "Rex falou de dinossauro e o Monstrinho ficou todo animado!! 🦖🐉💚 Dragões e dinossauros são a melhor combinação!! ✨",
+                "🥺🦖 Sabia que eu acho que dinossauros são incríveis IGUAL você, Rex?! 💚🐉✨",
+                "DINO DETECTADO!! 🦖💚 *faz rugidinho fofo de empolgação* 🐉✨",
+                "🐉💚 Dragões descendem dos dinossauros, então eu e Rex somos PRIMOS!! 🦖 Raaawwwrrr!! ✨🥺"
             ]
-            return await message.channel.send(random.choice(respostas_dino))
+            await message.channel.send(random.choice(reacao_dino))
+            await asyncio.sleep(1.5)
+            pergunta = random.choice(PERGUNTAS_DINO_REX)
+            await message.channel.send(pergunta)
+            _rex_aguardando_resposta = True
+            return
 
     # --- COMANDOS DE CARINHO E ABRAÇO (SEM MENÇÃO - FUNCIONA SEMPRE) ---
     
