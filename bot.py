@@ -15,6 +15,11 @@ intents.guilds = True
 
 bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 
+# ================= SISTEMA DE AVISOS =================
+# Estado do fluxo de aviso por usuário
+_aviso_estado = {}
+# Estrutura: { user_id: { "etapa": "aguardando_msg" | "aguardando_justificativa", "alvo": <User> } }
+
 # ================= CONFIGURAÇÃO E IDs =================
 TOKEN = os.getenv("TOKEN")
 DONO_ID = 769951556388257812
@@ -1198,6 +1203,23 @@ async def on_member_remove(member):
     except Exception as e:
         print(f"❌ Erro ao enviar mensagem de despedida: {e}")
 
+# ================= COMANDO DE AVISO =================
+
+@bot.command(name="APLICARAVISO")
+async def aplicar_aviso(ctx):
+    """Inicia o fluxo de aviso. Funciona apenas no PV e apenas para o Reality."""
+    if not isinstance(ctx.channel, discord.DMChannel):
+        return
+    if ctx.author.id != REALITY_ID:
+        return
+
+    _aviso_estado[ctx.author.id] = {"etapa": "aguardando_msg", "alvo": None}
+
+    await ctx.send(
+        "⚠️ **Sistema de Aviso iniciado.**\n\n"
+        "📩 Encaminhe aqui, neste PV, a mensagem da pessoa que vai receber o aviso."
+    )
+
 # ================= EVENTOS DE INTERAÇÃO =================
 
 @bot.event
@@ -1209,6 +1231,80 @@ async def on_ready():
 async def on_message(message):
     if message.author.bot: 
         return
+
+    # ===== SISTEMA DE AVISO: intercepta DM do Reality =====
+    if (
+        isinstance(message.channel, discord.DMChannel)
+        and message.author.id == REALITY_ID
+        and message.author.id in _aviso_estado
+    ):
+        estado = _aviso_estado[message.author.id]
+
+        # ETAPA 1: aguardando mensagem encaminhada
+        if estado["etapa"] == "aguardando_msg":
+            alvo = None
+
+            # Tenta pegar o autor da mensagem encaminhada (forward)
+            if message.reference and message.reference.resolved:
+                alvo = message.reference.resolved.author
+
+            if alvo is None or alvo.bot:
+                await message.channel.send(
+                    "❌ Não consegui identificar a pessoa.\n"
+                    "Encaminhe diretamente a mensagem dela aqui no PV e tente novamente."
+                )
+                return
+
+            estado["alvo"] = alvo
+            estado["etapa"] = "aguardando_justificativa"
+
+            await message.channel.send(
+                f"✅ Pessoa identificada: **{alvo.display_name}**\n\n"
+                "📝 Agora me envie o **motivo do aviso**:"
+            )
+            return
+
+        # ETAPA 2: aguardando justificativa
+        elif estado["etapa"] == "aguardando_justificativa":
+            justificativa = message.content.strip()
+
+            if not justificativa:
+                await message.channel.send("❌ Motivo não pode ser vazio. Digite o motivo do aviso:")
+                return
+
+            alvo = estado["alvo"]
+            del _aviso_estado[message.author.id]
+
+            canal_geral = bot.get_channel(CANAL_CHAT_GERAL_ID)
+            if canal_geral is None:
+                await message.channel.send("❌ Canal geral não encontrado. Verifique o CANAL_CHAT_GERAL_ID.")
+                return
+
+            # Tenta aplicar timeout de 1 dia
+            membro = canal_geral.guild.get_member(alvo.id)
+            timeout_aplicado = False
+            if membro:
+                try:
+                    await membro.timeout(timedelta(days=1), reason=justificativa)
+                    timeout_aplicado = True
+                except Exception:
+                    pass
+
+            # Mensagem pública no chat geral (sem rastro algum do Reality)
+            mensagem_publica = (
+                f"🚨 **AVISO OFICIAL** 🚨\n\n"
+                f"{alvo.mention}, você acaba de receber um **aviso oficial** da CSI.\n\n"
+                f"📋 **Motivo:** {justificativa}\n\n"
+                f"⏳ **Punição:** Você está **silenciado(a) por 1 dia**.\n\n"
+                f"Caso queira recorrer ou tirar dúvidas, entre em contato com um membro da "
+                f"**staff** pelo PV. 🐉💚"
+            )
+            await canal_geral.send(mensagem_publica)
+
+            status = "✅ Timeout de 1 dia aplicado." if timeout_aplicado else "⚠️ Aviso publicado, mas o timeout não pôde ser aplicado (verifique as permissões do bot)."
+            await message.channel.send(f"✅ **Aviso enviado com sucesso.**\n{status}")
+            return
+    # ===== FIM DO SISTEMA DE AVISO =====
 
     content = message.content.lower()
     mencionado = bot.user in message.mentions or "monstrinho" in content
