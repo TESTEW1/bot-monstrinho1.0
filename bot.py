@@ -1461,55 +1461,57 @@ async def on_message(message):
             # 45%: só reage, sem pergunta nem mimo
             return
 
-        if any(p in content for p in rawr_gatilhos):
-            respostas_rawr = [
-                "Raaawn!! 🦖💚 *responde o rugido da Rex com tudo que tem* Você fez meu dia!! 🐉✨",
-                "Raaawn raaawn!! 🦖💚 Rugido de dragão + rugido de dinossauro = amor infinito!! 🐉🥺✨",
-                "😭💚 Você fez Raaawn pra mim?! Guardo esse rugido pra sempre na minha memória!! 🦖🐉✨",
-                "Raaawn!! 🐉🦖 *rugiu tão forte que soltou fumaça verde* Esse é meu rugido de amor só pra Rex!! 💚✨",
-                "🥺💚 Esse Raaawn foi o som mais fofo que já ouvi na vida inteira!! Raaawn de volta, Rex!! 🦖🐉✨",
-                "Raaawn raaawn!! 💚🦖 *arquiva no cofre especial do coração* Dinossauro + dragão, dupla imbatível!! 🐉✨"
-            ]
-            # 30% de chance de dar um mimo junto com o rawr
-            await message.channel.send(random.choice(respostas_rawr))
-            if random.random() < 0.3:
-                await asyncio.sleep(1.5)
-                await message.channel.send(random.choice(MIMOS_REX))
-            return
-
-        if any(p in content for p in dino_gatilhos):
-            # Mensagem longa = ela está ensinando algo
-            if len(message.content.strip()) > 30:
-                FATOS_DINO_APRENDIDOS_REX.append(message.content.strip())
-                await message.channel.send(random.choice(REACOES_APRENDENDO_REX))
-                await asyncio.sleep(1.5)
-                # 50% pergunta, 25% mimo, 25% só reage
-                sorteio = random.random()
-                if sorteio < 0.5:
-                    await message.channel.send(random.choice(PERGUNTAS_DINO_REX))
-                    _rex_aguardando_resposta = True
-                elif sorteio < 0.75:
+        # Só reage automaticamente se a Rex mencionar o Monstrinho
+        if mencionado:
+            if any(p in content for p in rawr_gatilhos):
+                respostas_rawr = [
+                    "Raaawn!! 🦖💚 *responde o rugido da Rex com tudo que tem* Você fez meu dia!! 🐉✨",
+                    "Raaawn raaawn!! 🦖💚 Rugido de dragão + rugido de dinossauro = amor infinito!! 🐉🥺✨",
+                    "😭💚 Você fez Raaawn pra mim?! Guardo esse rugido pra sempre na minha memória!! 🦖🐉✨",
+                    "Raaawn!! 🐉🦖 *rugiu tão forte que soltou fumaça verde* Esse é meu rugido de amor só pra Rex!! 💚✨",
+                    "🥺💚 Esse Raaawn foi o som mais fofo que já ouvi na vida inteira!! Raaawn de volta, Rex!! 🦖🐉✨",
+                    "Raaawn raaawn!! 💚🦖 *arquiva no cofre especial do coração* Dinossauro + dragão, dupla imbatível!! 🐉✨"
+                ]
+                # 30% de chance de dar um mimo junto com o rawr
+                await message.channel.send(random.choice(respostas_rawr))
+                if random.random() < 0.3:
+                    await asyncio.sleep(1.5)
                     await message.channel.send(random.choice(MIMOS_REX))
                 return
 
-            reacao_dino = [
-                "Raaawn!! 🦖💚 DINOSSAURO!! Essa é minha palavra favorita quando a Rex fala!! 🐉🥺✨",
-                "Raaawn raaawn!! Rex falou de dinossauro e o Monstrinho ficou todo animado!! 🦖🐉💚✨",
-                "🥺🦖 Dinossauros são incríveis IGUAL você, Rex!! Raaawn!! 💚🐉✨",
-                "Raaawn!! DINO DETECTADO!! 🦖💚 *faz rugidinho fofo de empolgação* 🐉✨",
-                "🐉💚 Dragões descendem dos dinossauros, então eu e Rex somos PRIMOS!! Raaawn!! 🦖✨🥺"
-            ]
-            await message.channel.send(random.choice(reacao_dino))
-            # 45% faz pergunta, 20% dá mimo, 35% só reage
-            sorteio = random.random()
-            if sorteio < 0.45:
-                await asyncio.sleep(1.5)
-                await message.channel.send(random.choice(PERGUNTAS_DINO_REX))
-                _rex_aguardando_resposta = True
-            elif sorteio < 0.65:
-                await asyncio.sleep(1.5)
-                await message.channel.send(random.choice(MIMOS_REX))
-            return
+            if any(p in content for p in dino_gatilhos):
+                # Mensagem longa = ela está ensinando algo
+                if len(message.content.strip()) > 30:
+                    FATOS_DINO_APRENDIDOS_REX.append(message.content.strip())
+                    await message.channel.send(random.choice(REACOES_APRENDENDO_REX))
+                    await asyncio.sleep(1.5)
+                    # 50% pergunta, 25% mimo, 25% só reage
+                    sorteio = random.random()
+                    if sorteio < 0.5:
+                        await message.channel.send(random.choice(PERGUNTAS_DINO_REX))
+                        _rex_aguardando_resposta = True
+                    elif sorteio < 0.75:
+                        await message.channel.send(random.choice(MIMOS_REX))
+                    return
+
+                reacao_dino = [
+                    "Raaawn!! 🦖💚 DINOSSAURO!! Essa é minha palavra favorita quando a Rex fala!! 🐉🥺✨",
+                    "Raaawn raaawn!! Rex falou de dinossauro e o Monstrinho ficou todo animado!! 🦖🐉💚✨",
+                    "🥺🦖 Dinossauros são incríveis IGUAL você, Rex!! Raaawn!! 💚🐉✨",
+                    "Raaawn!! DINO DETECTADO!! 🦖💚 *faz rugidinho fofo de empolgação* 🐉✨",
+                    "🐉💚 Dragões descendem dos dinossauros, então eu e Rex somos PRIMOS!! Raaawn!! 🦖✨🥺"
+                ]
+                await message.channel.send(random.choice(reacao_dino))
+                # 45% faz pergunta, 20% dá mimo, 35% só reage
+                sorteio = random.random()
+                if sorteio < 0.45:
+                    await asyncio.sleep(1.5)
+                    await message.channel.send(random.choice(PERGUNTAS_DINO_REX))
+                    _rex_aguardando_resposta = True
+                elif sorteio < 0.65:
+                    await asyncio.sleep(1.5)
+                    await message.channel.send(random.choice(MIMOS_REX))
+                return
 
 
     # --- COMANDOS DE CARINHO E ABRAÇO (SEM MENÇÃO - FUNCIONA SEMPRE) ---
