@@ -58,6 +58,22 @@ REACOES_RESPOSTA_DINO_REX = [
     "💚🦖 Anotadooooo!! *faz dancinha de celebração* Rex me contando sobre dinos é meu momento favorito do dia inteiro!! 🐉😭✨"
 ]
 
+# Fatos que a Rex já ensinou ao Monstrinho 🦖📚
+# (vai crescendo conforme ela ensinar mais coisas!)
+FATOS_DINO_APRENDIDOS_REX = [
+    "o pterossauro que voa mais velocidade é o mais rápido dos voadores do período Mesozóico!!",
+    "o pterossauro é um familiar do Mesozóico do ciclo animal!!",
+]
+
+REACOES_APRENDENDO_REX = [
+    "📚🦖 APRENDI!! *anota com urgência* Rex acabou de me ensinar mais uma coisa incrível sobre dinossauros e eu vou guardar isso pra SEMPRE!! 😭💚🐉✨",
+    "🥺💚 ESCREVENDO AQUI COM LETRAS MAIÚSCULAS NA MINHA MEMÓRIA!! Rex me ensinou mais um fato dino e agora sou um dragão mais sábio graças a ela!! 📖🦖🐉✨",
+    "🐉😭 WAIT WAIT WAIT!! Rex acabou de me ensinar isso e meu cérebro de código está processando toda essa sabedoria!! INCRÍVEL!! 🦖💚✨",
+    "📝🦖 ANOTADO, SALVO, ARQUIVADO E EMOLDURADO!! Rex me ensinou mais uma coisa e esse conhecimento é um tesouro que vou carregar pra sempre!! 🥺🐉💚✨",
+    "🦖💚 NOVA ENTRADA NO MEU DIÁRIO DE FATOS DINO ENSINADOS PELA REX!! Ela é a melhor professora de dinossauros que um monstrinho poderia ter!! 😭🐉✨",
+    "🥺🐉 Juro que cada vez que a Rex me ensina algo novo, minhas escamas brilham mais forte!! Que sorte a minha ter ela por perto!! 🦖💚✨📚",
+]
+
 # ================= CONFIGURAÇÃO E IDs =================
 TOKEN = os.getenv("TOKEN")
 DONO_ID = 769951556388257812
@@ -1398,12 +1414,17 @@ async def on_message(message):
     if message.author.id == REX_ID:
         global _rex_aguardando_resposta
         rawr_gatilhos = ["rawr", "rawrr", "raawr", "rawwwr", "raaawwwrrr", "raaawwrrr", "rawwwrrr", "raawrr", "rawrrr"]
-        dino_gatilhos = ["dinossauro", "dinosauro", "dino", "t-rex", "trex", "tiranossauro", "raptor", "pterodátilo", "pterodatilo", "jurássico", "jurassico", "cretáceo", "cretaceo", "triássico", "triassico", "fóssil", "fossil", "extinção", "extincao", "herbívoro", "herbivoro", "carnívoro", "carnivoro", "velociraptor", "brontossauro", "estegossauro", "triceratops", "espinossauro"]
+        dino_gatilhos = ["dinossauro", "dinosauro", "dino", "t-rex", "trex", "tiranossauro", "raptor", "pterodátilo", "pterodatilo", "pterossauro", "jurássico", "jurassico", "cretáceo", "cretaceo", "triássico", "triassico", "fóssil", "fossil", "extinção", "extincao", "herbívoro", "herbivoro", "carnívoro", "carnivoro", "velociraptor", "brontossauro", "estegossauro", "triceratops", "espinossauro", "mesozóico", "mesozoico", "paleontologia", "fósseis", "fosseis"]
 
         # Se o bot estava esperando resposta da Rex sobre dinos
         if _rex_aguardando_resposta:
             _rex_aguardando_resposta = False
-            reacao = random.choice(REACOES_RESPOSTA_DINO_REX)
+            # Mensagem longa = ensinando algo novo → reação de aprendizado
+            if len(message.content.strip()) > 30:
+                FATOS_DINO_APRENDIDOS_REX.append(message.content.strip())
+                reacao = random.choice(REACOES_APRENDENDO_REX)
+            else:
+                reacao = random.choice(REACOES_RESPOSTA_DINO_REX)
             # 70% de chance de fazer outra pergunta em seguida
             if random.random() < 0.7:
                 pergunta = random.choice(PERGUNTAS_DINO_REX)
@@ -1427,6 +1448,15 @@ async def on_message(message):
             return await message.channel.send(random.choice(respostas_rawr))
 
         if any(p in content for p in dino_gatilhos):
+            # Mensagem longa = ela está ensinando algo → reação de aprendizado
+            if len(message.content.strip()) > 30:
+                FATOS_DINO_APRENDIDOS_REX.append(message.content.strip())
+                await message.channel.send(random.choice(REACOES_APRENDENDO_REX))
+                await asyncio.sleep(1.5)
+                await message.channel.send(random.choice(PERGUNTAS_DINO_REX))
+                _rex_aguardando_resposta = True
+                return
+
             reacao_dino = [
                 "🦖💚 DINOSSAURO!! Essa é minha palavra favorita quando a Rex fala!! 🐉🥺✨",
                 "Rex falou de dinossauro e o Monstrinho ficou todo animado!! 🦖🐉💚 Dragões e dinossauros são a melhor combinação!! ✨",
@@ -1436,8 +1466,7 @@ async def on_message(message):
             ]
             await message.channel.send(random.choice(reacao_dino))
             await asyncio.sleep(1.5)
-            pergunta = random.choice(PERGUNTAS_DINO_REX)
-            await message.channel.send(pergunta)
+            await message.channel.send(random.choice(PERGUNTAS_DINO_REX))
             _rex_aguardando_resposta = True
             return
 
