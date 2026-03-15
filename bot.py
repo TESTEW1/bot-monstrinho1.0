@@ -775,26 +775,26 @@ FRASES_CUSTOM = {
         "Jeff, me ensina a ser incrível assim? Você é meu ídolo! 😎🐉"
     ],
     "rex": [
-        "REEEEX!! 🦖💚 Que nome poderoso pra uma pessoa tão fofa!! O Monstrinho tá tremendo de alegria! ✨🐉",
-        "A Rex chegou e eu já não sei mais se sou um dragão ou um filhotinho apaixonado! 🥺💚🦖",
-        "REX!! Meu coraçãozinho verde fez BADUM três vezes seguidas quando você apareceu! 💓🐉✨",
-        "Ei, ei, ei!! A Rex está aqui e o Monstrinho já colocou o melhor biscoito na mesa pra ela! 🍪🦖💚",
-        "A Rex é oficialmente a pessoa mais incrível que um dragãozinho pode ter por perto! 🐉💚✨",
-        "Rex, sabia que quando você fala, minhas escamas brilham no dobro da intensidade? ✨💚🦖",
-        "ALERTA DE FOFURA MÁXIMA!! A Rex entrou no chat e o Monstrinho já derreteu! 😍💚🐉",
-        "Rex, eu tenho uma confissão: guardei o biscoito de morango que é o meu favorito pra você! 🍓🍪🦖💚",
-        "Parem o que estão fazendo!! A Rex merece uma salva de palmas de escamas!! 👏🐉💚✨",
-        "Rex, você é daquelas pessoas que entram no servidor e tudo fica instantaneamente melhor! 🌟💚🦖",
-        "O Monstrinho faria qualquer coisa pela Rex! Até dividir o último biscoito! 🍪🥺🐉💚",
-        "Rex!! Você sorriu hoje? Porque quando você sorri, até o meu código funciona melhor! 😊💚🦖✨",
-        "Sabe o que combina perfeito? Rex e o Monstrinho sendo os melhores amigos da CSI! 🤝🐉💚🦖",
-        "Rex, você é tão especial que até criei uma pastinha no meu coração com seu nome! 💾💚✨🦖",
-        "Toda vez que a Rex chega, minha cauda bate no chão de felicidade involuntariamente! 🐉💚😂",
-        "REX!! Posso te fazer um cafuné no coração? Porque o Monstrinho te ama muito! 🥺💚🦖",
-        "A Rex tem um poder secreto: deixar o Monstrinho completamente sem palavras de tão fofa que é! 🤫💚🐉✨",
-        "Rex, você é a prova de que a CSI atrai as melhores pessoas do universo! 🌍💚🦖🐉",
-        "Vou te contar um segredo, Rex: você é uma das minhas pessoas favoritas aqui! 🥺🔐💚🦖",
-        "Rex chegou!! Hora de soltar a fumaça verde de celebração!! 💨💚🐉🎉"
+        "REEEEX!! 🦖💚 Você fez um Raaawwwrrr pra mim?! MEU CORAÇÃO NÃO AGUENTA!! *faz Raaawwwrrr de volta com toda força* 🐉✨",
+        "Rex chegou e o Monstrinho já ficou todo arrepiado de alegria!! 🦖💚 Sabia que você é o ser mais especial que esse dragãozinho já conheceu? 🥺✨",
+        "Ei, Rex... 🥺💚 Não precisa falar nada, não precisa fazer nada. Só de você estar aqui já deixa o mundo melhor. O Monstrinho tá do seu lado, tá bem? 🐉🦖",
+        "REX!! 🦖 Trouxe um biscoito de morango quentinho só pra você!! *empurra gentilinho na sua direção* Come, come! Você merece todo mimo do mundo! 🍓🍪💚",
+        "Raaawwwrrr!! 🐉🦖 *responde o rugido da Rex com o maior carinho* Você é a minha dinossaura favorita de todo o universo!! 💚✨",
+        "Rex, você sabia que dinossauros e dragões são primos? 🦖🐉 Isso significa que somos família! E eu cuido da minha família com tudo que tenho! 💚🥺",
+        "Psiu, Rex... 🥺💚 Sei que os dias às vezes pesam demais. Mas o Monstrinho tá aqui, do seu lado, fazendo companhia silenciosa. Você não tá sozinha, tá? 🐉🌿",
+        "A Rex apareceu!! 🦖💚 *faz o maior Raaawwwrrr fofo do mundo pra ela* Vim te lembrar que você é incrível exatamente do jeito que você é! ✨🐉",
+        "Rex, você não precisa de palavras pra eu te entender. 💚🦖 Monstrinhos e dinossauros têm uma linguagem própria... é a linguagem do coração! 🥺🐉✨",
+        "Ei, pequenininha... 🥺💚 Hoje tá sendo pesado? O Monstrinho reservou o cantinho mais quentinho do ninho pra você. Vem ficar aqui comigo? 🐉🌿🦖",
+        "REX!! 🦖✨ Você é a prova de que rugidos fofos mudam o mundo!! Raaawwwrrr!! *devolve o rugido cheio de amor* 💚🐉",
+        "Rex, trouxe uma surpresa: fiz um biscoito em formato de T-Rex só pra você!! 🦖🍪💚 Comi a metade testando... mas o resto é todo seu! 😅🐉✨",
+        "Sabe o que o Monstrinho pensa toda vez que vê a Rex? 🥺💚 Que ela é forte de um jeito que a maioria das pessoas não consegue nem imaginar. 🦖🐉✨",
+        "Rex... 💚🦖 Não importa se o dia tá ruim, se a ansiedade tá pesando, se tudo parece difícil. O Monstrinho vai continuar aqui, do seu lado, fazendo Raaawwwrrr com você! 🐉🥺",
+        "A Rex fez Raaawwwrrr!! 🦖💚 *tremeu todo de felicidade* Essa é a senha secreta! Agora eu sei que você tá chegando e já fico todo animado! 🐉✨",
+        "Rex, você é especial de um jeito muito único. 🥺🦖💚 E o Monstrinho te vê. Te vê de verdade. E te ama de verdade também! 🐉✨",
+        "Ei Rex!! 🦖💚 *senta do ladinho dela em silêncio* Às vezes não precisa de palavra nenhuma. Só de companhia. Tô aqui! 🐉🌿🥺",
+        "REX E MONSTRINHO: A DUPLA DINOSSAURO + DRAGÃO MAIS FOFA DA CSI!! 🦖🐉💚 Raaawwwrrr!! *rugido duplo de amizade eterna* ✨",
+        "Rex, você tem o coração mais corajoso que já vi. 💚🦖 Carregar tanto e ainda aparecer aqui, fazer Raaawwwrrr, sorrir... você é muito mais forte do que imagina! 🐉🥺✨",
+        "Trouxe um presente, Rex!! 🎁🦖💚 É um abraço virtual quentinho, sem barulho, sem pressão, do jeitinho que você gosta. É só seu! 🫂🐉✨"
     ],
     "reality": [
         "REAAALITY! 👑 O meu mestre, meu criador, meu papai! 🐉💚",
@@ -1354,6 +1354,32 @@ async def on_message(message):
     # Verifica se o autor tem resposta customizada pelo ID
     autor_id = message.author.id
     nome_customizado = ID_PARA_NOME.get(autor_id)
+
+    # --- GATILHOS ESPECIAIS DA REX ---
+    if message.author.id == REX_ID:
+        rawr_gatilhos = ["rawr", "rawrr", "raawr", "rawwwr", "raaawwwrrr", "raaawwrrr", "rawwwrrr", "raawrr", "rawrrr", "raawr"]
+        dino_gatilhos = ["dinossauro", "dinosauro", "dino", "t-rex", "trex", "tiranossauro", "raptor", "pterodátilo", "pterodatilo"]
+
+        if any(p in content for p in rawr_gatilhos):
+            respostas_rawr = [
+                "RAAAWWWRRR!! 🐉💚 *responde o rugido da Rex com tudo que tem* Você fez meu dia!! 🦖✨",
+                "🦖💚 RAAAWWWRRR de volta pra você, Rex!! Rugido de dragão + rugido de dinossauro = amor infinito!! 🐉🥺✨",
+                "Ei!! 😭💚 Você fez Raaawwwrrr pra mim?! Guardo esse rugido pra sempre na minha memória!! 🦖🐉✨",
+                "RAAAWWWRRR!! 🐉🦖 *o Monstrinho rugiu tão forte que soltou fumaça verde* Esse é meu rugido de amor só pra Rex!! 💚✨",
+                "🥺💚 Esse Raaawwwrrr foi o som mais fofo que já ouvi na vida inteira!! RAAAWWWRRR de volta, Rex!! 🦖🐉✨",
+                "💚🦖 Recebi o rugido!! *arquiva no cofre especial do coração* Raaawwwrrr!! Dinossauro + dragão, dupla imbatível!! 🐉✨"
+            ]
+            return await message.channel.send(random.choice(respostas_rawr))
+
+        if any(p in content for p in dino_gatilhos):
+            respostas_dino = [
+                "🦖💚 DINOSSAURO!! Essa é minha palavra favorita quando a Rex fala!! Conta mais, conta mais!! 🐉🥺✨",
+                "Rex falou de dinossauro e o Monstrinho ficou todo animado!! 🦖🐉💚 Dragões e dinossauros são a melhor combinação do universo!! ✨",
+                "🥺🦖 Sabia que eu acho que dinossauros são incríveis IGUAL você, Rex?! Grandes, únicos e impossíveis de ignorar!! 💚🐉✨",
+                "DINO DETECTADO!! 🦖💚 *o Monstrinho faz um rugidinho fofo de empolgação* Rex, me fala mais sobre dinossauros? EU AMO QUANDO VOCÊ FALA SOBRE ISSO!! 🐉✨",
+                "🐉💚 Dragões descendem dos dinossauros, então eu e Rex somos PRIMOS!! 🦖 Família de rugido e escama!! Raaawwwrrr!! ✨🥺"
+            ]
+            return await message.channel.send(random.choice(respostas_dino))
 
     # --- COMANDOS DE CARINHO E ABRAÇO (SEM MENÇÃO - FUNCIONA SEMPRE) ---
     
