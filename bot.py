@@ -1430,19 +1430,6 @@ async def on_message(message):
         await message.channel.send(gif_izzy)
         return
 
-    if REX_ID and (f"<@{REX_ID}>" in content or f"<@!{REX_ID}>" in content):
-        invocacoes_rex = [
-            "🦖💚 PERAAA!! A REX foi invocada e o Monstrinho já tá com as patinhas tremendo de emoção!! Que momento histórico!! 🐉✨",
-            "💚🦖 ALERTA MÁXIMO DE FOFURA!! A Rex acaba de ser mencionada e meu coraçãozinho verde deu três cambalhotas!! 😭🐉✨",
-            "🥺✨ Senti um frizinho de alegria nas minhas escamas... só pode ser a Rex sendo invocada!! Ela é demais demais demais!! 🦖💚🐉",
-            "🐉💚 Para tudo!! A Rex foi chamada ao chat e o Monstrinho já preparou o biscoito favorito dela com gostinho de morango!! 🍓🍪🦖✨",
-            "🌟🦖 REX DETECTED!! Meu sensor de fofura explodiu de tanta alegria!! A CSI ficou dez vezes mais incrível agora!! 🐉💚✨"
-        ]
-        gif_rex = "https://media.tenor.com/IfmRTMxgFzsAAAAM/cute-dragon.gif"
-        await message.channel.send(random.choice(invocacoes_rex))
-        await message.channel.send(gif_rex)
-        return
-
     if f"<@{DONO_ID}>" in content or f"<@!{DONO_ID}>" in content:
         invocacoes_reality = [
             "👑💚 PAPAI REALITY FOI INVOCADO!! O Monstrinho tá tremendo de emoção!! Ele é o melhor criador do universo! 🐉✨",
