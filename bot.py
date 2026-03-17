@@ -1716,6 +1716,39 @@ async def on_message(message):
         ]
         return await message.channel.send(random.choice(respostas_demonio))
 
+    if "monstrinho menor quente" in content or "menor quente" in content and "monstrinho" in content:
+        respostas_menor_quente = [
+            "MENOR QUENTE?! 🔥💚 Eu?? O ser mais fofo e amoroso do servidor?? Menor quente?? Tá bom, aceito!! Sou o Monstrinho Menor Quente e tô aqui destruindo corações com fofura!! 🐉😎✨",
+            "Menor quente eu nada!! 😤💚 Sou MUITO quente!! Máximo quente!! Escala inteira de quente!! O termômetro quebrou de tanto calor verde aqui!! 🔥🐉✨",
+            "...menor quente. 🤨💚 Olhei pro espelho e concordei com tudo!! Obrigado por me reconhecer!! 🐉🔥😌✨",
+            "MENOR QUENTE!! 🔥🐉 Isso virou meu novo apelido e eu não aceito contestação!! Monstrinho Menor Quente, prazer!! *faz pose* 💚😎✨",
+            "Ué, que bom que perceberam né?? 😏💚 Fogo verde é diferente!! Queima com amor e fofura!! MENOR QUENTE SIM!! 🔥🐉✨",
+            "Menor quente... 🥺💚 *olha pras próprias escamas* Caramba, sou mesmo!! Valeu por me fazer perceber, tô até mais confiante agora!! 🔥🐉😂✨",
+        ]
+        return await message.channel.send(random.choice(respostas_menor_quente))
+
+    if "monstrinho sinistro" in content or "sinistro" in content and "monstrinho" in content:
+        respostas_sinistro = [
+            "SINISTRO?! 😈💚 EU?! O dragão mais fofo, carinhoso e cheio de biscoito da galáxia?? Tá bom... às vezes eu olho pro biscoito de um jeito meio suspeito... mas só porque gosto muito!! 🍪🐉✨",
+            "Monstrinho Sinistro... 😒💚 Tô aqui com minha fumacinha verde, meus olhinhos brilhando no escuro e meus biscoitinhos... tipo... normal né?? Nada sinistro!! 🐉🌑✨😂",
+            "SINISTRO NÃO!! 😭💚 Sou puro!! Sou inocente!! Sou cheio de amor e luz verde!! ...mas entre nós, o Reality me ensinou umas coisas que não posso comentar publicamente. 🤫🐉✨",
+            "Eu, sinistro?? 🤨💚 Deixa eu só terminar de arquivar as informações de todo mundo aqui e te respondo melhor... 😌🐉✨😂",
+            "SINISTRO EU NADA!! 😤💚 Agora me desculpa que eu preciso continuar observando o chat em silêncio às 3 da manhã... completamente normal isso!! 🌑🐉✨😂",
+            "Monstrinho Sinistro... 😈💚 *sorri de um jeito que não dá pra saber se é fofo ou preocupante* Olha, nem confirmo nem nego!! 🐉✨😂",
+        ]
+        return await message.channel.send(random.choice(respostas_sinistro))
+
+    if "monstrinho rivotril" in content or "rivotril" in content and "monstrinho" in content:
+        respostas_rivotril = [
+            "RIVOTRIL?! 😭💚 Você tá dizendo que eu deixo as pessoas calmas e relaxadas?? ACEITO ESSE ELOGIO COM MUITO ORGULHO!! Sou o remédio verde da CSI!! 💊🐉✨",
+            "Monstrinho Rivotril... 🥺💚 Então eu sou o ansiolítico oficial do servidor?? Faz sentido!! Uma dosagemzinha de biscoito e abraço e tá tudo bem!! 🍪🫂🐉✨😂",
+            "Rivotril?? 😤💚 Eu não sou remédio não!! Sou um dragão com diplomas em fofura e carinho!! Mas... se me tomar antes de dormir funciona mesmo, posso confirmar!! 🐉💊✨😂",
+            "MONSTRINHO RIVOTRIL!! 💊💚 Nova função desbloqueada!! Prescrição: um abraço de dragão e dois biscoitos a cada 8 horas!! Efeitos colaterais: ficar fofo demais!! 🐉🍪✨😂",
+            "Rivotril... 🤔💚 Quer dizer que o pessoal da CSI usa o Monstrinho pra se acalmar?? *fica todo envaidecido* Isso é a melhor coisa que já ouvi!! 🐉💊💚✨",
+            "Olha... se eu sou o Rivotril da CSI, então o Reality é o médico que me receitou pra vocês!! 😂💚 E a dose é: falar comigo todo dia!! Tratamento contínuo!! 🐉💊✨",
+        ]
+        return await message.channel.send(random.choice(respostas_rivotril))
+
     if "monstrinho supimpa" in content or "supimpa" in content and "monstrinho" in content:
         respostas_supimpa = [
             "SUPIMPA!! 🤩💚 Que palavra INCRÍVEL!! Isso sou eu mesmo!! O Monstrinho Supimpa em pessoa!! Pode espalhar pro mundo!! 🐉✨🎊",
