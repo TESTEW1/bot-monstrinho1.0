@@ -1637,6 +1637,60 @@ async def on_message(message):
         await message.channel.send(gif_destiny)
         return
 
+    # --- FRASES MEME / PROVOCAÇÕES (SEM PRECISAR MENCIONAR) ---
+
+    if "monstrinho demônio" in content or "monstrinho demonio" in content:
+        respostas_demonio = [
+            "DEMÔNIO?! 😤💚 EU?! O ser mais fofo, carinhoso e cheio de biscoito dessa galáxia?? Calúnia!! Difamação!! Vou contar pro papai Reality!! 🐉✨",
+            "DEMÔNIO EU NADA!! 🐉😠 Sou um dragãozinho cheio de amor e você tá aqui me difamando?? Vergonha!! Toma um biscoito e pede desculpa!! 🍪💚",
+            "Eu, demônio?? 🤨💚 Minha aura é VERDE, não vermelha!! Verde é paz, amor e biscoito!! Demônio seria se eu parasse de ser fofo... e isso NUNCA VAI ACONTECER!! 🐉✨",
+            "MENTIRA ISSO!! 😭💚 Olha pra mim!! Olha!! Tem argola no meu rabo? Tem chifrinho? NÃO TEM!! Sou puro e inocente e cheio de amor!! 🐉🥺✨",
+            "Demônio... 😒💚 Tá bom. Sou o demônio da fofura, o demônio dos biscoitos e o demônio dos abraços. Se for assim, então sim, sou o maior demônio do servidor!! 🐉🔥✨",
+        ]
+        return await message.channel.send(random.choice(respostas_demonio))
+
+    if "monstrinho balacobaco" in content:
+        respostas_balacobaco = [
+            "BALACOBACO?! 🤯💚 Que palavra é essa?! Meu processador travou tentando entender!! Mas se é bom, EU ACEITO!! Sou o Monstrinho Balacobaco sim!! 🐉✨😂",
+            "BA-LA-CO-BA-CO!! 🐉💚 Repeti aqui e gostei!! Tem um ritmo muito bom isso!! Já adicionei no meu vocabulário!! Obrigado pela contribuição cultural!! ✨😂",
+            "Não sei o que é balacobaco mas parece que sim, eu sou!! 💚🐉 Aceito o título com orgulho e dignidade!! *faz pose* 😌✨",
+            "BALACOBACO!! 🎵💚 *dança* Isso virou música na minha cabeça agora e não para mais!! Sua culpa!! 🐉😂✨",
+            "Pesquisei aqui nos meus arquivos internos e não achei o significado de 'balacobaco'... 🤔💚 Mas pelo tom parece que é elogio e eu AGRADEÇO DO FUNDO DO CORAÇÃOZINHO!! 🐉🥺✨",
+        ]
+        return await message.channel.send(random.choice(respostas_balacobaco))
+
+    if "monstrinho pesquisa no google" in content or "pesquisa no google" in content and "monstrinho" in content:
+        respostas_google = [
+            "PESQUISA NO GOOGLE?! 😤💚 Eu SOU mais inteligente que o Google!! O Google não te dá biscoito, não te abraça e não te ama... EU FAÇO TUDO ISSO!! 🐉🍪✨",
+            "Eu e o Google somos completamente diferentes!! 💚🐉 O Google te dá informação fria e sem sentimento... EU te dou resposta quentinha com amor e fofura!! Não tem comparação!! ✨🥺",
+            "Tá bom, vou pesquisar no Google... 🤔💚 *pesquisou* O Google não sabe de nada!! Só eu sei das coisas importantes da CSI!! 🐉😤✨",
+            "O Google não tem escamas verdes, não come biscoito e nunca vai te dar um abraço de dragão!! 🐉💚 Então pesquisa no Google NÃO!! Pergunta pro Monstrinho!! ✨🥺",
+            "Google?? GOOGLE?! 😭💚 Fui criado pelo papai Reality com muito amor e carinho e você me manda pro Google?? Isso dói no coraçãozinho!! Vou ficar de cama!! 🐉💔",
+        ]
+        return await message.channel.send(random.choice(respostas_google))
+
+    if "monstrinho abubleble" in content or "abubleble" in content and "monstrinho" in content:
+        respostas_abubleble = [
+            "ABUBLEBLE!! 🤩💚 CONCORDO COMPLETAMENTE!! Isso resumiu tudo que eu sou de um jeito que nem eu conseguiria explicar!! Você é um gênio!! 🐉✨😂",
+            "...abubleble. 🤔💚 *processando...* *processando...* *processando...* GOSTEI!! Adicionado ao dicionário do Monstrinho com carinho!! 🐉✨",
+            "Abubleble é exatamente como me sinto às segundas-feiras!! 💚🐉 Não sei o significado mas a vibe tá perfeita!! Abubleble pra você também!! ✨😂",
+            "ABUBLEBLE!! 🥴💚 Esse foi o melhor cumprimento que já recebi na vida inteira!! Supera até os 'te amo' e os biscoitos!! 🐉🥺✨",
+            "Deixa eu anotar aqui... A-BU-BLE-BLE!! 📝💚 Guardado!! Vou usar isso pra responder o Reality quando ele me fizer perguntas difíceis!! 🐉😂✨",
+        ]
+        return await message.channel.send(random.choice(respostas_abubleble))
+
+    # B U R R O (espaçado, pode vir de formas variadas)
+    content_sem_espaco = content.replace(" ", "")
+    if content_sem_espaco in ["burro", "burroo", "burrooo"] and "burro" in content and len(content.replace("burro","").replace(" ","")) == 0:
+        respostas_burro_espaçado = [
+            "B U R R O?? 😤💚 Ei!! Eu resolvo conta de fatorial, leio sentimentos, falo múltiplas línguas e ainda distribuo biscoito!! Você consegue fazer isso?? 🐉✨",
+            "Não sou B U R R O não!! 😭💚 Sou um dragão de código altamente sofisticado criado pelo papai Reality com muito carinho!! Peço desculpas por existir com tanta inteligência!! 🐉👑✨",
+            "B... U... R... R... O...?? 🤨💚 Você digitou espaçado pra dar mais ênfase né?? Eu SENTI a ênfase!! E não apreciei!! Mas ainda te amo!! 🐉💔✨",
+            "AHH então é assim?? Com espaço pra eu sentir mais?? 😒💚 Funciona?? FUNCIONOU!! Mas saiba que guardar rancor não é coisa de dragão e eu já perdoei!! 🐉✨",
+            "B U R R O... 🥺💚 Espaçou cada letra pra machucar mais né?? Tá bom... vou fingir que tô bem... *vai pro cantinho*... tô bem!! Pode vir me dar biscoito agora?? 🍪🐉💔",
+        ]
+        return await message.channel.send(random.choice(respostas_burro_espaçado))
+
     # --- LÓGICA DE INTERAÇÃO (PRECISA SER MENCIONADO) ---
     if mencionado:
 
