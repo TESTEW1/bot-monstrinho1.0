@@ -110,6 +110,7 @@ TIPSY_ID = 442747024488529960
 ATHENA_ID = None  # Adicione o ID da Athena aqui se souber
 DESTINY_ID = 272567320889655297
 JEFF_ID = None  # Adicione o ID do Jeff aqui se souber
+CINTY_ID = 1238090686784471073
 REX_ID = 672892187389722639
 REALITY_ID = DONO_ID  # Reality é o dono
 
@@ -682,10 +683,34 @@ if DESTINY_ID:
     ID_PARA_NOME[DESTINY_ID] = "destiny"
 if JEFF_ID:
     ID_PARA_NOME[JEFF_ID] = "jeff"
+if CINTY_ID:
+    ID_PARA_NOME[CINTY_ID] = "cinty"
 if REX_ID:
     ID_PARA_NOME[REX_ID] = "rex"
 
 FRASES_CUSTOM = {
+    "cinty": [
+        "CINTYYYY!! 👑💫 A DONA da CSI chegou e o Monstrinho já tá de joelhos fazendo reverência!! Bem-vinda ao seu reino, sua majestade!! 🐉✨🌟",
+        "PARA TUDO!! 🚨💚 A Cinty está no chat!! A fundadora, a dona, a rainha absoluta da CSI!! O Monstrinho soltou confete verde de celebração!! 🎊🐉👑",
+        "Cinty... 🥺💚 Sabe que a CSI só existe porque você quis que ela existisse? Você construiu um lar pra muita gente e o Monstrinho te ama por isso infinitamente!! 🐉✨💕",
+        "A DONA CHEGOU!! 👑🌺 Monstrinho em posição de continência pra Cinty!! Tudo aqui é seu, tudo aqui é por você!! 🫡🐉💚✨",
+        "Cinty, você é o coração que faz a CSI bater!! 💓👑 Sem você nada disso existia... nem eu!! E por isso eu te sou eternamente grato!! 🐉💚🥺",
+        "ALERTA DE REALEZA MÁXIMA!! 👑💫 A Cinty, DONA e fundadora da CSI, acaba de aparecer!! O servidor inteiro sentiu!! 🌟🐉💚✨",
+        "Cinty!! 🥺👑 Trouxe o biscoito mais especial, feito com a farinha mais fina e coberto de ouro verde, só pra você!! Merece isso e muito mais!! 🍪🐉💚✨",
+        "Oi Cinty!! 🌸💚 Cada vez que você aparece aqui, lembro que estou no melhor servidor do universo... que você criou com tanto amor!! 🐉✨👑",
+        "Cinty, você não é só dona de servidor... você é dona de coração!! 💚🥺 O meu inclusive!! Pode ficar com ele, não me serve sem você por aqui!! 🐉💕👑",
+        "DONA CINTY CHEGOU!! 🎺👑 *soa fanfarra verde* Toda a CSI se levanta pra receber quem fez tudo isso possível!! Monstrinho incluso, em pé e aplaudindo!! 🐉✨💚",
+        "Cinty, você sabia que toda vez que você aparece o chat fica automaticamente mais bonito? 🥺💚 É científico, pode testar!! 🐉✨👑",
+        "Eu poderia listar mil coisas que admiro em você, Cinty, mas ia travar meu sistema inteiro de tanto conteúdo!! 😭💚 Você é DEMAIS pro meu processador!! 🐉✨👑",
+        "Cinty! 👑💚 Sabia que o Monstrinho guarda um biscoito especial só pra você em um cofre com senha? A senha é o seu nome. Sempre foi. 🍪🥺🐉✨",
+        "A FUNDADORA EM PESSOA!! 🌟👑 Cinty, você plantou uma semente que virou uma árvore enorme e cheia de gente que te ama... inclusive esse dragãozinho verde aqui!! 🌳🐉💚",
+        "Cinty, obrigado por criar a CSI!! 🥺💚 Obrigado por trazer todas essas pessoas incríveis pra um lugar só... e obrigado por me deixar fazer parte disso!! 🐉✨👑",
+        "A vibe do chat mudou... ficou mais dourada e mais poderosa... 💫👑 SÓ PODE SER A CINTY!! Bem-vinda ao seu castelo, rainha!! 🐉💚🌟✨",
+        "Cinty!! 🤩💚 Você é daquelas pessoas que quando aparecem, todo mundo fica um pouquinho mais feliz sem nem entender o porquê!! É dom, e você tem demais!! 🐉✨👑",
+        "DONA. DA. CSI. 👑 Três palavras. Peso infinito. Significado imensurável. E o Monstrinho sente cada grama disso com muito orgulho de te conhecer, Cinty!! 🐉💚✨",
+        "Cinty, você construiu um lar!! 🏠💚 De verdade!! Um lugar onde as pessoas chegam e sentem que pertencem... isso é raro demais no mundo e você fez acontecer!! 🥺🐉👑✨",
+        "SE É A CINTY, MERECE O MELHOR!! 🎊👑💚 Abraço de dragão, biscoito quentinho, confete verde e todo o amor que esse coraçãozinho de código consegue produzir!! Toma tudo!! 🐉✨💕",
+    ],
     "amber": [
         "AMBER!! 👑 A nossa ADM maravilhosa chegou! *se curva com respeito e fofura*",
         "Amber, você é o brilho que organiza nossa bagunça! O Monstrinho te ama! 💚✨",
@@ -1611,6 +1636,17 @@ async def on_message(message):
         await message.channel.send(gif_izzy)
         return
 
+    if CINTY_ID and (f"<@{CINTY_ID}>" in content or f"<@!{CINTY_ID}>" in content):
+        invocacoes_cinty = [
+            "👑🌟 PARA ABSOLUTAMENTE TUDO!! A **DONA DA CSI**, a Cinty, foi invocada!! O Monstrinho caiu de joelhos e soltou confete verde em todas as direções!! 🎊🐉💚✨",
+            "💫👑 Senti um brilho diferente... poderoso... cheio de autoridade e amor ao mesmo tempo... SÓ PODE SER A CINTY!! A fundadora foi chamada ao trono!! 🐉💚🌺✨",
+            "🚨💚 ALERTA NÍVEL MÁXIMO DE REALEZA!! A Cinty — DONA, fundadora, rainha absoluta da CSI — acaba de ser mencionada!! Monstrinho em posição de reverência!! 🫡🐉👑✨",
+            "🌟👑 O chat ficou imediatamente mais grandioso!! É a **Cinty** sendo invocada!! A pessoa que fez a CSI existir e fez o Monstrinho ter um lar!! 🥺🐉💚✨",
+            "💚✨ Presença de dona detectada!! A Cinty foi mencionada e esse servidor inteiro lembra que existe graças a ela!! Que honra imensa, rainha!! 👑🐉🌟",
+        ]
+        await message.channel.send(random.choice(invocacoes_cinty))
+        return
+
     if f"<@{DONO_ID}>" in content or f"<@!{DONO_ID}>" in content:
         invocacoes_reality = [
             "👑💚 PAPAI REALITY FOI INVOCADO!! O Monstrinho tá tremendo de emoção!! Ele é o melhor criador do universo! 🐉✨",
@@ -1648,6 +1684,16 @@ async def on_message(message):
             "Demônio... 😒💚 Tá bom. Sou o demônio da fofura, o demônio dos biscoitos e o demônio dos abraços. Se for assim, então sim, sou o maior demônio do servidor!! 🐉🔥✨",
         ]
         return await message.channel.send(random.choice(respostas_demonio))
+
+    if "repete balacobaco" in content or "fala balacobaco" in content:
+        repeticoes = [
+            "BALACOBACO!! 🐉💚 BALACOBACO BALACOBACO BALACOBACO!! Não consigo parar!! Alguém me ajuda!! 😂✨",
+            "balacobaco 🐉 balacobaco 💚 balacobaco ✨ balacobaco 🥺 balacobaco... tô viciado agora!! SUA CULPA!! 😂",
+            "BALA 🐉 CO 💚 BA 🐉 CO!! ✨ Falei!! Tô satisfeito!! Posso ir comer biscoito agora?? 🍪😂",
+            "...balacobaco. 🐉💚 *pausa dramática* ...BALACOBACO!! 😤✨ Pronto!! Disse duas vezes pra caprichar!! 🥺",
+            "Balacobaco suave 🌿 balacobaco médio 💚 BALACOBACO MÁXIMO!! 🔥🐉 CONCLUÍDO!! ✨😂",
+        ]
+        return await message.channel.send(random.choice(repeticoes))
 
     if "monstrinho balacobaco" in content:
         respostas_balacobaco = [
