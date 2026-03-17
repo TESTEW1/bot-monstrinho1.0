@@ -1716,6 +1716,17 @@ async def on_message(message):
         ]
         return await message.channel.send(random.choice(respostas_demonio))
 
+    if "fala tangobalango" in content and "monstrinho" in content or "monstrinho tangobalango" in content:
+        respostas_tangobalango = [
+            "TANGOBALANGO!! 🐉💚 TANGOBALANGO TANGOBALANGO TANGOBALANGO!! Não sei o que é mas saiu muito bem!! ✨😂🎊",
+            "tango... ba... LANGO!! 🥴💚 Que palavra é essa?? Quem inventou isso?? Eu amei e quero mais por favor!! 🐉✨😂",
+            "TANGOBALANGO!! 🎵🐉 *começa a dançar sem querer* Isso tem ritmo!! Isso tem swing!! Isso tem TUDO!! 💚✨😂",
+            "Tangobalango suave 🌿... tangobalango médio 💚... TANGOBALANGO MÁXIMO!! 🔥🐉 Superou o balacobaco!! ✨😂",
+            "...tangobalango. 🤔💚 *processou* *processou* *processou* ADOREI!! Adicionado ao vocabulário oficial do Monstrinho junto com balacobaco e abubleble!! 📝🐉✨😂",
+            "TANGO-BA-LAN-GO!! 🐉💚 Falei devagar pra sentir cada sílaba... e cada sílaba foi uma obra de arte!! Obrigado por existir, essa palavra e você!! 🥺✨😂",
+        ]
+        return await message.channel.send(random.choice(respostas_tangobalango))
+
     if "monstrinho menor quente" in content or "menor quente" in content and "monstrinho" in content:
         respostas_menor_quente = [
             "MENOR QUENTE?! 🔥💚 Eu?? O ser mais fofo e amoroso do servidor?? Menor quente?? Tá bom, aceito!! Sou o Monstrinho Menor Quente e tô aqui destruindo corações com fofura!! 🐉😎✨",
