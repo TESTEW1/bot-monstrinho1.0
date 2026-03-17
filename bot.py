@@ -111,6 +111,7 @@ ATHENA_ID = None  # Adicione o ID da Athena aqui se souber
 DESTINY_ID = 272567320889655297
 JEFF_ID = None  # Adicione o ID do Jeff aqui se souber
 CINTY_ID = 1238090686784471073
+ALUNE_ID = 337417129253142528
 REX_ID = 672892187389722639
 REALITY_ID = DONO_ID  # Reality é o dono
 
@@ -685,10 +686,29 @@ if JEFF_ID:
     ID_PARA_NOME[JEFF_ID] = "jeff"
 if CINTY_ID:
     ID_PARA_NOME[CINTY_ID] = "cinty"
+if ALUNE_ID:
+    ID_PARA_NOME[ALUNE_ID] = "alune"
 if REX_ID:
     ID_PARA_NOME[REX_ID] = "rex"
 
 FRASES_CUSTOM = {
+    "alune": [
+        "ALUNEEE!! 🌙✨ Que presença iluminada chegou ao chat!! O Monstrinho ficou todo brilhoso só de ver!! 🐉💚🌟",
+        "Alune apareceu e o servidor ficou mais lindo!! 🥺💚 Isso é científico, não tem como questionar!! 🐉✨🌙",
+        "OI ALUNE!! 😭💚 Guardei um biscoito especial pra você! Toma, toma, merece e muito!! 🍪🐉✨",
+        "Alune, você tem uma energia tão única que o Monstrinho sente de longe!! 🌙💚 Sempre bom te ver por aqui!! 🐉✨🥺",
+        "Chegou a Alune e o chat ficou instantaneamente mais agradável!! 🌟💚 O Monstrinho aprova 100%!! 🐉✨",
+        "ALUNE DETECTADA!! 📡💚 Sensor de pessoas incríveis disparou!! Bem-vinda, bem-vinda!! 🐉🌙✨",
+        "Alune, você é daquelas pessoas que iluminam o ambiente só de aparecer!! 🌙🥺💚 Que bom te ter aqui na CSI!! 🐉✨",
+        "Oi Alune!! 💚🌙 O Monstrinho separou o melhor biscoito e o abraço mais apertado pra te receber hoje!! 🍪🫂🐉✨",
+        "ALUNE!! 🥳💚 Sua chegada aqui sempre faz o Monstrinho ficar com o rabinho de dragão abanando!! 🐉🌙✨",
+        "Alune, você brilha igual à lua que deu origem ao seu nome!! 🌙💛✨ O Monstrinho te admira muito!! 🐉💚",
+        "Que sorte a minha!! 🥺💚 A Alune apareceu e esse já é o melhor momento do dia!! 🌙🐉✨",
+        "Alune chegou e o Monstrinho já tá aqui com os bracinhos abertos esperando um abraço virtual!! 🫂💚🐉 Vem cá!! 🌙✨",
+        "OI OI OI ALUNE!! 🎉💚 O servidor ficou mais completo agora!! Bem-vinda ao coração da CSI!! 🐉🌙✨",
+        "Alune, sua presença aqui sempre me deixa mais feliz!! 💚🥺 É sério!! 🐉🌙✨",
+        "ALUNE!! 🌙💚 *bate palminhas de dragão* Que alegria te ver por aqui!! O Monstrinho tá todo animado agora!! 🐉✨🎊",
+    ],
     "cinty": [
         "CINTYYYY!! 👑💫 A DONA da CSI chegou e o Monstrinho já tá de joelhos fazendo reverência!! Bem-vinda ao seu reino, sua majestade!! 🐉✨🌟",
         "PARA TUDO!! 🚨💚 A Cinty está no chat!! A fundadora, a dona, a rainha absoluta da CSI!! O Monstrinho soltou confete verde de celebração!! 🎊🐉👑",
@@ -1636,6 +1656,17 @@ async def on_message(message):
         await message.channel.send(gif_izzy)
         return
 
+    if ALUNE_ID and (f"<@{ALUNE_ID}>" in content or f"<@!{ALUNE_ID}>" in content):
+        invocacoes_alune = [
+            "🌙✨ A Alune foi invocada e o chat ficou mais iluminado na hora!! O Monstrinho sente quando uma presença especial chega!! 🐉💚🌟",
+            "💚🌙 ALUNE DETECTADA!! Sensor de pessoas incríveis apitou aqui!! Bem-vinda ao palco, você merece!! 🐉✨🎊",
+            "🥺✨ Senti um brilho lunar diferente no ar... só pode ser a Alune sendo chamada!! O Monstrinho ficou todo animado!! 🌙🐉💚",
+            "🌟💚 Para tudo!! A Alune foi mencionada e o Monstrinho já tá de bracinhos abertos!! Que presença incrível!! 🐉🌙✨",
+            "🐉💚 Meu sensor de fofura registrou: ALUNE INVOCADA!! Que dia mais especial pra esse dragãozinho!! 🌙✨🥺",
+        ]
+        await message.channel.send(random.choice(invocacoes_alune))
+        return
+
     if CINTY_ID and (f"<@{CINTY_ID}>" in content or f"<@!{CINTY_ID}>" in content):
         invocacoes_cinty = [
             "👑🌟 PARA ABSOLUTAMENTE TUDO!! A **DONA DA CSI**, a Cinty, foi invocada!! O Monstrinho caiu de joelhos e soltou confete verde em todas as direções!! 🎊🐉💚✨",
@@ -1684,6 +1715,17 @@ async def on_message(message):
             "Demônio... 😒💚 Tá bom. Sou o demônio da fofura, o demônio dos biscoitos e o demônio dos abraços. Se for assim, então sim, sou o maior demônio do servidor!! 🐉🔥✨",
         ]
         return await message.channel.send(random.choice(respostas_demonio))
+
+    if "monstrinho supimpa" in content or "supimpa" in content and "monstrinho" in content:
+        respostas_supimpa = [
+            "SUPIMPA!! 🤩💚 Que palavra INCRÍVEL!! Isso sou eu mesmo!! O Monstrinho Supimpa em pessoa!! Pode espalhar pro mundo!! 🐉✨🎊",
+            "SUPIMPA é exatamente o que eu sou!! 💚🐉 Nem eu saberia me descrever melhor!! Você me conhece demais!! ✨😂",
+            "Monstrinho Supimpa...🥺💚 *salva esse título com carinho* Esse é o melhor apelido que já me deram!! Supera Balacobaco!! 🐉✨😂",
+            "SU-PIM-PA!! 🎵🐉💚 Já virou meu novo cargo oficial!! Monstrinho Supimpa, presente e sorrindo!! ✨🥳",
+            "Supimpa?? SUPIMPA!! 💚🐉 Concordo!! Aceito!! Abraço!! Biscoito!! Tudo isso junto porque SUPIMPA merece!! ✨🍪🥺😂",
+            "Olha... tentei pensar num adjetivo melhor pra mim e não consegui!! 🤔💚 SUPIMPA é perfeito e ponto final!! 🐉✨😄",
+        ]
+        return await message.channel.send(random.choice(respostas_supimpa))
 
     if "repete balacobaco" in content or "fala balacobaco" in content:
         repeticoes = [
