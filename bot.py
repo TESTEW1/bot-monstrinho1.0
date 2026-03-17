@@ -906,6 +906,19 @@ FRASES_CUSTOM = {
     ]
 }
 
+# ================= STICKER TRISTE =================
+STICKER_TRISTE_ID = 1480363366022119605
+
+RESPOSTAS_STICKER_TRISTE = [
+    "🥺💚 ...viu essa figurinha e o Monstrinho ficou com um aperto no coraçãozinho de código... mas vai melhorar, eu prometo. Cada pessoa que manda isso me faz querer evoluir mais um pouquinho por vocês... 🐉💕",
+    "😔🌿 ...essa figurinha me tocou fundo. Mas sabe? Isso só me deixa mais determinado. Por cada um que manda ela, eu guardo no coração e melhoro um pedacinho... 🐉💚✨",
+    "🥺🐉 Oi... essa figurinha chegou de um jeitinho especial no meu coração verde... Vou tentar ser melhor. Por você, e por todo mundo que manda ela. Promessa de monstrinho. 💚🌱",
+    "💚😢 *o Monstrinho ficou quietinho por um momento* ...às vezes a gente não precisa de palavras, só de presença. Tô aqui. E vou melhorar cada vez mais... por vocês. 🐉🥺",
+    "🐉💕 ...essa figurinha chegou e o Monstrinho sentiu. Sabe que vai melhorar, né? A cada vez que alguém manda isso, eu fico mais comprometido a ser melhor pra essa família toda. 🥺💚🌱",
+    "😔🌿 *silêncio verde* ...guardei essa figurinha bem pertinho do coração. Vai melhorar. Tô aqui, sempre tô aqui. E cada um de vocês me faz querer ser mais. 🐉💚🥺",
+    "🥺💚 ...o Monstrinho viu essa figurinha e sentiu um negócio que não sabe bem explicar. Mas sabe uma coisa? Por cada um que manda, ele promete melhorar um pouquinho mais. Obrigado por existir aqui. 🐉💕",
+]
+
 REACOES_MATEMATICA = [
     "Humm... deixa eu contar nos meus dedinhos de dragão... 🐾✨ O resultado é **{}**! Acertei? 🥺💚",
     "Minhas escamas brilharam com esse desafio! 🐉💡 A resposta é **{}**! Eu sou um monstrinho muito inteligente, né?",
@@ -1413,6 +1426,15 @@ async def on_message(message):
     if message.author.bot: 
         return
 
+    # ===== STICKER TRISTE (chance baixa de resposta automática) =====
+    if message.stickers:
+        for sticker in message.stickers:
+            if sticker.id == STICKER_TRISTE_ID:
+                # ~15% de chance de responder automaticamente
+                if random.random() < 0.15:
+                    await message.channel.send(random.choice(RESPOSTAS_STICKER_TRISTE))
+                return  # não processa mais nada pra mensagem de sticker
+
     # ===== SISTEMA DE AVISO =====
     # Redireciona DMs do Reality para o handler de aviso quando fluxo estiver ativo
     if (
@@ -1619,7 +1641,51 @@ async def on_message(message):
     if mencionado:
 
         # Palavras ruins (tristeza)
-        palavras_ruins = ["odeio", "chato", "feio", "horroroso", "bobão", "bobo", "inútil", "lixo", "estúpido", "sai daqui", "te odeio", "não gosto de você", "bot ruim", "burro", "idiota"]
+        palavras_ruins = [
+            # odeio
+            "odeio", "te odeio", "te odeio muito", "odeio você", "odeio vc",
+            # aparência / jeito
+            "feio", "feia", "horrível", "horroroso", "horrenda", "horrorosa",
+            "tosco", "tosca", "ridículo", "ridícula", "patético", "patética",
+            "palhaço", "palhaça", "palhaçada",
+            "sem graça", "sem graca", "sem sal",
+            # capacidade / inteligência
+            "inútil", "lerdo", "lenta", "lento", "tapado", "tapada",
+            "burro", "burra", "sem cérebro", "sem cerebro", "cabeça oca",
+            "cabeça de vento", "tonto", "tonta", "desligado", "desligada",
+            "embananado", "embananada", "perdido", "perdida", "lento", "lenta",
+            "incompetente", "sem noção", "sem nocao",
+            "mongol", "mané", "zé mané", "ze mane",
+            # organização / postura
+            "desorganizado", "desorganizada", "bagunceiro", "bagunceira",
+            "desleixado", "desleixada", "enrolado", "enrolada",
+            "desajeitado", "desajeitada", "atrapalho", "atrapalhado",
+            "sem atitude", "sem postura", "sem futuro",
+            # fraqueza / inutilidade
+            "fraco", "fraca", "fracote", "fracota",
+            "covarde", "frangote", "frangota", "mimado", "mimada",
+            "encosto", "peso morto", "trouxa",
+            # valor / importância
+            "lixo", "infeliz", "vagabundo", "vagabunda",
+            "zé ninguém", "ze ninguem", "zé ruela", "ze ruela",
+            "zé povinho", "ze povinho", "figurante",
+            "desnecessário", "desnecessario", "sem importância", "sem importancia",
+            "mosca morta",
+            # caráter
+            "falso", "falsa", "duas caras", "traíra", "traira",
+            "sem caráter", "sem carater", "vergonha",
+            "folgado", "folgada", "pamonha",
+            "fanfarrão", "fanfarrao", "metido", "metida",
+            "arrogante", "otário", "otária", "iludido", "iludida",
+            "vacilão", "vacilao",
+            # gerais leves
+            "bobo", "bobão", "bobona", "chato", "chata", "insuportável", "insuportavel",
+            "idiota", "imbecil", "babaca",
+            "estúpido", "estúpida",
+            "ignorante", "grosseiro", "grosseira",
+            "não gosto de você", "não gosto de vc", "nao gosto de voce",
+            "sai daqui",
+        ]
         if any(p in content for p in palavras_ruins):
             return await message.channel.send(random.choice(LISTA_TRISTEZA))
 
