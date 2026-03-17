@@ -1681,17 +1681,6 @@ async def on_message(message):
         await message.channel.send(gif_izzy)
         return
 
-    if SIX_ID and (f"<@{SIX_ID}>" in content or f"<@!{SIX_ID}>" in content):
-        invocacoes_six = [
-            "👀💚 O Six foi mencionado!! O Monstrinho já tá de olho!! Vigilância preventiva ATIVADA!! 🐉😤✨😂",
-            "🚨💚 SIX DETECTADO!! Sensor de imprevisibilidade disparou!! Preparem os biscoitos... e guardem também, por precaução!! 🍪🐉😂✨",
-            "💚🐉 Alguém chamou o Six?? O Monstrinho registrou, anotou e já tá preparado pro que vier!! 📋😌✨😂",
-            "😒💚 O Six foi invocado... *suspiro verde* ...tá bom!! Apareça logo que o Monstrinho tá aqui esperando com cara feia e biscoito escondido!! 🐉🍪✨😂",
-            "🐉💚 Six mencionado!! O chat acabou de ficar 50% mais imprevisível e o Monstrinho agradece pela adrenalina!! 📊✨😂",
-        ]
-        await message.channel.send(random.choice(invocacoes_six))
-        return
-
     if ALUNE_ID and (f"<@{ALUNE_ID}>" in content or f"<@!{ALUNE_ID}>" in content):
         invocacoes_alune = [
             "🌙✨ A Alune foi invocada e o chat ficou mais iluminado na hora!! O Monstrinho sente quando uma presença especial chega!! 🐉💚🌟",
