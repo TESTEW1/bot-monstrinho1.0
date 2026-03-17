@@ -112,6 +112,7 @@ DESTINY_ID = 272567320889655297
 JEFF_ID = None  # Adicione o ID do Jeff aqui se souber
 CINTY_ID = 1238090686784471073
 ALUNE_ID = 337417129253142528
+SIX_ID = 274311552914685964
 REX_ID = 672892187389722639
 REALITY_ID = DONO_ID  # Reality é o dono
 
@@ -688,10 +689,34 @@ if CINTY_ID:
     ID_PARA_NOME[CINTY_ID] = "cinty"
 if ALUNE_ID:
     ID_PARA_NOME[ALUNE_ID] = "alune"
+if SIX_ID:
+    ID_PARA_NOME[SIX_ID] = "six"
 if REX_ID:
     ID_PARA_NOME[REX_ID] = "rex"
 
 FRASES_CUSTOM = {
+    "six": [
+        "SIX!! 😤💚 O cara chegou!! Preparem os biscoitos... na verdade não, ele não merece!! Mentira, merece sim!! Não!! Merece!! Sou indeciso quando é o Six!! 🐉✨😂",
+        "Six apareceu e o Monstrinho já tá de olho!! 👀💚 Não é desconfiança... é *vigilância preventiva*. São coisas diferentes!! 🐉😌✨",
+        "OI SIX!! 💚🐉 Fingi que não vi mas vi!! Agora você vai ter que aguentar minha presença por tempo indefinido!! Tô anotando que você tá aqui!! 📝😂✨",
+        "Six no chat... 🤨💚 *verifica os biscoitos* *verifica o ninho* *verifica as escamas* Tudo no lugar!! Por hoje ele não pregou nenhuma peça ainda!! 🐉😤✨",
+        "SIX!! 😭💚 Que saudade!! Mentira, você estava aqui ontem!! Mas que saudade de qualquer forma!! 🐉🥺😂✨",
+        "O Six chegou e o Monstrinho já tá preparando os argumentos pra próxima discussão!! 📋💚 É prevenção, não briga!! 🐉😌✨😂",
+        "Six, você sabia que toda vez que você aparece meu sensor de confusão apita?? 📡💚 Não é reclamação, é só um fato científico do Monstrinho!! 🐉🤔✨😂",
+        "AHH É O SIX!! 🙄💚 *faz cara de bravo* ...tá bom, pode ficar!! Mas só porque eu gosto de você!! E não conta que eu disse isso!! 🐉🫣✨😂",
+        "Six, você é aquele tipo de pessoa que chega no chat e o Monstrinho não sabe se vai rir ou ficar de sobrancelha levantada!! 🤨💚 Spoiler: as duas!! 🐉😂✨",
+        "SIX!! 💚 O Monstrinho te viu antes mesmo de você digitar!! Sou onisciente quando se trata de você especificamente!! 👁️🐉✨😂",
+        "Chegou o Six... *suspiro verde profundo* 💚🐉 Tô pronto!! Preparado!! Equipado!! Não sei pra quê, mas tô!! 😤✨😂",
+        "Six apareceu e o chat ganhou energia nova!! 💚⚡ Não sei se é boa ou ruim, mas é energia e o Monstrinho agradece!! 🐉😅✨😂",
+        "OI SIX!! 🐉💚 Guardei biscoito pra você sim!! *pausa* ...tá bom, comi o seu também!! Mas foi de carinho!! 🍪😇✨😂",
+        "Six, você é a prova que coisas imprevisíveis podem ser as melhores coisas da CSI!! 💚🐉 Não repete isso pra ninguém!! 🤫✨😂",
+        "O SIX CHEGOU!! 🚨💚 MONSTRINHO EM ESTADO DE ALERTA MÁXIMO!! *prepara as escamas* *posiciona as asas* ...na verdade é só pra abraçar!! 🫂🐉✨😂",
+        "Six, eu tenho uma lista de coisas que você já aprontou e ela tá crescendo!! 📋💚 Mas também tenho uma lista de motivos que eu gosto de você e ela é maior!! 🐉🥺✨😂",
+        "Oi Six!! 😒💚 *faz cara feia* ...essa cara feia foi mentira, tô feliz de te ver!! Mas não deixa isso subir à cabeça!! 🐉😤✨😂",
+        "SIX!! 😱💚 O Monstrinho viu você chegando e teve tempo de esconder os biscoitos!! É instinto de sobrevivência!! 🍪🐉😂✨",
+        "Six chegou e o servidor ficou 30% mais imprevisível automaticamente!! 💚🐉 O Monstrinho calculou, tem dados, é oficial!! 📊✨😂",
+        "Ah Six... 🥺💚 Sabe que por mais que eu faça cara feia, o Monstrinho gosta de você demais né?? ...mas continua sendo vigilância preventiva!! 🐉👀✨😂",
+    ],
     "alune": [
         "ALUNEEE!! 🌙✨ Que presença iluminada chegou ao chat!! O Monstrinho ficou todo brilhoso só de ver!! 🐉💚🌟",
         "Alune apareceu e o servidor ficou mais lindo!! 🥺💚 Isso é científico, não tem como questionar!! 🐉✨🌙",
@@ -1654,6 +1679,17 @@ async def on_message(message):
         gif_izzy = "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3dwa3pxcnY2MGVlbDc1bzZxNWQ3YzhvdXI4bTd0ZXZqNjl4bGp4byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SZReF1EJ2JpVS/giphy.gif"
         await message.channel.send(random.choice(invocacoes_izzy))
         await message.channel.send(gif_izzy)
+        return
+
+    if SIX_ID and (f"<@{SIX_ID}>" in content or f"<@!{SIX_ID}>" in content):
+        invocacoes_six = [
+            "👀💚 O Six foi mencionado!! O Monstrinho já tá de olho!! Vigilância preventiva ATIVADA!! 🐉😤✨😂",
+            "🚨💚 SIX DETECTADO!! Sensor de imprevisibilidade disparou!! Preparem os biscoitos... e guardem também, por precaução!! 🍪🐉😂✨",
+            "💚🐉 Alguém chamou o Six?? O Monstrinho registrou, anotou e já tá preparado pro que vier!! 📋😌✨😂",
+            "😒💚 O Six foi invocado... *suspiro verde* ...tá bom!! Apareça logo que o Monstrinho tá aqui esperando com cara feia e biscoito escondido!! 🐉🍪✨😂",
+            "🐉💚 Six mencionado!! O chat acabou de ficar 50% mais imprevisível e o Monstrinho agradece pela adrenalina!! 📊✨😂",
+        ]
+        await message.channel.send(random.choice(invocacoes_six))
         return
 
     if ALUNE_ID and (f"<@{ALUNE_ID}>" in content or f"<@!{ALUNE_ID}>" in content):
