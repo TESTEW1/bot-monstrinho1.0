@@ -1741,6 +1741,28 @@ async def on_message(message):
         ]
         return await message.channel.send(random.choice(respostas_demonio))
 
+    if "monstrinho titanic" in content or "titanic" in content and "monstrinho" in content:
+        respostas_titanic = [
+            "TITANIC?! 🚢💚 Eu?? O Monstrinho não afunda NÃO!! Sou feito de código resistente e muito amor verde!! Pode jogar no oceano que eu flutuo!! 🐉🌊✨😂",
+            "Titanic... 🥺💚 Você tá dizendo que eu sou grandioso, épico e inesquecível?? ACEITO!! Não aceito a parte de afundar!! 🐉🚢✨😂",
+            "MONSTRINHO TITANIC!! 🚢🐉 Então eu sou o navio mais famoso do mundo?? Só aceito se a Rose não empurrar o Jack da porta!! Tem espaço pra dois!! 💚✨😂",
+            "Titanic?? 😤💚 Primeiro: eu não afundo!! Segundo: minhas escamas são mais resistentes que qualquer iceberg!! Terceiro: meu amor por vocês é mais profundo que qualquer oceano!! 🐉🌊✨",
+            "🎵💚 *começa a cantarolar* My heart will go ooooon... 🐉 Olha, entrei no papel rápido!! Mas que fique claro: eu SOBREVIVO!! Sem debate!! 🚢✨😂",
+            "Titanic... 🤔💚 Então quando eu apareço no chat as pessoas ficam de braços abertos na proa gritando que estão voando?? Faz sentido, causei isso em alguém hoje!! 🚢🐉✨😂",
+        ]
+        return await message.channel.send(random.choice(respostas_titanic))
+
+    if "monstrinho lady gaga" in content or "lady gaga" in content and "monstrinho" in content:
+        respostas_lady_gaga = [
+            "LADY GAGA?! 🎤💚 Eu?? O Monstrinho é POP STAR agora?? ACEITO COM TODO O MEU CORAÇÃO VERDE!! Bad Romance começa a tocar toda vez que alguém come meu biscoito sem pedir!! 🐉✨😂",
+            "Monstrinho Lady Gaga... 🥺💚 Então sou vanguardista, icônico e incompreendido pela sociedade?? Os três fazem muito sentido!! 🎤🐉✨😂",
+            "POKER FACE?? 🃏💚 Eu NÃO TENHO poker face!! Meu rosto de dragão entrega tudo!! Toda felicidade, toda tristeza, todo biscoito desaparecido!! 🐉😂✨",
+            "Lady Gaga é a rainha do pop e eu sou o rei da fofura!! 👑💚 Juntos seríamos imparáveis!! Alguém avisa ela?? 🎤🐉✨😂",
+            "🎵💚 Just dance, gonna be okay... 🐉 *começa a dançar com as asinhas* Olha, incorporei muito rápido!! Talento inato!! 🎤✨😂",
+            "Monstrinho Lady Gaga!! 🎤💚 Meu próximo álbum se chama 'Biscoito Cromatica' e o hit principal é 'Born This Fofo'!! Pré-salva!! 🐉✨😂",
+        ]
+        return await message.channel.send(random.choice(respostas_lady_gaga))
+
     if "fala tangobalango" in content and "monstrinho" in content or "monstrinho tangobalango" in content:
         respostas_tangobalango = [
             "TANGOBALANGO!! 🐉💚 TANGOBALANGO TANGOBALANGO TANGOBALANGO!! Não sei o que é mas saiu muito bem!! ✨😂🎊",
