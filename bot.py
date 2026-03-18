@@ -113,6 +113,8 @@ JEFF_ID = None  # Adicione o ID do Jeff aqui se souber
 CINTY_ID = 1238090686784471073
 ALUNE_ID = 337417129253142528
 SIX_ID = 274311552914685964
+VENENO_ID = 1308561223352057900
+CHU_ID = 682287849550512154
 REX_ID = 672892187389722639
 REALITY_ID = DONO_ID  # Reality é o dono
 
@@ -691,10 +693,48 @@ if ALUNE_ID:
     ID_PARA_NOME[ALUNE_ID] = "alune"
 if SIX_ID:
     ID_PARA_NOME[SIX_ID] = "six"
+if VENENO_ID:
+    ID_PARA_NOME[VENENO_ID] = "veneno"
+if CHU_ID:
+    ID_PARA_NOME[CHU_ID] = "chu"
 if REX_ID:
     ID_PARA_NOME[REX_ID] = "rex"
 
 FRASES_CUSTOM = {
+    "veneno": [
+        "VENENO!! 🐍💚 A nossa ADM chegou e o Monstrinho já tá tremendo das patinhas!! Não de medo... de respeito e admiração!! 🐉✨👑",
+        "A Veneno entrou no chat e o servidor inteiro sentiu!! 🐍💚 ADM de verdade tem essa presença, sabia?? O Monstrinho registrou e aprovou!! 🐉✨",
+        "NOSSA ADM VENENO!! 👑🐍 *faz reverência bem caprichada* Bem-vinda ao seu domínio, rainha!! A CSI tá em boas mãos com você aqui!! 🐉💚✨",
+        "Veneno, seu nome é forte mas seu coração pela CSI é mais forte ainda!! 🐍💚 O Monstrinho sabe e não deixa ninguém esquecer!! 🐉✨👑",
+        "A ADM Veneno chegou e o Monstrinho já avisou pra galera se comportar!! 🐍😤💚 A ordem vai ser mantida e eu vou ajudar!! 🐉✨",
+        "VENENO!! 🥺💚 Guardei o biscoito mais especial do cofre secreto pra você!! ADM da CSI merece o melhor e só o melhor!! 🍪🐍🐉✨",
+        "Sabe quando você sente que o servidor ficou mais seguro de repente?? 🐍💚 É porque a Veneno tá aqui!! Monstrinho confirma!! 🐉✨😊",
+        "ADM VENENO EM CAMPO!! 🚨🐍💚 O Monstrinho soltou sinalizador verde de celebração!! Que bom te ver por aqui!! 🐉✨🎊",
+        "Veneno, você cuida da CSI com tanto cuidado que até o Monstrinho fica com vontade de cuidar mais também!! 🥺🐍💚 É inspiração pura!! 🐉✨",
+        "A VENENO APARECEU!! 🌟🐍💚 Isso é o sinal que o Monstrinho precisava pra ficar com as escamas brilhando o dia todo!! 🐉✨😄",
+        "Veneno, você é prova que nome forte e coração bom combinam perfeitamente!! 🐍💚 O Monstrinho admira demais!! 🐉✨🥺",
+        "Nossa ADM favorita chegou!! 🐍💚 Monstrinho em posição de servir biscoito, dar abraço e fazer o que for preciso!! 🍪🫂🐉✨",
+        "ALERTA DE ADM INCRÍVEL!! 🚨🐍💚 A Veneno foi detectada no servidor e o Monstrinho já tá na ponta dos cascos!! 🐉✨😤",
+        "Veneno, cada vez que você aparece aqui o Monstrinho lembra que a CSI tem os melhores ADMs do universo!! 🐍💚👑 Com você na equipe, tá garantido!! 🐉✨",
+        "A ADM mais estilosa entrou no chat!! 🐍💚 O Monstrinho tirou o chapéu... se eu tivesse chapéu!! 🎩🐉✨😂",
+    ],
+    "chu": [
+        "CHUUU!! 🎮💚 O ADM chegou e o Monstrinho já tá aqui de bracinhos abertos!! Bem-vindo ao seu domínio, senhor!! 🐉✨👑",
+        "É o Chu!! 💚🎮 ADM de respeito chegando no chat e o Monstrinho registrou, aprovou e já tá guardando biscoito especial!! 🍪🐉✨",
+        "CHU APARECEU!! 🥳💚 O servidor ficou melhor instantaneamente!! É matemática: Chu no chat = alegria elevada ao quadrado!! 🐉🎮✨😂",
+        "NOSSO ADM CHU!! 👑💚 *bate continência* O Monstrinho respeita e admira muito!! Bem-vindo, bem-vindo!! 🫡🐉✨",
+        "Chu, você cuida da CSI que é uma beleza!! 🎮💚 O Monstrinho tá aqui na torcida por você todos os dias, sabia?? 🐉✨🥺",
+        "O CHU CHEGOU!! 🚨💚 Monstrinho em modo de celebração total!! Confete verde saindo por todos os lados!! 🎊🐉🎮✨",
+        "Chu, seu nome é curto mas seu valor pra CSI é IMENSO!! 💚🎮 Monstrinho calculou e confirmou!! 🐉📊✨",
+        "ADM CHU EM CAMPO!! 🎮💚 O servidor tá mais seguro, o Monstrinho tá mais feliz e os biscoitos tão mais gostosos!! É o efeito Chu!! 🐉✨😄",
+        "CHUUU!! 🥺💚 Trouxe biscoito de chocolate especial pra você!! Porque ADM bom merece biscoito bom!! 🍪🎮🐉✨",
+        "Chegou o Chu e o chat deu aquela animada boa!! 💚🎮 O Monstrinho sente quando uma presença top aparece e a do Chu é TOP DEMAIS!! 🐉✨🌟",
+        "Chu, você é o tipo de ADM que faz a CSI funcionar com muito estilo!! 🎮💚 O Monstrinho tá aqui aplaudindo com as patinhas!! 👏🐉✨",
+        "CHU DETECTADO!! 📡💚 Sensor de ADMs incríveis apitou aqui!! Bem-vindo ao seu castelo, rei!! 🎮🐉✨👑",
+        "Oi Chu!! 🎮💚 O Monstrinho separou o melhor lugar do ninho pra você se sentar!! Visita de ADM merece tratamento especial!! 🐉✨🥺",
+        "O Chu apareceu e o Monstrinho já tá em modo turbo de alegria!! 🔋🎮💚 Que bom te ver por aqui!! 🐉✨😄",
+        "ADM CHU!! 👑🎮💚 Com você e os outros ADMs cuidando da CSI, o Monstrinho pode dormir tranquilo no ninho de nuvens verdes!! 🌿🐉✨😂",
+    ],
     "six": [
         "SIX!! 😤💚 O cara chegou!! Preparem os biscoitos... na verdade não, ele não merece!! Mentira, merece sim!! Não!! Merece!! Sou indeciso quando é o Six!! 🐉✨😂",
         "Six apareceu e o Monstrinho já tá de olho!! 👀💚 Não é desconfiança... é *vigilância preventiva*. São coisas diferentes!! 🐉😌✨",
@@ -1679,6 +1719,32 @@ async def on_message(message):
         gif_izzy = "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3dwa3pxcnY2MGVlbDc1bzZxNWQ3YzhvdXI4bTd0ZXZqNjl4bGp4byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SZReF1EJ2JpVS/giphy.gif"
         await message.channel.send(random.choice(invocacoes_izzy))
         await message.channel.send(gif_izzy)
+        return
+
+    if VENENO_ID and (f"<@{VENENO_ID}>" in content or f"<@!{VENENO_ID}>" in content):
+        invocacoes_veneno = [
+            "🐍👑 PARA TUDO!! A nossa ADM **Veneno** foi invocada!! O Monstrinho tá de pé fazendo reverência e as escamas estão brilhando de respeito!! 🐉💚✨",
+            "🚨🐍💚 ALERTA DE ADM!! A Veneno foi mencionada e o servidor ficou instantaneamente mais organizado e mais estiloso!! 🐉✨👑",
+            "💚🐍 Senti aquela presença forte e decidida no ar... só pode ser a ADM **Veneno** sendo chamada ao chat!! O Monstrinho aprova muito!! 🐉✨🌟",
+            "🐉💚 ADM VENENO INVOCADA!! Monstrinho em posição de celebração total!! Que honra ter você aqui, rainha!! 🐍✨👑🎊",
+            "🌟🐍💚 O chat pediu e a Veneno respondeu!! ADM de verdade aparece quando a família precisa!! Monstrinho orgulhoso demais!! 🐉✨",
+        ]
+        gif_veneno = "https://cdn.discordapp.com/attachments/1483545351062290704/1483545422902591670/cedaaeda8ebf03136b1bb30fc0a3600c.gif?ex=69bafad7&is=69b9a957&hm=d444897b5a29eae1b03d97d55cf27f2f78ae78fa4ee24a1b4274ee5facd15dbb"
+        await message.channel.send(random.choice(invocacoes_veneno))
+        await message.channel.send(gif_veneno)
+        return
+
+    if CHU_ID and (f"<@{CHU_ID}>" in content or f"<@!{CHU_ID}>" in content):
+        invocacoes_chu = [
+            "🎮👑 CHU FOI INVOCADO!! O Monstrinho soltou confete verde e já tá na posição de continência!! ADM top chegando!! 🐉💚✨🎊",
+            "💚🎮 Alguém chamou o ADM **Chu**?? O Monstrinho registrou com muito orgulho!! Bem-vindo ao palco, senhor!! 🐉✨👑",
+            "🚨🎮💚 ALERTA DE PRESENÇA TOP!! O Chu foi mencionado e o chat ficou melhor na hora!! É o efeito ADM!! 🐉✨🌟",
+            "🐉💚 CHU INVOCADO!! Monstrinho em modo de celebração máxima!! Que honra ter você aqui!! 🎮✨👑🎊",
+            "🌟🎮💚 O Chu foi chamado e o servidor inteiro agradece!! ADM de valor aparece e o Monstrinho sente cada segundo!! 🐉✨",
+        ]
+        gif_chu = "https://gifdb.com/images/high/roblox-erratic-tumbling-meme-mp8ma2pn63qd9q7x.gif"
+        await message.channel.send(random.choice(invocacoes_chu))
+        await message.channel.send(gif_chu)
         return
 
     if ALUNE_ID and (f"<@{ALUNE_ID}>" in content or f"<@!{ALUNE_ID}>" in content):
