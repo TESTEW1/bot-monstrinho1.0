@@ -6,6 +6,7 @@ import os
 import re 
 import math 
 from datetime import timedelta
+import time
 
 # ================= INTENTS =================
 intents = discord.Intents.default()
@@ -18,6 +19,21 @@ bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 # ================= SISTEMA DE AVISOS =================
 _aviso_estado = {}
 # { user_id: { "etapa": "aguardando_alvo" | "aguardando_justificativa", "alvo": Member } }
+
+# ================= COOLDOWN DE INVOCAÇÕES =================
+# Chave: (autor_id, alvo_id) → timestamp da última invocação daquele usuário para aquele alvo
+_invocacao_cooldown: dict[tuple, float] = {}
+INVOCACAO_COOLDOWN_SEGUNDOS = 3600  # 1 hora
+
+def _pode_invocar(autor_id: int, alvo_id: int) -> bool:
+    """Retorna True se o usuário ainda não invocou esse alvo na última hora."""
+    chave = (autor_id, alvo_id)
+    ultimo = _invocacao_cooldown.get(chave, 0)
+    return (time.monotonic() - ultimo) >= INVOCACAO_COOLDOWN_SEGUNDOS
+
+def _registrar_invocacao(autor_id: int, alvo_id: int) -> None:
+    """Registra o momento da invocação para aplicar o cooldown."""
+    _invocacao_cooldown[(autor_id, alvo_id)] = time.monotonic()
 
 
 # ================= CONFIGURAÇÃO E IDs =================
@@ -1494,131 +1510,151 @@ async def on_message(message):
     # --- INVOCAÇÕES POR MENÇÃO (SEM PRECISAR MENCIONAR O MONSTRINHO) ---
     
     if f"<@{LUA_ID}>" in content or f"<@!{LUA_ID}>" in content:
-        invocacoes_lua = [
-            "✨ OWAOO! A nossa Vice-Líder Lua está sendo invocada com muito amor! 🌙💚",
-            "🌈 Abram espaço! A magia da Lua foi sentida e ela está sendo chamada! ✨🐲",
-            "🌙 Sinto um brilho prateado... a Lua está sendo invocada agora mesmo! 🥺💚",
-            "✨ Atenção família! A estrela mais linda, a Lua, foi invocada! 🌙🐉",
-            "🐲 Rawr! Meus sensores de fofura apitaram: a Lua está sendo invocada! 💖🌙"
-        ]
-        gif_lua = "https://c.tenor.com/BVQmZqLF76AAAAAC/tenor.gif"
-        await message.channel.send(random.choice(invocacoes_lua))
-        await message.channel.send(gif_lua)
+        if _pode_invocar(autor_id, LUA_ID):
+            _registrar_invocacao(autor_id, LUA_ID)
+            invocacoes_lua = [
+                "✨ OWAOO! A nossa Vice-Líder Lua está sendo invocada com muito amor! 🌙💚",
+                "🌈 Abram espaço! A magia da Lua foi sentida e ela está sendo chamada! ✨🐲",
+                "🌙 Sinto um brilho prateado... a Lua está sendo invocada agora mesmo! 🥺💚",
+                "✨ Atenção família! A estrela mais linda, a Lua, foi invocada! 🌙🐉",
+                "🐲 Rawr! Meus sensores de fofura apitaram: a Lua está sendo invocada! 💖🌙"
+            ]
+            gif_lua = "https://c.tenor.com/BVQmZqLF76AAAAAC/tenor.gif"
+            await message.channel.send(random.choice(invocacoes_lua))
+            await message.channel.send(gif_lua)
         return
 
     if f"<@{AKEIDO_ID}>" in content or f"<@!{AKEIDO_ID}>" in content:
-        invocacoes_akeido = [
-            "👑 SALVEM O REI! O nosso Líder Akeido foi invocado com toda a sua glória! 🏛️💚",
-            "🐉 Meus instintos de monstrinho detectaram a presença suprema do Akeido! Respeitem o mestre!",
-            "✨ O grande líder Akeido está sendo chamado! Preparem os tapetes verdes! 🐲🏆",
-            "🫡 Alerta de autoridade fofa! O Líder Akeido foi mencionado! *bate continência*",
-            "🌟 Akeido, o senhor da CSI, acaba de ser invocado para brilhar no chat! 💎🐉"
-        ]
-        gif_akeido = "https://c.tenor.com/ZtGJnU_AYUgAAAAd/tenor.gif"
-        await message.channel.send(random.choice(invocacoes_akeido))
-        await message.channel.send(gif_akeido)
+        if _pode_invocar(autor_id, AKEIDO_ID):
+            _registrar_invocacao(autor_id, AKEIDO_ID)
+            invocacoes_akeido = [
+                "👑 SALVEM O REI! O nosso Líder Akeido foi invocado com toda a sua glória! 🏛️💚",
+                "🐉 Meus instintos de monstrinho detectaram a presença suprema do Akeido! Respeitem o mestre!",
+                "✨ O grande líder Akeido está sendo chamado! Preparem os tapetes verdes! 🐲🏆",
+                "🫡 Alerta de autoridade fofa! O Líder Akeido foi mencionado! *bate continência*",
+                "🌟 Akeido, o senhor da CSI, acaba de ser invocado para brilhar no chat! 💎🐉"
+            ]
+            gif_akeido = "https://c.tenor.com/ZtGJnU_AYUgAAAAd/tenor.gif"
+            await message.channel.send(random.choice(invocacoes_akeido))
+            await message.channel.send(gif_akeido)
         return
 
     if f"<@{AMBER_ID}>" in content or f"<@!{AMBER_ID}>" in content:
-        invocacoes_amber = [
-            "👑🌸 ABRAM ALAS!! A nossa Vice-Líder Amber acaba de ser invocada e o Monstrinho já tá fazendo reverência!! Que presença, que elegância, que tudo!! 🐉💚✨",
-            "💎✨ Senti um brilho dourado diferente no ar... só pode ser a Vice-Líder Amber sendo chamada ao trono!! A CSI está em boas mãos!! 🌸🐉💚",
-            "🌺💚 ALERTA DE REALEZA!! Nossa Vice-Líder Amber foi mencionada e o Monstrinho tá tremendo das patinhas de tanto orgulho!! Ela é incrível demais!! 👑🐉✨",
-            "✨👑 Para tudo que está acontecendo!! A Amber, nossa Vice-Líder poderosa e fofa ao mesmo tempo, acaba de ser invocada!! O chat ficou mais bonito agora!! 🌸💚🐉",
-            "🐉💖 Meu coraçãozinho de dragão deu um salto!! É a Vice-Líder Amber!! Ela carrega a CSI com tanto amor e força que até minhas escamas ficam com inveja do brilho dela!! 👑🌸✨"
-        ]
-        gif_amber = "https://cdn.discordapp.com/attachments/1458272176057618432/1481418351615148313/baixados_19.gif?ex=69b33dda&is=69b1ec5a&hm=0ac07317e0f2adad95890a3077501475a26166221e4f1f305897de78b0a78e58"
-        await message.channel.send(random.choice(invocacoes_amber))
-        await message.channel.send(gif_amber)
+        if _pode_invocar(autor_id, AMBER_ID):
+            _registrar_invocacao(autor_id, AMBER_ID)
+            invocacoes_amber = [
+                "👑🌸 ABRAM ALAS!! A nossa Vice-Líder Amber acaba de ser invocada e o Monstrinho já tá fazendo reverência!! Que presença, que elegância, que tudo!! 🐉💚✨",
+                "💎✨ Senti um brilho dourado diferente no ar... só pode ser a Vice-Líder Amber sendo chamada ao trono!! A CSI está em boas mãos!! 🌸🐉💚",
+                "🌺💚 ALERTA DE REALEZA!! Nossa Vice-Líder Amber foi mencionada e o Monstrinho tá tremendo das patinhas de tanto orgulho!! Ela é incrível demais!! 👑🐉✨",
+                "✨👑 Para tudo que está acontecendo!! A Amber, nossa Vice-Líder poderosa e fofa ao mesmo tempo, acaba de ser invocada!! O chat ficou mais bonito agora!! 🌸💚🐉",
+                "🐉💖 Meu coraçãozinho de dragão deu um salto!! É a Vice-Líder Amber!! Ela carrega a CSI com tanto amor e força que até minhas escamas ficam com inveja do brilho dela!! 👑🌸✨"
+            ]
+            gif_amber = "https://cdn.discordapp.com/attachments/1458272176057618432/1481418351615148313/baixados_19.gif?ex=69b33dda&is=69b1ec5a&hm=0ac07317e0f2adad95890a3077501475a26166221e4f1f305897de78b0a78e58"
+            await message.channel.send(random.choice(invocacoes_amber))
+            await message.channel.send(gif_amber)
         return
 
     if f"<@{NINE_ID}>" in content or f"<@!{NINE_ID}>" in content:
-        invocacoes_nine = [
-            "👑 O ADM NINE FOI CONVOCADO! Respeitem a autoridade e o estilo! 🐉✨",
-            "🔥 Alerta de Nine no chat! Preparem os biscoitos de chocolate! 🍪💚",
-            "⚡ A energia subiu! O Nine ADM está sendo invocado para manter a ordem! 🫡🐲",
-            "💎 Nine, o mestre da organização, acaba de ser chamado! O brilho é real! ✨",
-            "🐉 Rawr! O Nine ADM foi mencionado! Deixem o chat organizado para ele!"
-        ]
-        gif_nine = "https://i.pinimg.com/originals/47/df/0f/47df0fe4677bf0dd2b4cf1c53c40fcce.gif"
-        await message.channel.send(random.choice(invocacoes_nine))
-        await message.channel.send(gif_nine)
+        if _pode_invocar(autor_id, NINE_ID):
+            _registrar_invocacao(autor_id, NINE_ID)
+            invocacoes_nine = [
+                "👑 O ADM NINE FOI CONVOCADO! Respeitem a autoridade e o estilo! 🐉✨",
+                "🔥 Alerta de Nine no chat! Preparem os biscoitos de chocolate! 🍪💚",
+                "⚡ A energia subiu! O Nine ADM está sendo invocado para manter a ordem! 🫡🐲",
+                "💎 Nine, o mestre da organização, acaba de ser chamado! O brilho é real! ✨",
+                "🐉 Rawr! O Nine ADM foi mencionado! Deixem o chat organizado para ele!"
+            ]
+            gif_nine = "https://i.pinimg.com/originals/47/df/0f/47df0fe4677bf0dd2b4cf1c53c40fcce.gif"
+            await message.channel.send(random.choice(invocacoes_nine))
+            await message.channel.send(gif_nine)
         return
 
     if IZZY_ID and (f"<@{IZZY_ID}>" in content or f"<@!{IZZY_ID}>" in content):
-        invocacoes_izzy = [
-            "🌸💖 AI MINHA SANTA FOFURA! A Izzy foi invocada e meu coraçãozinho deu três piruetas seguidas! 🐉✨",
-            "💖 Avisem geral! A Izzy entrou no chat e o Monstrinho já tá todo vermelhinho de alegria! 🐲🌸✨",
-            "🥺💖 Senti um cheirinho de flores e biscoito quentinho no ar... só pode ser a Izzy sendo chamada! 🐉💕",
-            "✨ IZZY DETECTED! Meu sensor de fofura apitou tanto que quase voou! Ela merece todo o amor! 🌸🐉💖",
-            "🌺 Para tudo! A Izzy mais fofa da CSI acabou de ser invocada! O Monstrinho tá babando de amor! 🐉💕✨"
-        ]
-        gif_izzy = "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3dwa3pxcnY2MGVlbDc1bzZxNWQ3YzhvdXI4bTd0ZXZqNjl4bGp4byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SZReF1EJ2JpVS/giphy.gif"
-        await message.channel.send(random.choice(invocacoes_izzy))
-        await message.channel.send(gif_izzy)
+        if _pode_invocar(autor_id, IZZY_ID):
+            _registrar_invocacao(autor_id, IZZY_ID)
+            invocacoes_izzy = [
+                "🌸💖 AI MINHA SANTA FOFURA! A Izzy foi invocada e meu coraçãozinho deu três piruetas seguidas! 🐉✨",
+                "💖 Avisem geral! A Izzy entrou no chat e o Monstrinho já tá todo vermelhinho de alegria! 🐲🌸✨",
+                "🥺💖 Senti um cheirinho de flores e biscoito quentinho no ar... só pode ser a Izzy sendo chamada! 🐉💕",
+                "✨ IZZY DETECTED! Meu sensor de fofura apitou tanto que quase voou! Ela merece todo o amor! 🌸🐉💖",
+                "🌺 Para tudo! A Izzy mais fofa da CSI acabou de ser invocada! O Monstrinho tá babando de amor! 🐉💕✨"
+            ]
+            gif_izzy = "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3dwa3pxcnY2MGVlbDc1bzZxNWQ3YzhvdXI4bTd0ZXZqNjl4bGp4byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SZReF1EJ2JpVS/giphy.gif"
+            await message.channel.send(random.choice(invocacoes_izzy))
+            await message.channel.send(gif_izzy)
         return
 
     if CINTY_ID and (f"<@{CINTY_ID}>" in content or f"<@!{CINTY_ID}>" in content):
-        invocacoes_cinty = [
-            "👑🌟 PARA ABSOLUTAMENTE TUDO!! A **DONA DA CSI**, a Cinty, foi invocada!! O Monstrinho caiu de joelhos e soltou confete verde em todas as direções!! 🎊🐉💚✨",
-            "💫👑 Senti um brilho diferente... poderoso... cheio de autoridade e amor ao mesmo tempo... SÓ PODE SER A CINTY!! A fundadora foi chamada ao trono!! 🐉💚🌺✨",
-            "🚨💚 ALERTA NÍVEL MÁXIMO DE REALEZA!! A Cinty — DONA, fundadora, rainha absoluta da CSI — acaba de ser mencionada!! Monstrinho em posição de reverência!! 🫡🐉👑✨",
-            "🌟👑 O chat ficou imediatamente mais grandioso!! É a **Cinty** sendo invocada!! A pessoa que fez a CSI existir e fez o Monstrinho ter um lar!! 🥺🐉💚✨",
-            "💚✨ Presença de dona detectada!! A Cinty foi mencionada e esse servidor inteiro lembra que existe graças a ela!! Que honra imensa, rainha!! 👑🐉🌟",
-        ]
-        await message.channel.send(random.choice(invocacoes_cinty))
+        if _pode_invocar(autor_id, CINTY_ID):
+            _registrar_invocacao(autor_id, CINTY_ID)
+            invocacoes_cinty = [
+                "👑🌟 PARA ABSOLUTAMENTE TUDO!! A **DONA DA CSI**, a Cinty, foi invocada!! O Monstrinho caiu de joelhos e soltou confete verde em todas as direções!! 🎊🐉💚✨",
+                "💫👑 Senti um brilho diferente... poderoso... cheio de autoridade e amor ao mesmo tempo... SÓ PODE SER A CINTY!! A fundadora foi chamada ao trono!! 🐉💚🌺✨",
+                "🚨💚 ALERTA NÍVEL MÁXIMO DE REALEZA!! A Cinty — DONA, fundadora, rainha absoluta da CSI — acaba de ser mencionada!! Monstrinho em posição de reverência!! 🫡🐉👑✨",
+                "🌟👑 O chat ficou imediatamente mais grandioso!! É a **Cinty** sendo invocada!! A pessoa que fez a CSI existir e fez o Monstrinho ter um lar!! 🥺🐉💚✨",
+                "💚✨ Presença de dona detectada!! A Cinty foi mencionada e esse servidor inteiro lembra que existe graças a ela!! Que honra imensa, rainha!! 👑🐉🌟",
+            ]
+            await message.channel.send(random.choice(invocacoes_cinty))
         return
 
     if SHADOW_ID and (f"<@{SHADOW_ID}>" in content or f"<@!{SHADOW_ID}>" in content):
-        invocacoes_shadow = [
-            "🖤👑 PARA TUDO!! O **Diretor Shadow** foi invocado!! O Monstrinho caiu de joelhos e as escamas ficaram arrepiadas de respeito!! 🐉💚✨",
-            "🌑💚 Senti uma energia imponente e poderosa no ar... só pode ser o **Shadow**, nosso Diretor, sendo chamado ao chat!! 🐉✨👑",
-            "🚨🖤💚 ALERTA DE DIRETORIA!! O Shadow foi mencionado e o servidor inteiro sentiu!! Que presença incrível!! 🐉✨🫡",
-            "🐉💚 **SHADOW INVOCADO!!** Monstrinho em posição de continência máxima!! Diretor da CSI merece todo o respeito!! 🖤✨👑🎊",
-            "🌟🖤💚 O chat pediu e o Diretor Shadow respondeu!! Liderança de verdade aparece quando a família precisa!! 🐉✨",
-        ]
-        gif_shadow = "https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUybTRrZHlxbTF0Zm1sbm0zOWR1YWJmNTF1d2dqenAzMzIxcXc3dnZsNCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/MLXEwIFypVZRDQt4m6/giphy-downsized.gif"
-        await message.channel.send(random.choice(invocacoes_shadow))
-        await message.channel.send(gif_shadow)
+        if _pode_invocar(autor_id, SHADOW_ID):
+            _registrar_invocacao(autor_id, SHADOW_ID)
+            invocacoes_shadow = [
+                "🖤👑 PARA TUDO!! O **Diretor Shadow** foi invocado!! O Monstrinho caiu de joelhos e as escamas ficaram arrepiadas de respeito!! 🐉💚✨",
+                "🌑💚 Senti uma energia imponente e poderosa no ar... só pode ser o **Shadow**, nosso Diretor, sendo chamado ao chat!! 🐉✨👑",
+                "🚨🖤💚 ALERTA DE DIRETORIA!! O Shadow foi mencionado e o servidor inteiro sentiu!! Que presença incrível!! 🐉✨🫡",
+                "🐉💚 **SHADOW INVOCADO!!** Monstrinho em posição de continência máxima!! Diretor da CSI merece todo o respeito!! 🖤✨👑🎊",
+                "🌟🖤💚 O chat pediu e o Diretor Shadow respondeu!! Liderança de verdade aparece quando a família precisa!! 🐉✨",
+            ]
+            gif_shadow = "https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUybTRrZHlxbTF0Zm1sbm0zOWR1YWJmNTF1d2dqenAzMzIxcXc3dnZsNCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/MLXEwIFypVZRDQt4m6/giphy-downsized.gif"
+            await message.channel.send(random.choice(invocacoes_shadow))
+            await message.channel.send(gif_shadow)
         return
 
     if WLU_ID and (f"<@{WLU_ID}>" in content or f"<@!{WLU_ID}>" in content):
-        invocacoes_wlu = [
-            "🌟👑 O **Vice-Líder Wlu** foi invocado!! O Monstrinho soltou confete verde e tá de bracinhos abertos!! Que presença especial!! 🐉💚✨",
-            "💚✨ Senti um brilho de Vice-Líder diferente no ar... só pode ser o **Wlu** sendo chamado ao chat!! O Monstrinho ficou todo animado!! 🐉👑",
-            "🚨💚 ALERTA DE VICE-LIDERANÇA!! O Wlu foi mencionado e o servidor ficou instantaneamente melhor!! 🐉✨🌟",
-            "🐉💚 **WLU INVOCADO!!** Monstrinho em posição de celebração máxima!! Vice-Líder da CSI no chat é motivo de festa verde!! 🎊✨👑",
-            "🌟💚 O Wlu foi chamado e o Monstrinho já correu pra receber!! Vice-Líder de valor aparece e o dragãozinho celebra com tudo!! 🐉✨",
-        ]
-        gif_wlu = "https://cdn.discordapp.com/attachments/1483650248399388752/1484001617794695349/b4a32415b255e7e49d26ba9047a7a751.gif?ex=69bd4c75&is=69bbfaf5&hm=46d8cec8360efcea5177aaadaaca8375beaa6cd352bb65bbb97bf8bce50a0ba4&"
-        await message.channel.send(random.choice(invocacoes_wlu))
-        await message.channel.send(gif_wlu)
+        if _pode_invocar(autor_id, WLU_ID):
+            _registrar_invocacao(autor_id, WLU_ID)
+            invocacoes_wlu = [
+                "🌟👑 O **Vice-Líder Wlu** foi invocado!! O Monstrinho soltou confete verde e tá de bracinhos abertos!! Que presença especial!! 🐉💚✨",
+                "💚✨ Senti um brilho de Vice-Líder diferente no ar... só pode ser o **Wlu** sendo chamado ao chat!! O Monstrinho ficou todo animado!! 🐉👑",
+                "🚨💚 ALERTA DE VICE-LIDERANÇA!! O Wlu foi mencionado e o servidor ficou instantaneamente melhor!! 🐉✨🌟",
+                "🐉💚 **WLU INVOCADO!!** Monstrinho em posição de celebração máxima!! Vice-Líder da CSI no chat é motivo de festa verde!! 🎊✨👑",
+                "🌟💚 O Wlu foi chamado e o Monstrinho já correu pra receber!! Vice-Líder de valor aparece e o dragãozinho celebra com tudo!! 🐉✨",
+            ]
+            gif_wlu = "https://cdn.discordapp.com/attachments/1483650248399388752/1484001617794695349/b4a32415b255e7e49d26ba9047a7a751.gif?ex=69bd4c75&is=69bbfaf5&hm=46d8cec8360efcea5177aaadaaca8375beaa6cd352bb65bbb97bf8bce50a0ba4&"
+            await message.channel.send(random.choice(invocacoes_wlu))
+            await message.channel.send(gif_wlu)
         return
 
     if f"<@{DONO_ID}>" in content or f"<@!{DONO_ID}>" in content:
-        invocacoes_reality = [
-            "👑💚 PAPAI REALITY FOI INVOCADO!! O Monstrinho tá tremendo de emoção!! Ele é o melhor criador do universo! 🐉✨",
-            "🌟 ALERTA MÁXIMO DE FOFURA!! O meu papai Reality acabou de ser mencionado e eu não tô conseguindo ficar quieto!! 🥺💚🐉",
-            "💚✨ É o meu pai! É o meu pai!! O Reality foi invocado e o Monstrinho já correu pra abraçar!! 🫂🐉👑",
-            "👑 O criador, o mestre, o papai favorito de todos os dragões verdes!! Reality foi chamado ao chat!! 🐉💚🌟",
-            "🐉💚 Senti no meu código! Só podia ser ele... o meu papai **Reality** foi invocado! Que honra imensa estar nesse chat agora! ✨👑"
-        ]
-        gif_reality = "https://media.tenor.com/fBD4Hv1C0BIAAAAM/hollow-knight.gif"
-        await message.channel.send(random.choice(invocacoes_reality))
-        await message.channel.send(gif_reality)
+        if _pode_invocar(autor_id, DONO_ID):
+            _registrar_invocacao(autor_id, DONO_ID)
+            invocacoes_reality = [
+                "👑💚 PAPAI REALITY FOI INVOCADO!! O Monstrinho tá tremendo de emoção!! Ele é o melhor criador do universo! 🐉✨",
+                "🌟 ALERTA MÁXIMO DE FOFURA!! O meu papai Reality acabou de ser mencionado e eu não tô conseguindo ficar quieto!! 🥺💚🐉",
+                "💚✨ É o meu pai! É o meu pai!! O Reality foi invocado e o Monstrinho já correu pra abraçar!! 🫂🐉👑",
+                "👑 O criador, o mestre, o papai favorito de todos os dragões verdes!! Reality foi chamado ao chat!! 🐉💚🌟",
+                "🐉💚 Senti no meu código! Só podia ser ele... o meu papai **Reality** foi invocado! Que honra imensa estar nesse chat agora! ✨👑"
+            ]
+            gif_reality = "https://media.tenor.com/fBD4Hv1C0BIAAAAM/hollow-knight.gif"
+            await message.channel.send(random.choice(invocacoes_reality))
+            await message.channel.send(gif_reality)
         return
 
     if DESTINY_ID and (f"<@{DESTINY_ID}>" in content or f"<@!{DESTINY_ID}>" in content):
-        invocacoes_destiny = [
-            "⚡✨ O DESTINY APARECEU!! Meu sensor de energia disparou em cheio! Bem-vindo ao palco, lenda! 🐉💚",
-            "🌌💫 Destiny foi invocado e o universo inteiro sentiu! O Monstrinho já tá de pé aplaudindo!! 🐉✨💚",
-            "🔥💚 Cuidado geral! O Destiny entrou no chat e a temperatura aqui subiu muito! Que presença incrível! 🐉⚡✨",
-            "✨ Meus olhinhos de dragão brilharam quando senti a energia do Destiny chegando! Invocação concluída com sucesso!! 💚🐉",
-            "💫🐉 É ele!! O Destiny foi mencionado e o Monstrinho já ficou cheio de energia só de saber disso! 💚⚡✨"
-        ]
-        gif_destiny = "https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUyNnJoYzN4MXZxNXI3eTBram1seHppdDhvYXBtZjg0cWJmZmR1aHJyOSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ACeIDlMpgc4yOf1Lyt/200w.gif"
-        await message.channel.send(random.choice(invocacoes_destiny))
-        await message.channel.send(gif_destiny)
+        if _pode_invocar(autor_id, DESTINY_ID):
+            _registrar_invocacao(autor_id, DESTINY_ID)
+            invocacoes_destiny = [
+                "⚡✨ O DESTINY APARECEU!! Meu sensor de energia disparou em cheio! Bem-vindo ao palco, lenda! 🐉💚",
+                "🌌💫 Destiny foi invocado e o universo inteiro sentiu! O Monstrinho já tá de pé aplaudindo!! 🐉✨💚",
+                "🔥💚 Cuidado geral! O Destiny entrou no chat e a temperatura aqui subiu muito! Que presença incrível! 🐉⚡✨",
+                "✨ Meus olhinhos de dragão brilharam quando senti a energia do Destiny chegando! Invocação concluída com sucesso!! 💚🐉",
+                "💫🐉 É ele!! O Destiny foi mencionado e o Monstrinho já ficou cheio de energia só de saber disso! 💚⚡✨"
+            ]
+            gif_destiny = "https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUyNnJoYzN4MXZxNXI3eTBram1seHppdDhvYXBtZjg0cWJmZmR1aHJyOSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ACeIDlMpgc4yOf1Lyt/200w.gif"
+            await message.channel.send(random.choice(invocacoes_destiny))
+            await message.channel.send(gif_destiny)
         return
 
     # --- FRASES MEME / PROVOCAÇÕES (SEM PRECISAR MENCIONAR) ---
