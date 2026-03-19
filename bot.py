@@ -1721,43 +1721,6 @@ async def on_message(message):
         await message.channel.send(gif_izzy)
         return
 
-    if VENENO_ID and (f"<@{VENENO_ID}>" in content or f"<@!{VENENO_ID}>" in content):
-        invocacoes_veneno = [
-            "🐍👑 PARA TUDO!! A nossa ADM **Veneno** foi invocada!! O Monstrinho tá de pé fazendo reverência e as escamas estão brilhando de respeito!! 🐉💚✨",
-            "🚨🐍💚 ALERTA DE ADM!! A Veneno foi mencionada e o servidor ficou instantaneamente mais organizado e mais estiloso!! 🐉✨👑",
-            "💚🐍 Senti aquela presença forte e decidida no ar... só pode ser a ADM **Veneno** sendo chamada ao chat!! O Monstrinho aprova muito!! 🐉✨🌟",
-            "🐉💚 ADM VENENO INVOCADA!! Monstrinho em posição de celebração total!! Que honra ter você aqui, rainha!! 🐍✨👑🎊",
-            "🌟🐍💚 O chat pediu e a Veneno respondeu!! ADM de verdade aparece quando a família precisa!! Monstrinho orgulhoso demais!! 🐉✨",
-        ]
-        gif_veneno = "https://cdn.discordapp.com/attachments/1483545351062290704/1483545422902591670/cedaaeda8ebf03136b1bb30fc0a3600c.gif?ex=69bafad7&is=69b9a957&hm=d444897b5a29eae1b03d97d55cf27f2f78ae78fa4ee24a1b4274ee5facd15dbb"
-        await message.channel.send(random.choice(invocacoes_veneno))
-        await message.channel.send(gif_veneno)
-        return
-
-    if CHU_ID and (f"<@{CHU_ID}>" in content or f"<@!{CHU_ID}>" in content):
-        invocacoes_chu = [
-            "🎮👑 CHU FOI INVOCADO!! O Monstrinho soltou confete verde e já tá na posição de continência!! ADM top chegando!! 🐉💚✨🎊",
-            "💚🎮 Alguém chamou o ADM **Chu**?? O Monstrinho registrou com muito orgulho!! Bem-vindo ao palco, senhor!! 🐉✨👑",
-            "🚨🎮💚 ALERTA DE PRESENÇA TOP!! O Chu foi mencionado e o chat ficou melhor na hora!! É o efeito ADM!! 🐉✨🌟",
-            "🐉💚 CHU INVOCADO!! Monstrinho em modo de celebração máxima!! Que honra ter você aqui!! 🎮✨👑🎊",
-            "🌟🎮💚 O Chu foi chamado e o servidor inteiro agradece!! ADM de valor aparece e o Monstrinho sente cada segundo!! 🐉✨",
-        ]
-        gif_chu = "https://gifdb.com/images/high/roblox-erratic-tumbling-meme-mp8ma2pn63qd9q7x.gif"
-        await message.channel.send(random.choice(invocacoes_chu))
-        await message.channel.send(gif_chu)
-        return
-
-    if ALUNE_ID and (f"<@{ALUNE_ID}>" in content or f"<@!{ALUNE_ID}>" in content):
-        invocacoes_alune = [
-            "🌙✨ A Alune foi invocada e o chat ficou mais iluminado na hora!! O Monstrinho sente quando uma presença especial chega!! 🐉💚🌟",
-            "💚🌙 ALUNE DETECTADA!! Sensor de pessoas incríveis apitou aqui!! Bem-vinda ao palco, você merece!! 🐉✨🎊",
-            "🥺✨ Senti um brilho lunar diferente no ar... só pode ser a Alune sendo chamada!! O Monstrinho ficou todo animado!! 🌙🐉💚",
-            "🌟💚 Para tudo!! A Alune foi mencionada e o Monstrinho já tá de bracinhos abertos!! Que presença incrível!! 🐉🌙✨",
-            "🐉💚 Meu sensor de fofura registrou: ALUNE INVOCADA!! Que dia mais especial pra esse dragãozinho!! 🌙✨🥺",
-        ]
-        await message.channel.send(random.choice(invocacoes_alune))
-        return
-
     if CINTY_ID and (f"<@{CINTY_ID}>" in content or f"<@!{CINTY_ID}>" in content):
         invocacoes_cinty = [
             "👑🌟 PARA ABSOLUTAMENTE TUDO!! A **DONA DA CSI**, a Cinty, foi invocada!! O Monstrinho caiu de joelhos e soltou confete verde em todas as direções!! 🎊🐉💚✨",
