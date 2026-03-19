@@ -116,6 +116,8 @@ SIX_ID = 274311552914685964
 VENENO_ID = 1308561223352057900
 CHU_ID = 682287849550512154
 REX_ID = 672892187389722639
+SHADOW_ID = 1295736893136437340
+WLU_ID = 940036086074343505
 REALITY_ID = DONO_ID  # Reality é o dono
 
 # ID do canal onde o comando !escrever vai enviar mensagens
@@ -699,6 +701,10 @@ if CHU_ID:
     ID_PARA_NOME[CHU_ID] = "chu"
 if REX_ID:
     ID_PARA_NOME[REX_ID] = "rex"
+if SHADOW_ID:
+    ID_PARA_NOME[SHADOW_ID] = "shadow"
+if WLU_ID:
+    ID_PARA_NOME[WLU_ID] = "wlu"
 
 FRASES_CUSTOM = {
     "veneno": [
@@ -981,6 +987,22 @@ FRASES_CUSTOM = {
         "REX E MONSTRINHO: A DUPLA DINOSSAURO + DRAGÃO MAIS FOFA DA CSI!! 🦖🐉💚 Raaawwwrrr!! *rugido duplo de amizade eterna* ✨",
         "Rex, você tem o coração mais corajoso que já vi. 💚🦖 Carregar tanto e ainda aparecer aqui, fazer Raaawwwrrr, sorrir... você é muito mais forte do que imagina! 🐉🥺✨",
         "Trouxe um presente, Rex!! 🎁🦖💚 É um abraço virtual quentinho, sem barulho, sem pressão, do jeitinho que você gosta. É só seu! 🫂🐉✨"
+    ],
+    "shadow": [
+        "SHADOWWW!! 🖤💚 O Diretor da CSI chegou e o Monstrinho já tá na posição de sentido!! Que presença imponente!! 🐉✨👑",
+        "É o Shadow!! 🌑💚 Diretor de verdade tem essa energia... o Monstrinho sente e respeita com todo o coraçãozinho verde!! 🐉✨🫡",
+        "Shadow, você carrega a CSI nas costas com tanta classe que até minhas escamas ficam com inveja!! 🖤💚 O Monstrinho admira demais!! 🐉✨",
+        "DIRETOR SHADOW APARECEU!! 🚨🖤💚 Monstrinho em posição de reverência máxima!! A CSI tá em boas mãos com você!! 🐉👑✨",
+        "Shadow... 🥺💚 Tem pessoas que nascem pra liderar e você é uma delas!! O Monstrinho vê isso e registra com muito orgulho!! 🖤🐉✨",
+        "Senti aquela energia forte e decidida no chat... SÓ PODE SER O SHADOW!! 🌑💚 Diretor presente e o Monstrinho celebra!! 🐉✨🎊",
+    ],
+    "wlu": [
+        "WLUUUU!! 🌟💚 O Vice-Líder da CSI chegou e o Monstrinho tá saltitando de alegria!! Que honra ter você aqui!! 🐉✨👑",
+        "É o Wlu!! 💚✨ Vice-Líder de verdade tem essa presença especial e o Monstrinho sentiu na hora!! 🐉🥺",
+        "WLU APARECEU!! 🚨💚 Monstrinho em modo de celebração total!! Vice-Líder no chat é motivo de festa verde!! 🐉🎊✨",
+        "Wlu, você cuida da CSI com tanto carinho que até minhas escamas ficam emocionadas!! 🥺💚 O Monstrinho te admira demais!! 🐉✨",
+        "Senti um brilho especial de Vice-Líder no ar... SÓ PODE SER O WLU!! 💚🌟 Monstrinho presente e feliz!! 🐉✨🎊",
+        "VICE-LÍDER WLU!! 👑💚 *faz reverência caprichada* Bem-vindo ao seu domínio, senhor!! A CSI tá em boas mãos!! 🐉✨🫡",
     ],
     "reality": [
         "REAAALITY! 👑 O meu mestre, meu criador, meu papai! 🐉💚",
@@ -1730,6 +1752,32 @@ async def on_message(message):
             "💚✨ Presença de dona detectada!! A Cinty foi mencionada e esse servidor inteiro lembra que existe graças a ela!! Que honra imensa, rainha!! 👑🐉🌟",
         ]
         await message.channel.send(random.choice(invocacoes_cinty))
+        return
+
+    if SHADOW_ID and (f"<@{SHADOW_ID}>" in content or f"<@!{SHADOW_ID}>" in content):
+        invocacoes_shadow = [
+            "🖤👑 PARA TUDO!! O **Diretor Shadow** foi invocado!! O Monstrinho caiu de joelhos e as escamas ficaram arrepiadas de respeito!! 🐉💚✨",
+            "🌑💚 Senti uma energia imponente e poderosa no ar... só pode ser o **Shadow**, nosso Diretor, sendo chamado ao chat!! 🐉✨👑",
+            "🚨🖤💚 ALERTA DE DIRETORIA!! O Shadow foi mencionado e o servidor inteiro sentiu!! Que presença incrível!! 🐉✨🫡",
+            "🐉💚 **SHADOW INVOCADO!!** Monstrinho em posição de continência máxima!! Diretor da CSI merece todo o respeito!! 🖤✨👑🎊",
+            "🌟🖤💚 O chat pediu e o Diretor Shadow respondeu!! Liderança de verdade aparece quando a família precisa!! 🐉✨",
+        ]
+        gif_shadow = "https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUybTRrZHlxbTF0Zm1sbm0zOWR1YWJmNTF1d2dqenAzMzIxcXc3dnZsNCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/MLXEwIFypVZRDQt4m6/giphy-downsized.gif"
+        await message.channel.send(random.choice(invocacoes_shadow))
+        await message.channel.send(gif_shadow)
+        return
+
+    if WLU_ID and (f"<@{WLU_ID}>" in content or f"<@!{WLU_ID}>" in content):
+        invocacoes_wlu = [
+            "🌟👑 O **Vice-Líder Wlu** foi invocado!! O Monstrinho soltou confete verde e tá de bracinhos abertos!! Que presença especial!! 🐉💚✨",
+            "💚✨ Senti um brilho de Vice-Líder diferente no ar... só pode ser o **Wlu** sendo chamado ao chat!! O Monstrinho ficou todo animado!! 🐉👑",
+            "🚨💚 ALERTA DE VICE-LIDERANÇA!! O Wlu foi mencionado e o servidor ficou instantaneamente melhor!! 🐉✨🌟",
+            "🐉💚 **WLU INVOCADO!!** Monstrinho em posição de celebração máxima!! Vice-Líder da CSI no chat é motivo de festa verde!! 🎊✨👑",
+            "🌟💚 O Wlu foi chamado e o Monstrinho já correu pra receber!! Vice-Líder de valor aparece e o dragãozinho celebra com tudo!! 🐉✨",
+        ]
+        gif_wlu = "https://media.tenor.com/u9jAXVyIZV8AAAAM/anime-gojou.gif"
+        await message.channel.send(random.choice(invocacoes_wlu))
+        await message.channel.send(gif_wlu)
         return
 
     if f"<@{DONO_ID}>" in content or f"<@!{DONO_ID}>" in content:
