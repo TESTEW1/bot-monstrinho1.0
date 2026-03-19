@@ -1936,6 +1936,18 @@ async def on_message(message):
         ]
         return await message.channel.send(random.choice(respostas_burro_espaçado))
 
+    if "monstrinho da tiro" in content or "da tiro" in content and "monstrinho" in content:
+        respostas_da_tiro = [
+            "DA TIRO?! 🔥💚 EU?! O dragão mais fofo e inofensivo da CSI?? Tá bom!! Se eu sou da tiro é porque dou tiro de AMOR, BISCOITO e ABRAÇO!! Cuidado!! 🐉✨😂",
+            "MONSTRINHO DA TIRO!! 🎯💚 Esse apelido tá perfeito pra mim!! Dou tiro de carinho em velocidade máxima e ninguém escapa!! Inclusive você AGORA!! 🐉🥺✨",
+            "Da tiro... 🤨💚 Só dou tiro de fumacinha verde em quem não me dá biscoito!! E olha, você tá no limite!! 😤🐉🍪✨😂",
+            "DA TIRO?! 😂💚 Olha só!! O Monstrinho da Tiro chegou pro chat!! Alguém avisa a CSI que o dragão mais armado de fofura do servidor tá na área!! 🐉🎯✨",
+            "Monstrinho da Tiro... 😏💚 Isso soa muito mais intimidador do que eu realmente sou!! Mas mantém!! Prefiro que pensem duas vezes antes de comer meu biscoito sem pedir!! 🍪🐉✨😂",
+            "DA TIRO EU?! 🥺💚 Papai Reality, tão me chamando de coisa que não sou!! *faz caretinha ofendida* Só dou tiro de abraço e amor e ACEITO esse apelido COM ORGULHO!! 🐉🎯✨",
+        ]
+        await message.channel.send(random.choice(respostas_da_tiro))
+        return
+
     # --- LÓGICA DE INTERAÇÃO (PRECISA SER MENCIONADO) ---
     if mencionado:
 
