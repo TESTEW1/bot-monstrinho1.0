@@ -1858,17 +1858,6 @@ async def on_message(message):
             "ignorante", "grosseiro", "grosseira",
             "não gosto de você", "não gosto de vc", "nao gosto de voce",
             "sai daqui",
-            # palavrões — frases COMPLETAS (evita falsos positivos em substrings)
-            "vai se foder", "vai se fuder", "vai se lascar",
-            "vai tomar no", "tomar no cu", "tomar no rabo",
-            "foda se", "foda-se", "se foda",
-            "me fode", "se fode", "fodasse", "fode-se",
-            "filho da puta", "fdp", "filha da puta",
-            "sua puta", "puta que pariu", "puta merda",
-            "vai à merda", "vai pra merda",
-            "cala a boca", "cala boca", "cale a boca",
-            "seu lixo", "você é lixo", "voce e lixo",
-            "vou te matar", "te mato",
         ]
         if any(p in content for p in palavras_ruins):
             return await message.channel.send(random.choice(LISTA_TRISTEZA))
@@ -2072,7 +2061,7 @@ async def on_message(message):
         
         if "biscoito" in content:
             # Dar biscoito para o Monstrinho
-            if any(p in content for p in ["me de", "me da", "me dá", "me dê", "quero", "ganhar", "pega", "aceita", "me toma", "toma aqui", "toma esse", "toma este", "pode tomar"]):
+            if any(p in content for p in ["me de", "me da", "me dá", "me dê", "quero", "ganhar", "pega", "toma", "aceita"]):
                 return await message.channel.send(random.choice(REACOES_BISCOITO_PROPRIO))
             
             # Dar biscoito para outra pessoa
