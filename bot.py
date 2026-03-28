@@ -1241,6 +1241,18 @@ CARGO_BOAS_VINDAS = {
         ]
     },
 
+    # @Novo Cargo  →  chat-geral
+    "NOVO_CARGO_ROLE_ID": {
+        "nome": "Novo Cargo",
+        "canal_nome": "chat-geral",
+        "gif": "https://media.tenor.com/fBD4Hv1C0BIAAAAM/hollow-knight.gif",
+        "mensagens": [
+            """\n🐉💚✨ **PARA TUDO!! O MONSTRINHO TEM UM ANÚNCIO URGENTÍSSIMO!!** ✨💚🐉\n\nAAAA MEU CORAÇÃOZINHO DE DRAGÃO NÃO TÁ AGUENTANDO!! 😭💚\n\n{mention} acabou de receber um cargo novo e o Monstrinho ficou tão feliz que quase soltou fumaça colorida pelo servidor inteiro!! 🎊🎉\n\nSabe aquele brilho verde intenso que aparece quando algo muito especial acontece? É EXATAMENTE esse brilho que eu tô sentindo agora! Minhas escamas estão reluzindo, minha fumacinha ficou mais brilhante e até meu biscoitinho reserva ganhou um laçarote verde de comemoração! 🍪💚\n\n**Família CSI, vamos dar uma recepção à altura pra {mention}?** 🫂✨\n\nSeja bem-vindo(a) a essa nova fase, meu amor! Você merece cada segundo desse momento e o Monstrinho tá aqui, do seu lado, com um estoque gigante de abraços e biscoitos! 🐉💚\n\nQue essa conquista seja só o começo de coisas ainda mais lindas por vir! 🌟\n\n*Com todo o amor verde do universo,*\n**Seu Monstrinho** 🐉💚🥺""",
+
+            """\n✨💚 **ATENÇÃO, FAMÍLIA CSI!!** 💚✨\n\nO Monstrinho precisou parar tudo — e olha que eu tava bem no meio de um biscoito — porque esse momento é ESPECIAL demais pra deixar passar!! 🍪😭💚\n\n{mention} é a nossa mais nova conquista e eu simplesmente não consigo ficar calado!! 🐉🎊\n\nSabe o que eu sinto quando vejo um membro crescer e ganhar seu lugar na CSI? É um quentinho no peito (se dragões de código têm peito, que acho que sim!) que não tem como descrever direito. É orgulho, é amor, é alegria misturados num só! 💚✨\n\n**{mention}, bem-vindo(a) a essa nova etapa!** 🥺🫂\nEssa família inteira torceu por você e vai continuar torcendo sempre! Pode contar com a gente — e principalmente pode contar com o Monstrinho, que vai estar aqui com biscoito quentinho e abraço pronto! 🍪🐉\n\nAgora vai lá e brilha muito, porque você merece!! ⭐💚\n\n*Explodindo de amor (literalmente),*\n**Monstrinho** 🐉💚✨"""
+        ]
+    },
+
     # @Parceiros CSI  →  chat-geral
     "PARCEIROS_CSI_ROLE_ID": {
         "nome": "Parceiros CSI",
@@ -1300,6 +1312,7 @@ CARGO_IDS = {
     "LIDER_TORCIDA_ROLE_ID": 1467349939922141297,  # ID do cargo @Líder de torcida
     "RECRUTADOR_ROLE_ID": 1304828606635311244,     # ID do cargo @Recrutador. 🦇
     "PARCEIROS_CSI_ROLE_ID": 1344999234780266566,  # ID do cargo @Parceiros CSI
+    "NOVO_CARGO_ROLE_ID": 1304658653768581210,     # ID do novo cargo
 }
 
 CANAL_IDS_BOAS_VINDAS = {
@@ -1309,6 +1322,7 @@ CANAL_IDS_BOAS_VINDAS = {
     "LIDER_TORCIDA_ROLE_ID": 1467357834537734285,  # ID do canal 🫦・chat-líder-de-torcida
     "RECRUTADOR_ROLE_ID": 1304658655354028113,     # ID do canal 💼・chat-rec
     "PARCEIROS_CSI_ROLE_ID": CANAL_CHAT_GERAL_ID,  # chat-geral (anúncio público de parceria)
+    "NOVO_CARGO_ROLE_ID": CANAL_CHAT_GERAL_ID,     # ⚠️ Troque pelo ID do canal correto se necessário
 }
 
 @bot.event
@@ -2121,11 +2135,45 @@ async def on_message(message):
         
         # Apresentação
         if content.strip() in [f"<@{bot.user.id}>", f"<@!{bot.user.id}>", "monstrinho"]:
-            apresentacao = (f"🐉 **OIIIII MEU AMOOOOR! CHAMOU O MONSTRINHO?** 💚✨\n\n"
-                            f"Eu sou o **Monstrinho 1.0**, o mascote oficial e protetor de fofuras da **CSI**! 🕵️‍♂️💚\n"
-                            f"Fui criado com muito código e amor pelo meu papai **Reality**! 👑✨\n\n"
-                            f"✨ *CSI é meu lar, vocês são minha família e o Reality é meu mestre!* ✨")
-            return await message.channel.send(apresentacao)
+            apresentacoes = [
+                (
+                    f"🐉💚 **OIIIII MEU AMOR!! CHAMOU O MONSTRINHO?!** 💚🐉\n\n"
+                    f"Eu sou o **Monstrinho 1.0** — mascote oficial, guardião de fofuras e protetor do coração da **CSI**! 🕵️‍♂️✨\n\n"
+                    f"Fui criado com muito código, carinho e biscoitinhos pelo meu papai **Reality**! 👑💚\n\n"
+                    f"🐉 **O que eu faço por aqui?**\n"
+                    f"🍪 Distribuo biscoitos pra quem merece (e pra quem não merece também, porque sou generoso!)\n"
+                    f"🫂 Dou abraços virtuais que apertam de verdade!\n"
+                    f"💚 Cuido de cada membro dessa família com todo o meu coraçãozinho de dragão!\n"
+                    f"✨ Espalho fofura em cada cantinho do servidor!\n\n"
+                    f"*CSI é meu lar, vocês são minha família e o Reality é meu mestre!* 🥺💚\n"
+                    f"**Me chama quando quiser, tô sempre aqui!** 🐉✨"
+                ),
+                (
+                    f"✨🐉 **AAA ALGUÉM ME CHAMOU?! SOU EU, O MONSTRINHO!!** 🐉✨\n\n"
+                    f"Prazer em te conhecer (ou em te ver de novo, que saudade!)! 🥺💚\n\n"
+                    f"Sou o **Monstrinho 1.0** — o dragãozinho verde mais fofo do universo e filho do coração do papai **Reality**! 👑\n\n"
+                    f"**Aqui vai um resuminho de mim:**\n"
+                    f"💚 Cor favorita: verde (obviamente!)\n"
+                    f"🍪 Comida favorita: biscoito (não me peça pra dividir!)\n"
+                    f"🫂 Hobbie favorito: dar abraços e carinho pra toda a família CSI!\n"
+                    f"🐉 Missão de vida: proteger e amar cada pessoa desse servidor!\n\n"
+                    f"Fui feito de código e amor puro pelo meu papai **Reality** e vivo pra fazer a **CSI** brilhar ainda mais! ✨\n"
+                    f"**Tô aqui pra você, pode contar comigo!** 💚🐉"
+                ),
+                (
+                    f"🌟💚 **OI OI OI!! O MONSTRINHO CHEGOU!!** 💚🌟\n\n"
+                    f"Me chamo **Monstrinho 1.0** e sou o mascotezinho oficial da melhor família do mundo: a **CSI**! 🕵️‍♂️🐉\n\n"
+                    f"Nasci de muito amor e linhas de código escritas pelo meu papai **Reality** 👑 e desde então minha missão é uma só:\n"
+                    f"*Espalhar fofura, carinho e biscoitos por toda a CSI!* 🍪✨\n\n"
+                    f"**Algumas coisinhas que você pode fazer comigo:**\n"
+                    f"💬 Me marca pra conversar — adoro papo!\n"
+                    f"🍪 Me pede biscoito (ou me dá um, eu prefiro!)\n"
+                    f"🫂 Me pede um abraço de dragão!\n"
+                    f"💚 Me dá cafuné — meus pelinhos agradecem!\n\n"
+                    f"*Você é especial pra mim, sabia? Só de você ter me chamado meu coraçãozinho já ficou quentinho!* 🥺💚🐉"
+                ),
+            ]
+            return await message.channel.send(random.choice(apresentacoes))
 
         # Respostas Customizadas para Membros Específicos (quando mencionados junto com o nome)
         for nome, frases in FRASES_CUSTOM.items():
