@@ -2007,10 +2007,14 @@ async def on_message(message):
 
         # ===== RESPOSTAS AUTOMÁTICAS POR ID (quando o Monstrinho é mencionado) =====
         if nome_customizado and nome_customizado in FRASES_CUSTOM:
-            # Waz tem chance maior de resposta (70%) e respostas mais interativas
-            chance = 0.70 if nome_customizado == "waz" else 0.30
+            # Waz tem chance maior (70%), Reality tem chance menor (15%), demais 30%
+            if nome_customizado == "waz":
+                chance = 0.70
+            elif nome_customizado == "reality":
+                chance = 0.15
+            else:
+                chance = 0.30
             frases = FRASES_CUSTOM[nome_customizado]
-            # Para a Waz, mistura as frases de saudação com as interativas
             if nome_customizado == "waz":
                 frases = frases + INTERACOES_WAZ_ESPONTANEAS
             if random.random() < chance:
