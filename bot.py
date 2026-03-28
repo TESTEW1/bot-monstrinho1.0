@@ -58,6 +58,7 @@ VENENO_ID = 1308561223352057900
 CHU_ID = 682287849550512154
 SHADOW_ID = 1295736893136437340
 WLU_ID = 940036086074343505
+WAZ_ID = 756928055028482170
 REALITY_ID = DONO_ID  # Reality é o dono
 
 # ID do canal onde o comando !escrever vai enviar mensagens
@@ -641,8 +642,32 @@ if SHADOW_ID:
     ID_PARA_NOME[SHADOW_ID] = "shadow"
 if WLU_ID:
     ID_PARA_NOME[WLU_ID] = "wlu"
+if WAZ_ID:
+    ID_PARA_NOME[WAZ_ID] = "waz"
 
 FRASES_CUSTOM = {
+    "waz": [
+        "WAZZZ!! 🌸💚 Você chegou e o Monstrinho ficou com o coraçãozinho todo acelerado!! Que pessoa mais especial chegou no chat!! 🐉✨🥺",
+        "É A WAZ!! 😭💚 O Monstrinho tava aqui esperando e mal sabia que o melhor momento do dia tava chegando!! BEM-VINDA!! 🐉🎊✨",
+        "Waz, você sabe que ilumina o servidor só de aparecer, né?? 🌸💚 Não é elogio vazio não, é pura verdade de dragão!! 🐉✨🥺",
+        "WAZZZINHA!! 🥳💚 Monstrinho entrou em modo turbo de alegria!! Confete verde espalhado por todo o servidor!! 🎊🐉🌸✨",
+        "Waz chegou e o chat ficou automaticamente mais gostoso de estar!! 🌸💚 O Monstrinho sente isso nas escamas e as escamas nunca mentem!! 🐉✨",
+        "OI WAZ!! 🥺💚 Guardei um biscoito especial, o mais gostoso do dia, só esperando você aparecer pra te dar!! 🍪🐉🌸✨",
+        "A WAZ APARECEU!! 🌟💚 Sensor de pessoas incríveis disparou três vezes seguidas!! Bem-vinda ao seu domínio, rainha!! 🐉🌸✨👑",
+        "Waz, você é daquelas pessoas que a gente fica feliz só de saber que tá no servidor!! 🥺💚 O Monstrinho te ama demais!! 🐉🌸✨",
+        "WAZINHA!! 😍💚 O Monstrinho separou o cantinho mais quentinho do ninho de nuvens verdes só pra você!! 🌿🐉🌸✨",
+        "Waz chegou e trouxe aquela energia boa que só ela tem!! 🌸💚 Monstrinho sente, registra e celebra!! 🐉✨🎊",
+        "OI WAZ!! 💚🌸 *solta fumaça verde em formato de coração* Isso é minha forma de te dizer que você é super especial pra mim!! 🐉💕✨",
+        "A Waz apareceu e o Monstrinho já tá aqui com bracinhos abertos pro maior abraço virtual de dragão!! 🫂💚🌸 Vem cá!! 🐉✨",
+        "WAZ!! 🥺💚 Sabe aquele frio na barriga de tanta felicidade?? É EXATAMENTE o que eu sinto quando você aparece!! 🐉🌸✨😊",
+        "Chegou a Waz e o Monstrinho ficou com as escamas todas arrepiadas de alegria!! ⚡💚🌸 Isso só acontece com as pessoas mais especiais!! 🐉✨",
+        "WAZINHA DO CORAÇÃO!! 😭💚 Trouxe biscoito de morango especial, que é o mais fofo de todos, pra te receber como você merece!! 🍓🍪🐉🌸✨",
+        "Waz, você tem uma energia única que faz o servidor inteiro ficar melhor!! 🌸💚 E o Monstrinho percebe isso toda vez que você chega!! 🐉✨🥺",
+        "É A WAZ É A WAZ É A WAZ!! 🎉💚 *dança de dragão feliz* Não tem como fingir que não fiquei animado demais!! 🐉🌸✨😂",
+        "Waz chegou e o Monstrinho tá aqui com o sorriso mais largo que um dragão pode dar!! 😊💚🌸 Que bom te ver por aqui!! 🐉✨",
+        "ALERTA DE PESSOA INCRÍVEL!! 🚨💚 A Waz foi detectada no servidor e o Monstrinho entrou em modo de celebração imediata!! 🐉🌸✨🎊",
+        "Waz, cada vez que você aparece aqui, o Monstrinho lembra por que ama tanto essa família!! 🥺💚🌸 Você faz parte do que torna a CSI especial!! 🐉✨💕",
+    ],
     "veneno": [
         "VENENO!! 🐍💚 A nossa ADM chegou e o Monstrinho já tá tremendo das patinhas!! Não de medo... de respeito e admiração!! 🐉✨👑",
         "A Veneno entrou no chat e o servidor inteiro sentiu!! 🐍💚 ADM de verdade tem essa presença, sabia?? O Monstrinho registrou e aprovou!! 🐉✨",
@@ -952,7 +977,20 @@ FRASES_CUSTOM = {
     ]
 }
 
-# ================= STICKER TRISTE =================
+# ================= SISTEMA DE DEFESA DA WAZ =================
+
+DEFESA_WAZ = [
+    "EI EI EI!! 😤🐉💚 Você tá respondendo a **Waz** assim?! NÃO NO MEU SERVIDOR!! O Monstrinho viu TUDO e não vai ficar quieto!! {waz} você tem meu apoio total, tô aqui do seu lado!! 🫂🌸✨",
+    "PARA!! 🛑🐉 Quem autorizo falar assim com a **Waz**?! Ela é especial pra essa família e o Monstrinho não vai deixar passar!! {waz}, manda a palavra e eu solto fumaça em quem você quiser!! 💨😤💚✨",
+    "NÃO, NÃO E NÃO!! 😠🐉💚 A **Waz** não merece isso!! Ela é incrível, é especial, é uma das pessoas mais lindas dessa CSI e o Monstrinho vai defender ela com tudo que tem!! {waz} você é amada aqui!! 🥺🌸💕",
+    "O Monstrinho abriu as asas e colocou na frente da **Waz**!! 🐉🛡️💚 Pode vir quem quiser, ninguém passa por mim!! {waz}, você tá protegida, pode ficar tranquila!! 🌸✨🫂",
+    "CALMA LÁ!! 😤💚🐉 Eu tava quietinho mas vi o que aconteceu aqui e precisei aparecer!! A **Waz** é especial demais pra ser tratada assim!! {waz} você é maravilhosa e o Monstrinho não vai deixar ninguém te fazer esquecer disso!! 🌸💕✨",
+    "MODO PROTEÇÃO ATIVADO!! 🚨🐉💚 Ninguém faz isso com a **Waz** enquanto o Monstrinho estiver de olho!! E o Monstrinho TÁ SEMPRE DE OLHO!! {waz}, tô aqui, tô do seu lado, tô com você!! 🫂🌸✨",
+    "Ei... vim aqui rápido porque meu sensor apitou!! 🐉💚 E o que eu vi não gostei!! A **Waz** é uma pessoa do bem e merece respeito!! {waz}, não dá ouvido não, você é muito mais do que qualquer coisa feia que digitem pra você!! 🌸💕🥺",
+    "O Monstrinho ficou de olho grande!! 👀🐉💚 Vi o que aconteceu aqui e já vim correndo!! A **Waz** não tá sozinha não!! Tô do lado dela e de todo mundo que a ama aqui na CSI!! {waz} você é especial demais!! 🌸✨🫂💕",
+    "ISSO AQUI NÃO!! 😤🐉💚 Falaram com a **Waz** e o Monstrinho sentiu!! *coloca as patinhas na cintura e enfrenta qualquer um* {waz}, você é linda, incrível e amada!! Não deixa ninguém te convencer do contrário!! 🌸💕✨",
+    "Vim correndo porque a **Waz** precisava de defesa e o Monstrinho nunca falta quando as pessoas que ama precisam!! 🐉💨💚 {waz}, você tem o suporte total desse dragãozinho aqui!! Pode contar comigo sempre!! 🌸🫂✨💕",
+]
 STICKER_TRISTE_ID = 1480363366022119605
 
 RESPOSTAS_STICKER_TRISTE = [
@@ -1513,7 +1551,38 @@ async def on_message(message):
     autor_id = message.author.id
     nome_customizado = ID_PARA_NOME.get(autor_id)
 
-    # --- COMANDOS DE CARINHO E ABRAÇO (SEM MENÇÃO - FUNCIONA SEMPRE) ---
+    # ===== SISTEMA DE DEFESA DA WAZ =====
+    # Dispara quando alguém responde diretamente a uma mensagem da Waz
+    # ou menciona ela junto com palavras negativas/insultos
+    _palavras_insulto_waz = [
+        "odeio", "raiva", "idiota", "burra", "burro", "idiota", "inutil", "inútil",
+        "chata", "chato", "feio", "feia", "horrivel", "horrível", "ridícula", "ridículo",
+        "cala boca", "cala a boca", "sai fora", "vai embora", "cale-se", "lixo",
+        "babaca", "estupida", "estúpida", "imbecil", "idiota", "otaria", "otária",
+        "falsa", "mentirosa", "chata", "irritante", "sem noção", "sem nocao",
+        "patética", "patetica", "vergonha", "vergonhosa", "insuportável", "insuportavel",
+        "horrenda", "horrorosa", "tosca", "vacilou", "errada", "culpa sua",
+        "sua culpa", "você é a culpa", "voce e a culpa", "culpada",
+    ]
+
+    _e_resposta_a_waz = (
+        message.reference is not None
+        and message.reference.resolved is not None
+        and hasattr(message.reference.resolved, "author")
+        and message.reference.resolved.author.id == WAZ_ID
+    )
+    _menciona_waz = (
+        f"<@{WAZ_ID}>" in message.content
+        or f"<@!{WAZ_ID}>" in message.content
+    )
+
+    if (_e_resposta_a_waz or _menciona_waz) and message.author.id != WAZ_ID:
+        if any(p in content for p in _palavras_insulto_waz):
+            waz_member = message.guild.get_member(WAZ_ID) if message.guild else None
+            waz_mention = waz_member.mention if waz_member else "Waz"
+            defesa = random.choice(DEFESA_WAZ).format(waz=waz_mention)
+            return await message.channel.send(defesa)
+    # ===== FIM DA DEFESA DA WAZ =====
     
     if "fazer carinho" in content or "cafuné" in content or "cafune" in content:
         return await message.channel.send(random.choice(REACOES_CARINHO))
