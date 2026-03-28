@@ -1713,45 +1713,51 @@ async def on_message(message):
             return await message.channel.send(defesa)
     # ===== FIM DA DEFESA DA WAZ =====
     
-    # ===== INTERAÇÕES ESPONTÂNEAS COM A WAZ =====
-    # Quando a própria Waz manda qualquer mensagem (sem precisar mencionar o Monstrinho)
-    if message.author.id == WAZ_ID and not mencionado:
+    # ===== INTERAÇÕES DA WAZ (só quando ela fala com/sobre o Monstrinho) =====
+    if message.author.id == WAZ_ID:
 
         # --- Respostas à pergunta de abraço (apertado ou longo) ---
-        _resposta_apertado = any(p in content for p in [
-            "apertado", "aperta", "mais forte", "aperta mais", "forte", "bem apertado", "apertadinho"
-        ])
-        _resposta_longo = any(p in content for p in [
-            "longo", "demorado", "demora", "devagar", "bem longo", "longa", "durando", "durar", "longuinho", "longo mesmo"
-        ])
+        # Só faz sentido se for reply ou se mencionar o Monstrinho
+        _fala_com_monstrinho = mencionado or (
+            message.reference is not None
+            and message.reference.resolved is not None
+            and hasattr(message.reference.resolved, "author")
+            and message.reference.resolved.author.id == bot.user.id
+        )
 
-        if _resposta_apertado:
-            return await message.channel.send(random.choice(WAZ_ABRACO_APERTADO))
-        if _resposta_longo:
-            return await message.channel.send(random.choice(WAZ_ABRACO_LONGO))
+        if _fala_com_monstrinho:
+            _resposta_apertado = any(p in content for p in [
+                "apertado", "aperta", "mais forte", "aperta mais", "bem apertado", "apertadinho"
+            ])
+            _resposta_longo = any(p in content for p in [
+                "longo", "demorado", "demora", "devagar", "bem longo", "durando", "durar", "longuinho"
+            ])
 
-        # --- Interações exclusivas da Waz sem mencionar o Monstrinho ---
+            if _resposta_apertado:
+                return await message.channel.send(random.choice(WAZ_ABRACO_APERTADO))
+            if _resposta_longo:
+                return await message.channel.send(random.choice(WAZ_ABRACO_LONGO))
+
+        # --- Interações que a Waz inicia falando com o Monstrinho (sem precisar mencionar) ---
         if any(p in content for p in ["abraçar monstrinho", "abracar monstrinho", "abraço monstrinho", "abraco monstrinho"]):
             return await message.channel.send(random.choice(WAZ_ABRACAR_MONSTRINHO))
 
-        if any(p in content for p in ["fazer carinho", "cafuné", "cafune", "carinho no monstrinho", "carinho monstrinho"]):
+        if any(p in content for p in ["fazer carinho no monstrinho", "cafuné no monstrinho", "cafune no monstrinho", "carinho no monstrinho"]):
             return await message.channel.send(random.choice(WAZ_FAZER_CARINHO))
 
-        if any(p in content for p in ["dá biscoito", "da biscoito", "toma biscoito", "biscoito pra você", "biscoito pra vc", "biscoito monstrinho"]):
+        if any(p in content for p in ["biscoito pro monstrinho", "biscoito pra você monstrinho", "toma biscoito monstrinho", "dá biscoito monstrinho", "da biscoito monstrinho"]):
             return await message.channel.send(random.choice(WAZ_DAR_BISCOITO))
 
-        if any(p in content for p in ["boa noite", "boa nite", "boa noite", "vou dormir", "indo dormir", "tchau monstrinho", "até amanhã", "ate amanha"]):
-            return await message.channel.send(random.choice(WAZ_BOA_NOITE))
+        # Boa noite / bom dia / te amo só se mencionar o Monstrinho ou for reply pra ele
+        if _fala_com_monstrinho:
+            if any(p in content for p in ["boa noite", "boa nite", "vou dormir", "indo dormir", "tchau", "até amanhã", "ate amanha"]):
+                return await message.channel.send(random.choice(WAZ_BOA_NOITE))
 
-        if any(p in content for p in ["bom dia", "bom diaaa", "bom diaa", "acordei", "oi monstrinho", "oi monstrin"]):
-            return await message.channel.send(random.choice(WAZ_BOM_DIA))
+            if any(p in content for p in ["bom dia", "bom diaaa", "bom diaa", "acordei"]):
+                return await message.channel.send(random.choice(WAZ_BOM_DIA))
 
-        if any(p in content for p in ["te amo", "amo você", "amo voce", "amo vc", "te amo monstrinho", "amo demais"]):
-            return await message.channel.send(random.choice(WAZ_TE_AMO))
-
-        # --- Interações espontâneas (chance aleatória) ---
-        if random.random() < 0.40:
-            return await message.channel.send(random.choice(INTERACOES_WAZ_ESPONTANEAS))
+            if any(p in content for p in ["te amo", "amo você", "amo voce", "amo vc", "amo demais"]):
+                return await message.channel.send(random.choice(WAZ_TE_AMO))
 
     # Quando alguém cita o nome da Waz no chat (sem insulto, sem mencionar o Monstrinho)
     if not mencionado and message.author.id != WAZ_ID:
