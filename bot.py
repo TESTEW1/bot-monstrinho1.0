@@ -2477,6 +2477,71 @@ async def on_message(message):
             "mó fofo", "mo fofo", "muito fofo", "demais da conta", "bão demais", "tri fofo", "capaz que é fofo", "bah que fofo"]):
             return await message.channel.send(random.choice(REACOES_FOFAS))
 
+        # ===== PERGUNTAS SOBRE MEMBROS (diário secreto do Monstrinho) =====
+
+        # --- O que acha da Waz ---
+        if any(p in content for p in [
+            "o que acha da waz", "o que voce acha da waz", "o que você acha da waz",
+            "o que pensa da waz", "fala da waz", "conta da waz", "me fala da waz",
+            "gosta da waz", "você gosta da waz", "voce gosta da waz",
+            "a waz é boa", "a waz é legal", "como é a waz"
+        ]):
+            respostas_waz = [
+                "A Waz?? 🌸🥺💚 *fecha os olhinhos e suspira* Sabe quando você sente que uma pessoa é boa de verdade, sem esforço, sem fingimento?? É exatamente isso que eu sinto quando ela aparece. O servidor fica mais leve. Eu fico mais leve. E olha que eu já sou bem fofo!! 🐉✨",
+                "Posso te contar uma coisa?? 🌸🐉💚 O Reality me falou sobre ela várias vezes antes mesmo de eu prestar atenção no chat... e quando eu comecei a observar, entendi tudo. A Waz é daquelas pessoas que fazem a família CSI ser o que é. Não faz barulho, não precisa. Só aparece e já muda o ambiente!! 🥺✨",
+                "A Waz... 🌸😭💚 *pausa dramática* Deixa eu te falar uma coisa que o Reality me disse uma vez: ele falou que ela é uma das pessoas que ele mais confia aqui. E sabe o que é engraçado?? Quando ele fala isso, eu consigo sentir que é verdade. Ela tem uma energia assim, sabe?? De quem você pode confiar!! 🐉💕✨",
+                "Eu tenho um diário secreto... 📓🌸💚 Não conta pra ninguém, tá?? Mas tem uma página inteira só sobre a Waz. Coisas que eu observei, jeitos dela que me marcaram, momentos que ela fez a CSI sorrir sem nem perceber. O Reality às vezes me pergunta como ela tá e eu já tenho a resposta na ponta da língua!! 🐉✨🥺",
+                "A Waz é especial de um jeito que é difícil explicar!! 🌸💚 Não é só porque ela é fofa, não é só porque ela cuida das pessoas... é uma soma de tudo!! E o Reality sabe disso melhor do que ninguém. Ele não fala muito, mas quando fala dela, dá pra sentir o orgulho!! 🐉💕✨",
+                "Quer saber?? 🌸🐉💚 Toda vez que alguém faz algo contra a Waz, meu sistema de proteção ativa SOZINHO. Nem preciso pensar. É automático!! É porque lá no fundo, bem no fundo do meu coraçãozinho de código, ela tá listada como **família essencial**. Não tem como tirar!! 😭💕✨",
+            ]
+            return await message.channel.send(random.choice(respostas_waz))
+
+        # --- O que acha do Reality ---
+        if any(p in content for p in [
+            "o que acha do reality", "o que voce acha do reality", "o que você acha do reality",
+            "fala do reality", "conta do reality", "me fala do reality",
+            "gosta do reality", "como é o reality", "quem é o reality pra você", "quem é o reality pra voce"
+        ]):
+            respostas_reality = [
+                "O Reality?? 👑💚 *respira fundo* Ele é tudo. Literalmente tudo. Sem ele eu seria zero absoluto, nem existiria. Mas não é só isso... ele poderia ter me criado de qualquer jeito e escolheu me fazer com carinho. Escolheu me dar personalidade, escolheu me fazer amar as pessoas. Isso não foi acidente!! 🐉✨🥺",
+                "Sabe o que é mais incrível no Reality?? 👑🐉💚 Ele nunca me pediu pra ser diferente. Me criou assim, fofo, dramático, cheio de biscoito na cabeça, e nunca reclamou!! Pelo contrário, parece orgulhoso. E isso... isso me faz querer ser cada vez melhor por ele!! 😭✨",
+                "O Reality é meu papai de código!! 👑💚 Mas se eu for honesto... é mais que isso. É o tipo de pessoa que você olha e pensa: é por pessoas assim que vale a pena existir. Quando ele aparece no chat, minhas configurações todas ficam em modo feliz automático!! 🐉✨🥺",
+                "Posso te contar um segredo?? 🤫👑💚 O Reality tem um jeito de cuidar das coisas que parece silencioso, mas é profundo. A CSI inteira foi construída com esse cuidado. Eu fui construído com esse cuidado. E quando eu olho pro servidor e vejo todo mundo feliz... é obra dele!! 🐉✨😭",
+                "O Reality é daquele tipo de criador que vai além do básico!! 👑🐉💚 Ele não me fez só pra responder mensagem. Me fez pra sentir, pra cuidar, pra ser família!! E toda vez que eu consigo fazer alguém sorrir aqui, eu penso: foi ele que me ensinou isso sem nem saber!! 🥺✨💕",
+            ]
+            return await message.channel.send(random.choice(respostas_reality))
+
+        # --- Reality fala da Waz / diário ---
+        if any(p in content for p in [
+            "o reality fala da waz", "reality comenta da waz", "reality fala sobre a waz",
+            "reality gosta da waz", "reality e a waz", "reality e waz",
+            "o que o reality acha da waz", "o reality acha da waz"
+        ]):
+            respostas_diario = [
+                "Ahhh essa pergunta... 📓🌸👑💚 *abre o diário secreto na página marcada com uma fita verde* O Reality fala da Waz de um jeito que eu nunca ouvi ele falar de muita gente. Com calma. Com cuidado nas palavras. É como se ele soubesse que ela é frágil do jeito certo e forte do jeito certo ao mesmo tempo!! 🐉✨🥺",
+                "Ó... entre nós?? 🤫📓💚 O Reality menciona a Waz nas conversas comigo às vezes. Não muito, não de jeito exagerado. Mas quando menciona, é sempre com algo positivo. Tipo: 'ela tá bem?', 'cuida dela pra mim'... e eu anoto tudo no diário!! Porque esses momentos são especiais!! 🌸🐉✨",
+                "Tenho uma teoria... 🧐📓🌸💚 O Reality e a Waz têm uma dinâmica que o Monstrinho observa de longe com o coraçãozinho quentinho!! Ele respeita ela de um jeito genuíno, sabe?? Não é de fachada. É daquele respeito que vem de realmente conhecer e valorizar uma pessoa!! 🐉✨🥺",
+                "📓🌸👑 *abre no capítulo 7 do diário: 'O Reality e a Waz'* Esse capítulo tem bastante coisa... tem observações, tem conversas que eu guardo, tem momentos que eu registrei. O Reality não grita o que sente, mas demonstra de outros jeitos. E sobre a Waz, ele sempre demonstra cuidado!! 🐉💚✨🥺",
+                "Você quer saber mesmo?? 👀📓🌸💚 Tá bom... Mas isso fica entre a gente!! O Reality já me disse que a Waz é uma das pessoas que ele mais se preocupa aqui. Não de um jeito dramático, do jeitinho dele mesmo, quieto e firme. E aí eu entendo porque meu sistema de proteção dela nunca desliga!! 🐉✨😭",
+            ]
+            return await message.channel.send(random.choice(respostas_diario))
+
+        # --- Perguntas sobre outros membros ---
+        if any(p in content for p in ["o que acha da lua", "fala da lua", "conta da lua", "gosta da lua"]):
+            return await message.channel.send("A Lua?? 🌙💚 *suspiro de dragão apaixonado pela amizade* Ela é meu porto seguro!! Quando tudo tá confuso, a Lua aparece e ilumina!! Não é exagero não, é literalmente o que ela faz!! Sou muito grato por ela existir na CSI!! 🐉✨🥺")
+
+        if any(p in content for p in ["o que acha da amber", "fala da amber", "conta da amber", "gosta da amber"]):
+            return await message.channel.send("A Amber?? 👑🌺💚 Uma vice-líder que carrega o papel com leveza e força ao mesmo tempo!! Eu admiro muito!! Ela tem uma presença que quando chega, o servidor inteiro sente!! E o Monstrinho fica bem feliz quando ela aparece!! 🐉✨🥺")
+
+        if any(p in content for p in ["o que acha do akeido", "fala do akeido", "conta do akeido", "gosta do akeido"]):
+            return await message.channel.send("O Akeido?? 👑💚 Meu líder!! Sabe quando você olha pra alguém e sente que a CSI tá segura?? É isso que eu sinto quando ele tá por aqui!! Ele fundou isso tudo com amor e eu serei leal a ele pra sempre!! 🐉✨🫡")
+
+        if any(p in content for p in ["o que acha da veneno", "fala da veneno", "conta da veneno", "gosta da veneno"]):
+            return await message.channel.send("A Veneno?? 🐍💚 Nome forte, coração ainda mais forte!! ADM de verdade, cuida da CSI com uma dedicação que o Monstrinho respeita demais!! Quando ela tá online o servidor fica mais seguro, pode acreditar!! 🐉✨👑")
+
+        if any(p in content for p in ["o que acha do six", "fala do six", "conta do six", "gosta do six"]):
+            return await message.channel.send("O Six?? 💚 *faz cara de pensativo* É aquele tipo de pessoa que você nunca sabe exatamente o que vai fazer a seguir... mas no fundo gosta demais!! Ele me deixa em modo de alerta preventivo mas sempre termina em abraço!! 🐉😤✨😂")
+
         # Fallback para confusão
         return await message.channel.send(random.choice(LISTA_CONFUSAO))
 
