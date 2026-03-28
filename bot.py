@@ -1669,15 +1669,19 @@ async def on_message(message):
     # ===== SISTEMA DE DEFESA DA WAZ =====
     # Dispara quando alguém responde diretamente a uma mensagem da Waz
     # ou menciona ela junto com palavras negativas/insultos
-    _palavras_insulto_waz = [
-        "odeio", "raiva", "idiota", "burra", "burro", "idiota", "inutil", "inútil",
-        "chata", "chato", "feio", "feia", "horrivel", "horrível", "ridícula", "ridículo",
-        "cala boca", "cala a boca", "sai fora", "vai embora", "cale-se", "lixo",
-        "babaca", "estupida", "estúpida", "imbecil", "idiota", "otaria", "otária",
-        "falsa", "mentirosa", "chata", "irritante", "sem noção", "sem nocao",
-        "patética", "patetica", "vergonha", "vergonhosa", "insuportável", "insuportavel",
-        "horrenda", "horrorosa", "tosca", "vacilou", "errada", "culpa sua",
-        "sua culpa", "você é a culpa", "voce e a culpa", "culpada",
+
+    # Palavras que sozinhas já são ofensa clara (usadas só no contexto de reply direto à Waz)
+    _insultos_diretos_waz = [
+        "odeio", "idiota", "inutil", "inútil", "burra", "burro",
+        "horrivel", "horrível", "ridícula", "ridículo", "lixo",
+        "babaca", "estupida", "estúpida", "imbecil", "otaria", "otária",
+        "falsa", "mentirosa", "irritante", "patética", "patetica",
+        "vergonhosa", "insuportável", "insuportavel",
+        "horrenda", "horrorosa", "tosca", "cala boca", "cala a boca",
+        "sai fora", "vai embora", "cale-se", "culpa sua", "sua culpa",
+        "você é a culpa", "voce e a culpa", "culpada", "errada", "vacilou",
+        "sem noção", "sem nocao", "vergonha", "chata", "chato",
+        "feio", "feia",
     ]
 
     _e_resposta_a_waz = (
@@ -1692,8 +1696,17 @@ async def on_message(message):
         or "waz" in content
     )
 
-    if (_e_resposta_a_waz or _menciona_waz) and message.author.id != WAZ_ID:
-        if any(p in content for p in _palavras_insulto_waz):
+    if message.author.id != WAZ_ID:
+        _deve_defender = False
+
+        if _e_resposta_a_waz:
+            # Reply direto à Waz: qualquer insulto da lista dispara
+            _deve_defender = any(p in content for p in _insultos_diretos_waz)
+        elif _menciona_waz:
+            # Citou o nome/menção da Waz com insulto junto
+            _deve_defender = any(p in content for p in _insultos_diretos_waz)
+
+        if _deve_defender:
             waz_member = message.guild.get_member(WAZ_ID) if message.guild else None
             waz_mention = waz_member.mention if waz_member else "Waz"
             defesa = random.choice(DEFESA_WAZ).format(waz=waz_mention)
@@ -1743,7 +1756,7 @@ async def on_message(message):
     # Quando alguém cita o nome da Waz no chat (sem insulto, sem mencionar o Monstrinho)
     if not mencionado and message.author.id != WAZ_ID:
         _cita_waz = _menciona_waz  # já inclui @mention e texto "waz"
-        if _cita_waz and not any(p in content for p in _palavras_insulto_waz):
+        if _cita_waz and not any(p in content for p in _insultos_diretos_waz):
             if random.random() < 0.50:
                 return await message.channel.send(random.choice(REACOES_CITAR_WAZ))
     # ===== FIM DAS INTERAÇÕES COM A WAZ =====
