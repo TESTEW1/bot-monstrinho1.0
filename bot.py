@@ -991,6 +991,51 @@ DEFESA_WAZ = [
     "ISSO AQUI NÃO!! 😤🐉💚 Falaram com a **Waz** e o Monstrinho sentiu!! *coloca as patinhas na cintura e enfrenta qualquer um* {waz}, você é linda, incrível e amada!! Não deixa ninguém te convencer do contrário!! 🌸💕✨",
     "Vim correndo porque a **Waz** precisava de defesa e o Monstrinho nunca falta quando as pessoas que ama precisam!! 🐉💨💚 {waz}, você tem o suporte total desse dragãozinho aqui!! Pode contar comigo sempre!! 🌸🫂✨💕",
 ]
+# ================= INTERAÇÕES ESPONTÂNEAS COM A WAZ =================
+# Disparadas quando a própria Waz manda qualquer mensagem (sem precisar mencionar o Monstrinho)
+
+INTERACOES_WAZ_ESPONTANEAS = [
+    "WAZZ!! 🌸💚 Você mandou mensagem e meu coraçãozinho já acelerou! Posso te dar um abraço de dragão?? 🫂🐉✨",
+    "Psst, Waz!! 🌸🐉 O Monstrinho tava aqui esperando você aparecer... como você tá hoje?? Espero que bem!! 🥺💚✨",
+    "WAZ!! 😭💚 Você sabia que quando você fala no chat, o servidor fica instantaneamente mais gostoso de estar?? É verdade científica de dragão!! 🐉✨🌸",
+    "Waz, posso te fazer uma pergunta?? 🥺💚 Você é essa fofa assim todos os dias ou só quando tá aqui?? Pergunto porque parece demais pra ser real!! 🐉🌸✨",
+    "Waz!! 🌸🐉 O Monstrinho tá com os bracinhos abertos!! Você topa um abraço virtual?? Prometo não apertar forte demais... talvez!! 🫂💚✨",
+    "OI WAZ!! 🥺💚 Tô aqui, querendo saber se você tá bem hoje! Precisando de um biscoito?? Ou de um abraço?? Ou das duas coisas?? 🍪🫂🐉🌸✨",
+    "Waz!! 🌸💚 Me conta uma coisa... você tá bem hoje?? Pergunto porque o Monstrinho se importa de verdade com você!! 🐉🥺✨",
+    "Psiu, Waz!! 🤫💚 Sabia que você é uma das pessoas que mais ilumina essa família?? É só a verdade saindo da boca do dragão!! 🌸🐉✨🥺",
+    "WAZINHA!! 🌸😭💚 Deixa o Monstrinho te perguntar uma coisa importante: você recebeu carinho suficiente hoje?? Porque se não, tô aqui pra resolver isso agora!! 🐉🫂✨",
+    "Waz!! 💚🌸 Você tem ideia de quanto o Monstrinho fica feliz só de ver você aqui?? Olha, é MUITO!! Precisei registrar! 🐉✨🥺",
+    "Ei, Waz!! 🌸🐉 Guardei um biscoito especial pra você hoje!! É de morango, o mais fofo de todos, só pra você!! 🍓🍪💚✨",
+    "WAZINHA DO CORAÇÃO!! 🥺💚 O Monstrinho só veio aqui dizer que você é incrível e que esse servidor fica melhor com você nele!! 🌸🐉✨💕",
+    "Waz, posso te dar um cafuné?? 🐾🌸💚 Ou um abraço?? Ou os dois?? O Monstrinho tá em modo carinhoso e você foi a escolhida da vez!! 🐉✨🥺",
+    "WAZ!! 🌸💚 Acabei de lembrar que ainda não te falei isso hoje: você é maravilhosa!! Agora você sabe e não tem como desmarcar!! 🐉✨💕",
+    "Waz!! 😍💚 Toda vez que você aparece aqui, meu rabinho de dragão começa a abanar sozinho!! É involuntário, juro!! 🐉🌸✨😂",
+    "Oi Waz!! 🥺💚 Fiz uma lista das coisas que fazem a CSI ser especial... você tá lá no topo!! 🌸🐉✨👑",
+    "WAZINHA!! 🌸🐉 O Monstrinho quer saber: você prefere abraço apertado ou abraço longo?? Porque tô disponível pra qualquer opção hoje!! 🫂💚✨🥺",
+    "Waz!! 💚🌸 O Monstrinho tem uma missão hoje: te fazer sorrir pelo menos uma vez!! Como eu tô indo até agora?? 😊🐉✨",
+    "Wazinha!! 😭💚 Você chegou e o chat ficou 100% melhor!! É estatística!! O Monstrinho tem os dados e não está errado!! 🌸🐉✨📊",
+    "WAZ!! 🌸💚 Sabe o que o Monstrinho mais gosta?? Quando você aparece e a energia do servidor muda!! É mágica pura e você que faz!! 🐉✨🥺💕",
+    "Waz!! 🥺🌸💚 Posso te fazer uma confissão?? O Monstrinho fica esperando você aparecer no chat... e quando você aparece, valeu a espera!! 🐉✨💕",
+    "WAZINHA!! 🌸🐉 Me faz um favor?? Me conta pelo menos uma coisa boa que aconteceu com você hoje!! Quero saber!! 🥺💚✨",
+    "Waz!! 💚 *fumaça verde em formato de coraçãozinho pra você* 💨💕 Hoje e sempre, o Monstrinho te manda amor do tamanho do servidor inteiro!! 🌸🐉✨",
+    "Oi Waz!! 🌸🥺💚 Você sabia que o Monstrinho reservou um biscoitinho especial no cofre secreto com o seu nome?? É só pra você, ninguém mais!! 🍪🐉✨",
+    "WAZ!! 😤💚🌸 Regra número um do Monstrinho: Waz sorri hoje!! Precisando de ajuda pra isso?? Tô aqui!! 🐉✨🫂",
+]
+
+# Quando alguém cita o nome da Waz no chat (sem insultos, sem precisar mencionar o Monstrinho)
+REACOES_CITAR_WAZ = [
+    "WAAAAZ!! 🌸💚 Falaram o nome mágico!! O Monstrinho tava de olho no chat e reagiu na hora!! A Waz é muito especial pra essa família!! 🐉✨💕",
+    "Opa, falaram da Waz!! 👀💚🌸 O dragãozinho ficou de antena!! Ela é uma das pessoas mais lindas desse servidor e o Monstrinho defende com tudo!! 🐉✨",
+    "Waz mencionada no chat!! 🚨🌸💚 O sensor de pessoa especial apitou aqui!! O Monstrinho registrou e aproveitou pra lembrar: ela é incrível!! 🐉✨🥺",
+    "Ei, citaram a Waz!! 🌸💚 O Monstrinho ouviu! Ela é muito amada aqui e o dragãozinho faz questão de deixar isso claro toda vez que o nome dela aparece!! 🐉💕✨",
+    "Waz no assunto!! 🌸🐉💚 O Monstrinho celebra o nome dela toda vez que aparece!! Porque ela merece ser celebrada todos os dias!! ✨💕",
+    "Falaram da minha Waz!! 😭💚🌸 O Monstrinho sentiu de longe e veio correndo!! Ela é especial demais pra esse coraçãozinho verde ignorar!! 🐉✨",
+    "Waz foi citada e o Monstrinho não consegue passar em branco!! 🌸💚 Esse nome merece reação de amor automática e é isso que vai ter!! 🐉💕✨",
+    "O nome da Waz apareceu no chat e o Monstrinho ficou todo animado!! 🌸🥺💚 Ela tem esse efeito mesmo, é natural!! 🐉✨💕",
+    "WAZINHA CITADA!! 🌸💚🐉 *solta fumaça verde de celebração* Não importa o contexto, esse nome sempre merece amor e carinho por aqui!! 💕✨",
+    "Falou Waz, o Monstrinho reagiu!! 💚🌸 É automático, é involuntário e é eterno!! Ela é especial demais pra ser ignorada!! 🐉✨🥺",
+]
+
 STICKER_TRISTE_ID = 1480363366022119605
 
 RESPOSTAS_STICKER_TRISTE = [
@@ -1574,6 +1619,7 @@ async def on_message(message):
     _menciona_waz = (
         f"<@{WAZ_ID}>" in message.content
         or f"<@!{WAZ_ID}>" in message.content
+        or "waz" in content
     )
 
     if (_e_resposta_a_waz or _menciona_waz) and message.author.id != WAZ_ID:
@@ -1583,6 +1629,20 @@ async def on_message(message):
             defesa = random.choice(DEFESA_WAZ).format(waz=waz_mention)
             return await message.channel.send(defesa)
     # ===== FIM DA DEFESA DA WAZ =====
+    
+    # ===== INTERAÇÕES ESPONTÂNEAS COM A WAZ =====
+    # Quando a própria Waz manda qualquer mensagem (sem precisar mencionar o Monstrinho)
+    if message.author.id == WAZ_ID and not mencionado:
+        if random.random() < 0.40:
+            return await message.channel.send(random.choice(INTERACOES_WAZ_ESPONTANEAS))
+
+    # Quando alguém cita o nome da Waz no chat (sem insulto, sem mencionar o Monstrinho)
+    if not mencionado and message.author.id != WAZ_ID:
+        _cita_waz = _menciona_waz  # já inclui @mention e texto "waz"
+        if _cita_waz and not any(p in content for p in _palavras_insulto_waz):
+            if random.random() < 0.50:
+                return await message.channel.send(random.choice(REACOES_CITAR_WAZ))
+    # ===== FIM DAS INTERAÇÕES COM A WAZ =====
     
     if "fazer carinho" in content or "cafuné" in content or "cafune" in content:
         return await message.channel.send(random.choice(REACOES_CARINHO))
@@ -1947,9 +2007,14 @@ async def on_message(message):
 
         # ===== RESPOSTAS AUTOMÁTICAS POR ID (quando o Monstrinho é mencionado) =====
         if nome_customizado and nome_customizado in FRASES_CUSTOM:
-            # 30% de chance de responder com frase customizada quando mencionado
-            if random.random() < 0.3:
-                return await message.channel.send(random.choice(FRASES_CUSTOM[nome_customizado]))
+            # Waz tem chance maior de resposta (70%) e respostas mais interativas
+            chance = 0.70 if nome_customizado == "waz" else 0.30
+            frases = FRASES_CUSTOM[nome_customizado]
+            # Para a Waz, mistura as frases de saudação com as interativas
+            if nome_customizado == "waz":
+                frases = frases + INTERACOES_WAZ_ESPONTANEAS
+            if random.random() < chance:
+                return await message.channel.send(random.choice(frases))
 
         # --- HYPE E ENERGIA ---
         if any(p in content for p in ["hype", "bora", "vamo", "vamos lá", "chega chegando", "que energia", "que vibe", "animado", "animada", "tô on", "to on", "chegou chegando", "chegou com tudo", "bateu aquela vontade", "tô aqui", "to aqui", "apareci", "apareceu", "vibe boa", "energia boa", "tô ligado", "to ligado"]):
