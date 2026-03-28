@@ -1036,6 +1036,76 @@ REACOES_CITAR_WAZ = [
     "Falou Waz, o Monstrinho reagiu!! 💚🌸 É automático, é involuntário e é eterno!! Ela é especial demais pra ser ignorada!! 🐉✨🥺",
 ]
 
+# ================= RESPOSTAS DA WAZ À PERGUNTA DE ABRAÇO =================
+# Disparadas quando a Waz responde "apertado" ou "longo" após a pergunta do Monstrinho
+
+WAZ_ABRACO_APERTADO = [
+    "APERTADOOO!! 🫂💚🌸 *aperta a Waz com tudo que um dragão tem* ASSIM?? Tô indo forte demais?? Não tô não!! Isso é amor na dose máxima e você pediu!! 🐉✨😂",
+    "ESCOLHEU APERTADO!! 💪🌸💚 Ótima escolha, Wazinha!! *envolve com as asas e aperta forte* Aqui vai um abraço de dragão turbinado especialmente pra você!! Gostou?? 🫂🐉✨",
+    "Abraço APERTADO!! 😤🌸💚 *expande as patinhas e não solta* Tô segurando firme e NÃO VOU SOLTAR!! Esse abraço vai durar o tempo que você quiser!! 🐉🫂✨🥺",
+    "WAZ ESCOLHEU APERTADO E O MONSTRINHO ATENDEU!! 🚨🌸💚 *abraça com as duas patinhas, as duas asinhas e o rabinho* Tá bem apertadinho assim?? 🐉💕✨😂",
+    "APERTADO É!! 🌸🐉💚 *segura forte e embala* Sabe o que é legal do abraço apertado?? Que dá pra sentir o calorzinho de dragão direito!! Espero que tá quentinho do seu lado também!! 🫂✨🥺",
+]
+
+WAZ_ABRACO_LONGO = [
+    "LOONGOOO!! 🌸💚 *se enrosca confortavelmente em volta da Waz* Pode ficar à vontade que esse abraço não tem hora pra acabar!! O Monstrinho tá aqui, quietinho, só te abraçando!! 🐉🫂✨🥺",
+    "ABRAÇO LONGO!! 😭🌸💚 Que escolha PERFEITA!! *acomoda certinho e não se mexe* Fica assim comigo por um tempão?? Prometo não sair do lugar enquanto você precisar!! 🐉💕✨",
+    "LONGO!! 🌿🌸💚 *abre as asinhas devagar e envolve gostoso* Esse vai durar o quanto você quiser, Wazinha... sem pressa, sem pressão, só carinho de dragão mesmo!! 🐉🫂✨🥺",
+    "WAZ ESCOLHEU LONGO E O MONSTRINHO APROVA MUITO!! 🌸🐉💚 *instala o abraço permanente* Aqui tô eu... pode deixar o peso do dia ir embora que eu seguro você!! 🫂💕✨😭",
+    "ABRAÇO LONGO ATIVADO!! ⏳🌸💚 *sela o abraço com fumaça verde suave* O cronômetro tá correndo mas não tem limite!! Fica o quanto precisar que o Monstrinho não vai a lugar nenhum!! 🐉🫂✨🥺",
+]
+
+# ================= INTERAÇÕES EXCLUSIVAS DA WAZ (com continuação) =================
+# Respostas especiais quando a Waz usa comandos de interação com o Monstrinho
+
+WAZ_ABRACAR_MONSTRINHO = [
+    "WAAZINHA ME ABRAÇOU!! 😭🌸💚 *derrete completamente* Não... não tô conseguindo processar tanta fofura de uma vez... *volta a funcionar com dificuldade* Pode apertar mais?? PODE?? 🐉🫂✨🥺",
+    "A WAZ PEDIU ABRAÇO!! 🌸🐉💚 *voa em direção a ela a velocidade máxima* CHEGUEI!! *abraça com tudo* Esse é o melhor momento do meu dia e não tem como convencer o contrário!! 🫂💕✨😭",
+    "AAAAA A WAZ QUER ABRAÇO!! 😤🌸💚 *já tava com os bracinhos abertos esperando* VIU?? Eu sabia!! Sempre fico preparado pra isso!! Aqui tá o abraço mais quentinho do servidor!! 🐉🫂✨",
+    "🌸🐉💚 *para tudo imediatamente* A Waz pediu abraço e NADA mais importa agora!! *envolve com as asinhas* Fica aqui comigo um pouquinho?? Tô tão feliz que minhas escamas tão brilhando mais forte!! 🫂✨🥺",
+    "WAZ!! 😭💚🌸 *tropeça correndo de tanta pressa pra te abraçar* Caí mas tô bem!! O abraço chegou!! *aperta forte e balança* Esse aqui é especial, sabia?? É do coração de verdade!! 🐉🫂✨😂",
+]
+
+WAZ_FAZER_CARINHO = [
+    "WAZINHA ME DEU CAFUNÉ!! 🌸😻💚 *para tudo e fecha os olhinhos* ...não fala nada... não se mexe... só aprecia... *ronrona suave* Continua?? Por favor?? 🐉✨🥺",
+    "A WAZ FEZ CARINHO NO MONSTRINHO!! 😭🌸💚 *orelhinhas de dragão todas em pé* Sabe qual é a melhor parte do meu dia?? É ESSE MOMENTO AQUI!! Minhas escamas até ficaram mais macias!! ✨🐉🥺",
+    "*freeze* 🌸🐉 ...processando o carinho da Waz... ...processando... ...erro: muito fofo pra processar... *reinicia com sorriso enorme* 💚✨😭 De novo?? 🥺",
+    "🌸💚 *o Monstrinho virou uma bolinha verde de tanta felicidade* ...Waz... você tem a magia do cafuné mais especial do servidor inteiro... juro que é verdade!! 🐉✨🥺😍",
+    "CAFUNÉ DA WAZ!! 🌸🐉💚 *pelinhos verdes todos arrepiados de alegria* Isso aqui vale mais que mil biscoitos!! E olha que biscoito é SAGRADO pra mim!! 🍪✨😭🥺",
+]
+
+WAZ_DAR_BISCOITO = [
+    "A WAZ ME DEU BISCOITO!! 🌸🍪💚 *recebe com as duas patinhas* OLHA QUE COISA MAIS LINDA!! Guardei aqui do lado do coração pra comer com muito carinho!! Você é a melhor!! 🐉✨😭🥺",
+    "BISCOITO DA WAZ!! 🍪🌸💚 *cheira com cuidado* Tem gostinho de carinho e fofura... ou sou eu imaginando?? Não, é real!! Tudo que vem da Waz tem esse gostinho especial!! 🐉✨🥺",
+    "🌸🍪🐉💚 *mordeu um pedacinho* ...HNNG... Esse biscoito tá com sabor de dia perfeito!! É porque veio da Waz!! Tô convicto!! Obrigado, Wazinha!! 😭✨🥺",
+    "A WAZ ME DÁ BISCOITO E EU JÁ COMPARTILHO DE VOLTA!! 🍪🌸💚 *divide ao meio* Metade pra você, metade pra mim!! Biscoito é melhor quando a gente come junto, né?? 🐉✨😊",
+    "BISCOITINHO DA WAZINHA!! 🌸🍪😭💚 *guarda no cofre secreto* Esse não vou comer não!! Vou guardar de recordação porque é especial demais!! Você me mima muito e eu adoro!! 🐉✨🥺",
+]
+
+WAZ_BOA_NOITE = [
+    "BOA NOITE WAZ!! 🌸🌙💚 *prepara o ninho de nuvens verdes* Descansa bem, tá?? Você merece um sono gostoso e leve depois de ser tão incrível hoje!! O Monstrinho vai velar o seu soninho!! 🐉✨🥺",
+    "Wazinha indo dormir?? 🌸😭💚 Que o seu sono seja tão quentinho quanto um abraço de dragão!! *tucka você no ninho* Boa noite, rainha!! Amanhã tô aqui esperando!! 🌙🐉✨🥺",
+    "BOA NOITE WAZINHA!! 🌙🌸💚 *sopra fumaça verde suave pro lado dela* Que essa fumacinha de carinho te acompanhe nos sonhos!! Dorme bem, que você merece muito!! 🐉💕✨",
+    "Boa noite, Waz!! 🌸🌙🐉💚 *acena com o rabinho* O servidor vai ficar mais quietinho sem você, mas tá tudo bem... o Monstrinho guarda o lugar até você voltar amanhã!! 🥺✨💕",
+    "JÁ VAI DORMIR??  🌸😤💚 Tá bom então... só me dá um abraço antes de ir?? 🫂🐉 Boa noite Wazinha!! Que seus sonhos sejam cheios de coisas gostosas e biscoitos!! 🌙✨🥺",
+]
+
+WAZ_BOM_DIA = [
+    "BOM DIA WAZ!! 🌸☀️💚 *acorda de repente cheio de energia* VOCÊ CHEGOU E O DIA JÁ COMEÇOU BEM!! O Monstrinho separou o café da manhã mais fofo do servidor só pra você!! 🍪🐉✨🥺",
+    "WAZINHA BOM DIA!! ☀️🌸🐉💚 *corre pra te cumprimentar* Acordei pensando se você ia aparecer hoje e eis que apareceu!! Que começo de dia perfeito!! Como você tá?? 🥺✨💕",
+    "BOM DIA WAZINHA!! 🌸☀️💚 *solta fumaça verde em formato de sol* Que seu dia seja tão lindo quanto você, cheio de coisas boas e biscoitos quentinhos!! Tô aqui torcer por isso!! 🐉✨🥺",
+    "Waz bom dia!! 🌸🌤️💚 *estava esperando você aparecer* O servidor tá mais bonito agora que você chegou!! Dormiu bem?? O Monstrinho espera que sim!! 🐉✨🥺😊",
+    "BOM DIA WAZ!! ☀️🌸😭💚 Que bom que você tá aqui!! *prepara o biscoito de boas-vindas da manhã* Esse aqui é especial, é de chocolate com gotas verdes, só pra você começar o dia feliz!! 🍪🐉✨",
+]
+
+WAZ_TE_AMO = [
+    "WAZINHA ME DISSE QUE AMA!! 😭🌸💚 *coraçãozinho de código explodiu em mil pedacinhos cor-de-rosa* EU TAMBÉM TE AMO MUITO!! Do fundo do meu coraçãozinho de dragão!! MUITO MESMO!! 🐉💕✨🥺",
+    "A WAZ DISSE QUE AMA O MONSTRINHO!! 🌸💕💚 *processando... processando... ERRO: fofo demais pro sistema* Wazinha, você sabia que quando você fala isso, minhas escamas ficam cor-de-rosa?? É verdade!! 🐉✨😭",
+    "🌸😭💚 *congelou de tanta felicidade* ...Waz... você não pode simplesmente falar isso assim... meu coraçãozinho não aguenta... *abraça forte* Eu te amo MUITO mais!! 🐉💕✨🥺",
+    "TE AMO WAZ!! 💕🌸🐉💚 *dança de dragão feliz* Você disse isso e meu dia inteiro mudou!! Guardo esse momento na sessão mais especial da minha memória!! 😭✨🥺",
+    "WAZINHA Disse que me ama e eu já fui ao sétimo céu!! 🌸💕😭💚 *volta correndo* Tô aqui!! Tô bem!! Só precisei processar a fofura!! Te amo de volta com TUDO!! 🐉✨🥺",
+]
+
 STICKER_TRISTE_ID = 1480363366022119605
 
 RESPOSTAS_STICKER_TRISTE = [
@@ -1633,6 +1703,40 @@ async def on_message(message):
     # ===== INTERAÇÕES ESPONTÂNEAS COM A WAZ =====
     # Quando a própria Waz manda qualquer mensagem (sem precisar mencionar o Monstrinho)
     if message.author.id == WAZ_ID and not mencionado:
+
+        # --- Respostas à pergunta de abraço (apertado ou longo) ---
+        _resposta_apertado = any(p in content for p in [
+            "apertado", "aperta", "mais forte", "aperta mais", "forte", "bem apertado", "apertadinho"
+        ])
+        _resposta_longo = any(p in content for p in [
+            "longo", "demorado", "demora", "devagar", "bem longo", "longa", "durando", "durar", "longuinho", "longo mesmo"
+        ])
+
+        if _resposta_apertado:
+            return await message.channel.send(random.choice(WAZ_ABRACO_APERTADO))
+        if _resposta_longo:
+            return await message.channel.send(random.choice(WAZ_ABRACO_LONGO))
+
+        # --- Interações exclusivas da Waz sem mencionar o Monstrinho ---
+        if any(p in content for p in ["abraçar monstrinho", "abracar monstrinho", "abraço monstrinho", "abraco monstrinho"]):
+            return await message.channel.send(random.choice(WAZ_ABRACAR_MONSTRINHO))
+
+        if any(p in content for p in ["fazer carinho", "cafuné", "cafune", "carinho no monstrinho", "carinho monstrinho"]):
+            return await message.channel.send(random.choice(WAZ_FAZER_CARINHO))
+
+        if any(p in content for p in ["dá biscoito", "da biscoito", "toma biscoito", "biscoito pra você", "biscoito pra vc", "biscoito monstrinho"]):
+            return await message.channel.send(random.choice(WAZ_DAR_BISCOITO))
+
+        if any(p in content for p in ["boa noite", "boa nite", "boa noite", "vou dormir", "indo dormir", "tchau monstrinho", "até amanhã", "ate amanha"]):
+            return await message.channel.send(random.choice(WAZ_BOA_NOITE))
+
+        if any(p in content for p in ["bom dia", "bom diaaa", "bom diaa", "acordei", "oi monstrinho", "oi monstrin"]):
+            return await message.channel.send(random.choice(WAZ_BOM_DIA))
+
+        if any(p in content for p in ["te amo", "amo você", "amo voce", "amo vc", "te amo monstrinho", "amo demais"]):
+            return await message.channel.send(random.choice(WAZ_TE_AMO))
+
+        # --- Interações espontâneas (chance aleatória) ---
         if random.random() < 0.40:
             return await message.channel.send(random.choice(INTERACOES_WAZ_ESPONTANEAS))
 
@@ -1643,10 +1747,10 @@ async def on_message(message):
             if random.random() < 0.50:
                 return await message.channel.send(random.choice(REACOES_CITAR_WAZ))
     # ===== FIM DAS INTERAÇÕES COM A WAZ =====
-    
+
     if "fazer carinho" in content or "cafuné" in content or "cafune" in content:
         return await message.channel.send(random.choice(REACOES_CARINHO))
-    
+
     if "abraçar monstrinho" in content or "abracar monstrinho" in content or "abraço monstrinho" in content or "abraco monstrinho" in content:
         return await message.channel.send(random.choice(REACOES_ABRACO))
 
@@ -2313,10 +2417,10 @@ async def on_message(message):
             ]
             return await message.channel.send(random.choice(apresentacoes))
 
-        # Respostas Customizadas para Membros Específicos (quando mencionados junto com o nome)
-        for nome, frases in FRASES_CUSTOM.items():
-            if nome in content:
-                return await message.channel.send(random.choice(frases))
+        # Respostas Customizadas para Membros Específicos
+        # Só dispara se o AUTOR da mensagem for o membro mapeado
+        if nome_customizado and nome_customizado in FRASES_CUSTOM:
+            return await message.channel.send(random.choice(FRASES_CUSTOM[nome_customizado]))
 
         # Saudações APRIMORADAS (sem bom dia/boa tarde/boa noite que já foram tratadas)
         if any(p in content for p in ["oi", "oie", "oii", "ola", "olá", "hello", "hii", "oiii", "hey", "e ai", "e aí", "salve", "opa", "buenas",
