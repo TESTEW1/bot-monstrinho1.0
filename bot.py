@@ -3,7 +3,8 @@ from discord.ext import commands
 import random
 import asyncio
 import os
-import re 
+import re
+import aiohttp
 import math 
 from datetime import timedelta
 import time
@@ -38,6 +39,9 @@ def _registrar_invocacao(autor_id: int, alvo_id: int) -> None:
 
 # ================= CONFIGURAÇÃO E IDs =================
 TOKEN = os.getenv("TOKEN")
+GROQ_API_KEY = os.getenv("GROQ_KEY")
+GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
+GROQ_MODEL   = "llama3-8b-8192"
 DONO_ID = 769951556388257812
 LUA_ID = 708451108774871192 
 AKEIDO_ID = 445937581566197761 
@@ -456,6 +460,9 @@ LISTA_CONFUSAO = [
     "Você usou palavras muito complexas pro meu cérebro de código! 🧠✨"
 ]
 
+
+# Histórico por canal para a IA (últimas 10 mensagens)
+_groq_historico: dict = {}
 LISTA_TRISTEZA = [
     "Buaaa! 😭 Por que fala assim comigo? Eu só queria um abraço... 💔🐉",
     "Minhas escamas perderam o brilho... 🥺 Fiquei triste. 💚🚫",
@@ -2542,7 +2549,50 @@ async def on_message(message):
         if any(p in content for p in ["o que acha do six", "fala do six", "conta do six", "gosta do six"]):
             return await message.channel.send("O Six?? 💚 *faz cara de pensativo* É aquele tipo de pessoa que você nunca sabe exatamente o que vai fazer a seguir... mas no fundo gosta demais!! Ele me deixa em modo de alerta preventivo mas sempre termina em abraço!! 🐉😤✨😂")
 
-        # Fallback para confusão
+        # Fallback — se for @menção direta, usa IA (Groq); senão, confusão padrão
+        if bot.user in message.mentions:
+            texto_ia = message.content.replace(f"<@{bot.user.id}>", "").strip()
+            if not texto_ia:
+                return await message.channel.send("Oi!! Me pergunta alguma coisa!! 🐉💚")
+            async with message.channel.typing():
+                canal_id = message.channel.id
+                if canal_id not in _groq_historico:
+                    _groq_historico[canal_id] = []
+                _groq_historico[canal_id].append({"role": "user", "content": f"{message.author.display_name}: {texto_ia}"})
+                if len(_groq_historico[canal_id]) > 20:
+                    _groq_historico[canal_id] = _groq_historico[canal_id][-20:]
+                msgs_api = [
+                    {
+                        "role": "system",
+                        "content": (
+                            "Você é o Monstrinho, um dragãozinho verde fofo e carinhoso de um servidor do Discord chamado CSI. "
+                            "Você tem uma personalidade animada, usa emojis como 🐉💚✨🥺, fala com entusiasmo e muito afeto. "
+                            "Responda sempre em português brasileiro, de forma simpática e no estilo do personagem."
+                        )
+                    },
+                    *_groq_historico[canal_id]
+                ]
+                try:
+                    async with aiohttp.ClientSession() as session:
+                        async with session.post(
+                            GROQ_API_URL,
+                            headers={"Authorization": f"Bearer {GROQ_API_KEY}", "Content-Type": "application/json"},
+                            json={"model": GROQ_MODEL, "messages": msgs_api, "max_tokens": 512, "temperature": 0.8}
+                        ) as resp:
+                            data = await resp.json()
+                    if "choices" not in data:
+                        return await message.channel.send(random.choice(LISTA_CONFUSAO))
+                    resposta_ia = data["choices"][0]["message"]["content"].strip()
+                    _groq_historico[canal_id].append({"role": "assistant", "content": resposta_ia})
+                    if len(resposta_ia) <= 2000:
+                        return await message.reply(resposta_ia)
+                    else:
+                        partes = [resposta_ia[i:i+1990] for i in range(0, len(resposta_ia), 1990)]
+                        for parte in partes:
+                            await message.channel.send(parte)
+                        return
+                except Exception:
+                    return await message.channel.send(random.choice(LISTA_CONFUSAO))
         return await message.channel.send(random.choice(LISTA_CONFUSAO))
 
     # Processa comandos
