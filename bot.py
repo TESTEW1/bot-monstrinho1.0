@@ -2297,9 +2297,17 @@ async def on_message(message):
             return await message.channel.send(random.choice(apresentacoes))
 
         # Respostas Customizadas para Membros Específicos
-        # Só dispara se o AUTOR da mensagem for o membro mapeado
+        # Só dispara se o AUTOR da mensagem for o membro mapeado E o cooldown de 20 min permitir
         if nome_customizado and nome_customizado in FRASES_CUSTOM:
-            return await message.channel.send(random.choice(FRASES_CUSTOM[nome_customizado]))
+            agora2 = datetime.datetime.utcnow()
+            ultimo2 = _ultimo_custom.get(autor_id)
+            cooldown_ok2 = (
+                ultimo2 is None
+                or (agora2 - ultimo2).total_seconds() >= COOLDOWN_CUSTOM_SEGUNDOS
+            )
+            if cooldown_ok2:
+                _ultimo_custom[autor_id] = agora2
+                return await message.channel.send(random.choice(FRASES_CUSTOM[nome_customizado]))
 
         # Saudações APRIMORADAS (sem bom dia/boa tarde/boa noite que já foram tratadas)
         if any(p in content for p in ["oi", "oie", "oii", "ola", "olá", "hello", "hii", "oiii", "hey", "e ai", "e aí", "salve", "opa", "buenas",
