@@ -447,6 +447,12 @@ LISTA_CONFUSAO = [
 
 # Histórico por canal para a IA (últimas 10 mensagens)
 _groq_historico: dict = {}
+
+# ===== COOLDOWN DAS RESPOSTAS PERSONALIZADAS (20 minutos) =====
+# { user_id: datetime do último envio }
+import datetime
+_ultimo_custom: dict = {}
+COOLDOWN_CUSTOM_SEGUNDOS = 20 * 60  # 20 minutos
 LISTA_TRISTEZA = [
     "Buaaa! 😭 Por que fala assim comigo? Eu só queria um abraço... 💔🐉",
     "Minhas escamas perderam o brilho... 🥺 Fiquei triste. 💚🚫",
@@ -1971,18 +1977,29 @@ async def on_message(message):
 
         # ===== RESPOSTAS AUTOMÁTICAS POR ID (quando o Monstrinho é mencionado) =====
         if nome_customizado and nome_customizado in FRASES_CUSTOM:
-            # Waz tem chance maior (70%), Reality tem chance menor (15%), demais 30%
-            if nome_customizado == "waz":
-                chance = 0.70
-            elif nome_customizado == "reality":
-                chance = 0.15
-            else:
-                chance = 0.30
-            frases = FRASES_CUSTOM[nome_customizado]
-            if nome_customizado == "waz":
-                frases = frases + INTERACOES_WAZ_ESPONTANEAS
-            if random.random() < chance:
-                return await message.channel.send(random.choice(frases))
+            # Verifica cooldown de 20 minutos por usuário
+            agora = datetime.datetime.utcnow()
+            ultimo = _ultimo_custom.get(autor_id)
+            cooldown_ok = (
+                ultimo is None
+                or (agora - ultimo).total_seconds() >= COOLDOWN_CUSTOM_SEGUNDOS
+            )
+
+            if cooldown_ok:
+                # Waz tem chance maior (70%), Reality tem chance menor (15%), demais 30%
+                if nome_customizado == "waz":
+                    chance = 0.70
+                elif nome_customizado == "reality":
+                    chance = 0.15
+                else:
+                    chance = 0.30
+                frases = FRASES_CUSTOM[nome_customizado]
+                if nome_customizado == "waz":
+                    frases = frases + INTERACOES_WAZ_ESPONTANEAS
+                if random.random() < chance:
+                    _ultimo_custom[autor_id] = agora
+                    return await message.channel.send(random.choice(frases))
+            # Se ainda está no cooldown, cai nas respostas normais abaixo
 
         # --- HYPE E ENERGIA ---
         if any(p in content for p in ["hype", "bora", "vamo", "vamos lá", "chega chegando", "que energia", "que vibe", "animado", "animada", "tô on", "to on", "chegou chegando", "chegou com tudo", "bateu aquela vontade", "tô aqui", "to aqui", "apareci", "apareceu", "vibe boa", "energia boa", "tô ligado", "to ligado"]):
