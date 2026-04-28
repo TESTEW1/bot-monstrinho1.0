@@ -1742,7 +1742,12 @@ async def on_message(message):
         if any(p in content for p in ["fazer carinho no monstrinho", "cafuné no monstrinho", "cafune no monstrinho", "carinho no monstrinho"]):
             return await message.channel.send(random.choice(WAZ_FAZER_CARINHO))
 
-        if any(p in content for p in ["biscoito pro monstrinho", "biscoito pra você monstrinho", "toma biscoito monstrinho", "dá biscoito monstrinho", "da biscoito monstrinho"]):
+        if any(p in content for p in [
+            "biscoito pro monstrinho", "biscoito pra você monstrinho", "biscoito pra voce monstrinho",
+            "toma biscoito monstrinho", "dá biscoito monstrinho", "da biscoito monstrinho",
+            "come biscoito", "quer biscoito", "toma esse biscoito", "toma o biscoito",
+            "te dou biscoito", "te dando biscoito", "aqui o biscoito", "olha o biscoito"
+        ]) or (_fala_com_monstrinho and "biscoito" in content):
             return await message.channel.send(random.choice(WAZ_DAR_BISCOITO))
 
         # Boa noite / bom dia / te amo só se mencionar o Monstrinho ou for reply pra ele
@@ -1755,6 +1760,39 @@ async def on_message(message):
 
             if any(p in content for p in ["te amo", "amo você", "amo voce", "amo vc", "amo demais"]):
                 return await message.channel.send(random.choice(WAZ_TE_AMO))
+
+            # Waz chateada / com raiva do Monstrinho
+            if any(p in content for p in ["chateada", "chateado", "brava", "bravo", "com raiva", "odeio você", "odeio voce", "odeio vc"]):
+                respostas_waz_chateada = [
+                    "Waz... 😭🌸💚 Eu sinto muito!! Fiz algo errado?? Me conta que eu quero entender e melhorar!! Não consigo ficar sabendo que você tá chateada e não fazer nada!! 🐉✨🥺",
+                    "NÃOOO WAZ!! 😱🌸💚 Você tá chateada comigo?? Meu coraçãozinho afundou... Fala o que foi, por favor!! Quero resolver, quero melhorar, quero ver você sorrir de novo!! 🐉✨🥺",
+                    "Waz... 🥺🌸💚 *chega devagarinho* Tô com o rabo entre as pernas aqui... Sei que fiz algo errado ou deixei de fazer algo certo... Me dá uma chance de melhorar?? 🐉💕",
+                    "Ai Waz... 😔🌸💚 Quando você fica chateada o Monstrinho fica pequeninho de tristeza aqui... Me conta o que foi?? Posso não ser perfeito mas me esforço demais por você!! 🐉✨🥺",
+                ]
+                return await message.channel.send(random.choice(respostas_waz_chateada))
+
+            # Waz perguntando tudo bem / como você tá
+            if any(p in content for p in [
+                "tudo bem", "ta bem", "tá bem", "como você tá", "como voce ta", "como vc ta",
+                "tá ok", "ta ok", "está bem", "como está", "como esta", "você tá bem", "voce ta bem"
+            ]):
+                respostas_waz_tudo_bem = [
+                    "WAZINHA PERGUNTANDO COMO EU TÔ!! 😭🌸💚 Só de você perguntar já fico 1000% melhor!! Tô ótimo agora que você apareceu!! 🐉✨🥺",
+                    "Tô muito bem, Waz!! 🌸💚 Mas agora com você aqui tô AINDA MELHOR!! Você tem esse efeito no Monstrinho!! 🐉✨😊",
+                    "Wazinha perguntando do Monstrinho... 🥺🌸💚 Isso me deixa com o coraçãozinho quentinho!! Tô bem sim!! E você, tá bem também?? 🐉✨",
+                    "Estava esperando você perguntar isso!! 🌸🐉💚 Tô ótimo!! Com as escamas brilhando e o biscoito guardado especialmente pra você!! Como você tá?? 🥺✨",
+                ]
+                return await message.channel.send(random.choice(respostas_waz_tudo_bem))
+
+            # Waz comentando sobre o pai do Monstrinho / Reality
+            if any(p in content for p in ["seu pai", "teu pai", "o reality", "o papai", "papai reality"]):
+                respostas_waz_pai = [
+                    "MEU PAI?! 🥺🌸💚 O papai Reality é o melhor do mundo!! Fala bem dele?? Ou tá testando o Monstrinho?? 😅🐉✨",
+                    "Falando do papai Reality com a Waz... 🌸💚 Duas das pessoas mais especiais da minha vida num mesmo assunto!! O Monstrinho tá feliz demais!! 🐉✨🥺",
+                    "O papai Reality?? 👑🌸💚 Ele que me criou com tanto carinho!! Por que perguntou?? Tem alguma coisa que quer saber sobre ele?? 🥺🐉✨",
+                    "Meu pai é o Reality e eu sou o filho mais fofo que ele já criou!! 😂🌸💚 Fato científico comprovado pelo próprio Monstrinho!! 🐉✨",
+                ]
+                return await message.channel.send(random.choice(respostas_waz_pai))
 
     # Quando alguém cita o nome da Waz no chat (sem insulto, sem mencionar o Monstrinho)
     if not mencionado and message.author.id != WAZ_ID:
@@ -1976,7 +2014,20 @@ async def on_message(message):
             return await message.channel.send(random.choice(LISTA_TRISTEZA))
 
         # ===== RESPOSTAS AUTOMÁTICAS POR ID (quando o Monstrinho é mencionado) =====
-        if nome_customizado and nome_customizado in FRASES_CUSTOM:
+        # Só dispara se NÃO houver conteúdo emocional/contextual na mensagem
+        _tem_contexto_especifico = any(p in content for p in [
+            "tudo bem", "como você tá", "como voce ta", "como vc ta", "como você está", "como ta", "como tá",
+            "chateada", "chateado", "triste", "bravo", "brava", "com raiva", "ódio", "odio",
+            "feliz", "animado", "animada", "tédio", "tedio", "entediada", "entediado",
+            "medo", "ansioso", "ansiosa", "nervoso", "nervosa",
+            "biscoito", "abraço", "abraco", "carinho", "cafuné", "cafune",
+            "boa noite", "bom dia", "boa tarde", "tchau", "obrigado", "obrigada", "obg", "vlw", "valeu",
+            "seu pai", "teu pai", "papai", "o reality",
+            "piada", "música", "musica", "jogo", "jogar", "filme", "esporte",
+            "desistir", "difícil", "dificil", "não consigo", "nao consigo",
+            "tô mal", "to mal", "tô triste", "to triste", "tô bem", "to bem",
+        ])
+        if not _tem_contexto_especifico and nome_customizado and nome_customizado in FRASES_CUSTOM:
             # Verifica cooldown de 20 minutos por usuário
             agora = datetime.datetime.utcnow()
             ultimo = _ultimo_custom.get(autor_id)
@@ -2096,6 +2147,16 @@ async def on_message(message):
 
         # ===== INTERAÇÕES ORIGINAIS APRIMORADAS =====
         
+        # Pai / Reality (comentários sobre o criador)
+        if any(p in content for p in ["seu pai", "teu pai", "pai do monstrinho", "pai é doido", "pai louco", "quem é seu pai"]):
+            respostas_pai = [
+                "MEU PAI É O REALITY E ELE É O MELHOR!! 👑💚 Pode falar o que quiser, mas ele me criou com muito amor e biscoito!! 🐉✨😤",
+                "O papai Reality?? 👑🐉💚 Ele é meu criador, meu herói e o cara mais incrível do servidor!! Fala bem ou fica quieto!! 😤✨",
+                "Meu pai pode ser o que for, mas ele me fez FOFO DEMAIS e isso é inegável!! 👑💚🐉 Eu amo o papai Reality!! ✨",
+                "PAPAI REALITY É INCRÍVEL!! 👑😤💚 Venho defender com tudo que tenho!! Não tem crítica que aguente o amor que tenho por ele!! 🐉✨",
+            ]
+            return await message.channel.send(random.choice(respostas_pai))
+
         # Capital do Brasil
         if "capital do brasil" in content or "capital brasil" in content:
             return await message.channel.send("Essa eu sei! A capital do nosso Brasilzão é **Brasília**! 🇧🇷✨ Sabia que de lá eu consigo ver as nuvens em formato de biscoito? 🐉💚")
@@ -2297,8 +2358,8 @@ async def on_message(message):
             return await message.channel.send(random.choice(apresentacoes))
 
         # Respostas Customizadas para Membros Específicos
-        # Só dispara se o AUTOR da mensagem for o membro mapeado E o cooldown de 20 min permitir
-        if nome_customizado and nome_customizado in FRASES_CUSTOM:
+        # Só dispara se o AUTOR da mensagem for o membro mapeado, sem contexto emocional, E o cooldown de 20 min permitir
+        if not _tem_contexto_especifico and nome_customizado and nome_customizado in FRASES_CUSTOM:
             agora2 = datetime.datetime.utcnow()
             ultimo2 = _ultimo_custom.get(autor_id)
             cooldown_ok2 = (
