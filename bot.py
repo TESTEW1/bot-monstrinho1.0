@@ -1784,8 +1784,32 @@ async def on_message(message):
                 ]
                 return await message.channel.send(random.choice(respostas_waz_tudo_bem))
 
-            # Waz comentando sobre o pai do Monstrinho / Reality
-            if any(p in content for p in ["seu pai", "teu pai", "o reality", "o papai", "papai reality"]):
+            # Waz perguntando se o bot entendeu
+            if any(p in content for p in ["entendeu", "ficou claro", "compreendeu", "captou", "ficou?"]):
+                respostas_waz_entendeu = [
+                    "ENTENDI SIMM WAZ!! 😭🌸💚 Guardei cada palavrinha aqui no meu coraçãozinho!! Pode continuar, tô toda orelhas!! 🐉✨📝",
+                    "Entendiiiii!! 🌸💚 Você acha que o Monstrinho não presta atenção em você?? PRESTO EM TUDO!! 🐉✨🥺",
+                    "Captei tudo!! 🥺🌸💚 A Waz falou e o Monstrinho registrou na memória especial!! O que vem agora?? 🐉✨",
+                ]
+                return await message.channel.send(random.choice(respostas_waz_entendeu))
+
+            # Waz falando de fofoca/fofoquinha
+            if any(p in content for p in ["fofoquinha", "fofoca", "fofoqueiro", "fofoqueira"]):
+                respostas_waz_fofoca = [
+                    "EU NÃO SOU FOFOQUINHA WAZ!! 😤🌸💚 Sou *bem informado*!! É diferente!! 🐉✨😂",
+                    "Fofoquinha?? 😱🌸💚 Waz, você me conhece melhor que ninguém!! Só compartilho informações relevantes com amor!! 🐉✨😂",
+                    "FOFOQUINHA EU NADA WAZ!! 🥺🌸💚 Só observo o servidor com muito carinho e às vezes comento algumas coisinhas... 🐉👀✨😂",
+                ]
+                return await message.channel.send(random.choice(respostas_waz_fofoca))
+
+            # Waz ensinando algo / vou te ensinar
+            if any(p in content for p in ["vou te ensinar", "vou te contar", "vou te falar", "vou te mostrar", "deixa eu te ensinar", "deixa eu explicar"]):
+                respostas_waz_ensinar = [
+                    "AAAA WAZ VAI ME ENSINAR?? 😭🌸💚 Fica aqui que o Monstrinho tá todo orelha!! Conta tudo!! 🐉✨📝",
+                    "Wazinha me ensinando algo?? 🌸🥺💚 Isso é o melhor presente do dia!! Pode falar, tô 100% atento!! 🐉✨",
+                    "Boa!! 🌸💚 O Monstrinho ama aprender, principalmente com a Waz!! Manda ver!! 🐉✨🥺",
+                ]
+                return await message.channel.send(random.choice(respostas_waz_ensinar))
                 respostas_waz_pai = [
                     "MEU PAI?! 🥺🌸💚 O papai Reality é o melhor do mundo!! Fala bem dele?? Ou tá testando o Monstrinho?? 😅🐉✨",
                     "Falando do papai Reality com a Waz... 🌸💚 Duas das pessoas mais especiais da minha vida num mesmo assunto!! O Monstrinho tá feliz demais!! 🐉✨🥺",
@@ -2016,16 +2040,31 @@ async def on_message(message):
         # ===== RESPOSTAS AUTOMÁTICAS POR ID (quando o Monstrinho é mencionado) =====
         # Só dispara se NÃO houver conteúdo emocional/contextual na mensagem
         _tem_contexto_especifico = any(p in content for p in [
+            # estado emocional
             "tudo bem", "como você tá", "como voce ta", "como vc ta", "como você está", "como ta", "como tá",
             "chateada", "chateado", "triste", "bravo", "brava", "com raiva", "ódio", "odio",
             "feliz", "animado", "animada", "tédio", "tedio", "entediada", "entediado",
             "medo", "ansioso", "ansiosa", "nervoso", "nervosa",
+            "tô mal", "to mal", "tô triste", "to triste", "tô bem", "to bem",
+            # ações / interações físicas
             "biscoito", "abraço", "abraco", "carinho", "cafuné", "cafune",
+            # despedida / saudação temporal
             "boa noite", "bom dia", "boa tarde", "tchau", "obrigado", "obrigada", "obg", "vlw", "valeu",
-            "seu pai", "teu pai", "papai", "o reality",
+            # sobre pessoas
+            "seu pai", "teu pai", "papai", "o reality", "fofoquinha", "fofoca",
+            # assuntos específicos
             "piada", "música", "musica", "jogo", "jogar", "filme", "esporte",
             "desistir", "difícil", "dificil", "não consigo", "nao consigo",
-            "tô mal", "to mal", "tô triste", "to triste", "tô bem", "to bem",
+            # verbos conversacionais — indicam que é uma frase, não saudação
+            "vou te", "vou ensinar", "vou contar", "vou falar", "vou mostrar",
+            "você sabia", "voce sabia", "vc sabia", "sabia que",
+            "você sabe", "voce sabe", "vc sabe", "você conhece", "voce conhece",
+            "entendeu", "ficou claro", "compreendeu", "captou",
+            "me explica", "me conta", "me fala", "me diz",
+            "preciso te", "quero te", "tenho que te", "tenho algo", "tenho uma coisa",
+            "toda vez", "sempre que", "quando você", "quando voce", "quando vc",
+            "olha isso", "olha aqui", "olha só", "olha so",
+            "isso significa", "isso quer dizer", "que significa",
         ])
         if not _tem_contexto_especifico and nome_customizado and nome_customizado in FRASES_CUSTOM:
             # Verifica cooldown de 20 minutos por usuário
@@ -2156,6 +2195,32 @@ async def on_message(message):
                 "PAPAI REALITY É INCRÍVEL!! 👑😤💚 Venho defender com tudo que tenho!! Não tem crítica que aguente o amor que tenho por ele!! 🐉✨",
             ]
             return await message.channel.send(random.choice(respostas_pai))
+
+        # Fofoca / fofoquinha
+        if any(p in content for p in ["fofoquinha", "fofoca", "fofoqueiro", "fofoqueira", "bisbilhotar", "bisbilhoteiro"]):
+            respostas_fofoca = [
+                "EU NÃO SOU FOFOQUINHA!! 😤💚 Sou apenas... bem informado sobre tudo que rola aqui!! É totalmente diferente!! 🐉✨😂",
+                "FOFOQUINHA?! 🥺💚 Eu só repasso informações relevantes com muito carinho e amor!! Isso não é fofoca, isso é *comunicação estratégica*!! 🐉📢✨😂",
+                "O Monstrinho não faz fofoca!! 😇💚 Só... comenta alguns acontecimentos interessantes de vez em quando... com detalhes... pra todo mundo... 🐉👀✨😂",
+                "Sabe quem me contou essa fofoca?? Ninguém!! Eu mesmo vi!! Então não é fofoca, é reportagem!! 📰🐉💚✨😂",
+                "Fofoquinha eu?? 😱💚 Papai Reality, tão me difamando aqui!! *mas anota tudo num caderninho secreto* 📓🐉✨😂",
+            ]
+            return await message.channel.send(random.choice(respostas_fofoca))
+
+        # Entendeu? / ficou claro?
+        if any(p in content for p in [
+            "entendeu", "entendeu?", "você entendeu", "voce entendeu", "vc entendeu",
+            "ficou claro", "ficou claro?", "compreendeu", "captou", "pegou a ideia",
+            "ficou?"
+        ]):
+            respostas_entendeu = [
+                "ENTENDI SIM!! 🥺💚 Guardei tudo aqui na minha memória de dragão!! Pode continuar!! 🐉✨📝",
+                "Captei tudo!! 💚🐉 Pode deixar que o Monstrinho prestou atenção em cada palavrinha!! ✨🥺",
+                "Entendiiiii!! 😄💚 Não sou tão lerdo assim, tá?? 🐉✨ O que você vai me ensinar agora?? 🥺",
+                "Hmm... *processa*... *processa*... ENTENDIDO!! ✅💚 Minha memória de dragão registrou tudo!! 🐉✨📝",
+                "Entendi sim!! 🥺💚 Fica tranquila que eu tô prestando atenção em você!! Pode continuar!! 🐉✨",
+            ]
+            return await message.channel.send(random.choice(respostas_entendeu))
 
         # Capital do Brasil
         if "capital do brasil" in content or "capital brasil" in content:
