@@ -1986,6 +1986,9 @@ async def on_message(message):
             )
 
             if cooldown_ok:
+                # Marca o cooldown ANTES do random — assim ele só tenta 1x por 20 min
+                _ultimo_custom[autor_id] = agora
+
                 # Waz tem chance maior (70%), Reality tem chance menor (15%), demais 30%
                 if nome_customizado == "waz":
                     chance = 0.70
@@ -1997,9 +2000,8 @@ async def on_message(message):
                 if nome_customizado == "waz":
                     frases = frases + INTERACOES_WAZ_ESPONTANEAS
                 if random.random() < chance:
-                    _ultimo_custom[autor_id] = agora
                     return await message.channel.send(random.choice(frases))
-            # Se ainda está no cooldown, cai nas respostas normais abaixo
+            # Se ainda está no cooldown (ou o random não disparou), cai nas respostas normais
 
         # --- HYPE E ENERGIA ---
         if any(p in content for p in ["hype", "bora", "vamo", "vamos lá", "chega chegando", "que energia", "que vibe", "animado", "animada", "tô on", "to on", "chegou chegando", "chegou com tudo", "bateu aquela vontade", "tô aqui", "to aqui", "apareci", "apareceu", "vibe boa", "energia boa", "tô ligado", "to ligado"]):
