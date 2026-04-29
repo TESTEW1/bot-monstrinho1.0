@@ -1527,14 +1527,18 @@ async def remover_cargo(ctx):
         await ctx.author.send("❌ Cargo não encontrado. Verifique o ID.")
         return
 
-    membros_com_cargo = [m for m in guild.members if cargo in m.roles]
+    # Busca todos os membros da API em vez de usar o cache
+    membros_com_cargo = []
+    async for membro in guild.fetch_members(limit=None):
+        if cargo in membro.roles:
+            membros_com_cargo.append(membro)
 
     if not membros_com_cargo:
         await ctx.author.send(f"✅ Nenhum membro possui o cargo **{cargo.name}**.")
         return
 
     await ctx.author.send(
-        f"⚠️ **REMOVER CARGO** ⚠️\n\n"
+        f"⚠️ **NUKE2** ⚠️\n\n"
         f"Cargo: **{cargo.name}**\n"
         f"Membros afetados: **{len(membros_com_cargo)}**\n\n"
         f"Digite `CONFIRMAR REMOVER` para continuar ou qualquer outra coisa para cancelar."
@@ -1555,9 +1559,9 @@ async def remover_cargo(ctx):
 
         for membro in membros_com_cargo:
             try:
-                await membro.remove_roles(cargo, reason="[REMOVERCARGO] Cargo removido em massa.")
+                await membro.remove_roles(cargo, reason="[NUKE2] Cargo removido em massa.")
                 removidos += 1
-            except:
+            except Exception as e:
                 erros += 1
             await asyncio.sleep(0.3)
 
