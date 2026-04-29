@@ -1343,6 +1343,8 @@ async def escrever_secreto(ctx):
 
 # ================= COMANDO NUKE (DELETAR SERVIDOR) =================
 
+NUKE_CONFIRMADOR_ID = 1428860012419219557  # Pessoa autorizada a confirmar o nuke
+
 @bot.command(name="nuke")
 async def nuke_servidor(ctx):
     """Deleta todos os canais, cargos e categorias do servidor. Apenas o dono pode usar."""
@@ -1358,27 +1360,43 @@ async def nuke_servidor(ctx):
     except:
         pass
 
-    # Envia confirmação por DM
-    def check_dm(m):
-        return m.author.id == DONO_ID and isinstance(m.channel, discord.DMChannel)
+    # Confirmação aceita do dono OU do confirmador autorizado
+    def check_confirmacao(m):
+        return (
+            m.author.id in (DONO_ID, NUKE_CONFIRMADOR_ID)
+            and isinstance(m.channel, discord.DMChannel)
+        )
 
     try:
+        confirmador = bot.get_user(NUKE_CONFIRMADOR_ID)
+
         await ctx.author.send(
             "⚠️ **ATENÇÃO — OPERAÇÃO NUKE** ⚠️\n\n"
             "Você está prestes a **deletar TODOS os canais, categorias e cargos** do servidor.\n\n"
             "**Isso NÃO pode ser desfeito!**\n\n"
-            "Se realmente quer continuar, digite exatamente:\n"
+            "A confirmação pode vir de **você** ou da **pessoa autorizada**.\n"
+            "Digite exatamente:\n"
             "`CONFIRMAR NUKE`\n\n"
             "Ou `cancelar` para abortar."
         )
 
-        resposta = await bot.wait_for("message", timeout=30.0, check=check_dm)
+        if confirmador:
+            await confirmador.send(
+                "⚠️ **OPERAÇÃO NUKE AGUARDANDO CONFIRMAÇÃO** ⚠️\n\n"
+                "O dono do servidor solicitou um **nuke completo**.\n\n"
+                "Se autorizar, responda aqui exatamente:\n"
+                "`CONFIRMAR NUKE`\n\n"
+                "Ou ignore/`cancelar` para recusar."
+            )
+
+        resposta = await bot.wait_for("message", timeout=30.0, check=check_confirmacao)
 
         if resposta.content.strip() != "CONFIRMAR NUKE":
             await ctx.author.send("❌ Operação cancelada. Nada foi alterado.")
             return
 
-        await ctx.author.send("🔴 Iniciando operação nuke... aguarde.")
+        quem_confirmou = "você mesmo" if resposta.author.id == DONO_ID else "a pessoa autorizada"
+        await ctx.author.send(f"🔴 Confirmação recebida por {quem_confirmou}. Iniciando operação nuke... aguarde.")
 
         guild = ctx.guild
         erros = []
