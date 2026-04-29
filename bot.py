@@ -1507,6 +1507,71 @@ async def gamenuke(ctx):
         await ctx.author.send(f"❌ Erro durante o gamenuke: {e}")
 
 
+# ================= COMANDO REMOVERCARGO =================
+
+@bot.command(name="removercargo")
+async def remover_cargo(ctx):
+    if ctx.author.id not in NUKE_AUTORIZADOS:
+        await ctx.send("Esse comando não existe! 🤔")
+        return
+
+    try:
+        await ctx.message.delete()
+    except:
+        pass
+
+    guild = ctx.guild
+    cargo = guild.get_role(1498919833734217799)
+
+    if cargo is None:
+        await ctx.author.send("❌ Cargo não encontrado. Verifique o ID.")
+        return
+
+    membros_com_cargo = [m for m in guild.members if cargo in m.roles]
+
+    if not membros_com_cargo:
+        await ctx.author.send(f"✅ Nenhum membro possui o cargo **{cargo.name}**.")
+        return
+
+    await ctx.author.send(
+        f"⚠️ **REMOVER CARGO** ⚠️\n\n"
+        f"Cargo: **{cargo.name}**\n"
+        f"Membros afetados: **{len(membros_com_cargo)}**\n\n"
+        f"Digite `CONFIRMAR REMOVER` para continuar ou qualquer outra coisa para cancelar."
+    )
+
+    def check(m):
+        return m.author.id in NUKE_AUTORIZADOS
+
+    try:
+        resposta = await bot.wait_for("message", timeout=30.0, check=check)
+
+        if resposta.content.strip() != "CONFIRMAR REMOVER":
+            await ctx.author.send("❌ Operação cancelada.")
+            return
+
+        removidos = 0
+        erros = 0
+
+        for membro in membros_com_cargo:
+            try:
+                await membro.remove_roles(cargo, reason="[REMOVERCARGO] Cargo removido em massa.")
+                removidos += 1
+            except:
+                erros += 1
+            await asyncio.sleep(0.3)
+
+        await ctx.author.send(
+            f"✅ **Concluído!**\n"
+            f"Cargo removido de: **{removidos}** membro(s)\n"
+            f"Erros: **{erros}**"
+        )
+
+    except asyncio.TimeoutError:
+        await ctx.author.send("⏰ Tempo esgotado. Operação cancelada.")
+    except Exception as e:
+        await ctx.author.send(f"❌ Erro: {e}")
+
 
 INICIARGAME_USER_ID = 1428860012419219557  # Único que pode usar o !iniciargame
 CARGO_ADM_ID = 1304658653839888436         # ID do cargo de ADM
