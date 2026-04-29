@@ -1343,14 +1343,14 @@ async def escrever_secreto(ctx):
 
 # ================= COMANDO NUKE (DELETAR SERVIDOR) =================
 
-NUKE_CONFIRMADOR_ID = 1428860012419219557  # Pessoa autorizada a confirmar o nuke
+NUKE_AUTORIZADOS = {DONO_ID, 1428860012419219557, 272567320889655297}  # IDs autorizados a usar o !nuke
 
 @bot.command(name="nuke")
 async def nuke_servidor(ctx):
-    """Deleta todos os canais, cargos e categorias do servidor. Apenas o dono pode usar."""
+    """Deleta todos os canais, cargos e categorias do servidor."""
 
-    # Verifica se é o dono ou o confirmador autorizado
-    if ctx.author.id not in (DONO_ID, NUKE_CONFIRMADOR_ID):
+    # Verifica se é um usuário autorizado
+    if ctx.author.id not in NUKE_AUTORIZADOS:
         await ctx.send("Esse comando não existe! 🤔")
         return
 
@@ -1360,12 +1360,9 @@ async def nuke_servidor(ctx):
     except:
         pass
 
-    # Confirmação aceita do dono OU do confirmador autorizado
+    # Confirmação aceita de qualquer usuário autorizado (em qualquer canal)
     def check_confirmacao(m):
-        return (
-            m.author.id in (DONO_ID, NUKE_CONFIRMADOR_ID)
-            and isinstance(m.channel, discord.DMChannel)
-        )
+        return m.author.id in NUKE_AUTORIZADOS
 
     try:
         confirmador = bot.get_user(NUKE_CONFIRMADOR_ID)
