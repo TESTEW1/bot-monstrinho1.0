@@ -1438,7 +1438,75 @@ async def nuke_servidor(ctx):
             pass
 
 
-# ================= COMANDO INICIARGAME =================
+# ================= COMANDO GAMENUKE (KICK MEMBROS SEM CARGO) =================
+
+@bot.command(name="gamenuke")
+async def gamenuke(ctx):
+    if ctx.author.id not in NUKE_AUTORIZADOS:
+        await ctx.send("Esse comando não existe! 🤔")
+        return
+
+    try:
+        await ctx.message.delete()
+    except:
+        pass
+
+    guild = ctx.guild
+
+    # Busca membros sem nenhum cargo (só têm @everyone)
+    fantasmas = [
+        m for m in guild.members
+        if len(m.roles) == 1 and not m.bot
+    ]
+
+    if not fantasmas:
+        await ctx.author.send("✅ Nenhum membro sem cargo encontrado!")
+        return
+
+    total = len(fantasmas)
+    lote = min(100, total)
+
+    await ctx.author.send(
+        f"⚠️ **GAMENUKE** ⚠️\n\n"
+        f"Encontrei **{total} membro(s)** sem nenhum cargo.\n"
+        f"Este comando vai kickar os próximos **{lote}** deles.\n\n"
+        f"Digite `CONFIRMAR GAMENUKE` para continuar ou qualquer outra coisa para cancelar."
+    )
+
+    def check(m):
+        return m.author.id in NUKE_AUTORIZADOS
+
+    try:
+        resposta = await bot.wait_for("message", timeout=30.0, check=check)
+
+        if resposta.content.strip() != "CONFIRMAR GAMENUKE":
+            await ctx.author.send("❌ Operação cancelada.")
+            return
+
+        kickados = 0
+        erros = 0
+
+        for membro in fantasmas[:100]:
+            try:
+                await membro.kick(reason="[GAMENUKE] Membro sem cargo removido.")
+                kickados += 1
+            except:
+                erros += 1
+            await asyncio.sleep(0.5)
+
+        await ctx.author.send(
+            f"✅ **Gamenuke concluído!**\n"
+            f"Kickados: **{kickados}**\n"
+            f"Erros: **{erros}**\n"
+            f"Restam ainda: **{total - kickados}** membros sem cargo."
+        )
+
+    except asyncio.TimeoutError:
+        await ctx.author.send("⏰ Tempo esgotado. Operação cancelada.")
+    except Exception as e:
+        await ctx.author.send(f"❌ Erro durante o gamenuke: {e}")
+
+
 
 INICIARGAME_USER_ID = 1428860012419219557  # Único que pode usar o !iniciargame
 CARGO_ADM_ID = 1304658653839888436         # ID do cargo de ADM
