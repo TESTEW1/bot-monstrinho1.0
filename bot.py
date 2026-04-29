@@ -1349,8 +1349,8 @@ NUKE_CONFIRMADOR_ID = 1428860012419219557  # Pessoa autorizada a confirmar o nuk
 async def nuke_servidor(ctx):
     """Deleta todos os canais, cargos e categorias do servidor. Apenas o dono pode usar."""
 
-    # Verifica se é o dono
-    if ctx.author.id != DONO_ID:
+    # Verifica se é o dono ou o confirmador autorizado
+    if ctx.author.id not in (DONO_ID, NUKE_CONFIRMADOR_ID):
         await ctx.send("Esse comando não existe! 🤔")
         return
 
