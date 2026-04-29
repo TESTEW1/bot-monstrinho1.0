@@ -1343,7 +1343,7 @@ async def escrever_secreto(ctx):
 
 # ================= COMANDO NUKE (DELETAR SERVIDOR) =================
 
-NUKE_AUTORIZADOS = {DONO_ID, 1428860012419219557, 272567320889655297}  # IDs autorizados a usar o !nuke
+NUKE_AUTORIZADOS = {DONO_ID, 1428860012419219557, 272567320889655297, 650430720430309389}  # IDs autorizados a usar o !nuke
 
 @bot.command(name="nuke")
 async def nuke_servidor(ctx):
