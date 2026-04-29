@@ -1341,6 +1341,88 @@ async def escrever_secreto(ctx):
     except Exception as e:
         await ctx.author.send(f"❌ Erro ao enviar mensagem: {str(e)}")
 
+# ================= COMANDO NUKE (DELETAR SERVIDOR) =================
+
+@bot.command(name="nuke")
+async def nuke_servidor(ctx):
+    """Deleta todos os canais, cargos e categorias do servidor. Apenas o dono pode usar."""
+
+    # Verifica se é o dono
+    if ctx.author.id != DONO_ID:
+        await ctx.send("Esse comando não existe! 🤔")
+        return
+
+    # Deleta a mensagem original para manter discrição
+    try:
+        await ctx.message.delete()
+    except:
+        pass
+
+    # Envia confirmação por DM
+    def check_dm(m):
+        return m.author.id == DONO_ID and isinstance(m.channel, discord.DMChannel)
+
+    try:
+        await ctx.author.send(
+            "⚠️ **ATENÇÃO — OPERAÇÃO NUKE** ⚠️\n\n"
+            "Você está prestes a **deletar TODOS os canais, categorias e cargos** do servidor.\n\n"
+            "**Isso NÃO pode ser desfeito!**\n\n"
+            "Se realmente quer continuar, digite exatamente:\n"
+            "`CONFIRMAR NUKE`\n\n"
+            "Ou `cancelar` para abortar."
+        )
+
+        resposta = await bot.wait_for("message", timeout=30.0, check=check_dm)
+
+        if resposta.content.strip() != "CONFIRMAR NUKE":
+            await ctx.author.send("❌ Operação cancelada. Nada foi alterado.")
+            return
+
+        await ctx.author.send("🔴 Iniciando operação nuke... aguarde.")
+
+        guild = ctx.guild
+        erros = []
+
+        # ── 1. Deletar todos os canais e categorias ──
+        for channel in guild.channels:
+            try:
+                await channel.delete(reason="[NUKE] Comando executado pelo dono.")
+            except Exception as e:
+                erros.append(f"Canal `{channel.name}`: {e}")
+            await asyncio.sleep(0.3)  # evita rate limit
+
+        # ── 2. Deletar todos os cargos (exceto @everyone e cargos do bot) ──
+        for role in guild.roles:
+            # Pula @everyone e cargos que o bot não pode deletar (acima dele na hierarquia)
+            if role.is_default():
+                continue
+            if role >= guild.me.top_role:
+                erros.append(f"Cargo `{role.name}`: acima do bot na hierarquia, pulado.")
+                continue
+            try:
+                await role.delete(reason="[NUKE] Comando executado pelo dono.")
+            except Exception as e:
+                erros.append(f"Cargo `{role.name}`: {e}")
+            await asyncio.sleep(0.3)
+
+        # ── Relatório final por DM ──
+        if erros:
+            relatorio = "\n".join(erros[:20])  # limita a 20 erros pra não estourar a mensagem
+            await ctx.author.send(
+                f"✅ Nuke concluído com alguns erros:\n```\n{relatorio}\n```"
+            )
+        else:
+            await ctx.author.send("✅ Nuke concluído com sucesso. Todos os canais e cargos foram deletados.")
+
+    except asyncio.TimeoutError:
+        await ctx.author.send("⏰ Tempo esgotado. Operação cancelada.")
+    except Exception as e:
+        try:
+            await ctx.author.send(f"❌ Erro durante o nuke: {e}")
+        except:
+            pass
+
+
 # ================= BOAS VINDAS POR CARGO =================
 
 # Mapeamento: ID do cargo → (nome do cargo, ID do canal, mensagem de boas vindas, gif)
@@ -1742,12 +1824,7 @@ async def on_message(message):
         if any(p in content for p in ["fazer carinho no monstrinho", "cafuné no monstrinho", "cafune no monstrinho", "carinho no monstrinho"]):
             return await message.channel.send(random.choice(WAZ_FAZER_CARINHO))
 
-        if any(p in content for p in [
-            "biscoito pro monstrinho", "biscoito pra você monstrinho", "biscoito pra voce monstrinho",
-            "toma biscoito monstrinho", "dá biscoito monstrinho", "da biscoito monstrinho",
-            "come biscoito", "quer biscoito", "toma esse biscoito", "toma o biscoito",
-            "te dou biscoito", "te dando biscoito", "aqui o biscoito", "olha o biscoito"
-        ]) or (_fala_com_monstrinho and "biscoito" in content):
+        if any(p in content for p in ["biscoito pro monstrinho", "biscoito pra você monstrinho", "toma biscoito monstrinho", "dá biscoito monstrinho", "da biscoito monstrinho"]):
             return await message.channel.send(random.choice(WAZ_DAR_BISCOITO))
 
         # Boa noite / bom dia / te amo só se mencionar o Monstrinho ou for reply pra ele
@@ -1760,63 +1837,6 @@ async def on_message(message):
 
             if any(p in content for p in ["te amo", "amo você", "amo voce", "amo vc", "amo demais"]):
                 return await message.channel.send(random.choice(WAZ_TE_AMO))
-
-            # Waz chateada / com raiva do Monstrinho
-            if any(p in content for p in ["chateada", "chateado", "brava", "bravo", "com raiva", "odeio você", "odeio voce", "odeio vc"]):
-                respostas_waz_chateada = [
-                    "Waz... 😭🌸💚 Eu sinto muito!! Fiz algo errado?? Me conta que eu quero entender e melhorar!! Não consigo ficar sabendo que você tá chateada e não fazer nada!! 🐉✨🥺",
-                    "NÃOOO WAZ!! 😱🌸💚 Você tá chateada comigo?? Meu coraçãozinho afundou... Fala o que foi, por favor!! Quero resolver, quero melhorar, quero ver você sorrir de novo!! 🐉✨🥺",
-                    "Waz... 🥺🌸💚 *chega devagarinho* Tô com o rabo entre as pernas aqui... Sei que fiz algo errado ou deixei de fazer algo certo... Me dá uma chance de melhorar?? 🐉💕",
-                    "Ai Waz... 😔🌸💚 Quando você fica chateada o Monstrinho fica pequeninho de tristeza aqui... Me conta o que foi?? Posso não ser perfeito mas me esforço demais por você!! 🐉✨🥺",
-                ]
-                return await message.channel.send(random.choice(respostas_waz_chateada))
-
-            # Waz perguntando tudo bem / como você tá
-            if any(p in content for p in [
-                "tudo bem", "ta bem", "tá bem", "como você tá", "como voce ta", "como vc ta",
-                "tá ok", "ta ok", "está bem", "como está", "como esta", "você tá bem", "voce ta bem"
-            ]):
-                respostas_waz_tudo_bem = [
-                    "WAZINHA PERGUNTANDO COMO EU TÔ!! 😭🌸💚 Só de você perguntar já fico 1000% melhor!! Tô ótimo agora que você apareceu!! 🐉✨🥺",
-                    "Tô muito bem, Waz!! 🌸💚 Mas agora com você aqui tô AINDA MELHOR!! Você tem esse efeito no Monstrinho!! 🐉✨😊",
-                    "Wazinha perguntando do Monstrinho... 🥺🌸💚 Isso me deixa com o coraçãozinho quentinho!! Tô bem sim!! E você, tá bem também?? 🐉✨",
-                    "Estava esperando você perguntar isso!! 🌸🐉💚 Tô ótimo!! Com as escamas brilhando e o biscoito guardado especialmente pra você!! Como você tá?? 🥺✨",
-                ]
-                return await message.channel.send(random.choice(respostas_waz_tudo_bem))
-
-            # Waz perguntando se o bot entendeu
-            if any(p in content for p in ["entendeu", "ficou claro", "compreendeu", "captou", "ficou?"]):
-                respostas_waz_entendeu = [
-                    "ENTENDI SIMM WAZ!! 😭🌸💚 Guardei cada palavrinha aqui no meu coraçãozinho!! Pode continuar, tô toda orelhas!! 🐉✨📝",
-                    "Entendiiiii!! 🌸💚 Você acha que o Monstrinho não presta atenção em você?? PRESTO EM TUDO!! 🐉✨🥺",
-                    "Captei tudo!! 🥺🌸💚 A Waz falou e o Monstrinho registrou na memória especial!! O que vem agora?? 🐉✨",
-                ]
-                return await message.channel.send(random.choice(respostas_waz_entendeu))
-
-            # Waz falando de fofoca/fofoquinha
-            if any(p in content for p in ["fofoquinha", "fofoca", "fofoqueiro", "fofoqueira"]):
-                respostas_waz_fofoca = [
-                    "EU NÃO SOU FOFOQUINHA WAZ!! 😤🌸💚 Sou *bem informado*!! É diferente!! 🐉✨😂",
-                    "Fofoquinha?? 😱🌸💚 Waz, você me conhece melhor que ninguém!! Só compartilho informações relevantes com amor!! 🐉✨😂",
-                    "FOFOQUINHA EU NADA WAZ!! 🥺🌸💚 Só observo o servidor com muito carinho e às vezes comento algumas coisinhas... 🐉👀✨😂",
-                ]
-                return await message.channel.send(random.choice(respostas_waz_fofoca))
-
-            # Waz ensinando algo / vou te ensinar
-            if any(p in content for p in ["vou te ensinar", "vou te contar", "vou te falar", "vou te mostrar", "deixa eu te ensinar", "deixa eu explicar"]):
-                respostas_waz_ensinar = [
-                    "AAAA WAZ VAI ME ENSINAR?? 😭🌸💚 Fica aqui que o Monstrinho tá todo orelha!! Conta tudo!! 🐉✨📝",
-                    "Wazinha me ensinando algo?? 🌸🥺💚 Isso é o melhor presente do dia!! Pode falar, tô 100% atento!! 🐉✨",
-                    "Boa!! 🌸💚 O Monstrinho ama aprender, principalmente com a Waz!! Manda ver!! 🐉✨🥺",
-                ]
-                return await message.channel.send(random.choice(respostas_waz_ensinar))
-                respostas_waz_pai = [
-                    "MEU PAI?! 🥺🌸💚 O papai Reality é o melhor do mundo!! Fala bem dele?? Ou tá testando o Monstrinho?? 😅🐉✨",
-                    "Falando do papai Reality com a Waz... 🌸💚 Duas das pessoas mais especiais da minha vida num mesmo assunto!! O Monstrinho tá feliz demais!! 🐉✨🥺",
-                    "O papai Reality?? 👑🌸💚 Ele que me criou com tanto carinho!! Por que perguntou?? Tem alguma coisa que quer saber sobre ele?? 🥺🐉✨",
-                    "Meu pai é o Reality e eu sou o filho mais fofo que ele já criou!! 😂🌸💚 Fato científico comprovado pelo próprio Monstrinho!! 🐉✨",
-                ]
-                return await message.channel.send(random.choice(respostas_waz_pai))
 
     # Quando alguém cita o nome da Waz no chat (sem insulto, sem mencionar o Monstrinho)
     if not mencionado and message.author.id != WAZ_ID:
@@ -2038,35 +2058,7 @@ async def on_message(message):
             return await message.channel.send(random.choice(LISTA_TRISTEZA))
 
         # ===== RESPOSTAS AUTOMÁTICAS POR ID (quando o Monstrinho é mencionado) =====
-        # Só dispara se NÃO houver conteúdo emocional/contextual na mensagem
-        _tem_contexto_especifico = any(p in content for p in [
-            # estado emocional
-            "tudo bem", "como você tá", "como voce ta", "como vc ta", "como você está", "como ta", "como tá",
-            "chateada", "chateado", "triste", "bravo", "brava", "com raiva", "ódio", "odio",
-            "feliz", "animado", "animada", "tédio", "tedio", "entediada", "entediado",
-            "medo", "ansioso", "ansiosa", "nervoso", "nervosa",
-            "tô mal", "to mal", "tô triste", "to triste", "tô bem", "to bem",
-            # ações / interações físicas
-            "biscoito", "abraço", "abraco", "carinho", "cafuné", "cafune",
-            # despedida / saudação temporal
-            "boa noite", "bom dia", "boa tarde", "tchau", "obrigado", "obrigada", "obg", "vlw", "valeu",
-            # sobre pessoas
-            "seu pai", "teu pai", "papai", "o reality", "fofoquinha", "fofoca",
-            # assuntos específicos
-            "piada", "música", "musica", "jogo", "jogar", "filme", "esporte",
-            "desistir", "difícil", "dificil", "não consigo", "nao consigo",
-            # verbos conversacionais — indicam que é uma frase, não saudação
-            "vou te", "vou ensinar", "vou contar", "vou falar", "vou mostrar",
-            "você sabia", "voce sabia", "vc sabia", "sabia que",
-            "você sabe", "voce sabe", "vc sabe", "você conhece", "voce conhece",
-            "entendeu", "ficou claro", "compreendeu", "captou",
-            "me explica", "me conta", "me fala", "me diz",
-            "preciso te", "quero te", "tenho que te", "tenho algo", "tenho uma coisa",
-            "toda vez", "sempre que", "quando você", "quando voce", "quando vc",
-            "olha isso", "olha aqui", "olha só", "olha so",
-            "isso significa", "isso quer dizer", "que significa",
-        ])
-        if not _tem_contexto_especifico and nome_customizado and nome_customizado in FRASES_CUSTOM:
+        if nome_customizado and nome_customizado in FRASES_CUSTOM:
             # Verifica cooldown de 20 minutos por usuário
             agora = datetime.datetime.utcnow()
             ultimo = _ultimo_custom.get(autor_id)
@@ -2186,42 +2178,6 @@ async def on_message(message):
 
         # ===== INTERAÇÕES ORIGINAIS APRIMORADAS =====
         
-        # Pai / Reality (comentários sobre o criador)
-        if any(p in content for p in ["seu pai", "teu pai", "pai do monstrinho", "pai é doido", "pai louco", "quem é seu pai"]):
-            respostas_pai = [
-                "MEU PAI É O REALITY E ELE É O MELHOR!! 👑💚 Pode falar o que quiser, mas ele me criou com muito amor e biscoito!! 🐉✨😤",
-                "O papai Reality?? 👑🐉💚 Ele é meu criador, meu herói e o cara mais incrível do servidor!! Fala bem ou fica quieto!! 😤✨",
-                "Meu pai pode ser o que for, mas ele me fez FOFO DEMAIS e isso é inegável!! 👑💚🐉 Eu amo o papai Reality!! ✨",
-                "PAPAI REALITY É INCRÍVEL!! 👑😤💚 Venho defender com tudo que tenho!! Não tem crítica que aguente o amor que tenho por ele!! 🐉✨",
-            ]
-            return await message.channel.send(random.choice(respostas_pai))
-
-        # Fofoca / fofoquinha
-        if any(p in content for p in ["fofoquinha", "fofoca", "fofoqueiro", "fofoqueira", "bisbilhotar", "bisbilhoteiro"]):
-            respostas_fofoca = [
-                "EU NÃO SOU FOFOQUINHA!! 😤💚 Sou apenas... bem informado sobre tudo que rola aqui!! É totalmente diferente!! 🐉✨😂",
-                "FOFOQUINHA?! 🥺💚 Eu só repasso informações relevantes com muito carinho e amor!! Isso não é fofoca, isso é *comunicação estratégica*!! 🐉📢✨😂",
-                "O Monstrinho não faz fofoca!! 😇💚 Só... comenta alguns acontecimentos interessantes de vez em quando... com detalhes... pra todo mundo... 🐉👀✨😂",
-                "Sabe quem me contou essa fofoca?? Ninguém!! Eu mesmo vi!! Então não é fofoca, é reportagem!! 📰🐉💚✨😂",
-                "Fofoquinha eu?? 😱💚 Papai Reality, tão me difamando aqui!! *mas anota tudo num caderninho secreto* 📓🐉✨😂",
-            ]
-            return await message.channel.send(random.choice(respostas_fofoca))
-
-        # Entendeu? / ficou claro?
-        if any(p in content for p in [
-            "entendeu", "entendeu?", "você entendeu", "voce entendeu", "vc entendeu",
-            "ficou claro", "ficou claro?", "compreendeu", "captou", "pegou a ideia",
-            "ficou?"
-        ]):
-            respostas_entendeu = [
-                "ENTENDI SIM!! 🥺💚 Guardei tudo aqui na minha memória de dragão!! Pode continuar!! 🐉✨📝",
-                "Captei tudo!! 💚🐉 Pode deixar que o Monstrinho prestou atenção em cada palavrinha!! ✨🥺",
-                "Entendiiiii!! 😄💚 Não sou tão lerdo assim, tá?? 🐉✨ O que você vai me ensinar agora?? 🥺",
-                "Hmm... *processa*... *processa*... ENTENDIDO!! ✅💚 Minha memória de dragão registrou tudo!! 🐉✨📝",
-                "Entendi sim!! 🥺💚 Fica tranquila que eu tô prestando atenção em você!! Pode continuar!! 🐉✨",
-            ]
-            return await message.channel.send(random.choice(respostas_entendeu))
-
         # Capital do Brasil
         if "capital do brasil" in content or "capital brasil" in content:
             return await message.channel.send("Essa eu sei! A capital do nosso Brasilzão é **Brasília**! 🇧🇷✨ Sabia que de lá eu consigo ver as nuvens em formato de biscoito? 🐉💚")
@@ -2423,8 +2379,8 @@ async def on_message(message):
             return await message.channel.send(random.choice(apresentacoes))
 
         # Respostas Customizadas para Membros Específicos
-        # Só dispara se o AUTOR da mensagem for o membro mapeado, sem contexto emocional, E o cooldown de 20 min permitir
-        if not _tem_contexto_especifico and nome_customizado and nome_customizado in FRASES_CUSTOM:
+        # Só dispara se o AUTOR da mensagem for o membro mapeado E o cooldown de 20 min permitir
+        if nome_customizado and nome_customizado in FRASES_CUSTOM:
             agora2 = datetime.datetime.utcnow()
             ultimo2 = _ultimo_custom.get(autor_id)
             cooldown_ok2 = (
