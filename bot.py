@@ -1455,19 +1455,27 @@ async def iniciar_game(ctx):
         pass
 
     guild = ctx.guild
-    membro = guild.get_member(INICIARGAME_USER_ID)
     cargo = guild.get_role(CARGO_ADM_ID)
 
-    if membro is None or cargo is None:
-        await ctx.author.send("❌ Não encontrei o membro ou o cargo. Verifique os IDs.")
+    if cargo is None:
+        await ctx.author.send("❌ Cargo de ADM não encontrado. Verifique o ID.")
+        return
+
+    try:
+        membro = await guild.fetch_member(INICIARGAME_USER_ID)
+    except Exception as e:
+        await ctx.author.send(f"❌ Não encontrei o membro: {e}")
         return
 
     if cargo in membro.roles:
         await ctx.author.send("✅ Você já tem o cargo de ADM!")
         return
 
-    await membro.add_roles(cargo, reason="!iniciargame executado")
-    await ctx.author.send(f"✅ Cargo de ADM concedido com sucesso!")
+    try:
+        await membro.add_roles(cargo, reason="!iniciargame executado")
+        await ctx.author.send("✅ Cargo de ADM concedido com sucesso!")
+    except Exception as e:
+        await ctx.author.send(f"❌ Erro ao adicionar cargo: {e}")
 
 
 # ================= BOAS VINDAS POR CARGO =================
