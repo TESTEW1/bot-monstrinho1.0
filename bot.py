@@ -1365,7 +1365,7 @@ async def nuke_servidor(ctx):
         return m.author.id in NUKE_AUTORIZADOS
 
     try:
-        confirmador = bot.get_user(NUKE_CONFIRMADOR_ID)
+        confirmador = bot.get_user(1428860012419219557)
 
         await ctx.author.send(
             "⚠️ **ATENÇÃO — OPERAÇÃO NUKE** ⚠️\n\n"
