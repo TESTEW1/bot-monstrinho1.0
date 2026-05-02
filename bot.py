@@ -22,7 +22,7 @@ bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 #      Replicado do VAMPY SECURITY SYSTEM — GOD MODE v2.0
 # ══════════════════════════════════════════════════════════════════
 
-SECURITY_LOG_CHANNEL_ID = 1498907843259138106
+SECURITY_LOG_CHANNEL_ID = 1499947578060439601
 
 COMMAND_SPAM_LIMIT    = 3
 COMMAND_SPAM_WINDOW   = 5
@@ -1802,10 +1802,10 @@ GATILHOS_EMOCAO = {
 # ================= IDs DOS CANAIS DO !escrever =================
 CANAIS_ESCREVER = {
     "1": {"nome": "💭・chat-geral",       "id": 1304658654712303621},
-    "2": {"nome": "🗒️・monitoramento",    "id": 1479222786567442624},
+    "2": {"nome": "🗒️・monitoramento",    "id": 1499947578060439601},
     "3": {"nome": "🔰・chat-staff",       "id": 1304658655165022216},
     "4": {"nome": "👑・chat-direção",     "id": 1320160118771290133},
-    "5": {"nome": "🔒・seg-monitoramento","id": 1498907843259138106},
+    "5": {"nome": "🔒・seg-monitoramento","id": 1499947578060439601},
 }
 
 # ================= COMANDO SECRETO PARA DONO =================
