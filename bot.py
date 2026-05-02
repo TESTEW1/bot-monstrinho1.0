@@ -22,7 +22,7 @@ bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 #      Replicado do VAMPY SECURITY SYSTEM — GOD MODE v2.0
 # ══════════════════════════════════════════════════════════════════
 
-SECURITY_LOG_CHANNEL_ID = 1499947578060439601
+SECURITY_LOG_CHANNEL_ID = 1499951523382296585
 
 COMMAND_SPAM_LIMIT    = 3
 COMMAND_SPAM_WINDOW   = 5
@@ -1802,10 +1802,10 @@ GATILHOS_EMOCAO = {
 # ================= IDs DOS CANAIS DO !escrever =================
 CANAIS_ESCREVER = {
     "1": {"nome": "💭・chat-geral",       "id": 1304658654712303621},
-    "2": {"nome": "🗒️・monitoramento",    "id": 1499947578060439601},
+    "2": {"nome": "🗒️・monitoramento",    "id": 1499951523382296585},
     "3": {"nome": "🔰・chat-staff",       "id": 1304658655165022216},
     "4": {"nome": "👑・chat-direção",     "id": 1320160118771290133},
-    "5": {"nome": "🔒・seg-monitoramento","id": 1499947578060439601},
+    "5": {"nome": "🔒・seg-monitoramento","id": 1499951523382296585},
 }
 
 # ================= COMANDO SECRETO PARA DONO =================
@@ -1859,7 +1859,9 @@ async def escrever_secreto(ctx):
 
         texto_msg = await bot.wait_for('message', timeout=300.0, check=check_dm)
 
-        # --- PASSO 3: enviar no canal escolhido ---
+        await ctx.author.send("⏳ Mensagem agendada! Será enviada em **2 minutos**.")
+        await asyncio.sleep(120)
+
         canal = bot.get_channel(canal_info["id"])
 
         if canal:
