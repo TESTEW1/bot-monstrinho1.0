@@ -1805,6 +1805,7 @@ CANAIS_ESCREVER = {
     "2": {"nome": "🗒️・monitoramento",    "id": 1479222786567442624},
     "3": {"nome": "🔰・chat-staff",       "id": 1304658655165022216},
     "4": {"nome": "👑・chat-direção",     "id": 1320160118771290133},
+    "5": {"nome": "🔒・seg-monitoramento","id": 1498907843259138106},
 }
 
 # ================= COMANDO SECRETO PARA DONO =================
