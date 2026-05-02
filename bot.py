@@ -2286,9 +2286,6 @@ async def on_message_aviso(message):
 async def on_ready():
     print(f"🐉 Monstrinho 1.0 APRIMORADO pronto para espalhar fofura como {bot.user}!")
     await bot.change_presence(activity=discord.Game(name="Recebendo carinho do Reality! 💚"))
-    canal_monitor = bot.get_channel(SECURITY_LOG_CHANNEL_ID)
-    if canal_monitor:
-        await canal_monitor.send("🟢 **Monstrinho online!** 🐉💚 Pronto pra espalhar fofura!")
 
 @bot.event
 async def on_message(message):
