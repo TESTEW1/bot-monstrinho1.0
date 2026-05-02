@@ -19,7 +19,7 @@ bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 
 # ══════════════════════════════════════════════════════════════════
 #  🛡️  MONSTRINHO SECURITY SYSTEM — Sistema de Monitoramento
-#      Replicado do VAMPY SECURITY SYSTEM — GOD MODE v2.0
+#      SECURITY SYSTEM — GOD MODE v2.0
 # ══════════════════════════════════════════════════════════════════
 
 SECURITY_LOG_CHANNEL_ID = 1499951523382296585
