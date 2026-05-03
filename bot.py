@@ -1249,7 +1249,6 @@ _groq_historico: dict = {}
 
 # ===== COOLDOWN DAS RESPOSTAS PERSONALIZADAS (20 minutos) =====
 # { user_id: datetime do último envio }
-import datetime
 _ultimo_custom: dict = {}
 COOLDOWN_CUSTOM_SEGUNDOS = 20 * 60  # 20 minutos
 LISTA_TRISTEZA = [
@@ -2904,7 +2903,7 @@ async def on_message(message):
         # ===== RESPOSTAS AUTOMÁTICAS POR ID (quando o Monstrinho é mencionado) =====
         if nome_customizado and nome_customizado in FRASES_CUSTOM:
             # Verifica cooldown de 20 minutos por usuário
-            agora = datetime.datetime.utcnow()
+            agora = datetime.utcnow()
             ultimo = _ultimo_custom.get(autor_id)
             cooldown_ok = (
                 ultimo is None
@@ -3225,7 +3224,7 @@ async def on_message(message):
         # Respostas Customizadas para Membros Específicos
         # Só dispara se o AUTOR da mensagem for o membro mapeado E o cooldown de 20 min permitir
         if nome_customizado and nome_customizado in FRASES_CUSTOM:
-            agora2 = datetime.datetime.utcnow()
+            agora2 = datetime.utcnow()
             ultimo2 = _ultimo_custom.get(autor_id)
             cooldown_ok2 = (
                 ultimo2 is None
