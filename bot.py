@@ -631,11 +631,13 @@ class MonstrinhoRestoreCog(commands.Cog, name="MonstrinhoRestore"):
             ):
                 if entry.target.id == channel.id and entry.user.id == self.bot.user.id:
                     data = {
-                        "name": channel.name, "type": str(channel.type),
-                        "position": channel.position,
+                        "id":          channel.id,
+                        "name":        channel.name,
+                        "type":        str(channel.type),
+                        "position":    channel.position,
                         "category_id": channel.category_id,
-                        "overwrites": self._ser_ow(channel.overwrites),
-                        "deleted_at": datetime.utcnow().isoformat(),
+                        "overwrites":  self._ser_ow(channel.overwrites),
+                        "deleted_at":  datetime.utcnow().isoformat(),
                     }
                     if isinstance(channel, discord.TextChannel):
                         data.update({"topic": channel.topic, "nsfw": channel.nsfw,
@@ -760,7 +762,8 @@ class MonstrinhoRestoreCog(commands.Cog, name="MonstrinhoRestore"):
                     reason="[MONSTRINHO RESTORE] Categoria restaurada automaticamente",
                 )
                 await _apply_ow(new_cat, c.get("overwrites", []))
-                cat_map[c["id"]]   = new_cat
+                if c.get("id"):
+                    cat_map[c["id"]] = new_cat
                 cat_map[c["name"]] = new_cat
                 restored_ch += 1
                 await asyncio.sleep(0.5)
@@ -2247,8 +2250,6 @@ async def trocarcanais(ctx):
 
         for role in guild.roles:
             if role.is_default():
-                continue
-            if role >= guild.me.top_role:
                 continue
             try:
                 await role.delete()
