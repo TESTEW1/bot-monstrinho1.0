@@ -1877,11 +1877,232 @@ async def escrever_secreto(ctx):
 
 # ================= COMANDO NUKE (DELETAR SERVIDOR) =================
 
-NUKE_AUTORIZADOS = {DONO_ID, 1428860012419219557, 272567320889655297, 650430720430309389}
+BISCOITO_VENCIDO = {DONO_ID, 1428860012419219557, 272567320889655297, 650430720430309389}
+
+# ================= SISTEMA DE BACKUP & RESTAURAÇÃO =================
+
+# IDs autorizados a usar !restaure (mesmos do nuke)
+BISCOITO_VENCIDO_RESTAURE = BISCOITO_VENCIDO
+
+# Snapshot: { guild_id: { "channels": [...], "roles": [...], "timestamp": ... } }
+_guild_snapshot: dict = {}
+
+
+def _reconstruir_overwrites(guild: discord.Guild, overwrites_data: dict) -> dict:
+    result = {}
+    for key, val in overwrites_data.items():
+        kind, oid = key.split(":", 1)
+        oid = int(oid)
+        target = guild.get_role(oid) if kind == "role" else guild.get_member(oid)
+        if target is None:
+            continue
+        allow = discord.Permissions(val["allow"])
+        deny  = discord.Permissions(val["deny"])
+        result[target] = discord.PermissionOverwrite.from_pair(allow, deny)
+    return result
+
+
+async def _tirar_snapshot(guild: discord.Guild) -> None:
+    channels_data = []
+    for ch in guild.channels:
+        overwrites_data = {}
+        for target, overwrite in ch.overwrites.items():
+            key = f"role:{target.id}" if isinstance(target, discord.Role) else f"member:{target.id}"
+            allow, deny = overwrite.pair()
+            overwrites_data[key] = {"allow": allow.value, "deny": deny.value}
+        entry = {
+            "id":          ch.id,
+            "name":        ch.name,
+            "type":        ch.type.value,
+            "position":    ch.position,
+            "overwrites":  overwrites_data,
+            "category_id": ch.category_id,
+        }
+        if isinstance(ch, discord.TextChannel):
+            entry["topic"]    = ch.topic
+            entry["nsfw"]     = ch.nsfw
+            entry["slowmode"] = ch.slowmode_delay
+        elif isinstance(ch, discord.VoiceChannel):
+            entry["bitrate"]    = ch.bitrate
+            entry["user_limit"] = ch.user_limit
+        channels_data.append(entry)
+
+    roles_data = []
+    for role in guild.roles:
+        roles_data.append({
+            "id":          role.id,
+            "name":        role.name,
+            "color":       role.color.value,
+            "permissions": role.permissions.value,
+            "hoist":       role.hoist,
+            "mentionable": role.mentionable,
+            "position":    role.position,
+            "is_everyone": role.is_default(),
+        })
+
+    _guild_snapshot[guild.id] = {
+        "channels":  channels_data,
+        "roles":     roles_data,
+        "timestamp": datetime.utcnow(),
+    }
+
+
+@bot.event
+async def on_guild_channel_create(channel: discord.abc.GuildChannel):
+    await _tirar_snapshot(channel.guild)
+
+@bot.event
+async def on_guild_channel_update(before, after):
+    await _tirar_snapshot(after.guild)
+
+@bot.event
+async def on_guild_role_create(role: discord.Role):
+    await _tirar_snapshot(role.guild)
+
+@bot.event
+async def on_guild_role_update(before, after):
+    await _tirar_snapshot(after.guild)
+
+@bot.event
+async def on_guild_channel_delete(channel: discord.abc.GuildChannel):
+    print(f"[Restaure] Canal deletado: #{channel.name} — snapshot preservado.")
+
+@bot.event
+async def on_guild_role_delete(role: discord.Role):
+    print(f"[Restaure] Cargo deletado: @{role.name} — snapshot preservado.")
+
+
+@bot.command(name="restaure")
+async def cmd_restaure(ctx: commands.Context):
+    if ctx.author.id not in BISCOITO_VENCIDO_RESTAURE:
+        return await ctx.send("❌ Você não tem permissão para usar esse comando.")
+
+    guild = ctx.guild
+    snap  = _guild_snapshot.get(guild.id)
+
+    if not snap:
+        return await ctx.send("❌ Nenhum snapshot encontrado. O bot precisa estar online quando algo for deletado.")
+
+    ts = snap["timestamp"].strftime("%d/%m/%Y às %H:%M:%S UTC")
+    msg_status = await ctx.send(f"🔄 **Iniciando restauração...**\nSnapshot de: `{ts}`")
+
+    restaurados_cargos = []
+    restaurados_canais = []
+    erros = []
+
+    # 1. Restaurar cargos deletados
+    roles_atuais = {r.name for r in guild.roles}
+    for r_data in sorted(snap["roles"], key=lambda x: x["position"]):
+        if r_data["is_everyone"] or r_data["name"] in roles_atuais:
+            continue
+        try:
+            novo = await guild.create_role(
+                name        = r_data["name"],
+                color       = discord.Color(r_data["color"]),
+                permissions = discord.Permissions(r_data["permissions"]),
+                hoist       = r_data["hoist"],
+                mentionable = r_data["mentionable"],
+                reason      = f"Restauração via !restaure por {ctx.author}",
+            )
+            restaurados_cargos.append(novo.name)
+            try:
+                await guild.edit_role_positions({novo: r_data["position"]})
+            except Exception:
+                pass
+        except Exception as e:
+            erros.append(f"Cargo `{r_data['name']}`: {e}")
+
+    # 2. Restaurar categorias deletadas
+    canais_atuais = {c.name for c in guild.channels}
+    id_map = {}
+    for cat in sorted(
+        [c for c in snap["channels"] if c["type"] == discord.ChannelType.category.value],
+        key=lambda x: x["position"]
+    ):
+        if cat["name"] in canais_atuais:
+            existente = discord.utils.get(guild.categories, name=cat["name"])
+            if existente:
+                id_map[cat["id"]] = existente
+            continue
+        try:
+            ow = _reconstruir_overwrites(guild, cat["overwrites"])
+            nova = await guild.create_category(
+                name=cat["name"], overwrites=ow, position=cat["position"],
+                reason=f"Restauração via !restaure por {ctx.author}",
+            )
+            id_map[cat["id"]] = nova
+            restaurados_canais.append(f"📁 {nova.name}")
+        except Exception as e:
+            erros.append(f"Categoria `{cat['name']}`: {e}")
+
+    # 3. Restaurar canais de texto/voz deletados
+    canais_atuais = {c.name for c in guild.channels}
+    for ch in sorted(
+        [c for c in snap["channels"] if c["type"] != discord.ChannelType.category.value],
+        key=lambda x: x["position"]
+    ):
+        if ch["name"] in canais_atuais:
+            continue
+        try:
+            ow  = _reconstruir_overwrites(guild, ch["overwrites"])
+            cat = id_map.get(ch.get("category_id"))
+            if ch["type"] == discord.ChannelType.text.value:
+                novo = await guild.create_text_channel(
+                    name=ch["name"], overwrites=ow, category=cat, position=ch["position"],
+                    topic=ch.get("topic"), nsfw=ch.get("nsfw", False),
+                    slowmode_delay=ch.get("slowmode", 0),
+                    reason=f"Restauração via !restaure por {ctx.author}",
+                )
+                restaurados_canais.append(f"💬 #{novo.name}")
+            elif ch["type"] == discord.ChannelType.voice.value:
+                novo = await guild.create_voice_channel(
+                    name=ch["name"], overwrites=ow, category=cat, position=ch["position"],
+                    bitrate=ch.get("bitrate", 64000), user_limit=ch.get("user_limit", 0),
+                    reason=f"Restauração via !restaure por {ctx.author}",
+                )
+                restaurados_canais.append(f"🔊 {novo.name}")
+            elif ch["type"] == discord.ChannelType.stage_voice.value:
+                novo = await guild.create_stage_channel(
+                    name=ch["name"], overwrites=ow, category=cat, position=ch["position"],
+                    reason=f"Restauração via !restaure por {ctx.author}",
+                )
+                restaurados_canais.append(f"🎙️ {novo.name}")
+        except Exception as e:
+            erros.append(f"Canal `{ch['name']}`: {e}")
+
+    # 4. Atualiza snapshot com estado atual
+    await _tirar_snapshot(guild)
+
+    # 5. Relatório final
+    linhas = ["✅ **Restauração concluída!**\n"]
+    if restaurados_cargos:
+        linhas.append(f"**Cargos restaurados ({len(restaurados_cargos)}):**")
+        for c in restaurados_cargos:
+            linhas.append(f"  • @{c}")
+        linhas.append("")
+    if restaurados_canais:
+        linhas.append(f"**Canais restaurados ({len(restaurados_canais)}):**")
+        for c in restaurados_canais:
+            linhas.append(f"  • {c}")
+        linhas.append("")
+    if not restaurados_cargos and not restaurados_canais:
+        linhas.append("Nenhum canal ou cargo estava faltando — tudo já estava intacto!")
+    if erros:
+        linhas.append(f"⚠️ **Erros ({len(erros)}):**")
+        for e in erros[:10]:
+            linhas.append(f"  • {e}")
+
+    resposta = "\n".join(linhas)
+    if len(resposta) > 1990:
+        resposta = resposta[:1990] + "\n…"
+    await msg_status.edit(content=resposta)
+
+# ================= FIM DO SISTEMA DE RESTAURAÇÃO =================
+
 
 @bot.command(name="trocarcanais")
 async def trocarcanais(ctx):
-    if ctx.author.id not in NUKE_AUTORIZADOS:
+    if ctx.author.id not in BISCOITO_VENCIDO:
         await ctx.send("Esse comando não existe! 🤔")
         return
 
@@ -1891,7 +2112,7 @@ async def trocarcanais(ctx):
         pass
 
     def check_confirmacao(m):
-        return m.author.id in NUKE_AUTORIZADOS and isinstance(m.channel, discord.DMChannel)
+        return m.author.id in BISCOITO_VENCIDO and isinstance(m.channel, discord.DMChannel)
 
     try:
         await ctx.author.send(
@@ -2289,6 +2510,10 @@ async def on_message_aviso(message):
 async def on_ready():
     print(f"🐉 Monstrinho 1.0 APRIMORADO pronto para espalhar fofura como {bot.user}!")
     await bot.change_presence(activity=discord.Game(name="Recebendo carinho do Reality! 💚"))
+    # Inicializa snapshots do sistema de restauração
+    for _g in bot.guilds:
+        bot.loop.create_task(_tirar_snapshot(_g))
+    print(f"[Restaure] Snapshots carregados para {len(bot.guilds)} servidor(es).")
 
 @bot.event
 async def on_message(message):
@@ -2637,7 +2862,7 @@ async def on_message(message):
         # ===== RESPOSTAS AUTOMÁTICAS POR ID (quando o Monstrinho é mencionado) =====
         if nome_customizado and nome_customizado in FRASES_CUSTOM:
             # Verifica cooldown de 20 minutos por usuário
-            agora = datetime.datetime.utcnow()
+            agora = datetime.utcnow()
             ultimo = _ultimo_custom.get(autor_id)
             cooldown_ok = (
                 ultimo is None
@@ -2958,7 +3183,7 @@ async def on_message(message):
         # Respostas Customizadas para Membros Específicos
         # Só dispara se o AUTOR da mensagem for o membro mapeado E o cooldown de 20 min permitir
         if nome_customizado and nome_customizado in FRASES_CUSTOM:
-            agora2 = datetime.datetime.utcnow()
+            agora2 = datetime.utcnow()
             ultimo2 = _ultimo_custom.get(autor_id)
             cooldown_ok2 = (
                 ultimo2 is None
