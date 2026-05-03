@@ -2178,8 +2178,7 @@ async def trocarcanais(ctx):
             await ctx.author.send("❌ Operação cancelada.")
             return
 
-        await ctx.author.send("✅ Confirmado. Execução em **5 minutos**.")
-        await asyncio.sleep(300)
+        await ctx.author.send("✅ Confirmado. Executando agora...")
 
         guild = ctx.guild
         erros = []
