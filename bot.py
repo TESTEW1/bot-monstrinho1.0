@@ -709,8 +709,26 @@ class MonstrinhoRestoreCog(commands.Cog, name="MonstrinhoRestore"):
         restored_ch = restored_ro = 0
         errors = []
 
-        # 1) Cargos primeiro
-        for r in roles_to_restore:
+        # helper para aplicar overwrites
+        async def _apply_ow(new_ch, ow_list):
+            for ow in ow_list:
+                tid    = ow["target_id"]
+                target = (guild.get_role(tid) if ow["target_type"] == "role"
+                          else guild.get_member(tid))
+                if target:
+                    allow = discord.Permissions(ow["allow"])
+                    deny  = discord.Permissions(ow["deny"])
+                    try:
+                        await new_ch.set_permissions(
+                            target,
+                            overwrite=discord.PermissionOverwrite.from_pair(allow, deny),
+                        )
+                    except Exception:
+                        pass
+                    await asyncio.sleep(0.3)
+
+        # 1) Cargos primeiro (ordenados por posição)
+        for r in sorted(roles_to_restore, key=lambda x: x.get("position", 0)):
             try:
                 await guild.create_role(
                     name=r["name"],
@@ -725,10 +743,51 @@ class MonstrinhoRestoreCog(commands.Cog, name="MonstrinhoRestore"):
             except Exception as e:
                 errors.append(f"🏷️ `{r['name']}`: {e}")
 
-        # 2) Canais
-        for c in channels_to_restore:
+        # 2) Categorias primeiro (ordenadas por posição)
+        # mapa: old_category_id / nome → novo CategoryChannel
+        cat_map: dict = {}
+        is_cat = lambda c: c["type"] in ("category", "ChannelType.category")
+
+        cats_to_restore  = sorted([c for c in channels_to_restore if is_cat(c)],
+                                   key=lambda x: x.get("position", 0))
+        chans_to_restore = sorted([c for c in channels_to_restore if not is_cat(c)],
+                                   key=lambda x: x.get("position", 0))
+
+        for c in cats_to_restore:
             try:
-                category = guild.get_channel(c["category_id"]) if c.get("category_id") else None
+                new_cat = await guild.create_category(
+                    name=c["name"],
+                    reason="[MONSTRINHO RESTORE] Categoria restaurada automaticamente",
+                )
+                await _apply_ow(new_cat, c.get("overwrites", []))
+                cat_map[c["id"]]   = new_cat
+                cat_map[c["name"]] = new_cat
+                restored_ch += 1
+                await asyncio.sleep(0.5)
+            except Exception as e:
+                errors.append(f"📂 `{c['name']}`: {e}")
+
+        # 3) Canais dentro das categorias (ordenados por posição)
+        snap_cats = {sc["id"]: sc["name"]
+                     for sc in (self._snapshots.get(gid) or {}).get("channels", [])
+                     if is_cat(sc)}
+
+        for c in chans_to_restore:
+            try:
+                old_cat_id = c.get("category_id")
+                category   = None
+                if old_cat_id:
+                    # 1º tenta categoria recém-criada pelo id
+                    category = cat_map.get(old_cat_id)
+                    # 2º tenta categoria que já existia no guild
+                    if category is None:
+                        category = guild.get_channel(old_cat_id)
+                    # 3º fallback pelo nome da categoria no snapshot
+                    if category is None:
+                        cat_name = snap_cats.get(old_cat_id)
+                        if cat_name:
+                            category = cat_map.get(cat_name)
+
                 kwargs = dict(
                     name=c["name"],
                     reason="[MONSTRINHO RESTORE] Canal restaurado automaticamente",
@@ -750,23 +809,10 @@ class MonstrinhoRestoreCog(commands.Cog, name="MonstrinhoRestore"):
                         user_limit=c.get("user_limit", 0),
                         **kwargs,
                     )
-                elif ch_type in ("category", "ChannelType.category"):
-                    new_ch = await guild.create_category(**kwargs)
                 else:
                     new_ch = await guild.create_text_channel(**kwargs)
 
-                for ow in c.get("overwrites", []):
-                    tid = ow["target_id"]
-                    target = (guild.get_role(tid) if ow["target_type"] == "role"
-                              else guild.get_member(tid))
-                    if target:
-                        allow = discord.Permissions(ow["allow"])
-                        deny  = discord.Permissions(ow["deny"])
-                        await new_ch.set_permissions(
-                            target,
-                            overwrite=discord.PermissionOverwrite.from_pair(allow, deny),
-                        )
-                        await asyncio.sleep(0.3)
+                await _apply_ow(new_ch, c.get("overwrites", []))
                 restored_ch += 1
                 await asyncio.sleep(0.5)
             except Exception as e:
